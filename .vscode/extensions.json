@@ -1,0 +1,9 @@
+{
+    "recommendations": [
+        "adrianwilczynski.alpine-js-intellisense",
+        "bradlc.vscode-tailwindcss",
+        "hex-ci.stylelint-plus",
+        "cjhowe7.laravel-blade",
+        "bmewburn.vscode-intelephense-client"
+    ]
+}
