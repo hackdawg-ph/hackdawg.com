@@ -1,0 +1,48 @@
+version: '3.7'
+services:
+    web:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        container_name: hackdawg-web
+        image: hackdawg-web
+        working_dir: /var/www/html
+        networks:
+            - app
+        env_file:
+            - .env
+
+    scheduler:
+        container_name: hackdawg-scheduler
+        image: hackdawg-web
+        depends_on:
+            - web
+        command: hackdawg-scheduler
+        networks:
+            - app
+        env_file:
+            - .env
+
+    queuer:
+        container_name: hackdawg-queuer
+        image: hackdawg-web
+        depends_on:
+            - web
+        command: hackdawg-queuer
+        networks:
+            - app
+        env_file:
+            - .env
+
+    nginx:
+        container_name: hackdawg-nginx
+        image: nginx:alpine
+        depends_on:
+            - web
+        networks:
+            - app
+        env_file:
+            - .env
+
+networks:
+    app:

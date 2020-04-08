@@ -1,4 +1,4 @@
-## 🚀 Quick start
+## 🚀 Local Setup
 
 ```bash
 # First, install project dependencies:
@@ -6,8 +6,11 @@ composer install
 yarn install
 
 # Then, build the front-end assets:
-yarn dev
+yarn watch
 
-# Finally, start the development server:
-php artisan serve
+# Copy environment file:
+cp .env.example .env
+
+# Boot the docker containers:
+make deploy-local
 ```

@@ -1,0 +1,17 @@
+version: '3.7'
+services:
+    web:
+        restart: unless-stopped
+        volumes:
+            - ./:/var/www/html
+
+    nginx:
+        restart: unless-stopped
+        depends_on:
+            - web
+        ports:
+            - '80:80'
+            - '443:443'
+        volumes:
+            - ./:/var/www/html
+            - ./deploy/nginx.conf:/etc/nginx/conf.d/nginx.conf
