@@ -19,18 +19,20 @@ RUN apt-get update && apt-get install -y \
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Install PHP extensions
-RUN docker-php-ext-install bcmath mbstring zip
+RUN docker-php-ext-install pdo_mysql bcmath mbstring zip exif pcntl
 
 # Override default PHP configuration
 COPY deploy/php.ini /usr/local/etc/php/conf.d/local.ini:ro
 
 COPY . ${DIR}
+COPY deploy/init.sh /usr/local/bin/hackdawg-init
 COPY deploy/queuer.sh /usr/local/bin/hackdawg-queuer
 COPY deploy/scheduler.sh /usr/local/bin/hackdawg-scheduler
 
 # Give proper file permissions
 RUN chown -R www-data:www-data ${DIR}
 RUN chmod -R 775 ${DIR}/storage ${DIR}/bootstrap/cache
+RUN chmod +x /usr/local/bin/hackdawg-init
 RUN chmod +x /usr/local/bin/hackdawg-queuer
 RUN chmod +x /usr/local/bin/hackdawg-scheduler
 

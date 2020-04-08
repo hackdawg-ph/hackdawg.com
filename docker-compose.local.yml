@@ -3,15 +3,28 @@ services:
     web:
         restart: unless-stopped
         volumes:
-            - ./:/var/www/html
+            - .:/var/www/html
+            - ./deploy/php.ini:/usr/local/etc/php/conf.d/local.ini
+        environment:
+            APP_ENV: local
 
     nginx:
         restart: unless-stopped
-        depends_on:
-            - web
         ports:
             - '80:80'
             - '443:443'
         volumes:
-            - ./:/var/www/html
+            - .:/var/www/html:ro
             - ./deploy/nginx.conf:/etc/nginx/conf.d/nginx.conf
+
+    db:
+        restart: unless-stopped
+        volumes:
+            - ./deploy/db/data:/var/lib/mysql
+        ports:
+            - '33069:3306'
+        environment:
+            MYSQL_DATABASE: hackdawg
+            MYSQL_USER: hackdawg
+            MYSQL_PASSWORD: password
+            MYSQL_ROOT_PASSWORD: password

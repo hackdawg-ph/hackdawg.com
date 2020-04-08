@@ -4,8 +4,12 @@ services:
         build:
             context: .
             dockerfile: Dockerfile
-        container_name: hackdawg-web
+        container_name: web
         image: hackdawg-web
+        depends_on:
+            - db
+        links:
+            - db
         working_dir: /var/www/html
         networks:
             - app
@@ -13,7 +17,7 @@ services:
             - .env
 
     scheduler:
-        container_name: hackdawg-scheduler
+        container_name: scheduler
         image: hackdawg-web
         depends_on:
             - web
@@ -24,7 +28,7 @@ services:
             - .env
 
     queuer:
-        container_name: hackdawg-queuer
+        container_name: queuer
         image: hackdawg-web
         depends_on:
             - web
@@ -35,7 +39,7 @@ services:
             - .env
 
     nginx:
-        container_name: hackdawg-nginx
+        container_name: nginx
         image: nginx:alpine
         depends_on:
             - web
@@ -43,6 +47,13 @@ services:
             - app
         env_file:
             - .env
+
+    db:
+        container_name: db
+        image: mysql:8.0
+        command: --default-authentication-plugin=mysql_native_password
+        networks:
+            - app
 
 networks:
     app:
