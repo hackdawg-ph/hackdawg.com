@@ -43,8 +43,9 @@ jobs:
           username: root
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            echo "God is good, all the time!"   
+            echo "God is good, all the time!"
 
             cd /root/hackdawg.com
             # git fetch && git checkout master
+            rm -rf .env && SECRET_PASSPHRASE=${{ secrets.SECRET_PASSPHRASE }} sh deploy/decrypt_secret.sh
             make deploy-production

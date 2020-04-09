@@ -24,6 +24,13 @@ RUN docker-php-ext-install pdo_mysql bcmath mbstring zip exif pcntl
 # Override default PHP configuration
 COPY deploy/php.ini /usr/local/etc/php/conf.d/local.ini:ro
 
+# Install Composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
+# Changes in the lockfile will trigger a rebuild after this step...
+COPY composer.lock ${DIR}/composer.lock
+RUN composer install --optimize-autoloader --no-dev
+
 COPY . ${DIR}
 COPY deploy/init.sh /usr/local/bin/hackdawg-init
 COPY deploy/queuer.sh /usr/local/bin/hackdawg-queuer
