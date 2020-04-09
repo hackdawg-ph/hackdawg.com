@@ -44,4 +44,7 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             echo "God is good, all the time!"   
-            
+
+            cd /root/hackdawg.com
+            # git fetch && git checkout master
+            make deploy-production
