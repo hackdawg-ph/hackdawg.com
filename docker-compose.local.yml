@@ -15,7 +15,7 @@ services:
             - '443:443'
         volumes:
             - .:/var/www/html:ro
-            - ./deploy/nginx.conf:/etc/nginx/conf.d/nginx.conf
+            - ./deploy/nginx/nginx.local.conf:/etc/nginx/conf.d/nginx.conf
 
     db:
         restart: unless-stopped

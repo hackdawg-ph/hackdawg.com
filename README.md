@@ -1,5 +1,9 @@
 ## 🚀 Local Setup
 
+### Quick start
+
+> **Requires [Docker 18+](https://docs.docker.com/release-notes/)**
+
 ```bash
 # First, install project dependencies:
 composer install

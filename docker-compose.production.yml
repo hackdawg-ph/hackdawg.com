@@ -1,0 +1,15 @@
+version: '3.7'
+services:
+    web:
+        restart: always
+        environment:
+            APP_ENV: production
+
+    nginx:
+        restart: always
+        ports:
+            - '80:80'
+            - '443:443'
+        volumes:
+            - .:/var/www/html:ro
+            - ./deploy/nginx/nginx.production.conf:/etc/nginx/conf.d/nginx.conf
