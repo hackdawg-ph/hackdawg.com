@@ -18,8 +18,8 @@ cp .env.example .env
 # Boot the docker containers:
 make deploy-local
 
-# Initialize application:
-make init
+# Perform chores:
+make chore
 ```
 
 ### Connecting to the database from the host machine

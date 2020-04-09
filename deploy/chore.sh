@@ -6,4 +6,4 @@ php artisan key:generate
 
 # Run the migrations
 echo "Running the migrations..."
-php artisan migrate
+php artisan migrate --force

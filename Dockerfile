@@ -28,7 +28,7 @@ COPY deploy/php.ini /usr/local/etc/php/conf.d/local.ini:ro
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 COPY . ${DIR}
-COPY deploy/init.sh /usr/local/bin/hackdawg-init
+COPY deploy/chore.sh /usr/local/bin/hackdawg-chore
 COPY deploy/queuer.sh /usr/local/bin/hackdawg-queuer
 COPY deploy/scheduler.sh /usr/local/bin/hackdawg-scheduler
 COPY deploy/web.sh /usr/local/bin/hackdawg-web
