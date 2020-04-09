@@ -9,10 +9,10 @@
 cp .env.example .env
 
 # Copy hosts to /etc/hosts
-make copy-hosts-local
+make copy-hosts@local
 
 # Boot the docker containers:
-make deploy-local
+make deploy@local
 
 # Perform chores:
 make chore

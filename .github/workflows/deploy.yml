@@ -50,8 +50,8 @@ jobs:
             # Reset everything
             git reset --hard && git fetch --all && git pull
             rm -rf .env && SECRET_PASSPHRASE=${{ secrets.SECRET_PASSPHRASE }} sh deploy/decrypt_secret.sh
-            echo ${{ secrets.MYSQL_CA_CERT }} > deploy/db/ca-cert.pem
+            echo "${{ secrets.MYSQL_CA_CERT }}" > deploy/db/ca-cert.pem
 
             ## Here we go...
-            make copy-hosts-production
-            make deploy-production
+            make copy-hosts@production
+            make deploy@production

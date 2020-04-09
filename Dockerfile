@@ -1,5 +1,9 @@
 FROM php:7.4-fpm
 
+# Build arguments
+ARG APP_ENV=local
+
+# Environment variables
 ENV TZ=Asia/Manila
 ENV DIR=/var/www/html
 
