@@ -13,9 +13,14 @@ make copy-hosts@local
 
 # Boot the docker containers:
 make deploy@local
-
-# Perform chores:
 make chore
+
+# Install dependencies:
+composer install
+yarn install
+
+# Build frontend:
+yarn watch
 
 # Finally you can visit: https://www.hackdawg.test
 ```

@@ -1,12 +1,13 @@
 version: '3.7'
 services:
     web:
+        build:
+            args:
+                APP_ENV: local
         restart: unless-stopped
         volumes:
             - .:/var/www/html
             - ./deploy/php.ini:/usr/local/etc/php/conf.d/local.ini
-        environment:
-            APP_ENV: local
 
     nginx:
         restart: unless-stopped
