@@ -38,7 +38,7 @@ RUN composer install --optimize-autoloader --no-dev
 # Give proper file permissions
 RUN chown -R www-data:www-data ${DIR}
 RUN chmod -R 775 ${DIR}/storage ${DIR}/bootstrap/cache
-RUN chmod +x /usr/local/bin/hackdawg-init
+RUN chmod +x /usr/local/bin/hackdawg-chore
 RUN chmod +x /usr/local/bin/hackdawg-queuer
 RUN chmod +x /usr/local/bin/hackdawg-scheduler
 RUN chmod +x /usr/local/bin/hackdawg-web
