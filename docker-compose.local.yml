@@ -1,0 +1,31 @@
+version: '3.7'
+services:
+    web:
+        build:
+            args:
+                APP_ENV: local
+        restart: unless-stopped
+        volumes:
+            - .:/var/www/html
+            - ./deploy/php.ini:/usr/local/etc/php/conf.d/local.ini
+
+    nginx:
+        restart: unless-stopped
+        ports:
+            - '80:80'
+            - '443:443'
+        volumes:
+            - .:/var/www/html:ro
+            - ./deploy/nginx/nginx.local.conf:/etc/nginx/conf.d/nginx.conf
+
+    db:
+        restart: unless-stopped
+        volumes:
+            - ./deploy/db/data:/var/lib/mysql
+        ports:
+            - '33069:3306'
+        environment:
+            MYSQL_DATABASE: hackdawg
+            MYSQL_USER: hackdawg
+            MYSQL_PASSWORD: password
+            MYSQL_ROOT_PASSWORD: password

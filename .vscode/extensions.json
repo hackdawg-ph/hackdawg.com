@@ -1,5 +1,6 @@
 {
     "recommendations": [
+        "ms-azuretools.vscode-docker",
         "adrianwilczynski.alpine-js-intellisense",
         "bradlc.vscode-tailwindcss",
         "hex-ci.stylelint-plus",

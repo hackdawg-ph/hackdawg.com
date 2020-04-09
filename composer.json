@@ -1,10 +1,13 @@
 {
     "name": "jovertical/hackdawg.com",
     "type": "project",
-    "description": "The Hackdawg blog",
+    "description": "The Hackdawg website",
     "keywords": [
+        "php",
+        "laravel",
         "website",
-        "blog"
+        "blog",
+        "portfolio"
     ],
     "license": "MIT",
     "require": {
