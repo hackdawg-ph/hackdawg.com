@@ -3,7 +3,6 @@ name: Deploy
 on:
   push:
     branches:
-      - feat/deployment
       - master
 
 jobs:
