@@ -5,13 +5,14 @@ on:
     branches:
       - feat/deployment
       - master
-    paths-ignore:
-    - 'resources/**'
-    - '!resources/lang/**'
 
 jobs:
   Build-Deploy:
     runs-on: ubuntu-latest
+
+    strategy:
+        matrix:
+          node-version: [12.x]
 
     steps:
       - name: Checkout repository
@@ -24,15 +25,13 @@ jobs:
           extensions: curl, mbstring, openssl, pdo, sqlite3, xml
           coverage: none
 
-      - name: Install dependencies
+      - name: Install PHP dependencies
         run: composer install -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
 
-      - name: Prepare Laravel
-        working-directory: public
+      - name: Build frontend
         run: |
-          mkdir css js
-          touch mix-manifest.json css/app.css js/app.js
-          echo '{"/js/app.js": "/js/app.js", "/css/app.css": "/css/app.css"}' > mix-manifest.json
+            yarn install
+            yarn prod
 
       - name: Run the test suite
         run: composer test
@@ -49,5 +48,6 @@ jobs:
             cd /root/hackdawg.com
             git reset --hard && git fetch --all && git pull
             rm -rf .env && SECRET_PASSPHRASE=${{ secrets.SECRET_PASSPHRASE }} sh deploy/decrypt_secret.sh
+            make copy-hosts-production
             make deploy-production
             make chore

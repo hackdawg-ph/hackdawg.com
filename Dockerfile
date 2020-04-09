@@ -9,10 +9,10 @@ RUN ln -snf /usr/share/zoneinfo/${TZ} /etc/localtime && echo ${TZ} > /etc/timezo
 # Install Linux utilities
 RUN apt-get update && apt-get install -y \
     build-essential \
-    curl \
     libonig-dev \
     libzip-dev \
     locales \
+    curl \
     unzip \
     zip
 
@@ -27,13 +27,26 @@ COPY deploy/php.ini /usr/local/etc/php/conf.d/local.ini:ro
 # Install Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
+# Install Node.js &
+RUN curl -sL https://deb.nodesource.com/setup_12.x | bash - 
+RUN apt-get install -y nodejs
+
+# Install Yarn
+RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add
+RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+RUN apt-get update && apt-get install -y yarn
+
 COPY . ${DIR}
 COPY deploy/chore.sh /usr/local/bin/hackdawg-chore
 COPY deploy/queuer.sh /usr/local/bin/hackdawg-queuer
 COPY deploy/scheduler.sh /usr/local/bin/hackdawg-scheduler
 COPY deploy/web.sh /usr/local/bin/hackdawg-web
 
-RUN composer install --optimize-autoloader --no-dev
+# Install PHP dependencies
+RUN deploy/composer.sh
+
+# Build frontend
+RUN deploy/yarn.sh
 
 # Give proper file permissions
 RUN chown -R www-data:www-data ${DIR}

@@ -5,21 +5,19 @@
 > **Requires [Docker 18+](https://docs.docker.com/release-notes/)**
 
 ```bash
-# First, install project dependencies:
-composer install
-yarn install
-
-# Then, build the front-end assets:
-yarn watch
-
-# Copy environment file:
+# First, copy the environment file:
 cp .env.example .env
+
+# Copy hosts to /etc/hosts
+make copy-hosts-local
 
 # Boot the docker containers:
 make deploy-local
 
 # Perform chores:
 make chore
+
+# Finally you can visit: https://www.hackdawg.test
 ```
 
 ### Connecting to the database from the host machine
