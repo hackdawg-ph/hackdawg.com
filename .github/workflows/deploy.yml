@@ -3,6 +3,7 @@ name: Deploy
 on:
   push:
     branches:
+      - feat/deployment
       - master
 
 jobs:
@@ -49,4 +50,4 @@ jobs:
             rm -rf .env && SECRET_PASSPHRASE=${{ secrets.SECRET_PASSPHRASE }} sh deploy/decrypt_secret.sh
             make copy-hosts-production
             make deploy-production
-            # make chore
+            make chore
