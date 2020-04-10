@@ -2,9 +2,7 @@
 
 namespace Tests\Feature;
 
-use App\Article;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Support\Facades\DB;
 use NunoMaduro\LaravelMojito\InteractsWithViews;
 use Tests\TestCase;
 

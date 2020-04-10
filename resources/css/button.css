@@ -1,0 +1,7 @@
+.btn {
+    @apply h-10 px-6 rounded-full text-sm;
+}
+
+.btn-blue {
+    @apply bg-blue text-white;
+}

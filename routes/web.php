@@ -12,4 +12,5 @@
 */
 
 Route::get('/', 'PagesController@welcome')->name('welcome');
+Route::get('/about', 'PagesController@about')->name('about');
 Route::resource('articles', 'ArticlesController');

@@ -1,8 +1,10 @@
+@import './button.css';
 @import './fonts.css';
 
 html,
 body {
     font-family: 'SF Pro Text';
+    color: #042825;
 }
 
 @tailwind base;

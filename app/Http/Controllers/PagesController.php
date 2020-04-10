@@ -13,4 +13,14 @@ class PagesController extends Controller
     {
         return view('welcome');
     }
+
+    /**
+     * Show's the applications about page.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function about()
+    {
+        return view('about');
+    }
 }
