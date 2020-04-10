@@ -40,7 +40,9 @@ services:
 
     nginx:
         container_name: nginx
-        image: nginx:alpine
+        build:
+            context: .
+            dockerfile: nginx.Dockerfile
         depends_on:
             - web
         networks:
