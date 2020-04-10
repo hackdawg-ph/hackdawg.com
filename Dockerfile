@@ -51,7 +51,6 @@ RUN deploy/composer.sh
 
 # Build frontend
 RUN deploy/yarn.sh
-COPY public ${DIR}/public
 
 # Give proper file permissions
 RUN chown -R www-data:www-data ${DIR}
