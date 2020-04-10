@@ -5,6 +5,8 @@ services:
             args:
                 APP_ENV: production
         restart: always
+        volumes:
+            - ./public:/var/www/html/public
 
     nginx:
         restart: always
@@ -12,4 +14,4 @@ services:
             - '80:80'
             - '443:443'
         volumes:
-            - ./deploy/nginx/nginx.production.conf:/etc/nginx/conf.d/nginx.conf
+            - ./public:/var/www/html/public

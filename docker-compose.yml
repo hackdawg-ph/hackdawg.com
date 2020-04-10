@@ -45,6 +45,7 @@ services:
             dockerfile: nginx.Dockerfile
         depends_on:
             - web
+        working_dir: /var/www/html
         networks:
             - app
         env_file:
