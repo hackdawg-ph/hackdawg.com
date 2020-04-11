@@ -10,8 +10,10 @@ services:
 
     nginx:
         restart: always
+        command: sh -c "sed 's/{{NGINX_HOST}}/hackdawg.com/g' /etc/nginx/conf.d/hackdawg.template > /etc/nginx/conf.d/default.conf && exec nginx -g 'daemon off;'"
         ports:
             - '80:80'
             - '443:443'
         volumes:
+            - ./deploy/nginx/hackdawg.template:/etc/nginx/conf.d/hackdawg.template
             - ./public:/var/www/html/public

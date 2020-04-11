@@ -40,9 +40,7 @@ services:
 
     nginx:
         container_name: nginx
-        build:
-            context: .
-            dockerfile: nginx.Dockerfile
+        image: nginx:alpine
         depends_on:
             - web
         working_dir: /var/www/html
