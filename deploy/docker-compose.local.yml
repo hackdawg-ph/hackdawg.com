@@ -21,13 +21,9 @@ services:
             EMAIL: hello@hackdawg.com
 
     db:
-        container_name: db
-        image: mysql:5.7
         restart: unless-stopped
         volumes:
             - ./db/data:/var/lib/mysql
-        networks:
-            - app
         ports:
             - '33069:3306'
         environment:
