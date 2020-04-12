@@ -1,0 +1,19 @@
+version: '3.7'
+services:
+    web:
+        build:
+            args:
+                APP_ENV: production
+        restart: always
+        volumes:
+            - ../public:/var/www/html/public
+
+    nginx:
+        restart: always
+        command: sh -c "sed 's/{{NGINX_HOST}}/hackdawg.com/g' /etc/nginx/conf.d/nginx.conf.tmpl > /etc/nginx/conf.d/nginx.conf && exec nginx -g 'daemon off;'"
+        ports:
+            - '80:80'
+            - '443:443'
+        volumes:
+            - ./nginx/nginx.conf.tmpl:/etc/nginx/conf.d/nginx.conf.tmpl
+            - ../public:/var/www/html/public

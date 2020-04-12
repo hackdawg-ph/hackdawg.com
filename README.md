@@ -22,7 +22,7 @@ yarn install
 # Build frontend:
 yarn watch
 
-# Finally you can visit: https://www.hackdawg.test
+# Finally you can visit: https://local.hackdawg.com
 ```
 
 ### Connecting to the database from the host machine

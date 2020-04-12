@@ -5,8 +5,8 @@ chore:
 
 deploy@local:
 	@docker-compose \
-		-f docker-compose.yml \
-		-f docker-compose.local.yml \
+		-f ./deploy/docker-compose.yml \
+		-f ./deploy/docker-compose.local.yml \
 		up --build --force-recreate
 
 copy-hosts@local:
@@ -15,8 +15,8 @@ copy-hosts@local:
 
 deploy@production:
 	@docker-compose \
-		-f docker-compose.yml \
-		-f docker-compose.production.yml \
+		-f ./deploy/docker-compose.yml \
+		-f ./deploy/docker-compose.production.yml \
 		up -d --build --force-recreate
 
 copy-hosts@production:

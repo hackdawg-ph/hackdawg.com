@@ -2,8 +2,8 @@ version: '3.7'
 services:
     web:
         build:
-            context: .
-            dockerfile: Dockerfile
+            context: ..
+            dockerfile: deploy/Dockerfile
         container_name: web
         image: hackdawg-web
         depends_on:
@@ -13,8 +13,6 @@ services:
         working_dir: /var/www/html
         networks:
             - app
-        env_file:
-            - .env
 
     scheduler:
         container_name: scheduler
@@ -24,8 +22,6 @@ services:
         command: hackdawg-scheduler
         networks:
             - app
-        env_file:
-            - .env
 
     queuer:
         container_name: queuer
@@ -35,8 +31,6 @@ services:
         command: hackdawg-queuer
         networks:
             - app
-        env_file:
-            - .env
 
     nginx:
         container_name: nginx
@@ -46,8 +40,6 @@ services:
         working_dir: /var/www/html
         networks:
             - app
-        env_file:
-            - .env
 
     db:
         container_name: db
