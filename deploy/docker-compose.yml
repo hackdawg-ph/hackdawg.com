@@ -43,11 +43,5 @@ services:
         networks:
             - app
 
-    db:
-        container_name: db
-        image: mysql:5.7
-        networks:
-            - app
-
 networks:
     app:
