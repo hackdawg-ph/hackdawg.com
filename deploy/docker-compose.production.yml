@@ -10,10 +10,11 @@ services:
 
     nginx:
         restart: always
-        command: sh -c "sed 's/{{NGINX_HOST}}/hackdawg.com/g' /etc/nginx/conf.d/nginx.conf.tmpl > /etc/nginx/conf.d/nginx.conf && exec nginx -g 'daemon off;'"
         ports:
             - '80:80'
             - '443:443'
         volumes:
-            - ./nginx/nginx.conf.tmpl:/etc/nginx/conf.d/nginx.conf.tmpl
             - ../public:/var/www/html/public
+        environment:
+            DOMAIN: hackdawg.com
+            EMAIL: hello@hackdawg.com

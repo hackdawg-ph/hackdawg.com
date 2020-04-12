@@ -3,3 +3,7 @@
 if ! grep -q "127.0.0.1  local.hackdawg.com" /etc/hosts; then
     echo "127.0.0.1  local.hackdawg.com" >> /etc/hosts
 fi
+
+if ! grep -q "127.0.0.1  www.local.hackdawg.com" /etc/hosts; then
+    echo "127.0.0.1  www.local.hackdawg.com" >> /etc/hosts
+fi

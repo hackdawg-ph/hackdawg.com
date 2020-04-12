@@ -1,10 +1,10 @@
 version: '3.7'
 services:
     web:
+        container_name: web
         build:
             context: ..
             dockerfile: deploy/Dockerfile
-        container_name: web
         image: hackdawg-web
         depends_on:
             - db
@@ -34,7 +34,9 @@ services:
 
     nginx:
         container_name: nginx
-        image: nginx:alpine
+        build:
+            context: ..
+            dockerfile: deploy/nginx.Dockerfile
         depends_on:
             - web
         working_dir: /var/www/html

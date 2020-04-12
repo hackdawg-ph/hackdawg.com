@@ -1,11 +1,23 @@
 server {
     listen 80;
     server_name {{NGINX_HOST}};
-    return 301 http://www.{{NGINX_HOST}}$request_uri;
+
+    location / {
+        return 301 https://www.{{NGINX_HOST}}$request_uri;
+    }
 }
 
 server {
     listen 80;
+    server_name www.{{NGINX_HOST}};
+
+    location / {
+        return 301 https://www.{{NGINX_HOST}}$request_uri;
+    }
+}
+
+server {
+    listen 443 ssl;
     server_name www.{{NGINX_HOST}};
     root /var/www/html/public;
 
@@ -19,6 +31,9 @@ server {
     client_max_body_size 32M;
     error_log  /var/log/nginx/error.log;
     access_log /var/log/nginx/access.log;
+
+    ssl_certificate /usr/share/nginx/certificates/fullchain.pem;
+    ssl_certificate_key /usr/share/nginx/certificates/privkey.pem;
 
     location / {
         try_files $uri $uri/ /index.php?$query_string;

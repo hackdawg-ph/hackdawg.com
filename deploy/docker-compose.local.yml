@@ -11,13 +11,14 @@ services:
 
     nginx:
         restart: unless-stopped
-        command: sh -c "sed 's/{{NGINX_HOST}}/hackdawg.test/g' /etc/nginx/conf.d/nginx.conf.tmpl > /etc/nginx/conf.d/nginx.conf && exec nginx -g 'daemon off;'"
         ports:
             - '80:80'
             - '443:443'
         volumes:
             - ..:/var/www/html:ro
-            - ./nginx/nginx.conf.tmpl:/etc/nginx/conf.d/nginx.conf.tmpl
+        environment:
+            DOMAIN: local.hackdawg.com
+            EMAIL: hello@hackdawg.com
 
     db:
         restart: unless-stopped
