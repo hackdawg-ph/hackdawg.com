@@ -50,6 +50,5 @@
         </div>
     </section>
     <section class="bg-white h-64">
-        ...
     </section>
 </x-layout>

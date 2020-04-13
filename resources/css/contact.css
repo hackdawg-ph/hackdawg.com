@@ -1,0 +1,15 @@
+#contact .form-group {
+    @apply flex flex-col mb-5;
+}
+
+#contact .form-group .label {
+    @apply mb-3 px-5 text-white font-medium;
+}
+
+#contact .form-group .input {
+    @apply bg-indigo-light text-white px-5 py-3;
+}
+
+#contact .form-group .input::placeholder {
+    @apply text-white opacity-60;
+}

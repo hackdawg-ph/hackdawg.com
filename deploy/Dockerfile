@@ -44,7 +44,6 @@ COPY . ${DIR}
 COPY deploy/chore.sh /usr/local/bin/hackdawg-chore
 COPY deploy/queuer.sh /usr/local/bin/hackdawg-queuer
 COPY deploy/scheduler.sh /usr/local/bin/hackdawg-scheduler
-COPY deploy/web.sh /usr/local/bin/hackdawg-web
 
 # Install PHP dependencies
 RUN deploy/composer.sh
@@ -58,7 +57,6 @@ RUN chmod -R 775 ${DIR}/storage ${DIR}/bootstrap/cache
 RUN chmod +x /usr/local/bin/hackdawg-chore
 RUN chmod +x /usr/local/bin/hackdawg-queuer
 RUN chmod +x /usr/local/bin/hackdawg-scheduler
-RUN chmod +x /usr/local/bin/hackdawg-web
 
 # Here we go...
-ENTRYPOINT [ "hackdawg-web", "--port", "9000" ]
+EXPOSE 9000

@@ -9,6 +9,14 @@ services:
             - ..:/var/www/html
             - ./php.ini:/usr/local/etc/php/conf.d/local.ini
 
+    scheduler:
+        volumes:
+            - ..:/var/www/html
+
+    queuer:
+        volumes:
+            - ..:/var/www/html
+
     nginx:
         restart: unless-stopped
         ports:

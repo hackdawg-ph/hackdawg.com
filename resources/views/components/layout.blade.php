@@ -36,10 +36,12 @@
             <a class="mx-5 text-sm {{ Request::path() === 'about' ? 'text-blue' : 'text-gray' }}" href="{{ route('about') }}">
                 About Us
             </a>
-            <span class="flex-grow"></span>
-            <button class="btn btn-blue">
-                Contact Us
-            </button>
+            <span class="flex-grow translate-"></span>
+            <x-contact>
+                <button @click="open = true" class="btn btn-blue">
+                    Contact Us
+                </button>
+            </x-contact>
         </div>
     </nav>
 
@@ -99,6 +101,26 @@
 
     <!-- Main Script -->
     <script src="{{ mix('js/app.js') }}"></script>
+
+    @if ($errors->count())
+        <script>
+            Swal.fire(
+                'Whooops?!', 
+                '{{ $errors->first() }}', 
+                'error'
+            );
+        </script>
+    @endif
+
+    @if ($message = Session::get('message'))
+        <script>
+            Swal.fire(
+                '{{ $message['title'] }}', 
+                '{{ $message['body'] }}', 
+                '{{ $message['type'] ?? 'info' }}'
+            )
+        </script>
+    @endif
 </body>
 
 </html>
