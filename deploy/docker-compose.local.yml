@@ -23,9 +23,9 @@ services:
             - '80:80'
             - '443:443'
         volumes:
-            - ..:/var/www/html:ro
+            - ..:/var/www/html
         environment:
-            DOMAIN: local.hackdawg.com
+            DOMAIN: hackdawg.test
             EMAIL: hello@hackdawg.com
 
     db:
