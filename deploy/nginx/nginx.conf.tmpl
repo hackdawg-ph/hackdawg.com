@@ -1,24 +1,28 @@
 server {
-    listen 80;
-    server_name {{NGINX_HOST}};
-
+	listen 80 default_server;
+	listen [::]:80 default_server;
+	server_name _;
     location / {
-        return 301 https://www.{{NGINX_HOST}}$request_uri;
+        return 301 https://$host$request_uri;
     }
 }
 
 server {
     listen 80;
-    server_name www.{{NGINX_HOST}};
+    listen 443 ssl;
+    server_name {{NGINX_HOST}};
+
+    ssl_certificate /usr/share/nginx/certificates/fullchain.pem;
+    ssl_certificate_key /usr/share/nginx/certificates/privkey.pem;
 
     location / {
-        return 301 https://www.{{NGINX_HOST}}$request_uri;
+        return 301 https://www.$host$request_uri;
     }
 }
 
 server {
     listen 443 ssl;
-    server_name www.{{NGINX_HOST}};
+    server_name www.{{NGINX_HOST}} console.{{NGINX_HOST}};
     root /var/www/html/public;
 
     add_header X-Frame-Options "SAMEORIGIN";

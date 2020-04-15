@@ -11,7 +11,13 @@
 |
 */
 
-Route::get('/', 'PagesController@welcome')->name('welcome');
-Route::get('/about', 'PagesController@about')->name('about');
-Route::post('/contact', 'ContactController@sendMessage')->name('contact');
-Route::resource('articles', 'ArticlesController');
+Route::domain(get_domain('frontend'))->group(function () {
+    Route::get('/', 'PagesController@welcome')->name('welcome');
+    Route::get('/about', 'PagesController@about')->name('about');
+    Route::post('/contact', 'ContactController@sendMessage')->name('contact');
+    Route::resource('articles', 'ArticlesController');
+});
+
+Route::domain(get_domain('console'))->group(function () {
+    Route::get('/', fn () => 'Welcome to your dashboard!');
+});
