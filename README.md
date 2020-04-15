@@ -8,16 +8,16 @@
 # First, copy the environment file:
 cp .env.example .env
 
+# Install dependencies:
+composer install
+yarn install
+
 # Copy hosts to /etc/hosts
 make copy-hosts@local
 
 # Boot the docker containers:
 make deploy@local
 make chore
-
-# Install dependencies:
-composer install
-yarn install
 
 # Build frontend:
 yarn watch
