@@ -41,9 +41,7 @@ mix.js('resources/console/js/app.js', 'public/console/js/app.js')
     .webpackConfig({
         resolve: {
             alias: {
-                '@console/styles': path.resolve('resources/console/css'),
                 '@console': path.resolve('resources/console/js'),
-                'styles': path.resolve('resources/css'),
                 '@': path.resolve('resources/js'),
             },
         },
