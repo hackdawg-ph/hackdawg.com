@@ -16,7 +16,9 @@ const tailwindcss = require('tailwindcss')
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
+mix.js('resources/console/js/app.js', 'public/console/js/app.js')
+    .postCss('resources/console/css/app.css', 'public/console/css/app.css')
+    .js('resources/js/app.js', 'public/js')
     .postCss('resources/css/app.css', 'public/css')
     .options({
         postCss: [
@@ -25,8 +27,13 @@ mix.js('resources/js/app.js', 'public/js')
             tailwindcss('tailwind.config.js'),
             ...mix.inProduction() ? [
                 purgecss({
-                    content: ['./resources/views/**/*.blade.php'],
+                    content: [
+                        './resources/console/js/Pages/**/*.jsx',
+                        './resources/console/views/**/*.blade.php',
+                        './resources/views/**/*.blade.php',
+                    ],
                     defaultExtractor: content => content.match(/[\w-/:.]+(?<!:)/g) || [],
+                    whitelistPatternsChildren: [/nprogress/],
                 }),
             ] : [],
         ]
@@ -34,6 +41,8 @@ mix.js('resources/js/app.js', 'public/js')
     .webpackConfig({
         resolve: {
             alias: {
+                '@console/styles': path.resolve('resources/console/css'),
+                '@console': path.resolve('resources/console/js'),
                 'styles': path.resolve('resources/css'),
                 '@': path.resolve('resources/js'),
             },

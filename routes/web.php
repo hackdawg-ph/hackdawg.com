@@ -1,5 +1,7 @@
 <?php
 
+use Inertia\Inertia;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,5 +21,6 @@ Route::domain(get_domain('frontend'))->group(function () {
 });
 
 Route::domain(get_domain('console'))->group(function () {
-    Route::get('/', fn () => 'Welcome to your dashboard!');
+    Route::get('/', fn () => Inertia::render('Home'));
+    Route::get('/users', fn () => Inertia::render('Users/List'));
 });

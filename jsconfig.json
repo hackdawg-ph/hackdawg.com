@@ -1,0 +1,12 @@
+{
+    "compilerOptions": {
+        "baseUrl": "./resources",
+        "paths": {
+            "@console/styles/*": ["./resources/console/css"],
+            "@console/*": ["./resources/console/js"],
+            "styles/*": ["./resources/css"],
+            "@/*": ["./resources/js"]
+        }
+    },
+    "exclude": ["node_modules"]
+}
