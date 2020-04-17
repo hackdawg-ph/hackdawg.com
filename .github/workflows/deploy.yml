@@ -3,6 +3,7 @@ name: Deploy
 on:
   push:
     branches:
+      - fix/deployment-a
       - master
 
 jobs:
@@ -45,7 +46,7 @@ jobs:
             cd /root/hackdawg.com
 
             # Reset everything
-            git checkout master && git reset --hard && git fetch --all && git pull
+            git checkout fix/deployment-a && git reset --hard && git fetch --all && git pull
             rm -rf .env && SECRET_PASSPHRASE=${{ secrets.SECRET_PASSPHRASE }} sh deploy/decrypt_secret.sh
 
             ## Here we go...
