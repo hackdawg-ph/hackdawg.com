@@ -24,8 +24,8 @@ mix.js('resources/console/js/app.js', 'public/console/js/app.js')
         ...mix.inProduction() ? [
             purgecss({
                 content: [
-                    path.resolve(__dirname, 'resources/console/js/{pages,shared}/**/*.jsx'),
-                    path.resolve(__dirname, 'resources/console/views/**/*.blade.php'),
+                    './resources/console/js/{pages,shared}/**/*.jsx',
+                    './resources/console/views/**/*.blade.php',
                 ],
                 defaultExtractor: content => content.match(/[\w-/:.]+(?<!:)/g) || [],
                 whitelistPatternsChildren: [/nprogress/],
@@ -45,7 +45,7 @@ mix.js('resources/console/js/app.js', 'public/console/js/app.js')
         ...mix.inProduction() ? [
             purgecss({
                 content: [
-                    path.resolve(__dirname, 'resources/views/**/*.blade.php'),
+                    './resources/views/**/*.blade.php',
                 ],
                 defaultExtractor: content => content.match(/[\w-/:.]+(?<!:)/g) || [],
             }),
