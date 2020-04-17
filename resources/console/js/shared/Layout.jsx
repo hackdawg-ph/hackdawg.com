@@ -4,12 +4,12 @@ import { CSSTransition } from 'react-transition-group';
 import cx from 'classnames';
 import useMenu from '@console/hooks/useMenu';
 import Icon from '@console/shared/Icon';
-import BellIcon from '@console/shared/Icons/Bell';
-import DocumentIcon from '@console/shared/Icons/Document';
-import HomeIcon from '@console/shared/Icons/Home';
-import SearchIcon from '@console/shared/Icons/Search';
-import TagIcon from '@console/shared/Icons/Tag';
-import UserGroupIcon from '@console/shared/Icons/UserGroup';
+import BellIcon from '@console/shared/icons/Bell';
+import DocumentIcon from '@console/shared/icons/Document';
+import HomeIcon from '@console/shared/icons/Home';
+import SearchIcon from '@console/shared/icons/Search';
+import TagIcon from '@console/shared/icons/Tag';
+import UserGroupIcon from '@console/shared/icons/UserGroup';
 
 function ProfileMenu() {
     const menu = useMenu();
