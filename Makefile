@@ -14,7 +14,7 @@ copy-hosts@local:
 	@sudo ./deploy/copy_hosts.local.sh
 
 deploy@production:
-	@docker-compose down -f ./deploy --rmi=local --remove-orphans
+	@docker-compose -f ./deploy/docker-compose.yml down --rmi=local --remove-orphans
 	@docker image prune -f
 	@docker-compose \
 		-f ./deploy/docker-compose.yml \
