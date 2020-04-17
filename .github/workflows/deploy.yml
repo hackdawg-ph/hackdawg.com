@@ -46,7 +46,8 @@ jobs:
             cd /root/hackdawg.com
 
             # Reset everything
-            git checkout fix/deployment-a && git reset --hard && git fetch --all && git pull
+            # git fetch --all && git checkout master && git reset --hard && git pull
+            git fetch --all && git checkout fix/deployment-a && git reset --hard && git pull
             rm -rf .env && SECRET_PASSPHRASE=${{ secrets.SECRET_PASSPHRASE }} sh deploy/decrypt_secret.sh
 
             ## Here we go...
