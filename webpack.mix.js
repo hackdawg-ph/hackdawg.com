@@ -17,27 +17,40 @@ const tailwindcss = require('tailwindcss')
  */
 
 mix.js('resources/console/js/app.js', 'public/console/js/app.js')
-    .postCss('resources/console/css/app.css', 'public/console/css/app.css')
-    .js('resources/js/app.js', 'public/js')
-    .postCss('resources/css/app.css', 'public/css')
-    .options({
-        postCss: [
-            cssImport(),
-            cssNesting(),
-            tailwindcss('tailwind.config.js'),
-            ...mix.inProduction() ? [
-                purgecss({
-                    content: [
-                        './resources/console/js/Pages/**/*.jsx',
-                        './resources/console/views/**/*.blade.php',
-                        './resources/views/**/*.blade.php',
-                    ],
-                    defaultExtractor: content => content.match(/[\w-/:.]+(?<!:)/g) || [],
-                    whitelistPatternsChildren: [/nprogress/],
-                }),
-            ] : [],
-        ]
+    .postCss('resources/console/css/app.css', 'public/console/css/app.css', [
+        cssImport(),
+        cssNesting(),
+        tailwindcss('tailwind.console.config.js'),
+        ...mix.inProduction() ? [
+            purgecss({
+                content: [
+                    './resources/console/js/{pages,shared}/**/*.jsx',
+                    './resources/console/views/**/*.blade.php',
+                ],
+                defaultExtractor: content => content.match(/[\w-/:.]+(?<!:)/g) || [],
+                whitelistPatternsChildren: [/nprogress/],
+            })
+        ] : []
+    ])
+    .webpackConfig({
+        output: {
+            chunkFilename: 'console/js/[name].js?id=[chunkhash]'
+        },
     })
+    .js('resources/js/app.js', 'public/js')
+    .postCss('resources/css/app.css', 'public/css', [
+        cssImport(),
+        cssNesting(),
+        tailwindcss('tailwind.config.js'),
+        ...mix.inProduction() ? [
+            purgecss({
+                content: [
+                    './resources/views/**/*.blade.php',
+                ],
+                defaultExtractor: content => content.match(/[\w-/:.]+(?<!:)/g) || [],
+            }),
+        ] : [],
+    ])
     .webpackConfig({
         resolve: {
             alias: {

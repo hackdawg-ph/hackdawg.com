@@ -1,7 +1,5 @@
 <?php
 
-use Inertia\Inertia;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,7 +18,9 @@ Route::domain(get_domain('frontend'))->group(function () {
     Route::resource('articles', 'ArticlesController');
 });
 
-Route::domain(get_domain('console'))->group(function () {
-    Route::get('/', fn () => Inertia::render('Home'));
-    Route::get('/users', fn () => Inertia::render('Users/List'));
+Route::domain(get_domain('console'))->namespace('Console')->name('console.')->group(function () {
+    Route::get('/', 'HomeController@index')->name('home');
+    Route::resource('tags', 'TagsController');
+    Route::resource('articles', 'ArticlesController');
+    Route::resource('users', 'UsersController');
 });

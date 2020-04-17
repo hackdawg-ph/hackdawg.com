@@ -8,6 +8,7 @@
 
         <link href="{{ mix('console/css/app.css') }}" rel="stylesheet">
         <script src="{{ mix('console/js/app.js') }}" defer></script>
+        @routes
     </head>
 
     <body>

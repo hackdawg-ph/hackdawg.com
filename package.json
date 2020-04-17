@@ -24,11 +24,15 @@
         "vue-template-compiler": "^2.6.11"
     },
     "dependencies": {
+        "@babel/plugin-syntax-dynamic-import": "^7.8.3",
         "@inertiajs/inertia": "^0.1.7",
         "@inertiajs/inertia-react": "^0.1.4",
         "alpinejs": "^2.1.0",
+        "classnames": "^2.2.6",
+        "prop-types": "^15.7.2",
         "react": "^16.13.1",
         "react-dom": "^16.13.1",
+        "react-transition-group": "^4.3.0",
         "sweetalert2": "^9.10.10"
     }
 }
