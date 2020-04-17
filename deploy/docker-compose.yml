@@ -5,7 +5,7 @@ services:
         build:
             context: ..
             dockerfile: deploy/Dockerfile
-        image: hackdawg-web
+        image: hackdawg-web:latest
         depends_on:
             - db
         links:
@@ -16,7 +16,7 @@ services:
 
     scheduler:
         container_name: scheduler
-        image: hackdawg-web
+        image: hackdawg-web:latest
         depends_on:
             - web
         command: hackdawg-scheduler
@@ -25,7 +25,7 @@ services:
 
     queuer:
         container_name: queuer
-        image: hackdawg-web
+        image: hackdawg-web:latest
         depends_on:
             - web
         command: hackdawg-queuer
@@ -37,6 +37,7 @@ services:
         build:
             context: ..
             dockerfile: deploy/nginx.Dockerfile
+        image: hackdawg-nginx:latest
         depends_on:
             - web
         working_dir: /var/www/html
