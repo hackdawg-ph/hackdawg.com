@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Inertia } from '@inertiajs/inertia';
-import { usePage } from '@inertiajs/inertia-react';
+import { usePage, InertiaLink } from '@inertiajs/inertia-react';
 import Layout from '@console/Shared/Layouts/Auth';
 import TextInput from '@console/Shared/TextInput';
 
@@ -55,22 +55,22 @@ export default function Login() {
                     <input
                         id="remember_me"
                         type="checkbox"
-                        className="form-checkbox h-4 w-4 text-indigo-600 transition duration-150 ease-in-out"
+                        className="form-checkbox h-4 w-4 text-indigo-600"
                     />
                     <label
-                        for="remember_me"
+                        htmlFor="remember_me"
                         className="ml-2 block text-sm leading-5 text-gray-900"
                     >
                         Remember me
                     </label>
                 </div>
-                <div class="text-sm leading-5">
-                    <a
-                        href="#"
-                        className="font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:underline transition ease-in-out duration-150"
+                <div className="text-sm leading-5">
+                    <InertiaLink
+                        href={$route('console.password.request')}
+                        className="font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:underline"
                     >
                         Forgot your password?
-                    </a>
+                    </InertiaLink>
                 </div>
             </div>
 
