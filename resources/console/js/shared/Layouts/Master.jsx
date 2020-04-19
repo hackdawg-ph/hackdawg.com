@@ -3,13 +3,13 @@ import { InertiaLink } from '@inertiajs/inertia-react';
 import { CSSTransition } from 'react-transition-group';
 import cx from 'classnames';
 import useMenu from '@console/hooks/useMenu';
-import Icon from '@console/shared/Icon';
-import BellIcon from '@console/shared/icons/Bell';
-import DocumentIcon from '@console/shared/icons/Document';
-import HomeIcon from '@console/shared/icons/Home';
-import SearchIcon from '@console/shared/icons/Search';
-import TagIcon from '@console/shared/icons/Tag';
-import UserGroupIcon from '@console/shared/icons/UserGroup';
+import Icon from '@console/Shared/Icon';
+import BellOutlineIcon from '@console/Shared/Icons/BellOutline';
+import DocumentOutlineIcon from '@console/Shared/Icons/DocumentOutline';
+import HomeOutlineIcon from '@console/Shared/Icons/HomeOutline';
+import SearchOutlineIcon from '@console/Shared/Icons/SearchOutline';
+import TagOutlineIcon from '@console/Shared/Icons/TagOutline';
+import UserGroupOutlineIcon from '@console/Shared/Icons/UserGroupOutline';
 
 function ProfileMenu() {
     const menu = useMenu();
@@ -84,34 +84,34 @@ function ProfileMenu() {
     );
 }
 
-export default function Layout({ children }) {
+export default function Master({ children }) {
     const LINKS = [
         {
             path: $route('console.home'),
             active: 'console.home' === route().current(),
             text: 'Dashboard',
-            icon: <HomeIcon />,
+            icon: <HomeOutlineIcon />,
         },
 
         {
             path: $route('console.tags.index'),
             active: 'console.tags.index' === route().current(),
             text: 'Tags',
-            icon: <TagIcon />,
+            icon: <TagOutlineIcon />,
         },
 
         {
             path: $route('console.articles.index'),
             active: 'console.articles.index' === route().current(),
             text: 'Articles',
-            icon: <DocumentIcon />,
+            icon: <DocumentOutlineIcon />,
         },
 
         {
             path: $route('console.users.index'),
             active: 'console.users.index' === route().current(),
             text: 'Users',
-            icon: <UserGroupIcon />,
+            icon: <UserGroupOutlineIcon />,
         },
     ];
 
@@ -152,7 +152,7 @@ export default function Layout({ children }) {
                         <div className="relative">
                             <div className="absolute inset-y-0 left-0 pl-4 flex items-center text-gray-500 pointer-events-none">
                                 <Icon size="small">
-                                    <SearchIcon />
+                                    <SearchOutlineIcon />
                                 </Icon>
                             </div>
                             <input
@@ -168,7 +168,7 @@ export default function Layout({ children }) {
                                     aria-label="Notifications"
                                 >
                                     <Icon>
-                                        <BellIcon />
+                                        <BellOutlineIcon />
                                     </Icon>
                                 </button>
 

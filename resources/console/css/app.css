@@ -1,4 +1,10 @@
+@import './fonts.css';
 @import './nprogress.css';
+
+html,
+body {
+    font-family: 'SF Pro Text';
+}
 
 @tailwind base;
 @tailwind components;

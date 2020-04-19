@@ -1,9 +1,9 @@
-const cssImport = require('postcss-import')
-const cssNesting = require('postcss-nesting')
-const mix = require('laravel-mix')
-const path = require('path')
-const purgecss = require('@fullhuman/postcss-purgecss')
-const tailwindcss = require('tailwindcss')
+const cssImport = require('postcss-import');
+const cssNesting = require('postcss-nesting');
+const mix = require('laravel-mix');
+const path = require('path');
+const purgecss = require('@fullhuman/postcss-purgecss');
+const tailwindcss = require('tailwindcss');
 
 /*
  |--------------------------------------------------------------------------
@@ -24,7 +24,7 @@ mix.js('resources/console/js/app.js', 'public/console/js/app.js')
         ...mix.inProduction() ? [
             purgecss({
                 content: [
-                    './resources/console/js/{pages,shared}/**/*.jsx',
+                    './resources/console/js/{Pages,Shared}/**/*.jsx',
                     './resources/console/views/**/*.blade.php',
                 ],
                 defaultExtractor: content => content.match(/[\w-/:.]+(?<!:)/g) || [],
@@ -60,4 +60,4 @@ mix.js('resources/console/js/app.js', 'public/console/js/app.js')
         },
     })
     .version()
-    .sourceMaps()
+    .sourceMaps();

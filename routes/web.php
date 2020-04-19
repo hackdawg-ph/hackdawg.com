@@ -19,8 +19,12 @@ Route::domain(get_domain('frontend'))->group(function () {
 });
 
 Route::domain(get_domain('console'))->namespace('Console')->name('console.')->group(function () {
-    Route::get('/', 'HomeController@index')->name('home');
-    Route::resource('tags', 'TagsController');
-    Route::resource('articles', 'ArticlesController');
-    Route::resource('users', 'UsersController');
+    Route::auth(['register' => false]);
+
+    Route::middleware('auth')->group(function () {
+        Route::get('/', 'HomeController@index')->name('home');
+        Route::resource('tags', 'TagsController');
+        Route::resource('articles', 'ArticlesController');
+        Route::resource('users', 'UsersController');
+    });
 });
