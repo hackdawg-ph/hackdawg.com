@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Inertia } from '@inertiajs/inertia';
 import { InertiaLink } from '@inertiajs/inertia-react';
 import { CSSTransition } from 'react-transition-group';
@@ -188,3 +189,7 @@ export default function Master({ children }) {
         </div>
     );
 }
+
+Master.propTypes = {
+    children: PropTypes.node.isRequired,
+};

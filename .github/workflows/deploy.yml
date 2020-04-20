@@ -9,6 +9,10 @@ jobs:
   Build-Deploy:
     runs-on: ubuntu-latest
 
+    strategy:
+        matrix:
+          node-version: [10.x]
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v1
@@ -20,18 +24,16 @@ jobs:
           extensions: curl, mbstring, openssl, pdo, sqlite3, xml
           coverage: none
 
-      - name: Install PHP dependencies
-        run: composer install -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
-
-      - name: Prepare Laravel
-        working-directory: public
+      - name: Build
         run: |
-          mkdir css js
-          touch mix-manifest.json css/app.css js/app.js
-          echo '{"/js/app.js": "/js/app.js", "/css/app.css": "/css/app.css"}' > mix-manifest.json
-          
-      - name: Run the test suite
-        run: composer test
+            composer install -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
+            yarn install
+            yarn prod
+  
+      - name: Test
+        run: |
+            composer test
+            yarn test
 
       - name: Deploy
         uses: appleboy/ssh-action@master

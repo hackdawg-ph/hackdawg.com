@@ -4,6 +4,7 @@
         "adrianwilczynski.alpine-js-intellisense",
         "bradlc.vscode-tailwindcss",
         "hex-ci.stylelint-plus",
+        "dbaeumer.vscode-eslint",
         "cjhowe7.laravel-blade",
         "bmewburn.vscode-intelephense-client"
     ]

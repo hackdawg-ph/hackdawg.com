@@ -1,7 +1,10 @@
 {
     "private": true,
     "scripts": {
-        "format": "prettier --write \"resources/**/*.{js,css}\"",
+        "test:console:lint": "eslint --ext .js,.jsx resources/console/js",
+        "test:console": "yarn test:console:lint",
+        "test": "yarn test:console",
+        "format": "prettier --write \"resources/**/*.{js,jsx,css}\"",
         "dev": "yarn development",
         "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
         "watch": "yarn development -- --watch",
@@ -16,6 +19,10 @@
         "@fullhuman/postcss-purgecss": "^2.1.0",
         "@tailwindcss/custom-forms": "^0.2.1",
         "cross-env": "^7.0",
+        "eslint": "^6.8.0",
+        "eslint-config-prettier": "^6.10.1",
+        "eslint-plugin-prettier": "^3.1.3",
+        "eslint-plugin-react": "^7.19.0",
         "laravel-mix": "^5.0.1",
         "postcss-import": "^12.0.1",
         "postcss-nesting": "^7.0.1",

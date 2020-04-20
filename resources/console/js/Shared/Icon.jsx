@@ -32,4 +32,5 @@ export default function Icon({
 Icon.propTypes = {
     size: PropTypes.oneOf(['small', 'medium', 'large']),
     children: PropTypes.node.isRequired,
+    className: PropTypes.string,
 };

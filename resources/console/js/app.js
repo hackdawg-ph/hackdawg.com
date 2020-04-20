@@ -1,11 +1,10 @@
 import { InertiaApp } from '@inertiajs/inertia-react';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { $route } from '@console/helpers';
 
 const app = document.getElementById('app');
 
-window.$route = $route;
+window.$route = (...args) => route(...args).url();
 
 ReactDOM.render(
     <InertiaApp
