@@ -13,7 +13,7 @@ export default function TextInput({ id, label, errors = [], ...props }) {
             <div className="mt-1 relative flex items-center">
                 <input
                     className={cx(
-                        'block w-full px-3 py-2 rounded-md border shadow-sm',
+                        'block w-full pl-3 pr-8 py-2 rounded-md border shadow-sm',
                         {
                             'border-red-300 text-red-800': errors.length > 0,
                         },

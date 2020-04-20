@@ -1,4 +1,5 @@
 import React from 'react';
+import { Inertia } from '@inertiajs/inertia';
 import { InertiaLink } from '@inertiajs/inertia-react';
 import { CSSTransition } from 'react-transition-group';
 import cx from 'classnames';
@@ -13,6 +14,10 @@ import UserGroupOutlineIcon from '@console/Shared/Icons/UserGroupOutline';
 
 function ProfileMenu() {
     const menu = useMenu();
+
+    function handleSignOut() {
+        Inertia.post($route('console.logout'));
+    }
 
     return (
         <div className="ml-3 relative">
@@ -72,6 +77,7 @@ function ProfileMenu() {
                         </a>
                         <a
                             href="#"
+                            onClick={handleSignOut}
                             className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                             role="menuitem"
                         >

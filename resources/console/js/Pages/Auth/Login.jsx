@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Inertia } from '@inertiajs/inertia';
 import { usePage, InertiaLink } from '@inertiajs/inertia-react';
 import Layout from '@console/Shared/Layouts/Auth';
+import Checkbox from '@console/Shared/Checkbox';
 import TextInput from '@console/Shared/TextInput';
 
 export default function Login() {
@@ -10,6 +11,7 @@ export default function Login() {
     const [values, setValues] = useState({
         email: '',
         password: '',
+        remember: false,
     });
 
     function handleChange(e) {
@@ -17,7 +19,10 @@ export default function Login() {
 
         setValues(values => ({
             ...values,
-            [e.target.id]: e.target.value,
+            [e.target.id]:
+                e.target.type === 'checkbox'
+                    ? e.target.checked
+                    : e.target.value,
         }));
     }
 
@@ -51,27 +56,18 @@ export default function Login() {
             </div>
 
             <div className="mt-6 flex items-center justify-between">
-                <div className="flex items-center">
-                    <input
-                        id="remember_me"
-                        type="checkbox"
-                        className="form-checkbox h-4 w-4 text-indigo-600"
-                    />
-                    <label
-                        htmlFor="remember_me"
-                        className="ml-2 block text-sm leading-5 text-gray-900"
-                    >
-                        Remember me
-                    </label>
-                </div>
-                <div className="text-sm leading-5">
-                    <InertiaLink
-                        href={$route('console.password.request')}
-                        className="font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:underline"
-                    >
-                        Forgot your password?
-                    </InertiaLink>
-                </div>
+                <Checkbox
+                    id="remember"
+                    label="Remember me"
+                    checked={values.remember}
+                    onChange={handleChange}
+                />
+                <InertiaLink
+                    href={$route('console.password.request')}
+                    className="font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:underline"
+                >
+                    Forgot your password?
+                </InertiaLink>
             </div>
 
             <div className="mt-6">
