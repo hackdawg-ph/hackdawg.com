@@ -167,7 +167,7 @@ export default function Master({ children }) {
                         <div className="hidden md:block">
                             <div className="ml-4 flex items-center md:ml-6">
                                 <button
-                                    className="p-1 border-2 border-transparent text-gray-500 rounded-full hover:text-gray-700"
+                                    className="flex items-center border-2 border-transparent text-gray-400 rounded-full hover:text-gray-600"
                                     aria-label="Notifications"
                                 >
                                     <Icon>

@@ -13,6 +13,9 @@
         <script src="{{ mix('console/js/app.js') }}" defer></script>
         @routes
 
+        <!-- Fonts -->
+        <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+
         <!-- Styles -->
         <link href="{{ mix('console/css/app.css') }}" rel="stylesheet">
     </head>

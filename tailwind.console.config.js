@@ -1,3 +1,5 @@
+const defaultTheme = require('tailwindcss/defaultTheme');
+
 module.exports = {
     theme: {
         customForms: theme => ({
@@ -5,7 +7,7 @@ module.exports = {
                 'input, textarea, multiselect': {
                     boxShadow: theme('boxShadow.sm'),
                     borderRadius: theme('borderRadius.md'),
-                    borderColor: theme('colors.gray.400'),
+                    borderColor: theme('colors.gray.300'),
                     '&:focus': {
                         boxShadow: theme('boxShadow.outline-indigo'),
                         borderColor: theme('colors.indigo.500'),
@@ -32,7 +34,10 @@ module.exports = {
                 '72': '18rem',
                 '84': '21rem',
                 '96': '24rem',
-            }
+            },
+            fontFamily: {
+                sans: ['Inter var', ...defaultTheme.fontFamily.sans],
+            },
         }
     },
     variants: {},

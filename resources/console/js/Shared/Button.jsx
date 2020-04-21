@@ -16,7 +16,7 @@ export default function Button({
                 {
                     'border-transparent text-white bg-indigo-600 hover:bg-indigo-500':
                         variant === 'primary',
-                    'border-gray-400 text-gray-900 bg-white hover:bg-gray-100':
+                    'border-gray-300 text-gray-900 bg-white hover:bg-gray-100':
                         variant === 'secondary',
                 },
                 className,
