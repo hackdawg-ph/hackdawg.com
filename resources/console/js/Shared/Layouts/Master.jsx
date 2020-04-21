@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Inertia } from '@inertiajs/inertia';
-import { InertiaLink } from '@inertiajs/inertia-react';
+import { InertiaLink, usePage } from '@inertiajs/inertia-react';
 import { CSSTransition } from 'react-transition-group';
 import cx from 'classnames';
 import useMenu from '@console/hooks/useMenu';
@@ -12,8 +12,9 @@ import HomeOutlineIcon from '@console/Shared/Icons/HomeOutline';
 import SearchOutlineIcon from '@console/Shared/Icons/SearchOutline';
 import TagOutlineIcon from '@console/Shared/Icons/TagOutline';
 import UserGroupOutlineIcon from '@console/Shared/Icons/UserGroupOutline';
+import Notification from '@console/Shared/Notification';
 
-function ProfileMenu() {
+function UserMenu() {
     const menu = useMenu();
 
     function handleSignOut() {
@@ -62,20 +63,13 @@ function ProfileMenu() {
                         aria-orientation="vertical"
                         aria-labelledby="user-menu"
                     >
-                        <a
-                            href="#"
+                        <InertiaLink
+                            href={$route('console.account')}
                             className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                             role="menuitem"
                         >
-                            Your Profile
-                        </a>
-                        <a
-                            href="#"
-                            className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                            role="menuitem"
-                        >
-                            Settings
-                        </a>
+                            Your Account
+                        </InertiaLink>
                         <a
                             href="#"
                             onClick={handleSignOut}
@@ -92,6 +86,8 @@ function ProfileMenu() {
 }
 
 export default function Master({ children }) {
+    const { message } = usePage();
+
     const LINKS = [
         {
             path: $route('console.home'),
@@ -179,13 +175,14 @@ export default function Master({ children }) {
                                     </Icon>
                                 </button>
 
-                                <ProfileMenu />
+                                <UserMenu />
                             </div>
                         </div>
                     </div>
                 </div>
             </nav>
             <main className="w-4/5 ml-auto p-8">{children}</main>
+            <Notification message={message} />
         </div>
     );
 }

@@ -19,5 +19,9 @@
 
     <body>
         @inertia
+
+        <!-- React Portals -->
+        <div id="notification-portal"></div>
+        <div id="modal-portal"></div>
     </body>
 </html>

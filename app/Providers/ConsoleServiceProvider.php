@@ -27,6 +27,7 @@ class ConsoleServiceProvider extends ServiceProvider
     public function boot()
     {
         Inertia::share([
+            'message' => fn () => Session::get('message'),
             'errors' => function () {
                 return Session::get('errors')
                     ? Session::get('errors')->getBag('default')->getMessages()
@@ -35,9 +36,11 @@ class ConsoleServiceProvider extends ServiceProvider
             'auth' => function () {
                 return [
                     'user' => Auth::user() ? [
-                        'id' => Auth::user()->id,
-                        'name' => Auth::user()->name,
-                        'email' => Auth::user()->email,
+                        'id'        => Auth::user()->id,
+                        'name'      => Auth::user()->name,
+                        'email'     => Auth::user()->email,
+                        'username'  => Auth::user()->username,
+                        'about'     => Auth::user()->about,
                     ] : null,
                 ];
             },
