@@ -46,7 +46,7 @@ export default function TextInput({
                     />
                 )}
                 {description && (
-                    <div className="mt-2 text-gray-600">{description}</div>
+                    <div className="mt-2 text-gray-500">{description}</div>
                 )}
                 {errors.length > 0 && (
                     <Icon

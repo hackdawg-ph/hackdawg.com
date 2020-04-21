@@ -27,7 +27,7 @@ mix.js('resources/console/js/app.js', 'public/console/js/app.js')
                     './resources/console/js/{Pages,Shared}/**/*.jsx',
                     './resources/console/views/**/*.blade.php',
                 ],
-                defaultExtractor: content => content.match(/[\w-/:.]+(?<!:)/g) || [],
+                defaultExtractor: content => content.match(/[\w-/.:]+(?<!:)/g) || [],
                 whitelistPatternsChildren: [/nprogress/],
             })
         ] : []

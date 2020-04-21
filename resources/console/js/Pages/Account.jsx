@@ -35,7 +35,7 @@ export default function Account() {
             <form className="w-full lg:w-2/3 mx-auto" onSubmit={handleSubmit}>
                 <div>
                     <h4 className="text-xl font-medium leading-10">Profile</h4>
-                    <p className="text-gray-600">
+                    <p className="text-gray-500">
                         This information will be displayed publicly so be
                         careful what you share
                     </p>
@@ -70,7 +70,7 @@ export default function Account() {
                     <h4 className="text-xl font-medium leading-10">
                         Personal Information
                     </h4>
-                    <p className="text-gray-600">
+                    <p className="text-gray-500">
                         Use a permanent address where you can recieve email
                     </p>
                 </div>
