@@ -1,8 +1,8 @@
 import React from 'react';
 
-export default function UserGroupOutline() {
+export default function UserGroupOutline(props) {
     return (
-        <svg stroke="currentColor" fill="none" viewBox="0 0 24 24">
+        <svg stroke="currentColor" fill="none" viewBox="0 0 24 24" {...props}>
             <path
                 strokeLinecap="round"
                 strokeLinejoin="round"

@@ -1,8 +1,8 @@
 import React from 'react';
 
-export default function ExclamationCircle() {
+export default function ExclamationCircle(props) {
     return (
-        <svg stroke="currentColor" fill="none" viewBox="0 0 20 20">
+        <svg stroke="currentColor" fill="none" viewBox="0 0 20 20" {...props}>
             <path
                 fillRule="evenodd"
                 fill="currentColor"

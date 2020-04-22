@@ -2,191 +2,291 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Inertia } from '@inertiajs/inertia';
 import { InertiaLink, usePage } from '@inertiajs/inertia-react';
-import { CSSTransition } from 'react-transition-group';
 import cx from 'classnames';
-import useMenu from '@console/hooks/useMenu';
-import Icon from '@console/Shared/Icon';
+import useToggle from '@console/hooks/useToggle';
 import BellOutlineIcon from '@console/Shared/Icons/BellOutline';
 import DocumentOutlineIcon from '@console/Shared/Icons/DocumentOutline';
 import HomeOutlineIcon from '@console/Shared/Icons/HomeOutline';
+import MenuAlt2OutlineIcon from '@console/Shared/Icons/MenuAlt2Outline';
 import SearchOutlineIcon from '@console/Shared/Icons/SearchOutline';
 import TagOutlineIcon from '@console/Shared/Icons/TagOutline';
 import UserGroupOutlineIcon from '@console/Shared/Icons/UserGroupOutline';
+import XOutlineIcon from '@console/Shared/Icons/XOutline';
 import Notification from '@console/Shared/Notification';
 
-function UserMenu() {
-    const menu = useMenu();
+const LINKS = [
+    {
+        path: $route('console.home'),
+        active: 'console.home' === route().current(),
+        text: 'Dashboard',
+        Icon: HomeOutlineIcon,
+    },
 
-    function handleSignOut() {
-        Inertia.post($route('console.logout'));
-    }
+    {
+        path: $route('console.tags.index'),
+        active: 'console.tags.index' === route().current(),
+        text: 'Tags',
+        Icon: TagOutlineIcon,
+    },
+
+    {
+        path: $route('console.articles.index'),
+        active: 'console.articles.index' === route().current(),
+        text: 'Articles',
+        Icon: DocumentOutlineIcon,
+    },
+
+    {
+        path: $route('console.users.index'),
+        active: 'console.users.index' === route().current(),
+        text: 'Users',
+        Icon: UserGroupOutlineIcon,
+    },
+];
+
+export default function Master({ title, white = false, children, className, ...props }) {
+    const { message } = usePage();
+    const mobileNav = useToggle();
+    const userMenu = useToggle();
 
     return (
-        <div className="ml-3 relative">
-            <div>
-                <button
-                    className="max-w-xs flex items-center text-sm rounded-full text-white focus:outline-none focus:shadow-solid"
-                    onClick={() => menu.setOpen(true)}
-                    id="user-menu"
-                    aria-label="User menu"
-                    aria-haspopup="true"
-                >
-                    <img
-                        className="h-8 w-8 rounded-full"
-                        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                        alt="Avatar"
-                    />
-                </button>
+        <div
+            className={cx('h-screen flex overflow-hidden', { 'bg-white': white, ' bg-gray-100': !white }, className)}
+            {...props}
+        >
+            {/* Off-canvas menu htmlFor mobile */}
+            <div className="md:hidden">
+                {mobileNav.open && (
+                    <div className="fixed inset-0 flex z-40">
+                        {/* Off-canvas menu overlay, show/hide based on off-canvas menu state.
+                            Entering: "transition-opacity ease-linear duration-300"
+                            From: "opacity-0"
+                            To: "opacity-100"
+                            Leaving: "transition-opacity ease-linear duration-300"
+                            From: "opacity-100"
+                            To: "opacity-0" 
+                        */}
+                        <div className="fixed inset-0">
+                            <div className="absolute inset-0 bg-gray-600 opacity-75"></div>
+                        </div>
+                        {/* Off-canvas menu, show/hide based on off-canvas menu state.
+                            Entering: "transition ease-in-out duration-300 transform"
+                            From: "-translate-x-full"
+                            To: "translate-x-0"
+                            Leaving: "transition ease-in-out duration-300 transform"
+                            From: "translate-x-0"
+                            To: "-translate-x-full" 
+                        */}
+                        <div className="relative flex-1 flex flex-col max-w-xs w-full pt-5 pb-4 bg-gray-800">
+                            <div className="absolute top-0 right-0 -mr-14 p-1">
+                                <button
+                                    className="flex items-center justify-center h-12 w-12 rounded-full focus:outline-none focus:bg-gray-600"
+                                    onClick={() => mobileNav.setOpen(false)}
+                                    aria-label="Close sidebar"
+                                >
+                                    <XOutlineIcon className="h-6 w-6 text-white" />
+                                </button>
+                            </div>
+                            <div className="flex-shrink-0 flex items-center px-4">
+                                <div className="h-8 w-auto">
+                                    <h4 className="text-2xl text-white font-semibold">Hackdawg</h4>
+                                </div>
+                            </div>
+                            <div className="mt-5 flex-1 h-0 overflow-y-auto">
+                                <nav className="px-2">
+                                    {LINKS.map(({ Icon, ...link }) => (
+                                        <InertiaLink
+                                            key={link.path}
+                                            className={cx(
+                                                'group flex items-center px-2 py-2 text-base leading-6 font-medium rounded-md transition ease-in-out duration-150',
+                                                {
+                                                    'text-white bg-gray-900 focus:outline-none focus:bg-gray-700':
+                                                        link.active,
+                                                    'mt-1 text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 ': !link.active,
+                                                },
+                                            )}
+                                            href={link.path}
+                                        >
+                                            <Icon
+                                                className={cx(
+                                                    'mr-4 h-6 w-6 group-hover:text-gray-300 group-focus:text-gray-300 transition ease-in-out duration-150',
+                                                    {
+                                                        'text-gray-300': link.active,
+                                                        'text-gray-400': !link.active,
+                                                    },
+                                                )}
+                                            />
+                                            {link.text}
+                                        </InertiaLink>
+                                    ))}
+                                </nav>
+                            </div>
+                        </div>
+                        <div className="flex-shrink-0 w-14">
+                            {/* Dummy element to force sidebar to shrink to fit close icon */}
+                        </div>
+                    </div>
+                )}
             </div>
 
-            <CSSTransition
-                in={menu.open}
-                timeout={{
-                    enter: 100,
-                    exit: 75,
-                }}
-                classNames={{
-                    enter: 'transform opacity-0 scale-95 duration-100',
-                    enterActive: 'transform opacity-100 scale-100',
-                    exit: 'transform opacity-100 scale-100 duration-75',
-                    exitActive: 'transform opacity-0 scale-95',
-                }}
-                unmountOnExit
-            >
-                <div
-                    ref={menu.ref}
-                    className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg"
-                >
-                    <div
-                        className="py-1 rounded-md bg-white shadow-xs"
-                        role="menu"
-                        aria-orientation="vertical"
-                        aria-labelledby="user-menu"
-                    >
-                        <InertiaLink
-                            href={$route('console.account')}
-                            className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                            role="menuitem"
-                        >
-                            Your Account
-                        </InertiaLink>
-                        <a
-                            href="#"
-                            onClick={handleSignOut}
-                            className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                            role="menuitem"
-                        >
-                            Sign out
-                        </a>
-                    </div>
-                </div>
-            </CSSTransition>
-        </div>
-    );
-}
-
-export default function Master({ children }) {
-    const { message } = usePage();
-
-    const LINKS = [
-        {
-            path: $route('console.home'),
-            active: 'console.home' === route().current(),
-            text: 'Dashboard',
-            icon: <HomeOutlineIcon />,
-        },
-
-        {
-            path: $route('console.tags.index'),
-            active: 'console.tags.index' === route().current(),
-            text: 'Tags',
-            icon: <TagOutlineIcon />,
-        },
-
-        {
-            path: $route('console.articles.index'),
-            active: 'console.articles.index' === route().current(),
-            text: 'Articles',
-            icon: <DocumentOutlineIcon />,
-        },
-
-        {
-            path: $route('console.users.index'),
-            active: 'console.users.index' === route().current(),
-            text: 'Users',
-            icon: <UserGroupOutlineIcon />,
-        },
-    ];
-
-    return (
-        <div>
-            <nav className="fixed w-1/5">
-                <div className="bg-gray-900">
-                    <div className="h-16 px-4 flex items-center">
-                        <h4 className="text-2xl text-white font-semibold">
-                            Hackdawg
-                        </h4>
-                    </div>
-                </div>
-                <div className="bg-gray-800">
-                    <div className="h-screen px-2 pt-4 flex flex-col">
-                        {LINKS.map(link => (
-                            <InertiaLink
-                                key={link.path}
-                                className={cx(
-                                    'p-3 flex items-center rounded-md text-sm font-medium text-white focus:outline-none focus:text-white focus:bg-gray-700',
-                                    {
-                                        'bg-gray-900': link.active,
-                                        'hover:bg-gray-700': !link.active,
-                                    },
-                                )}
-                                href={link.path}
-                            >
-                                <Icon>{link.icon}</Icon>
-                                <span className="ml-4">{link.text}</span>
-                            </InertiaLink>
-                        ))}
-                    </div>
-                </div>
-            </nav>
-            <nav className="bg-white w-4/5 ml-auto">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 shadow">
-                    <div className="flex items-center justify-between h-16">
-                        <div className="relative">
-                            <div className="absolute inset-y-0 left-0 pl-4 flex items-center text-gray-500 pointer-events-none">
-                                <Icon size="small">
-                                    <SearchOutlineIcon />
-                                </Icon>
-                            </div>
-                            <input
-                                className="block w-full pl-12 pr-4 text-gray-700 placeholder-gray-500"
-                                placeholder="Search"
-                            />
+            {/* Static sidebar htmlFor desktop */}
+            <div className="hidden md:flex md:flex-shrink-0">
+                <div className="flex flex-col w-64">
+                    <div className="flex items-center h-16 flex-shrink-0 px-4 bg-gray-900">
+                        <div className="h-8 w-auto">
+                            <h4 className="text-2xl text-white font-semibold">Hackdawg</h4>
                         </div>
-
-                        <div className="hidden md:block">
-                            <div className="ml-4 flex items-center md:ml-6">
-                                <button
-                                    className="flex items-center border-2 border-transparent text-gray-400 rounded-full hover:text-gray-600"
-                                    aria-label="Notifications"
+                    </div>
+                    <div className="h-0 flex-1 flex flex-col overflow-y-auto">
+                        {/* Sidebar component, swap this element with another sidebar if you like */}
+                        <nav className="flex-1 px-2 py-4 bg-gray-800">
+                            {LINKS.map(({ Icon, ...link }) => (
+                                <InertiaLink
+                                    key={link.path}
+                                    className={cx(
+                                        'group flex items-center px-2 py-2 text-sm leading-5 font-medium rounded-md focus:outline-none transition ease-in-out duration-150',
+                                        {
+                                            'text-white bg-gray-900 focus:bg-gray-700': link.active,
+                                            'mt-1  text-gray-300 hover:text-white hover:bg-gray-700 focus:text-white': !link.active,
+                                        },
+                                    )}
+                                    href={link.path}
                                 >
-                                    <Icon>
-                                        <BellOutlineIcon />
-                                    </Icon>
-                                </button>
+                                    <Icon
+                                        className={cx(
+                                            'mr-3 h-6 w-6 group-hover:text-gray-300 group-focus:text-gray-300 transition ease-in-out duration-150',
+                                            'mr-3 h-6 w-6 group-hover:text-gray-300 group-focus:text-gray-300 transition ease-in-out duration-150',
+                                            {
+                                                'text-gray-300': link.active,
+                                                'text-gray-400': !link.active,
+                                            },
+                                        )}
+                                    />
+                                    {link.text}
+                                </InertiaLink>
+                            ))}
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <div className="flex flex-col w-0 flex-1 overflow-hidden">
+                <div className="relative z-10 flex-shrink-0 flex h-16 bg-white shadow">
+                    <button
+                        className="px-4 border-r border-gray-200 text-gray-500 focus:outline-none focus:bg-gray-100 focus:text-gray-600 md:hidden"
+                        onClick={() => mobileNav.setOpen(true)}
+                        aria-label="Open sidebar"
+                    >
+                        <MenuAlt2OutlineIcon className="h-6 w-6" />
+                    </button>
+                    <div className="flex-1 px-4 flex justify-between">
+                        <div className="flex-1 flex">
+                            <div className="w-full flex md:ml-0">
+                                <label htmlFor="search_field" className="sr-only">
+                                    Search
+                                </label>
+                                <div className="relative w-full text-gray-400 focus-within:text-gray-600">
+                                    <div className="absolute inset-y-0 left-0 flex items-center pointer-events-none">
+                                        <SearchOutlineIcon className="h-5 w-5" />
+                                    </div>
+                                    <input
+                                        id="search_field"
+                                        className="block w-full h-full pl-8 pr-3 py-2 rounded-md text-gray-900 placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 sm:text-sm"
+                                        placeholder="Search"
+                                        type="search"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                        <div className="ml-4 flex items-center md:ml-6">
+                            <button
+                                className="p-1 text-gray-400 rounded-full hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:shadow-outline focus:text-gray-500"
+                                aria-label="Notifications"
+                            >
+                                <BellOutlineIcon className="h-6 w-6" />
+                            </button>
 
-                                <UserMenu />
+                            {/* Profile dropdown */}
+                            <div className="ml-3 relative">
+                                <div>
+                                    <button
+                                        className="max-w-xs flex items-center text-sm rounded-full focus:outline-none focus:shadow-outline"
+                                        id="user-menu"
+                                        aria-label="User menu"
+                                        aria-haspopup="true"
+                                        onClick={() => userMenu.setOpen(true)}
+                                    >
+                                        <span className="h-8 w-8 rounded-full overflow-hidden bg-gray-100">
+                                            <svg
+                                                className="h-full w-full text-gray-300"
+                                                fill="currentColor"
+                                                viewBox="0 0 24 24"
+                                            >
+                                                <path d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z" />
+                                            </svg>
+                                        </span>
+                                    </button>
+                                </div>
+                                {/* Profile dropdown panel, show/hide based on dropdown state.
+                                    Entering: "transition ease-out duration-100"
+                                        From: "transform opacity-0 scale-95"
+                                        To: "transform opacity-100 scale-100"
+                                    Leaving: "transition ease-in duration-75"
+                                        From: "transform opacity-100 scale-100"
+                                        To: "transform opacity-0 scale-95" 
+                                */}
+                                {userMenu.open && (
+                                    <div
+                                        ref={userMenu.ref}
+                                        className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg"
+                                    >
+                                        <div
+                                            className="py-1 rounded-md bg-white shadow-xs"
+                                            role="menu"
+                                            aria-orientation="vertical"
+                                            aria-labelledby="user-menu"
+                                        >
+                                            <InertiaLink
+                                                href={$route('console.account')}
+                                                className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition ease-in-out duration-150"
+                                                role="menuitem"
+                                            >
+                                                Your Account
+                                            </InertiaLink>
+                                            <a
+                                                href="#"
+                                                onClick={() => Inertia.post($route('console.logout'))}
+                                                className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition ease-in-out duration-150"
+                                                role="menuitem"
+                                            >
+                                                Sign out
+                                            </a>
+                                        </div>
+                                    </div>
+                                )}
                             </div>
                         </div>
                     </div>
                 </div>
-            </nav>
-            <main className="w-4/5 ml-auto p-8">{children}</main>
+
+                <main className="flex-1 relative z-0 overflow-y-auto py-6 focus:outline-none" tabIndex="0">
+                    {title && (
+                        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
+                            <h1 className="text-2xl font-semibold text-gray-900">{title}</h1>
+                        </div>
+                    )}
+                    <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
+                        <div className="py-4">{children}</div>
+                    </div>
+                </main>
+            </div>
             <Notification message={message} />
         </div>
     );
 }
 
 Master.propTypes = {
+    title: PropTypes.string,
+    white: PropTypes.bool,
     children: PropTypes.node.isRequired,
+    className: PropTypes.string,
 };

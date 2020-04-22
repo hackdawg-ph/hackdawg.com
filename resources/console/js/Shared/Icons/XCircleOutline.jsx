@@ -1,13 +1,13 @@
 import React from 'react';
 
-export default function SearchOutline(props) {
+export default function XCircleOutline(props) {
     return (
         <svg stroke="currentColor" fill="none" viewBox="0 0 24 24" {...props}>
             <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 strokeWidth="2"
-                d="M21 21L15 15M17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10Z"
+                d="M10 14L12 12M12 12L14 10M12 12L10 10M12 12L14 14M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z"
             />
         </svg>
     );

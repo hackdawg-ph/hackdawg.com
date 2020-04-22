@@ -2,34 +2,23 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 
-export default function Auth({
-    title,
-    onSubmit,
-    children,
-    className,
-    ...props
-}) {
+export default function Auth({ title, children, className, ...props }) {
     return (
         <div
             className={cx(
-                'min-h-screen flex items-center justify-center bg-gray-100 py-12 px-4 sm:px-6 lg:px-8',
+                'min-h-screen bg-gray-50 flex flex-col items-center justify-center py-12 sm:px-6 lg:px-8',
                 className,
             )}
             {...props}
         >
-            <div className="max-w-md w-full">
+            <div className="msm:mx-auto sm:w-full sm:max-w-md">
                 <div>
-                    <h2 className="mt-6 text-center text-3xl leading-9 font-extrabold text-gray-900">
-                        {title}
-                    </h2>
+                    <h2 className="mt-6 text-center text-3xl leading-9 font-extrabold text-gray-900">{title}</h2>
                 </div>
 
-                <form
-                    className="mt-8 p-10 bg-white shadow rounded-lg"
-                    onSubmit={onSubmit}
-                >
-                    {children}
-                </form>
+                <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
+                    <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">{children}</div>
+                </div>
             </div>
         </div>
     );
@@ -37,7 +26,6 @@ export default function Auth({
 
 Auth.propTypes = {
     title: PropTypes.string.isRequired,
-    onSubmit: PropTypes.func.isRequired,
     children: PropTypes.node.isRequired,
     className: PropTypes.string,
 };

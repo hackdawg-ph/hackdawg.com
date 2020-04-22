@@ -1,14 +1,14 @@
 import { useState, useEffect, useRef } from 'react';
 
-export default function useMenu() {
+export default function useToggle() {
     const ref = useRef(null);
     const [open, setOpen] = useState(false);
 
-    const handle = event => {
+    function handle(event) {
         if (ref.current && !ref.current.contains(event.target)) {
             setOpen(false);
         }
-    };
+    }
 
     useEffect(() => {
         document.addEventListener('click', handle, true);
