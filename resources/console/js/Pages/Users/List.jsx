@@ -3,8 +3,8 @@ import Layout from '@console/Shared/Layouts/Master';
 
 export default function List() {
     return (
-        <Layout>
-            <h1>List of users</h1>
+        <Layout title="Users" pageTitle="Users">
+            <div className="border-4 border-dashed border-gray-200 rounded-lg h-96"></div>
         </Layout>
     );
 }

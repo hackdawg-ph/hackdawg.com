@@ -14,6 +14,6 @@ class ArticlesController extends Controller
      */
     public function index()
     {
-        return Inertia::render('Home');
+        return Inertia::render('Articles/List');
     }
 }

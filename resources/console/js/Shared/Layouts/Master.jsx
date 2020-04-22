@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Inertia } from '@inertiajs/inertia';
 import { InertiaLink, usePage } from '@inertiajs/inertia-react';
+import { Helmet } from 'react-helmet';
 import cx from 'classnames';
 import useToggle from '@console/hooks/useToggle';
 import BellOutlineIcon from '@console/Shared/Icons/BellOutline';
@@ -14,46 +15,53 @@ import UserGroupOutlineIcon from '@console/Shared/Icons/UserGroupOutline';
 import XOutlineIcon from '@console/Shared/Icons/XOutline';
 import Notification from '@console/Shared/Notification';
 
-const LINKS = [
-    {
-        path: $route('console.home'),
-        active: 'console.home' === route().current(),
-        text: 'Dashboard',
-        Icon: HomeOutlineIcon,
-    },
-
-    {
-        path: $route('console.tags.index'),
-        active: 'console.tags.index' === route().current(),
-        text: 'Tags',
-        Icon: TagOutlineIcon,
-    },
-
-    {
-        path: $route('console.articles.index'),
-        active: 'console.articles.index' === route().current(),
-        text: 'Articles',
-        Icon: DocumentOutlineIcon,
-    },
-
-    {
-        path: $route('console.users.index'),
-        active: 'console.users.index' === route().current(),
-        text: 'Users',
-        Icon: UserGroupOutlineIcon,
-    },
-];
-
-export default function Master({ title, white = false, children, className, ...props }) {
+export default function Master({ title, metas = {}, white = false, pageTitle, children, className, ...props }) {
     const { message } = usePage();
     const mobileNav = useToggle();
     const userMenu = useToggle();
+
+    const LINKS = [
+        {
+            path: $route('console.home'),
+            active: 'console.home' === route().current(),
+            text: 'Dashboard',
+            Icon: HomeOutlineIcon,
+        },
+
+        {
+            path: $route('console.tags.index'),
+            active: 'console.tags.index' === route().current(),
+            text: 'Tags',
+            Icon: TagOutlineIcon,
+        },
+
+        {
+            path: $route('console.articles.index'),
+            active: 'console.articles.index' === route().current(),
+            text: 'Articles',
+            Icon: DocumentOutlineIcon,
+        },
+
+        {
+            path: $route('console.users.index'),
+            active: 'console.users.index' === route().current(),
+            text: 'Users',
+            Icon: UserGroupOutlineIcon,
+        },
+    ];
 
     return (
         <div
             className={cx('h-screen flex overflow-hidden', { 'bg-white': white, ' bg-gray-100': !white }, className)}
             {...props}
         >
+            <Helmet>
+                {title && <title>{title} | Hackdawg</title>}
+                {Object.keys(metas).map(property => (
+                    <meta key={'meta-' + property} name={property} content={metas[property]} />
+                ))}
+            </Helmet>
+
             {/* Off-canvas menu htmlFor mobile */}
             <div className="md:hidden">
                 {mobileNav.open && (
@@ -269,9 +277,9 @@ export default function Master({ title, white = false, children, className, ...p
                 </div>
 
                 <main className="flex-1 relative z-0 overflow-y-auto py-6 focus:outline-none" tabIndex="0">
-                    {title && (
+                    {pageTitle && (
                         <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
-                            <h1 className="text-2xl font-semibold text-gray-900">{title}</h1>
+                            <h1 className="text-2xl font-semibold text-gray-900">{pageTitle}</h1>
                         </div>
                     )}
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
@@ -285,7 +293,9 @@ export default function Master({ title, white = false, children, className, ...p
 }
 
 Master.propTypes = {
-    title: PropTypes.string,
+    title: PropTypes.string.isRequired,
+    metas: PropTypes.object,
+    pageTitle: PropTypes.string,
     white: PropTypes.bool,
     children: PropTypes.node.isRequired,
     className: PropTypes.string,

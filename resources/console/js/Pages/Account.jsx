@@ -26,7 +26,7 @@ export default function Account() {
     }
 
     return (
-        <Layout white>
+        <Layout title="Account Settings" white>
             <form onSubmit={handleSubmit} className="md:w-3/4 md:mx-auto">
                 <div>
                     <div>
