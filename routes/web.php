@@ -23,7 +23,7 @@ Route::domain(get_domain('console'))->namespace('Console')->name('console.')->gr
 
     Route::middleware('auth')->group(function () {
         Route::get('account', 'AccountController@showAccountPage')->name('account');
-        Route::patch('account', 'AccountController@update');
+        Route::post('account', 'AccountController@update');
 
         Route::get('/', 'HomeController@index')->name('home');
         Route::resource('tags', 'TagsController');

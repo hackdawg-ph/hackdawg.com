@@ -4,7 +4,9 @@ import { Inertia } from '@inertiajs/inertia';
 import { InertiaLink, usePage } from '@inertiajs/inertia-react';
 import { Helmet } from 'react-helmet';
 import cx from 'classnames';
+import isEmpty from 'lodash/isEmpty';
 import useToggle from '@console/hooks/useToggle';
+import Avatar from '@console/Shared/Avatar';
 import BellOutlineIcon from '@console/Shared/Icons/BellOutline';
 import DocumentOutlineIcon from '@console/Shared/Icons/DocumentOutline';
 import HomeOutlineIcon from '@console/Shared/Icons/HomeOutline';
@@ -16,7 +18,7 @@ import XOutlineIcon from '@console/Shared/Icons/XOutline';
 import Notification from '@console/Shared/Notification';
 
 export default function Master({ title, metas = {}, white = false, pageTitle, children, className, ...props }) {
-    const { message } = usePage();
+    const { auth, message, errors } = usePage();
     const mobileNav = useToggle();
     const userMenu = useToggle();
 
@@ -223,15 +225,7 @@ export default function Master({ title, metas = {}, white = false, pageTitle, ch
                                         aria-haspopup="true"
                                         onClick={() => userMenu.setOpen(true)}
                                     >
-                                        <span className="h-8 w-8 rounded-full overflow-hidden bg-gray-100">
-                                            <svg
-                                                className="h-full w-full text-gray-300"
-                                                fill="currentColor"
-                                                viewBox="0 0 24 24"
-                                            >
-                                                <path d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z" />
-                                            </svg>
-                                        </span>
+                                        <Avatar size="sm" url={auth.user.avatarUrl} />
                                     </button>
                                 </div>
                                 {/* Profile dropdown panel, show/hide based on dropdown state.
@@ -287,7 +281,17 @@ export default function Master({ title, metas = {}, white = false, pageTitle, ch
                     </div>
                 </main>
             </div>
-            <Notification message={message} />
+
+            {message && <Notification message={message} />}
+            {!isEmpty(errors) && (
+                <Notification
+                    message={{
+                        title: 'Whooops?!',
+                        body: 'Check the fields and try again.',
+                        type: 'error',
+                    }}
+                />
+            )}
         </div>
     );
 }

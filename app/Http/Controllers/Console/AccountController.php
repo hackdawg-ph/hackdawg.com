@@ -30,14 +30,21 @@ class AccountController extends Controller
     public function update(Request $request)
     {
         $request->validate([
+            'username' => 'required|string|unique:users,username,'.Auth::user()->id,
+            'avatar' => 'image|max:10240',
             'name' => 'required|string',
             'email' => 'required|email|unique:users,email,'.Auth::user()->id,
-            'username' => 'required|string|unique:users,username,'.Auth::user()->id,
         ]);
 
         Auth::user()->update(
-            $request->only('name', 'email', 'username', 'about')
+            $request->only('username', 'about', 'name', 'email')
         );
+
+        if ($request->hasFile('avatar')) {
+            Auth::user()
+                ->addMedia($request->file('avatar'))
+                ->toMediaCollection('avatars');
+        }
 
         return back()->with('message', [
             'title' => 'Succesfully saved!',

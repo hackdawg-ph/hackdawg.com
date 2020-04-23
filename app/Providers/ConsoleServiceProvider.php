@@ -37,10 +37,11 @@ class ConsoleServiceProvider extends ServiceProvider
                 return [
                     'user' => Auth::user() ? [
                         'id'        => Auth::user()->id,
-                        'name'      => Auth::user()->name,
-                        'email'     => Auth::user()->email,
                         'username'  => Auth::user()->username,
                         'about'     => Auth::user()->about,
+                        'avatarUrl' => Auth::user()->avatarUrl,
+                        'name'      => Auth::user()->name,
+                        'email'     => Auth::user()->email,
                     ] : null,
                 ];
             },

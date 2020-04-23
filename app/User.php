@@ -5,10 +5,13 @@ namespace App;
 use Illuminate\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
-class User extends Authenticatable
+class User extends Authenticatable implements HasMedia
 {
-    use Notifiable, MustVerifyEmail;
+    use Notifiable, MustVerifyEmail, InteractsWithMedia;
 
     /**
      * The attributes that are mass assignable.
@@ -38,6 +41,16 @@ class User extends Authenticatable
     ];
 
     /**
+     * Get the converted avatar media url.
+     *
+     * @return string|null
+     */
+    public function getAvatarUrlAttribute()
+    {
+        return optional($this->getMedia('avatars')->last())->getUrl('thumb');
+    }
+
+    /**
      * Get the articles for the user.
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
@@ -57,5 +70,13 @@ class User extends Authenticatable
     public function createArticle($attributes)
     {
         return $this->articles()->create($attributes);
+    }
+
+    public function registerAllMediaConversions(?Media $media = null): void
+    {
+        $this->addMediaConversion('thumb')
+            ->width(240)
+            ->height(240)
+            ->sharpen(10);
     }
 }

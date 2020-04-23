@@ -13,6 +13,10 @@ RUN ln -snf /usr/share/zoneinfo/${TZ} /etc/localtime && echo ${TZ} > /etc/timezo
 # Install Linux utilities
 RUN apt-get update && apt-get install -y \
     build-essential \
+    libfreetype6-dev \
+    libwebp-dev \
+    libpng-dev \
+    libjpeg-dev \
     libonig-dev \
     libzip-dev \
     locales \
@@ -23,7 +27,9 @@ RUN apt-get update && apt-get install -y \
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Install PHP extensions
-RUN docker-php-ext-install pdo_mysql bcmath mbstring zip exif pcntl
+RUN docker-php-ext-install pdo_mysql bcmath mbstring zip exif pcntl && \
+    docker-php-ext-configure gd --with-freetype=/usr/include/ --with-webp=/usr/include/  --with-jpeg=/usr/include/ && \
+    docker-php-ext-install gd
 
 # Override default PHP configuration
 COPY deploy/php.ini /usr/local/etc/php/conf.d/local.ini:ro

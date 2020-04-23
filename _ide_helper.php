@@ -3,7 +3,7 @@
 
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 7.4.0 on 2020-04-06 15:38:59.
+ * Generated for Laravel 7.5.2 on 2020-04-22 06:22:59.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -4316,12 +4316,12 @@ namespace Illuminate\Support\Facades {
         /**
          * Get a schema builder instance for the connection.
          *
-         * @return \Illuminate\Database\Schema\PostgresBuilder
+         * @return \Illuminate\Database\Schema\MySqlBuilder
          * @static
          */
         public static function getSchemaBuilder()
         {
-            /** @var \Illuminate\Database\PostgresConnection $instance */
+            /** @var \Illuminate\Database\MySqlConnection $instance */
             return $instance->getSchemaBuilder();
         }
         
@@ -4334,7 +4334,7 @@ namespace Illuminate\Support\Facades {
         public static function useDefaultQueryGrammar()
         {
             //Method inherited from \Illuminate\Database\Connection
-            /** @var \Illuminate\Database\PostgresConnection $instance */
+            /** @var \Illuminate\Database\MySqlConnection $instance */
             $instance->useDefaultQueryGrammar();
         }
         
@@ -4347,7 +4347,7 @@ namespace Illuminate\Support\Facades {
         public static function useDefaultSchemaGrammar()
         {
             //Method inherited from \Illuminate\Database\Connection
-            /** @var \Illuminate\Database\PostgresConnection $instance */
+            /** @var \Illuminate\Database\MySqlConnection $instance */
             $instance->useDefaultSchemaGrammar();
         }
         
@@ -4360,7 +4360,7 @@ namespace Illuminate\Support\Facades {
         public static function useDefaultPostProcessor()
         {
             //Method inherited from \Illuminate\Database\Connection
-            /** @var \Illuminate\Database\PostgresConnection $instance */
+            /** @var \Illuminate\Database\MySqlConnection $instance */
             $instance->useDefaultPostProcessor();
         }
         
@@ -4375,7 +4375,7 @@ namespace Illuminate\Support\Facades {
         public static function table($table, $as = null)
         {
             //Method inherited from \Illuminate\Database\Connection
-            /** @var \Illuminate\Database\PostgresConnection $instance */
+            /** @var \Illuminate\Database\MySqlConnection $instance */
             return $instance->table($table, $as);
         }
         
@@ -4388,7 +4388,7 @@ namespace Illuminate\Support\Facades {
         public static function query()
         {
             //Method inherited from \Illuminate\Database\Connection
-            /** @var \Illuminate\Database\PostgresConnection $instance */
+            /** @var \Illuminate\Database\MySqlConnection $instance */
             return $instance->query();
         }
         
@@ -4404,7 +4404,7 @@ namespace Illuminate\Support\Facades {
         public static function selectOne($query, $bindings = [], $useReadPdo = true)
         {
             //Method inherited from \Illuminate\Database\Connection
-            /** @var \Illuminate\Database\PostgresConnection $instance */
+            /** @var \Illuminate\Database\MySqlConnection $instance */
             return $instance->selectOne($query, $bindings, $useReadPdo);
         }
         
@@ -4419,7 +4419,7 @@ namespace Illuminate\Support\Facades {
         public static function selectFromWriteConnection($query, $bindings = [])
         {
             //Method inherited from \Illuminate\Database\Connection
-            /** @var \Illuminate\Database\PostgresConnection $instance */
+            /** @var \Illuminate\Database\MySqlConnection $instance */
             return $instance->selectFromWriteConnection($query, $bindings);
         }
         
@@ -4435,7 +4435,7 @@ namespace Illuminate\Support\Facades {
         public static function select($query, $bindings = [], $useReadPdo = true)
         {
             //Method inherited from \Illuminate\Database\Connection
-            /** @var \Illuminate\Database\PostgresConnection $instance */
+            /** @var \Illuminate\Database\MySqlConnection $instance */
             return $instance->select($query, $bindings, $useReadPdo);
         }
         
@@ -4451,7 +4451,7 @@ namespace Illuminate\Support\Facades {
         public static function cursor($query, $bindings = [], $useReadPdo = true)
         {
             //Method inherited from \Illuminate\Database\Connection
-            /** @var \Illuminate\Database\PostgresConnection $instance */
+            /** @var \Illuminate\Database\MySqlConnection $instance */
             return $instance->cursor($query, $bindings, $useReadPdo);
         }
         
@@ -4466,7 +4466,7 @@ namespace Illuminate\Support\Facades {
         public static function insert($query, $bindings = [])
         {
             //Method inherited from \Illuminate\Database\Connection
-            /** @var \Illuminate\Database\PostgresConnection $instance */
+            /** @var \Illuminate\Database\MySqlConnection $instance */
             return $instance->insert($query, $bindings);
         }
         
@@ -4481,7 +4481,7 @@ namespace Illuminate\Support\Facades {
         public static function update($query, $bindings = [])
         {
             //Method inherited from \Illuminate\Database\Connection
-            /** @var \Illuminate\Database\PostgresConnection $instance */
+            /** @var \Illuminate\Database\MySqlConnection $instance */
             return $instance->update($query, $bindings);
         }
         
@@ -4496,7 +4496,7 @@ namespace Illuminate\Support\Facades {
         public static function delete($query, $bindings = [])
         {
             //Method inherited from \Illuminate\Database\Connection
-            /** @var \Illuminate\Database\PostgresConnection $instance */
+            /** @var \Illuminate\Database\MySqlConnection $instance */
             return $instance->delete($query, $bindings);
         }
         
@@ -4511,7 +4511,7 @@ namespace Illuminate\Support\Facades {
         public static function statement($query, $bindings = [])
         {
             //Method inherited from \Illuminate\Database\Connection
-            /** @var \Illuminate\Database\PostgresConnection $instance */
+            /** @var \Illuminate\Database\MySqlConnection $instance */
             return $instance->statement($query, $bindings);
         }
         
@@ -4526,7 +4526,7 @@ namespace Illuminate\Support\Facades {
         public static function affectingStatement($query, $bindings = [])
         {
             //Method inherited from \Illuminate\Database\Connection
-            /** @var \Illuminate\Database\PostgresConnection $instance */
+            /** @var \Illuminate\Database\MySqlConnection $instance */
             return $instance->affectingStatement($query, $bindings);
         }
         
@@ -4540,7 +4540,7 @@ namespace Illuminate\Support\Facades {
         public static function unprepared($query)
         {
             //Method inherited from \Illuminate\Database\Connection
-            /** @var \Illuminate\Database\PostgresConnection $instance */
+            /** @var \Illuminate\Database\MySqlConnection $instance */
             return $instance->unprepared($query);
         }
         
@@ -4554,7 +4554,7 @@ namespace Illuminate\Support\Facades {
         public static function pretend($callback)
         {
             //Method inherited from \Illuminate\Database\Connection
-            /** @var \Illuminate\Database\PostgresConnection $instance */
+            /** @var \Illuminate\Database\MySqlConnection $instance */
             return $instance->pretend($callback);
         }
         
@@ -4569,7 +4569,7 @@ namespace Illuminate\Support\Facades {
         public static function bindValues($statement, $bindings)
         {
             //Method inherited from \Illuminate\Database\Connection
-            /** @var \Illuminate\Database\PostgresConnection $instance */
+            /** @var \Illuminate\Database\MySqlConnection $instance */
             $instance->bindValues($statement, $bindings);
         }
         
@@ -4583,7 +4583,7 @@ namespace Illuminate\Support\Facades {
         public static function prepareBindings($bindings)
         {
             //Method inherited from \Illuminate\Database\Connection
-            /** @var \Illuminate\Database\PostgresConnection $instance */
+            /** @var \Illuminate\Database\MySqlConnection $instance */
             return $instance->prepareBindings($bindings);
         }
         
@@ -4599,7 +4599,7 @@ namespace Illuminate\Support\Facades {
         public static function logQuery($query, $bindings, $time = null)
         {
             //Method inherited from \Illuminate\Database\Connection
-            /** @var \Illuminate\Database\PostgresConnection $instance */
+            /** @var \Illuminate\Database\MySqlConnection $instance */
             $instance->logQuery($query, $bindings, $time);
         }
         
@@ -4613,7 +4613,7 @@ namespace Illuminate\Support\Facades {
         public static function listen($callback)
         {
             //Method inherited from \Illuminate\Database\Connection
-            /** @var \Illuminate\Database\PostgresConnection $instance */
+            /** @var \Illuminate\Database\MySqlConnection $instance */
             $instance->listen($callback);
         }
         
@@ -4627,7 +4627,7 @@ namespace Illuminate\Support\Facades {
         public static function raw($value)
         {
             //Method inherited from \Illuminate\Database\Connection
-            /** @var \Illuminate\Database\PostgresConnection $instance */
+            /** @var \Illuminate\Database\MySqlConnection $instance */
             return $instance->raw($value);
         }
         
@@ -4641,7 +4641,7 @@ namespace Illuminate\Support\Facades {
         public static function recordsHaveBeenModified($value = true)
         {
             //Method inherited from \Illuminate\Database\Connection
-            /** @var \Illuminate\Database\PostgresConnection $instance */
+            /** @var \Illuminate\Database\MySqlConnection $instance */
             $instance->recordsHaveBeenModified($value);
         }
         
@@ -4654,7 +4654,7 @@ namespace Illuminate\Support\Facades {
         public static function isDoctrineAvailable()
         {
             //Method inherited from \Illuminate\Database\Connection
-            /** @var \Illuminate\Database\PostgresConnection $instance */
+            /** @var \Illuminate\Database\MySqlConnection $instance */
             return $instance->isDoctrineAvailable();
         }
         
@@ -4669,7 +4669,7 @@ namespace Illuminate\Support\Facades {
         public static function getDoctrineColumn($table, $column)
         {
             //Method inherited from \Illuminate\Database\Connection
-            /** @var \Illuminate\Database\PostgresConnection $instance */
+            /** @var \Illuminate\Database\MySqlConnection $instance */
             return $instance->getDoctrineColumn($table, $column);
         }
         
@@ -4682,7 +4682,7 @@ namespace Illuminate\Support\Facades {
         public static function getDoctrineSchemaManager()
         {
             //Method inherited from \Illuminate\Database\Connection
-            /** @var \Illuminate\Database\PostgresConnection $instance */
+            /** @var \Illuminate\Database\MySqlConnection $instance */
             return $instance->getDoctrineSchemaManager();
         }
         
@@ -4695,7 +4695,7 @@ namespace Illuminate\Support\Facades {
         public static function getDoctrineConnection()
         {
             //Method inherited from \Illuminate\Database\Connection
-            /** @var \Illuminate\Database\PostgresConnection $instance */
+            /** @var \Illuminate\Database\MySqlConnection $instance */
             return $instance->getDoctrineConnection();
         }
         
@@ -4708,7 +4708,7 @@ namespace Illuminate\Support\Facades {
         public static function getPdo()
         {
             //Method inherited from \Illuminate\Database\Connection
-            /** @var \Illuminate\Database\PostgresConnection $instance */
+            /** @var \Illuminate\Database\MySqlConnection $instance */
             return $instance->getPdo();
         }
         
@@ -4721,7 +4721,7 @@ namespace Illuminate\Support\Facades {
         public static function getRawPdo()
         {
             //Method inherited from \Illuminate\Database\Connection
-            /** @var \Illuminate\Database\PostgresConnection $instance */
+            /** @var \Illuminate\Database\MySqlConnection $instance */
             return $instance->getRawPdo();
         }
         
@@ -4734,7 +4734,7 @@ namespace Illuminate\Support\Facades {
         public static function getReadPdo()
         {
             //Method inherited from \Illuminate\Database\Connection
-            /** @var \Illuminate\Database\PostgresConnection $instance */
+            /** @var \Illuminate\Database\MySqlConnection $instance */
             return $instance->getReadPdo();
         }
         
@@ -4747,7 +4747,7 @@ namespace Illuminate\Support\Facades {
         public static function getRawReadPdo()
         {
             //Method inherited from \Illuminate\Database\Connection
-            /** @var \Illuminate\Database\PostgresConnection $instance */
+            /** @var \Illuminate\Database\MySqlConnection $instance */
             return $instance->getRawReadPdo();
         }
         
@@ -4755,13 +4755,13 @@ namespace Illuminate\Support\Facades {
          * Set the PDO connection.
          *
          * @param \PDO|\Closure|null $pdo
-         * @return \Illuminate\Database\PostgresConnection
+         * @return \Illuminate\Database\MySqlConnection
          * @static
          */
         public static function setPdo($pdo)
         {
             //Method inherited from \Illuminate\Database\Connection
-            /** @var \Illuminate\Database\PostgresConnection $instance */
+            /** @var \Illuminate\Database\MySqlConnection $instance */
             return $instance->setPdo($pdo);
         }
         
@@ -4769,13 +4769,13 @@ namespace Illuminate\Support\Facades {
          * Set the PDO connection used for reading.
          *
          * @param \PDO|\Closure|null $pdo
-         * @return \Illuminate\Database\PostgresConnection
+         * @return \Illuminate\Database\MySqlConnection
          * @static
          */
         public static function setReadPdo($pdo)
         {
             //Method inherited from \Illuminate\Database\Connection
-            /** @var \Illuminate\Database\PostgresConnection $instance */
+            /** @var \Illuminate\Database\MySqlConnection $instance */
             return $instance->setReadPdo($pdo);
         }
         
@@ -4788,7 +4788,7 @@ namespace Illuminate\Support\Facades {
         public static function getName()
         {
             //Method inherited from \Illuminate\Database\Connection
-            /** @var \Illuminate\Database\PostgresConnection $instance */
+            /** @var \Illuminate\Database\MySqlConnection $instance */
             return $instance->getName();
         }
         
@@ -4802,7 +4802,7 @@ namespace Illuminate\Support\Facades {
         public static function getConfig($option = null)
         {
             //Method inherited from \Illuminate\Database\Connection
-            /** @var \Illuminate\Database\PostgresConnection $instance */
+            /** @var \Illuminate\Database\MySqlConnection $instance */
             return $instance->getConfig($option);
         }
         
@@ -4815,7 +4815,7 @@ namespace Illuminate\Support\Facades {
         public static function getDriverName()
         {
             //Method inherited from \Illuminate\Database\Connection
-            /** @var \Illuminate\Database\PostgresConnection $instance */
+            /** @var \Illuminate\Database\MySqlConnection $instance */
             return $instance->getDriverName();
         }
         
@@ -4828,7 +4828,7 @@ namespace Illuminate\Support\Facades {
         public static function getQueryGrammar()
         {
             //Method inherited from \Illuminate\Database\Connection
-            /** @var \Illuminate\Database\PostgresConnection $instance */
+            /** @var \Illuminate\Database\MySqlConnection $instance */
             return $instance->getQueryGrammar();
         }
         
@@ -4836,13 +4836,13 @@ namespace Illuminate\Support\Facades {
          * Set the query grammar used by the connection.
          *
          * @param \Illuminate\Database\Query\Grammars\Grammar $grammar
-         * @return \Illuminate\Database\PostgresConnection
+         * @return \Illuminate\Database\MySqlConnection
          * @static
          */
         public static function setQueryGrammar($grammar)
         {
             //Method inherited from \Illuminate\Database\Connection
-            /** @var \Illuminate\Database\PostgresConnection $instance */
+            /** @var \Illuminate\Database\MySqlConnection $instance */
             return $instance->setQueryGrammar($grammar);
         }
         
@@ -4855,7 +4855,7 @@ namespace Illuminate\Support\Facades {
         public static function getSchemaGrammar()
         {
             //Method inherited from \Illuminate\Database\Connection
-            /** @var \Illuminate\Database\PostgresConnection $instance */
+            /** @var \Illuminate\Database\MySqlConnection $instance */
             return $instance->getSchemaGrammar();
         }
         
@@ -4863,13 +4863,13 @@ namespace Illuminate\Support\Facades {
          * Set the schema grammar used by the connection.
          *
          * @param \Illuminate\Database\Schema\Grammars\Grammar $grammar
-         * @return \Illuminate\Database\PostgresConnection
+         * @return \Illuminate\Database\MySqlConnection
          * @static
          */
         public static function setSchemaGrammar($grammar)
         {
             //Method inherited from \Illuminate\Database\Connection
-            /** @var \Illuminate\Database\PostgresConnection $instance */
+            /** @var \Illuminate\Database\MySqlConnection $instance */
             return $instance->setSchemaGrammar($grammar);
         }
         
@@ -4882,7 +4882,7 @@ namespace Illuminate\Support\Facades {
         public static function getPostProcessor()
         {
             //Method inherited from \Illuminate\Database\Connection
-            /** @var \Illuminate\Database\PostgresConnection $instance */
+            /** @var \Illuminate\Database\MySqlConnection $instance */
             return $instance->getPostProcessor();
         }
         
@@ -4890,13 +4890,13 @@ namespace Illuminate\Support\Facades {
          * Set the query post processor used by the connection.
          *
          * @param \Illuminate\Database\Query\Processors\Processor $processor
-         * @return \Illuminate\Database\PostgresConnection
+         * @return \Illuminate\Database\MySqlConnection
          * @static
          */
         public static function setPostProcessor($processor)
         {
             //Method inherited from \Illuminate\Database\Connection
-            /** @var \Illuminate\Database\PostgresConnection $instance */
+            /** @var \Illuminate\Database\MySqlConnection $instance */
             return $instance->setPostProcessor($processor);
         }
         
@@ -4909,7 +4909,7 @@ namespace Illuminate\Support\Facades {
         public static function getEventDispatcher()
         {
             //Method inherited from \Illuminate\Database\Connection
-            /** @var \Illuminate\Database\PostgresConnection $instance */
+            /** @var \Illuminate\Database\MySqlConnection $instance */
             return $instance->getEventDispatcher();
         }
         
@@ -4917,13 +4917,13 @@ namespace Illuminate\Support\Facades {
          * Set the event dispatcher instance on the connection.
          *
          * @param \Illuminate\Contracts\Events\Dispatcher $events
-         * @return \Illuminate\Database\PostgresConnection
+         * @return \Illuminate\Database\MySqlConnection
          * @static
          */
         public static function setEventDispatcher($events)
         {
             //Method inherited from \Illuminate\Database\Connection
-            /** @var \Illuminate\Database\PostgresConnection $instance */
+            /** @var \Illuminate\Database\MySqlConnection $instance */
             return $instance->setEventDispatcher($events);
         }
         
@@ -4936,7 +4936,7 @@ namespace Illuminate\Support\Facades {
         public static function unsetEventDispatcher()
         {
             //Method inherited from \Illuminate\Database\Connection
-            /** @var \Illuminate\Database\PostgresConnection $instance */
+            /** @var \Illuminate\Database\MySqlConnection $instance */
             $instance->unsetEventDispatcher();
         }
         
@@ -4949,7 +4949,7 @@ namespace Illuminate\Support\Facades {
         public static function pretending()
         {
             //Method inherited from \Illuminate\Database\Connection
-            /** @var \Illuminate\Database\PostgresConnection $instance */
+            /** @var \Illuminate\Database\MySqlConnection $instance */
             return $instance->pretending();
         }
         
@@ -4962,7 +4962,7 @@ namespace Illuminate\Support\Facades {
         public static function getQueryLog()
         {
             //Method inherited from \Illuminate\Database\Connection
-            /** @var \Illuminate\Database\PostgresConnection $instance */
+            /** @var \Illuminate\Database\MySqlConnection $instance */
             return $instance->getQueryLog();
         }
         
@@ -4975,7 +4975,7 @@ namespace Illuminate\Support\Facades {
         public static function flushQueryLog()
         {
             //Method inherited from \Illuminate\Database\Connection
-            /** @var \Illuminate\Database\PostgresConnection $instance */
+            /** @var \Illuminate\Database\MySqlConnection $instance */
             $instance->flushQueryLog();
         }
         
@@ -4988,7 +4988,7 @@ namespace Illuminate\Support\Facades {
         public static function enableQueryLog()
         {
             //Method inherited from \Illuminate\Database\Connection
-            /** @var \Illuminate\Database\PostgresConnection $instance */
+            /** @var \Illuminate\Database\MySqlConnection $instance */
             $instance->enableQueryLog();
         }
         
@@ -5001,7 +5001,7 @@ namespace Illuminate\Support\Facades {
         public static function disableQueryLog()
         {
             //Method inherited from \Illuminate\Database\Connection
-            /** @var \Illuminate\Database\PostgresConnection $instance */
+            /** @var \Illuminate\Database\MySqlConnection $instance */
             $instance->disableQueryLog();
         }
         
@@ -5014,7 +5014,7 @@ namespace Illuminate\Support\Facades {
         public static function logging()
         {
             //Method inherited from \Illuminate\Database\Connection
-            /** @var \Illuminate\Database\PostgresConnection $instance */
+            /** @var \Illuminate\Database\MySqlConnection $instance */
             return $instance->logging();
         }
         
@@ -5027,7 +5027,7 @@ namespace Illuminate\Support\Facades {
         public static function getDatabaseName()
         {
             //Method inherited from \Illuminate\Database\Connection
-            /** @var \Illuminate\Database\PostgresConnection $instance */
+            /** @var \Illuminate\Database\MySqlConnection $instance */
             return $instance->getDatabaseName();
         }
         
@@ -5035,13 +5035,13 @@ namespace Illuminate\Support\Facades {
          * Set the name of the connected database.
          *
          * @param string $database
-         * @return \Illuminate\Database\PostgresConnection
+         * @return \Illuminate\Database\MySqlConnection
          * @static
          */
         public static function setDatabaseName($database)
         {
             //Method inherited from \Illuminate\Database\Connection
-            /** @var \Illuminate\Database\PostgresConnection $instance */
+            /** @var \Illuminate\Database\MySqlConnection $instance */
             return $instance->setDatabaseName($database);
         }
         
@@ -5054,7 +5054,7 @@ namespace Illuminate\Support\Facades {
         public static function getTablePrefix()
         {
             //Method inherited from \Illuminate\Database\Connection
-            /** @var \Illuminate\Database\PostgresConnection $instance */
+            /** @var \Illuminate\Database\MySqlConnection $instance */
             return $instance->getTablePrefix();
         }
         
@@ -5062,13 +5062,13 @@ namespace Illuminate\Support\Facades {
          * Set the table prefix in use by the connection.
          *
          * @param string $prefix
-         * @return \Illuminate\Database\PostgresConnection
+         * @return \Illuminate\Database\MySqlConnection
          * @static
          */
         public static function setTablePrefix($prefix)
         {
             //Method inherited from \Illuminate\Database\Connection
-            /** @var \Illuminate\Database\PostgresConnection $instance */
+            /** @var \Illuminate\Database\MySqlConnection $instance */
             return $instance->setTablePrefix($prefix);
         }
         
@@ -5082,7 +5082,7 @@ namespace Illuminate\Support\Facades {
         public static function withTablePrefix($grammar)
         {
             //Method inherited from \Illuminate\Database\Connection
-            /** @var \Illuminate\Database\PostgresConnection $instance */
+            /** @var \Illuminate\Database\MySqlConnection $instance */
             return $instance->withTablePrefix($grammar);
         }
         
@@ -5097,7 +5097,7 @@ namespace Illuminate\Support\Facades {
         public static function resolverFor($driver, $callback)
         {
             //Method inherited from \Illuminate\Database\Connection
-            \Illuminate\Database\PostgresConnection::resolverFor($driver, $callback);
+            \Illuminate\Database\MySqlConnection::resolverFor($driver, $callback);
         }
         
         /**
@@ -5110,7 +5110,7 @@ namespace Illuminate\Support\Facades {
         public static function getResolver($driver)
         {
             //Method inherited from \Illuminate\Database\Connection
-            return \Illuminate\Database\PostgresConnection::getResolver($driver);
+            return \Illuminate\Database\MySqlConnection::getResolver($driver);
         }
         
         /**
@@ -5125,7 +5125,7 @@ namespace Illuminate\Support\Facades {
         public static function transaction($callback, $attempts = 1)
         {
             //Method inherited from \Illuminate\Database\Connection
-            /** @var \Illuminate\Database\PostgresConnection $instance */
+            /** @var \Illuminate\Database\MySqlConnection $instance */
             return $instance->transaction($callback, $attempts);
         }
         
@@ -5139,7 +5139,7 @@ namespace Illuminate\Support\Facades {
         public static function beginTransaction()
         {
             //Method inherited from \Illuminate\Database\Connection
-            /** @var \Illuminate\Database\PostgresConnection $instance */
+            /** @var \Illuminate\Database\MySqlConnection $instance */
             $instance->beginTransaction();
         }
         
@@ -5153,7 +5153,7 @@ namespace Illuminate\Support\Facades {
         public static function commit()
         {
             //Method inherited from \Illuminate\Database\Connection
-            /** @var \Illuminate\Database\PostgresConnection $instance */
+            /** @var \Illuminate\Database\MySqlConnection $instance */
             $instance->commit();
         }
         
@@ -5168,7 +5168,7 @@ namespace Illuminate\Support\Facades {
         public static function rollBack($toLevel = null)
         {
             //Method inherited from \Illuminate\Database\Connection
-            /** @var \Illuminate\Database\PostgresConnection $instance */
+            /** @var \Illuminate\Database\MySqlConnection $instance */
             $instance->rollBack($toLevel);
         }
         
@@ -5181,7 +5181,7 @@ namespace Illuminate\Support\Facades {
         public static function transactionLevel()
         {
             //Method inherited from \Illuminate\Database\Connection
-            /** @var \Illuminate\Database\PostgresConnection $instance */
+            /** @var \Illuminate\Database\MySqlConnection $instance */
             return $instance->transactionLevel();
         }
     }
@@ -6638,6 +6638,31 @@ namespace Illuminate\Support\Facades {
         {
             /** @var \Illuminate\Http\Client\Factory $instance */
             $instance->assertSent($callback);
+        }
+        
+        /**
+         * Assert that a request / response pair was not recorded matching a given truth test.
+         *
+         * @param callable $callback
+         * @return void
+         * @static
+         */
+        public static function assertNotSent($callback)
+        {
+            /** @var \Illuminate\Http\Client\Factory $instance */
+            $instance->assertNotSent($callback);
+        }
+        
+        /**
+         * Assert that no request / response pair was recorded.
+         *
+         * @return void
+         * @static
+         */
+        public static function assertNothingSent()
+        {
+            /** @var \Illuminate\Http\Client\Factory $instance */
+            $instance->assertNothingSent();
         }
         
         /**
@@ -8375,6 +8400,61 @@ namespace Illuminate\Support\Facades {
         }
         
         /**
+         * Release a reserved job back onto the queue.
+         *
+         * @param string $queue
+         * @param \Illuminate\Queue\Jobs\DatabaseJobRecord $job
+         * @param int $delay
+         * @return mixed
+         * @static
+         */
+        public static function release($queue, $job, $delay)
+        {
+            /** @var \Illuminate\Queue\DatabaseQueue $instance */
+            return $instance->release($queue, $job, $delay);
+        }
+        
+        /**
+         * Delete a reserved job from the queue.
+         *
+         * @param string $queue
+         * @param string $id
+         * @return void
+         * @throws \Throwable
+         * @static
+         */
+        public static function deleteReserved($queue, $id)
+        {
+            /** @var \Illuminate\Queue\DatabaseQueue $instance */
+            $instance->deleteReserved($queue, $id);
+        }
+        
+        /**
+         * Get the queue or return the default.
+         *
+         * @param string|null $queue
+         * @return string
+         * @static
+         */
+        public static function getQueue($queue)
+        {
+            /** @var \Illuminate\Queue\DatabaseQueue $instance */
+            return $instance->getQueue($queue);
+        }
+        
+        /**
+         * Get the underlying database instance.
+         *
+         * @return \Illuminate\Database\Connection
+         * @static
+         */
+        public static function getDatabase()
+        {
+            /** @var \Illuminate\Queue\DatabaseQueue $instance */
+            return $instance->getDatabase();
+        }
+        
+        /**
          * Get the retry delay for an object-based queue handler.
          *
          * @param mixed $job
@@ -8384,7 +8464,7 @@ namespace Illuminate\Support\Facades {
         public static function getJobRetryDelay($job)
         {
             //Method inherited from \Illuminate\Queue\Queue
-            /** @var \Illuminate\Queue\SyncQueue $instance */
+            /** @var \Illuminate\Queue\DatabaseQueue $instance */
             return $instance->getJobRetryDelay($job);
         }
         
@@ -8398,7 +8478,7 @@ namespace Illuminate\Support\Facades {
         public static function getJobExpiration($job)
         {
             //Method inherited from \Illuminate\Queue\Queue
-            /** @var \Illuminate\Queue\SyncQueue $instance */
+            /** @var \Illuminate\Queue\DatabaseQueue $instance */
             return $instance->getJobExpiration($job);
         }
         
@@ -8412,7 +8492,7 @@ namespace Illuminate\Support\Facades {
         public static function createPayloadUsing($callback)
         {
             //Method inherited from \Illuminate\Queue\Queue
-            \Illuminate\Queue\SyncQueue::createPayloadUsing($callback);
+            \Illuminate\Queue\DatabaseQueue::createPayloadUsing($callback);
         }
         
         /**
@@ -8425,7 +8505,7 @@ namespace Illuminate\Support\Facades {
         public static function setContainer($container)
         {
             //Method inherited from \Illuminate\Queue\Queue
-            /** @var \Illuminate\Queue\SyncQueue $instance */
+            /** @var \Illuminate\Queue\DatabaseQueue $instance */
             $instance->setContainer($container);
         }
     }
@@ -10817,6 +10897,16 @@ namespace Illuminate\Support\Facades {
         {
             return \Illuminate\Http\Request::hasValidSignature($absolute);
         }
+        
+        /**
+         *
+         *
+         * @static
+         */
+        public static function inertia()
+        {
+            return \Illuminate\Http\Request::inertia();
+        }
     }
 
     /**
@@ -11975,6 +12065,76 @@ namespace Illuminate\Support\Facades {
             /** @var \Illuminate\Routing\Router $instance */
             return $instance->macroCall($method, $parameters);
         }
+        
+        /**
+         *
+         *
+         * @static
+         */
+        public static function inertia($uri, $component, $props = [])
+        {
+            return \Illuminate\Routing\Router::inertia($uri, $component, $props);
+        }
+        
+        /**
+         *
+         *
+         * @static
+         */
+        public static function auth($options = [])
+        {
+            return \Illuminate\Routing\Router::auth($options);
+        }
+        
+        /**
+         *
+         *
+         * @static
+         */
+        public static function resetPassword()
+        {
+            return \Illuminate\Routing\Router::resetPassword();
+        }
+        
+        /**
+         *
+         *
+         * @static
+         */
+        public static function confirmPassword()
+        {
+            return \Illuminate\Routing\Router::confirmPassword();
+        }
+        
+        /**
+         *
+         *
+         * @static
+         */
+        public static function emailVerification()
+        {
+            return \Illuminate\Routing\Router::emailVerification();
+        }
+        
+        /**
+         *
+         *
+         * @static
+         */
+        public static function blacklist($group = null)
+        {
+            return \Illuminate\Routing\Router::blacklist($group);
+        }
+        
+        /**
+         *
+         *
+         * @static
+         */
+        public static function whitelist($group = null)
+        {
+            return \Illuminate\Routing\Router::whitelist($group);
+        }
     }
 
     /**
@@ -11994,80 +12154,8 @@ namespace Illuminate\Support\Facades {
          */
         public static function hasTable($table)
         {
-            /** @var \Illuminate\Database\Schema\PostgresBuilder $instance */
+            /** @var \Illuminate\Database\Schema\MySqlBuilder $instance */
             return $instance->hasTable($table);
-        }
-        
-        /**
-         * Drop all tables from the database.
-         *
-         * @return void
-         * @static
-         */
-        public static function dropAllTables()
-        {
-            /** @var \Illuminate\Database\Schema\PostgresBuilder $instance */
-            $instance->dropAllTables();
-        }
-        
-        /**
-         * Drop all views from the database.
-         *
-         * @return void
-         * @static
-         */
-        public static function dropAllViews()
-        {
-            /** @var \Illuminate\Database\Schema\PostgresBuilder $instance */
-            $instance->dropAllViews();
-        }
-        
-        /**
-         * Drop all types from the database.
-         *
-         * @return void
-         * @static
-         */
-        public static function dropAllTypes()
-        {
-            /** @var \Illuminate\Database\Schema\PostgresBuilder $instance */
-            $instance->dropAllTypes();
-        }
-        
-        /**
-         * Get all of the table names for the database.
-         *
-         * @return array
-         * @static
-         */
-        public static function getAllTables()
-        {
-            /** @var \Illuminate\Database\Schema\PostgresBuilder $instance */
-            return $instance->getAllTables();
-        }
-        
-        /**
-         * Get all of the view names for the database.
-         *
-         * @return array
-         * @static
-         */
-        public static function getAllViews()
-        {
-            /** @var \Illuminate\Database\Schema\PostgresBuilder $instance */
-            return $instance->getAllViews();
-        }
-        
-        /**
-         * Get all of the type names for the database.
-         *
-         * @return array
-         * @static
-         */
-        public static function getAllTypes()
-        {
-            /** @var \Illuminate\Database\Schema\PostgresBuilder $instance */
-            return $instance->getAllTypes();
         }
         
         /**
@@ -12079,8 +12167,56 @@ namespace Illuminate\Support\Facades {
          */
         public static function getColumnListing($table)
         {
-            /** @var \Illuminate\Database\Schema\PostgresBuilder $instance */
+            /** @var \Illuminate\Database\Schema\MySqlBuilder $instance */
             return $instance->getColumnListing($table);
+        }
+        
+        /**
+         * Drop all tables from the database.
+         *
+         * @return void
+         * @static
+         */
+        public static function dropAllTables()
+        {
+            /** @var \Illuminate\Database\Schema\MySqlBuilder $instance */
+            $instance->dropAllTables();
+        }
+        
+        /**
+         * Drop all views from the database.
+         *
+         * @return void
+         * @static
+         */
+        public static function dropAllViews()
+        {
+            /** @var \Illuminate\Database\Schema\MySqlBuilder $instance */
+            $instance->dropAllViews();
+        }
+        
+        /**
+         * Get all of the table names for the database.
+         *
+         * @return array
+         * @static
+         */
+        public static function getAllTables()
+        {
+            /** @var \Illuminate\Database\Schema\MySqlBuilder $instance */
+            return $instance->getAllTables();
+        }
+        
+        /**
+         * Get all of the view names for the database.
+         *
+         * @return array
+         * @static
+         */
+        public static function getAllViews()
+        {
+            /** @var \Illuminate\Database\Schema\MySqlBuilder $instance */
+            return $instance->getAllViews();
         }
         
         /**
@@ -12093,7 +12229,7 @@ namespace Illuminate\Support\Facades {
         public static function defaultStringLength($length)
         {
             //Method inherited from \Illuminate\Database\Schema\Builder
-            \Illuminate\Database\Schema\PostgresBuilder::defaultStringLength($length);
+            \Illuminate\Database\Schema\MySqlBuilder::defaultStringLength($length);
         }
         
         /**
@@ -12107,7 +12243,7 @@ namespace Illuminate\Support\Facades {
         public static function hasColumn($table, $column)
         {
             //Method inherited from \Illuminate\Database\Schema\Builder
-            /** @var \Illuminate\Database\Schema\PostgresBuilder $instance */
+            /** @var \Illuminate\Database\Schema\MySqlBuilder $instance */
             return $instance->hasColumn($table, $column);
         }
         
@@ -12122,7 +12258,7 @@ namespace Illuminate\Support\Facades {
         public static function hasColumns($table, $columns)
         {
             //Method inherited from \Illuminate\Database\Schema\Builder
-            /** @var \Illuminate\Database\Schema\PostgresBuilder $instance */
+            /** @var \Illuminate\Database\Schema\MySqlBuilder $instance */
             return $instance->hasColumns($table, $columns);
         }
         
@@ -12137,7 +12273,7 @@ namespace Illuminate\Support\Facades {
         public static function getColumnType($table, $column)
         {
             //Method inherited from \Illuminate\Database\Schema\Builder
-            /** @var \Illuminate\Database\Schema\PostgresBuilder $instance */
+            /** @var \Illuminate\Database\Schema\MySqlBuilder $instance */
             return $instance->getColumnType($table, $column);
         }
         
@@ -12152,7 +12288,7 @@ namespace Illuminate\Support\Facades {
         public static function table($table, $callback)
         {
             //Method inherited from \Illuminate\Database\Schema\Builder
-            /** @var \Illuminate\Database\Schema\PostgresBuilder $instance */
+            /** @var \Illuminate\Database\Schema\MySqlBuilder $instance */
             $instance->table($table, $callback);
         }
         
@@ -12167,7 +12303,7 @@ namespace Illuminate\Support\Facades {
         public static function create($table, $callback)
         {
             //Method inherited from \Illuminate\Database\Schema\Builder
-            /** @var \Illuminate\Database\Schema\PostgresBuilder $instance */
+            /** @var \Illuminate\Database\Schema\MySqlBuilder $instance */
             $instance->create($table, $callback);
         }
         
@@ -12181,7 +12317,7 @@ namespace Illuminate\Support\Facades {
         public static function drop($table)
         {
             //Method inherited from \Illuminate\Database\Schema\Builder
-            /** @var \Illuminate\Database\Schema\PostgresBuilder $instance */
+            /** @var \Illuminate\Database\Schema\MySqlBuilder $instance */
             $instance->drop($table);
         }
         
@@ -12195,8 +12331,22 @@ namespace Illuminate\Support\Facades {
         public static function dropIfExists($table)
         {
             //Method inherited from \Illuminate\Database\Schema\Builder
-            /** @var \Illuminate\Database\Schema\PostgresBuilder $instance */
+            /** @var \Illuminate\Database\Schema\MySqlBuilder $instance */
             $instance->dropIfExists($table);
+        }
+        
+        /**
+         * Drop all types from the database.
+         *
+         * @return void
+         * @throws \LogicException
+         * @static
+         */
+        public static function dropAllTypes()
+        {
+            //Method inherited from \Illuminate\Database\Schema\Builder
+            /** @var \Illuminate\Database\Schema\MySqlBuilder $instance */
+            $instance->dropAllTypes();
         }
         
         /**
@@ -12210,7 +12360,7 @@ namespace Illuminate\Support\Facades {
         public static function rename($from, $to)
         {
             //Method inherited from \Illuminate\Database\Schema\Builder
-            /** @var \Illuminate\Database\Schema\PostgresBuilder $instance */
+            /** @var \Illuminate\Database\Schema\MySqlBuilder $instance */
             $instance->rename($from, $to);
         }
         
@@ -12223,7 +12373,7 @@ namespace Illuminate\Support\Facades {
         public static function enableForeignKeyConstraints()
         {
             //Method inherited from \Illuminate\Database\Schema\Builder
-            /** @var \Illuminate\Database\Schema\PostgresBuilder $instance */
+            /** @var \Illuminate\Database\Schema\MySqlBuilder $instance */
             return $instance->enableForeignKeyConstraints();
         }
         
@@ -12236,7 +12386,7 @@ namespace Illuminate\Support\Facades {
         public static function disableForeignKeyConstraints()
         {
             //Method inherited from \Illuminate\Database\Schema\Builder
-            /** @var \Illuminate\Database\Schema\PostgresBuilder $instance */
+            /** @var \Illuminate\Database\Schema\MySqlBuilder $instance */
             return $instance->disableForeignKeyConstraints();
         }
         
@@ -12254,7 +12404,7 @@ namespace Illuminate\Support\Facades {
         public static function registerCustomDoctrineType($class, $name, $type)
         {
             //Method inherited from \Illuminate\Database\Schema\Builder
-            /** @var \Illuminate\Database\Schema\PostgresBuilder $instance */
+            /** @var \Illuminate\Database\Schema\MySqlBuilder $instance */
             $instance->registerCustomDoctrineType($class, $name, $type);
         }
         
@@ -12267,7 +12417,7 @@ namespace Illuminate\Support\Facades {
         public static function getConnection()
         {
             //Method inherited from \Illuminate\Database\Schema\Builder
-            /** @var \Illuminate\Database\Schema\PostgresBuilder $instance */
+            /** @var \Illuminate\Database\Schema\MySqlBuilder $instance */
             return $instance->getConnection();
         }
         
@@ -12275,13 +12425,13 @@ namespace Illuminate\Support\Facades {
          * Set the database connection instance.
          *
          * @param \Illuminate\Database\Connection $connection
-         * @return \Illuminate\Database\Schema\PostgresBuilder
+         * @return \Illuminate\Database\Schema\MySqlBuilder
          * @static
          */
         public static function setConnection($connection)
         {
             //Method inherited from \Illuminate\Database\Schema\Builder
-            /** @var \Illuminate\Database\Schema\PostgresBuilder $instance */
+            /** @var \Illuminate\Database\Schema\MySqlBuilder $instance */
             return $instance->setConnection($connection);
         }
         
@@ -12295,7 +12445,7 @@ namespace Illuminate\Support\Facades {
         public static function blueprintResolver($resolver)
         {
             //Method inherited from \Illuminate\Database\Schema\Builder
-            /** @var \Illuminate\Database\Schema\PostgresBuilder $instance */
+            /** @var \Illuminate\Database\Schema\MySqlBuilder $instance */
             $instance->blueprintResolver($resolver);
         }
     }
@@ -15126,6 +15276,506 @@ namespace Illuminate\Support {
      *
      */
     class Str
+    {
+    }
+ 
+}
+
+namespace Carbon {
+
+    /**
+     * A simple API extension for DateTime.
+     *
+     * <autodoc generated by `composer phpdoc`>
+     *
+     * @property int            $year
+     * @property int            $yearIso
+     * @property int            $month
+     * @property int            $day
+     * @property int            $hour
+     * @property int            $minute
+     * @property int            $second
+     * @property int            $micro
+     * @property int            $microsecond
+     * @property int            $timestamp                                                                            seconds since the Unix Epoch
+     * @property string         $englishDayOfWeek                                                                     the day of week in English
+     * @property string         $shortEnglishDayOfWeek                                                                the abbreviated day of week in English
+     * @property string         $englishMonth                                                                         the month in English
+     * @property string         $shortEnglishMonth                                                                    the abbreviated month in English
+     * @property string         $localeDayOfWeek                                                                      the day of week in current locale LC_TIME
+     * @property string         $shortLocaleDayOfWeek                                                                 the abbreviated day of week in current locale LC_TIME
+     * @property string         $localeMonth                                                                          the month in current locale LC_TIME
+     * @property string         $shortLocaleMonth                                                                     the abbreviated month in current locale LC_TIME
+     * @property int            $milliseconds
+     * @property int            $millisecond
+     * @property int            $milli
+     * @property int            $week                                                                                 1 through 53
+     * @property int            $isoWeek                                                                              1 through 53
+     * @property int            $weekYear                                                                             year according to week format
+     * @property int            $isoWeekYear                                                                          year according to ISO week format
+     * @property int            $dayOfYear                                                                            1 through 366
+     * @property int            $age                                                                                  does a diffInYears() with default parameters
+     * @property int            $offset                                                                               the timezone offset in seconds from UTC
+     * @property int            $offsetMinutes                                                                        the timezone offset in minutes from UTC
+     * @property int            $offsetHours                                                                          the timezone offset in hours from UTC
+     * @property CarbonTimeZone $timezone                                                                             the current timezone
+     * @property CarbonTimeZone $tz                                                                                   alias of $timezone
+     * @property-read int            $dayOfWeek                                                                            0 (for Sunday) through 6 (for Saturday)
+     * @property-read int            $dayOfWeekIso                                                                         1 (for Monday) through 7 (for Sunday)
+     * @property-read int            $weekOfYear                                                                           ISO-8601 week number of year, weeks starting on Monday
+     * @property-read int            $daysInMonth                                                                          number of days in the given month
+     * @property-read string         $latinMeridiem                                                                        "am"/"pm" (Ante meridiem or Post meridiem latin lowercase mark)
+     * @property-read string         $latinUpperMeridiem                                                                   "AM"/"PM" (Ante meridiem or Post meridiem latin uppercase mark)
+     * @property-read string         $timezoneAbbreviatedName                                                              the current timezone abbreviated name
+     * @property-read string         $tzAbbrName                                                                           alias of $timezoneAbbreviatedName
+     * @property-read string         $dayName                                                                              long name of weekday translated according to Carbon locale, in english if no translation available for current language
+     * @property-read string         $shortDayName                                                                         short name of weekday translated according to Carbon locale, in english if no translation available for current language
+     * @property-read string         $minDayName                                                                           very short name of weekday translated according to Carbon locale, in english if no translation available for current language
+     * @property-read string         $monthName                                                                            long name of month translated according to Carbon locale, in english if no translation available for current language
+     * @property-read string         $shortMonthName                                                                       short name of month translated according to Carbon locale, in english if no translation available for current language
+     * @property-read string         $meridiem                                                                             lowercase meridiem mark translated according to Carbon locale, in latin if no translation available for current language
+     * @property-read string         $upperMeridiem                                                                        uppercase meridiem mark translated according to Carbon locale, in latin if no translation available for current language
+     * @property-read int            $noZeroHour                                                                           current hour from 1 to 24
+     * @property-read int            $weeksInYear                                                                          51 through 53
+     * @property-read int            $isoWeeksInYear                                                                       51 through 53
+     * @property-read int            $weekOfMonth                                                                          1 through 5
+     * @property-read int            $weekNumberInMonth                                                                    1 through 5
+     * @property-read int            $firstWeekDay                                                                         0 through 6
+     * @property-read int            $lastWeekDay                                                                          0 through 6
+     * @property-read int            $daysInYear                                                                           365 or 366
+     * @property-read int            $quarter                                                                              the quarter of this instance, 1 - 4
+     * @property-read int            $decade                                                                               the decade of this instance
+     * @property-read int            $century                                                                              the century of this instance
+     * @property-read int            $millennium                                                                           the millennium of this instance
+     * @property-read bool           $dst                                                                                  daylight savings time indicator, true if DST, false otherwise
+     * @property-read bool           $local                                                                                checks if the timezone is local, true if local, false otherwise
+     * @property-read bool           $utc                                                                                  checks if the timezone is UTC, true if UTC, false otherwise
+     * @property-read string         $timezoneName                                                                         the current timezone name
+     * @property-read string         $tzName                                                                               alias of $timezoneName
+     * @property-read string         $locale                                                                               locale of the current instance
+     * @method bool           isUtc()                                                                               Check if the current instance has UTC timezone. (Both isUtc and isUTC cases are valid.)
+     * @method bool           isLocal()                                                                             Check if the current instance has non-UTC timezone.
+     * @method bool           isValid()                                                                             Check if the current instance is a valid date.
+     * @method bool           isDST()                                                                               Check if the current instance is in a daylight saving time.
+     * @method bool           isSunday()                                                                            Checks if the instance day is sunday.
+     * @method bool           isMonday()                                                                            Checks if the instance day is monday.
+     * @method bool           isTuesday()                                                                           Checks if the instance day is tuesday.
+     * @method bool           isWednesday()                                                                         Checks if the instance day is wednesday.
+     * @method bool           isThursday()                                                                          Checks if the instance day is thursday.
+     * @method bool           isFriday()                                                                            Checks if the instance day is friday.
+     * @method bool           isSaturday()                                                                          Checks if the instance day is saturday.
+     * @method bool           isSameYear(\Carbon\Carbon|\DateTimeInterface|string|null $date = null)                Checks if the given date is in the same year as the instance. If null passed, compare to now (with the same timezone).
+     * @method bool           isCurrentYear()                                                                       Checks if the instance is in the same year as the current moment.
+     * @method bool           isNextYear()                                                                          Checks if the instance is in the same year as the current moment next year.
+     * @method bool           isLastYear()                                                                          Checks if the instance is in the same year as the current moment last year.
+     * @method bool           isSameWeek(\Carbon\Carbon|\DateTimeInterface|string|null $date = null)                Checks if the given date is in the same week as the instance. If null passed, compare to now (with the same timezone).
+     * @method bool           isCurrentWeek()                                                                       Checks if the instance is in the same week as the current moment.
+     * @method bool           isNextWeek()                                                                          Checks if the instance is in the same week as the current moment next week.
+     * @method bool           isLastWeek()                                                                          Checks if the instance is in the same week as the current moment last week.
+     * @method bool           isSameDay(\Carbon\Carbon|\DateTimeInterface|string|null $date = null)                 Checks if the given date is in the same day as the instance. If null passed, compare to now (with the same timezone).
+     * @method bool           isCurrentDay()                                                                        Checks if the instance is in the same day as the current moment.
+     * @method bool           isNextDay()                                                                           Checks if the instance is in the same day as the current moment next day.
+     * @method bool           isLastDay()                                                                           Checks if the instance is in the same day as the current moment last day.
+     * @method bool           isSameHour(\Carbon\Carbon|\DateTimeInterface|string|null $date = null)                Checks if the given date is in the same hour as the instance. If null passed, compare to now (with the same timezone).
+     * @method bool           isCurrentHour()                                                                       Checks if the instance is in the same hour as the current moment.
+     * @method bool           isNextHour()                                                                          Checks if the instance is in the same hour as the current moment next hour.
+     * @method bool           isLastHour()                                                                          Checks if the instance is in the same hour as the current moment last hour.
+     * @method bool           isSameMinute(\Carbon\Carbon|\DateTimeInterface|string|null $date = null)              Checks if the given date is in the same minute as the instance. If null passed, compare to now (with the same timezone).
+     * @method bool           isCurrentMinute()                                                                     Checks if the instance is in the same minute as the current moment.
+     * @method bool           isNextMinute()                                                                        Checks if the instance is in the same minute as the current moment next minute.
+     * @method bool           isLastMinute()                                                                        Checks if the instance is in the same minute as the current moment last minute.
+     * @method bool           isSameSecond(\Carbon\Carbon|\DateTimeInterface|string|null $date = null)              Checks if the given date is in the same second as the instance. If null passed, compare to now (with the same timezone).
+     * @method bool           isCurrentSecond()                                                                     Checks if the instance is in the same second as the current moment.
+     * @method bool           isNextSecond()                                                                        Checks if the instance is in the same second as the current moment next second.
+     * @method bool           isLastSecond()                                                                        Checks if the instance is in the same second as the current moment last second.
+     * @method bool           isSameMicro(\Carbon\Carbon|\DateTimeInterface|string|null $date = null)               Checks if the given date is in the same microsecond as the instance. If null passed, compare to now (with the same timezone).
+     * @method bool           isCurrentMicro()                                                                      Checks if the instance is in the same microsecond as the current moment.
+     * @method bool           isNextMicro()                                                                         Checks if the instance is in the same microsecond as the current moment next microsecond.
+     * @method bool           isLastMicro()                                                                         Checks if the instance is in the same microsecond as the current moment last microsecond.
+     * @method bool           isSameMicrosecond(\Carbon\Carbon|\DateTimeInterface|string|null $date = null)         Checks if the given date is in the same microsecond as the instance. If null passed, compare to now (with the same timezone).
+     * @method bool           isCurrentMicrosecond()                                                                Checks if the instance is in the same microsecond as the current moment.
+     * @method bool           isNextMicrosecond()                                                                   Checks if the instance is in the same microsecond as the current moment next microsecond.
+     * @method bool           isLastMicrosecond()                                                                   Checks if the instance is in the same microsecond as the current moment last microsecond.
+     * @method bool           isCurrentMonth()                                                                      Checks if the instance is in the same month as the current moment.
+     * @method bool           isNextMonth()                                                                         Checks if the instance is in the same month as the current moment next month.
+     * @method bool           isLastMonth()                                                                         Checks if the instance is in the same month as the current moment last month.
+     * @method bool           isCurrentQuarter()                                                                    Checks if the instance is in the same quarter as the current moment.
+     * @method bool           isNextQuarter()                                                                       Checks if the instance is in the same quarter as the current moment next quarter.
+     * @method bool           isLastQuarter()                                                                       Checks if the instance is in the same quarter as the current moment last quarter.
+     * @method bool           isSameDecade(\Carbon\Carbon|\DateTimeInterface|string|null $date = null)              Checks if the given date is in the same decade as the instance. If null passed, compare to now (with the same timezone).
+     * @method bool           isCurrentDecade()                                                                     Checks if the instance is in the same decade as the current moment.
+     * @method bool           isNextDecade()                                                                        Checks if the instance is in the same decade as the current moment next decade.
+     * @method bool           isLastDecade()                                                                        Checks if the instance is in the same decade as the current moment last decade.
+     * @method bool           isSameCentury(\Carbon\Carbon|\DateTimeInterface|string|null $date = null)             Checks if the given date is in the same century as the instance. If null passed, compare to now (with the same timezone).
+     * @method bool           isCurrentCentury()                                                                    Checks if the instance is in the same century as the current moment.
+     * @method bool           isNextCentury()                                                                       Checks if the instance is in the same century as the current moment next century.
+     * @method bool           isLastCentury()                                                                       Checks if the instance is in the same century as the current moment last century.
+     * @method bool           isSameMillennium(\Carbon\Carbon|\DateTimeInterface|string|null $date = null)          Checks if the given date is in the same millennium as the instance. If null passed, compare to now (with the same timezone).
+     * @method bool           isCurrentMillennium()                                                                 Checks if the instance is in the same millennium as the current moment.
+     * @method bool           isNextMillennium()                                                                    Checks if the instance is in the same millennium as the current moment next millennium.
+     * @method bool           isLastMillennium()                                                                    Checks if the instance is in the same millennium as the current moment last millennium.
+     * @method Carbon         years(int $value)                                                                     Set current instance year to the given value.
+     * @method Carbon         year(int $value)                                                                      Set current instance year to the given value.
+     * @method Carbon         setYears(int $value)                                                                  Set current instance year to the given value.
+     * @method Carbon         setYear(int $value)                                                                   Set current instance year to the given value.
+     * @method Carbon         months(int $value)                                                                    Set current instance month to the given value.
+     * @method Carbon         month(int $value)                                                                     Set current instance month to the given value.
+     * @method Carbon         setMonths(int $value)                                                                 Set current instance month to the given value.
+     * @method Carbon         setMonth(int $value)                                                                  Set current instance month to the given value.
+     * @method Carbon         days(int $value)                                                                      Set current instance day to the given value.
+     * @method Carbon         day(int $value)                                                                       Set current instance day to the given value.
+     * @method Carbon         setDays(int $value)                                                                   Set current instance day to the given value.
+     * @method Carbon         setDay(int $value)                                                                    Set current instance day to the given value.
+     * @method Carbon         hours(int $value)                                                                     Set current instance hour to the given value.
+     * @method Carbon         hour(int $value)                                                                      Set current instance hour to the given value.
+     * @method Carbon         setHours(int $value)                                                                  Set current instance hour to the given value.
+     * @method Carbon         setHour(int $value)                                                                   Set current instance hour to the given value.
+     * @method Carbon         minutes(int $value)                                                                   Set current instance minute to the given value.
+     * @method Carbon         minute(int $value)                                                                    Set current instance minute to the given value.
+     * @method Carbon         setMinutes(int $value)                                                                Set current instance minute to the given value.
+     * @method Carbon         setMinute(int $value)                                                                 Set current instance minute to the given value.
+     * @method Carbon         seconds(int $value)                                                                   Set current instance second to the given value.
+     * @method Carbon         second(int $value)                                                                    Set current instance second to the given value.
+     * @method Carbon         setSeconds(int $value)                                                                Set current instance second to the given value.
+     * @method Carbon         setSecond(int $value)                                                                 Set current instance second to the given value.
+     * @method Carbon         millis(int $value)                                                                    Set current instance millisecond to the given value.
+     * @method Carbon         milli(int $value)                                                                     Set current instance millisecond to the given value.
+     * @method Carbon         setMillis(int $value)                                                                 Set current instance millisecond to the given value.
+     * @method Carbon         setMilli(int $value)                                                                  Set current instance millisecond to the given value.
+     * @method Carbon         milliseconds(int $value)                                                              Set current instance millisecond to the given value.
+     * @method Carbon         millisecond(int $value)                                                               Set current instance millisecond to the given value.
+     * @method Carbon         setMilliseconds(int $value)                                                           Set current instance millisecond to the given value.
+     * @method Carbon         setMillisecond(int $value)                                                            Set current instance millisecond to the given value.
+     * @method Carbon         micros(int $value)                                                                    Set current instance microsecond to the given value.
+     * @method Carbon         micro(int $value)                                                                     Set current instance microsecond to the given value.
+     * @method Carbon         setMicros(int $value)                                                                 Set current instance microsecond to the given value.
+     * @method Carbon         setMicro(int $value)                                                                  Set current instance microsecond to the given value.
+     * @method Carbon         microseconds(int $value)                                                              Set current instance microsecond to the given value.
+     * @method Carbon         microsecond(int $value)                                                               Set current instance microsecond to the given value.
+     * @method Carbon         setMicroseconds(int $value)                                                           Set current instance microsecond to the given value.
+     * @method Carbon         setMicrosecond(int $value)                                                            Set current instance microsecond to the given value.
+     * @method Carbon         addYears(int $value = 1)                                                              Add years (the $value count passed in) to the instance (using date interval).
+     * @method Carbon         addYear()                                                                             Add one year to the instance (using date interval).
+     * @method Carbon         subYears(int $value = 1)                                                              Sub years (the $value count passed in) to the instance (using date interval).
+     * @method Carbon         subYear()                                                                             Sub one year to the instance (using date interval).
+     * @method Carbon         addYearsWithOverflow(int $value = 1)                                                  Add years (the $value count passed in) to the instance (using date interval) with overflow explicitly allowed.
+     * @method Carbon         addYearWithOverflow()                                                                 Add one year to the instance (using date interval) with overflow explicitly allowed.
+     * @method Carbon         subYearsWithOverflow(int $value = 1)                                                  Sub years (the $value count passed in) to the instance (using date interval) with overflow explicitly allowed.
+     * @method Carbon         subYearWithOverflow()                                                                 Sub one year to the instance (using date interval) with overflow explicitly allowed.
+     * @method Carbon         addYearsWithoutOverflow(int $value = 1)                                               Add years (the $value count passed in) to the instance (using date interval) with overflow explicitly forbidden.
+     * @method Carbon         addYearWithoutOverflow()                                                              Add one year to the instance (using date interval) with overflow explicitly forbidden.
+     * @method Carbon         subYearsWithoutOverflow(int $value = 1)                                               Sub years (the $value count passed in) to the instance (using date interval) with overflow explicitly forbidden.
+     * @method Carbon         subYearWithoutOverflow()                                                              Sub one year to the instance (using date interval) with overflow explicitly forbidden.
+     * @method Carbon         addYearsWithNoOverflow(int $value = 1)                                                Add years (the $value count passed in) to the instance (using date interval) with overflow explicitly forbidden.
+     * @method Carbon         addYearWithNoOverflow()                                                               Add one year to the instance (using date interval) with overflow explicitly forbidden.
+     * @method Carbon         subYearsWithNoOverflow(int $value = 1)                                                Sub years (the $value count passed in) to the instance (using date interval) with overflow explicitly forbidden.
+     * @method Carbon         subYearWithNoOverflow()                                                               Sub one year to the instance (using date interval) with overflow explicitly forbidden.
+     * @method Carbon         addYearsNoOverflow(int $value = 1)                                                    Add years (the $value count passed in) to the instance (using date interval) with overflow explicitly forbidden.
+     * @method Carbon         addYearNoOverflow()                                                                   Add one year to the instance (using date interval) with overflow explicitly forbidden.
+     * @method Carbon         subYearsNoOverflow(int $value = 1)                                                    Sub years (the $value count passed in) to the instance (using date interval) with overflow explicitly forbidden.
+     * @method Carbon         subYearNoOverflow()                                                                   Sub one year to the instance (using date interval) with overflow explicitly forbidden.
+     * @method Carbon         addMonths(int $value = 1)                                                             Add months (the $value count passed in) to the instance (using date interval).
+     * @method Carbon         addMonth()                                                                            Add one month to the instance (using date interval).
+     * @method Carbon         subMonths(int $value = 1)                                                             Sub months (the $value count passed in) to the instance (using date interval).
+     * @method Carbon         subMonth()                                                                            Sub one month to the instance (using date interval).
+     * @method Carbon         addMonthsWithOverflow(int $value = 1)                                                 Add months (the $value count passed in) to the instance (using date interval) with overflow explicitly allowed.
+     * @method Carbon         addMonthWithOverflow()                                                                Add one month to the instance (using date interval) with overflow explicitly allowed.
+     * @method Carbon         subMonthsWithOverflow(int $value = 1)                                                 Sub months (the $value count passed in) to the instance (using date interval) with overflow explicitly allowed.
+     * @method Carbon         subMonthWithOverflow()                                                                Sub one month to the instance (using date interval) with overflow explicitly allowed.
+     * @method Carbon         addMonthsWithoutOverflow(int $value = 1)                                              Add months (the $value count passed in) to the instance (using date interval) with overflow explicitly forbidden.
+     * @method Carbon         addMonthWithoutOverflow()                                                             Add one month to the instance (using date interval) with overflow explicitly forbidden.
+     * @method Carbon         subMonthsWithoutOverflow(int $value = 1)                                              Sub months (the $value count passed in) to the instance (using date interval) with overflow explicitly forbidden.
+     * @method Carbon         subMonthWithoutOverflow()                                                             Sub one month to the instance (using date interval) with overflow explicitly forbidden.
+     * @method Carbon         addMonthsWithNoOverflow(int $value = 1)                                               Add months (the $value count passed in) to the instance (using date interval) with overflow explicitly forbidden.
+     * @method Carbon         addMonthWithNoOverflow()                                                              Add one month to the instance (using date interval) with overflow explicitly forbidden.
+     * @method Carbon         subMonthsWithNoOverflow(int $value = 1)                                               Sub months (the $value count passed in) to the instance (using date interval) with overflow explicitly forbidden.
+     * @method Carbon         subMonthWithNoOverflow()                                                              Sub one month to the instance (using date interval) with overflow explicitly forbidden.
+     * @method Carbon         addMonthsNoOverflow(int $value = 1)                                                   Add months (the $value count passed in) to the instance (using date interval) with overflow explicitly forbidden.
+     * @method Carbon         addMonthNoOverflow()                                                                  Add one month to the instance (using date interval) with overflow explicitly forbidden.
+     * @method Carbon         subMonthsNoOverflow(int $value = 1)                                                   Sub months (the $value count passed in) to the instance (using date interval) with overflow explicitly forbidden.
+     * @method Carbon         subMonthNoOverflow()                                                                  Sub one month to the instance (using date interval) with overflow explicitly forbidden.
+     * @method Carbon         addDays(int $value = 1)                                                               Add days (the $value count passed in) to the instance (using date interval).
+     * @method Carbon         addDay()                                                                              Add one day to the instance (using date interval).
+     * @method Carbon         subDays(int $value = 1)                                                               Sub days (the $value count passed in) to the instance (using date interval).
+     * @method Carbon         subDay()                                                                              Sub one day to the instance (using date interval).
+     * @method Carbon         addHours(int $value = 1)                                                              Add hours (the $value count passed in) to the instance (using date interval).
+     * @method Carbon         addHour()                                                                             Add one hour to the instance (using date interval).
+     * @method Carbon         subHours(int $value = 1)                                                              Sub hours (the $value count passed in) to the instance (using date interval).
+     * @method Carbon         subHour()                                                                             Sub one hour to the instance (using date interval).
+     * @method Carbon         addMinutes(int $value = 1)                                                            Add minutes (the $value count passed in) to the instance (using date interval).
+     * @method Carbon         addMinute()                                                                           Add one minute to the instance (using date interval).
+     * @method Carbon         subMinutes(int $value = 1)                                                            Sub minutes (the $value count passed in) to the instance (using date interval).
+     * @method Carbon         subMinute()                                                                           Sub one minute to the instance (using date interval).
+     * @method Carbon         addSeconds(int $value = 1)                                                            Add seconds (the $value count passed in) to the instance (using date interval).
+     * @method Carbon         addSecond()                                                                           Add one second to the instance (using date interval).
+     * @method Carbon         subSeconds(int $value = 1)                                                            Sub seconds (the $value count passed in) to the instance (using date interval).
+     * @method Carbon         subSecond()                                                                           Sub one second to the instance (using date interval).
+     * @method Carbon         addMillis(int $value = 1)                                                             Add milliseconds (the $value count passed in) to the instance (using date interval).
+     * @method Carbon         addMilli()                                                                            Add one millisecond to the instance (using date interval).
+     * @method Carbon         subMillis(int $value = 1)                                                             Sub milliseconds (the $value count passed in) to the instance (using date interval).
+     * @method Carbon         subMilli()                                                                            Sub one millisecond to the instance (using date interval).
+     * @method Carbon         addMilliseconds(int $value = 1)                                                       Add milliseconds (the $value count passed in) to the instance (using date interval).
+     * @method Carbon         addMillisecond()                                                                      Add one millisecond to the instance (using date interval).
+     * @method Carbon         subMilliseconds(int $value = 1)                                                       Sub milliseconds (the $value count passed in) to the instance (using date interval).
+     * @method Carbon         subMillisecond()                                                                      Sub one millisecond to the instance (using date interval).
+     * @method Carbon         addMicros(int $value = 1)                                                             Add microseconds (the $value count passed in) to the instance (using date interval).
+     * @method Carbon         addMicro()                                                                            Add one microsecond to the instance (using date interval).
+     * @method Carbon         subMicros(int $value = 1)                                                             Sub microseconds (the $value count passed in) to the instance (using date interval).
+     * @method Carbon         subMicro()                                                                            Sub one microsecond to the instance (using date interval).
+     * @method Carbon         addMicroseconds(int $value = 1)                                                       Add microseconds (the $value count passed in) to the instance (using date interval).
+     * @method Carbon         addMicrosecond()                                                                      Add one microsecond to the instance (using date interval).
+     * @method Carbon         subMicroseconds(int $value = 1)                                                       Sub microseconds (the $value count passed in) to the instance (using date interval).
+     * @method Carbon         subMicrosecond()                                                                      Sub one microsecond to the instance (using date interval).
+     * @method Carbon         addMillennia(int $value = 1)                                                          Add millennia (the $value count passed in) to the instance (using date interval).
+     * @method Carbon         addMillennium()                                                                       Add one millennium to the instance (using date interval).
+     * @method Carbon         subMillennia(int $value = 1)                                                          Sub millennia (the $value count passed in) to the instance (using date interval).
+     * @method Carbon         subMillennium()                                                                       Sub one millennium to the instance (using date interval).
+     * @method Carbon         addMillenniaWithOverflow(int $value = 1)                                              Add millennia (the $value count passed in) to the instance (using date interval) with overflow explicitly allowed.
+     * @method Carbon         addMillenniumWithOverflow()                                                           Add one millennium to the instance (using date interval) with overflow explicitly allowed.
+     * @method Carbon         subMillenniaWithOverflow(int $value = 1)                                              Sub millennia (the $value count passed in) to the instance (using date interval) with overflow explicitly allowed.
+     * @method Carbon         subMillenniumWithOverflow()                                                           Sub one millennium to the instance (using date interval) with overflow explicitly allowed.
+     * @method Carbon         addMillenniaWithoutOverflow(int $value = 1)                                           Add millennia (the $value count passed in) to the instance (using date interval) with overflow explicitly forbidden.
+     * @method Carbon         addMillenniumWithoutOverflow()                                                        Add one millennium to the instance (using date interval) with overflow explicitly forbidden.
+     * @method Carbon         subMillenniaWithoutOverflow(int $value = 1)                                           Sub millennia (the $value count passed in) to the instance (using date interval) with overflow explicitly forbidden.
+     * @method Carbon         subMillenniumWithoutOverflow()                                                        Sub one millennium to the instance (using date interval) with overflow explicitly forbidden.
+     * @method Carbon         addMillenniaWithNoOverflow(int $value = 1)                                            Add millennia (the $value count passed in) to the instance (using date interval) with overflow explicitly forbidden.
+     * @method Carbon         addMillenniumWithNoOverflow()                                                         Add one millennium to the instance (using date interval) with overflow explicitly forbidden.
+     * @method Carbon         subMillenniaWithNoOverflow(int $value = 1)                                            Sub millennia (the $value count passed in) to the instance (using date interval) with overflow explicitly forbidden.
+     * @method Carbon         subMillenniumWithNoOverflow()                                                         Sub one millennium to the instance (using date interval) with overflow explicitly forbidden.
+     * @method Carbon         addMillenniaNoOverflow(int $value = 1)                                                Add millennia (the $value count passed in) to the instance (using date interval) with overflow explicitly forbidden.
+     * @method Carbon         addMillenniumNoOverflow()                                                             Add one millennium to the instance (using date interval) with overflow explicitly forbidden.
+     * @method Carbon         subMillenniaNoOverflow(int $value = 1)                                                Sub millennia (the $value count passed in) to the instance (using date interval) with overflow explicitly forbidden.
+     * @method Carbon         subMillenniumNoOverflow()                                                             Sub one millennium to the instance (using date interval) with overflow explicitly forbidden.
+     * @method Carbon         addCenturies(int $value = 1)                                                          Add centuries (the $value count passed in) to the instance (using date interval).
+     * @method Carbon         addCentury()                                                                          Add one century to the instance (using date interval).
+     * @method Carbon         subCenturies(int $value = 1)                                                          Sub centuries (the $value count passed in) to the instance (using date interval).
+     * @method Carbon         subCentury()                                                                          Sub one century to the instance (using date interval).
+     * @method Carbon         addCenturiesWithOverflow(int $value = 1)                                              Add centuries (the $value count passed in) to the instance (using date interval) with overflow explicitly allowed.
+     * @method Carbon         addCenturyWithOverflow()                                                              Add one century to the instance (using date interval) with overflow explicitly allowed.
+     * @method Carbon         subCenturiesWithOverflow(int $value = 1)                                              Sub centuries (the $value count passed in) to the instance (using date interval) with overflow explicitly allowed.
+     * @method Carbon         subCenturyWithOverflow()                                                              Sub one century to the instance (using date interval) with overflow explicitly allowed.
+     * @method Carbon         addCenturiesWithoutOverflow(int $value = 1)                                           Add centuries (the $value count passed in) to the instance (using date interval) with overflow explicitly forbidden.
+     * @method Carbon         addCenturyWithoutOverflow()                                                           Add one century to the instance (using date interval) with overflow explicitly forbidden.
+     * @method Carbon         subCenturiesWithoutOverflow(int $value = 1)                                           Sub centuries (the $value count passed in) to the instance (using date interval) with overflow explicitly forbidden.
+     * @method Carbon         subCenturyWithoutOverflow()                                                           Sub one century to the instance (using date interval) with overflow explicitly forbidden.
+     * @method Carbon         addCenturiesWithNoOverflow(int $value = 1)                                            Add centuries (the $value count passed in) to the instance (using date interval) with overflow explicitly forbidden.
+     * @method Carbon         addCenturyWithNoOverflow()                                                            Add one century to the instance (using date interval) with overflow explicitly forbidden.
+     * @method Carbon         subCenturiesWithNoOverflow(int $value = 1)                                            Sub centuries (the $value count passed in) to the instance (using date interval) with overflow explicitly forbidden.
+     * @method Carbon         subCenturyWithNoOverflow()                                                            Sub one century to the instance (using date interval) with overflow explicitly forbidden.
+     * @method Carbon         addCenturiesNoOverflow(int $value = 1)                                                Add centuries (the $value count passed in) to the instance (using date interval) with overflow explicitly forbidden.
+     * @method Carbon         addCenturyNoOverflow()                                                                Add one century to the instance (using date interval) with overflow explicitly forbidden.
+     * @method Carbon         subCenturiesNoOverflow(int $value = 1)                                                Sub centuries (the $value count passed in) to the instance (using date interval) with overflow explicitly forbidden.
+     * @method Carbon         subCenturyNoOverflow()                                                                Sub one century to the instance (using date interval) with overflow explicitly forbidden.
+     * @method Carbon         addDecades(int $value = 1)                                                            Add decades (the $value count passed in) to the instance (using date interval).
+     * @method Carbon         addDecade()                                                                           Add one decade to the instance (using date interval).
+     * @method Carbon         subDecades(int $value = 1)                                                            Sub decades (the $value count passed in) to the instance (using date interval).
+     * @method Carbon         subDecade()                                                                           Sub one decade to the instance (using date interval).
+     * @method Carbon         addDecadesWithOverflow(int $value = 1)                                                Add decades (the $value count passed in) to the instance (using date interval) with overflow explicitly allowed.
+     * @method Carbon         addDecadeWithOverflow()                                                               Add one decade to the instance (using date interval) with overflow explicitly allowed.
+     * @method Carbon         subDecadesWithOverflow(int $value = 1)                                                Sub decades (the $value count passed in) to the instance (using date interval) with overflow explicitly allowed.
+     * @method Carbon         subDecadeWithOverflow()                                                               Sub one decade to the instance (using date interval) with overflow explicitly allowed.
+     * @method Carbon         addDecadesWithoutOverflow(int $value = 1)                                             Add decades (the $value count passed in) to the instance (using date interval) with overflow explicitly forbidden.
+     * @method Carbon         addDecadeWithoutOverflow()                                                            Add one decade to the instance (using date interval) with overflow explicitly forbidden.
+     * @method Carbon         subDecadesWithoutOverflow(int $value = 1)                                             Sub decades (the $value count passed in) to the instance (using date interval) with overflow explicitly forbidden.
+     * @method Carbon         subDecadeWithoutOverflow()                                                            Sub one decade to the instance (using date interval) with overflow explicitly forbidden.
+     * @method Carbon         addDecadesWithNoOverflow(int $value = 1)                                              Add decades (the $value count passed in) to the instance (using date interval) with overflow explicitly forbidden.
+     * @method Carbon         addDecadeWithNoOverflow()                                                             Add one decade to the instance (using date interval) with overflow explicitly forbidden.
+     * @method Carbon         subDecadesWithNoOverflow(int $value = 1)                                              Sub decades (the $value count passed in) to the instance (using date interval) with overflow explicitly forbidden.
+     * @method Carbon         subDecadeWithNoOverflow()                                                             Sub one decade to the instance (using date interval) with overflow explicitly forbidden.
+     * @method Carbon         addDecadesNoOverflow(int $value = 1)                                                  Add decades (the $value count passed in) to the instance (using date interval) with overflow explicitly forbidden.
+     * @method Carbon         addDecadeNoOverflow()                                                                 Add one decade to the instance (using date interval) with overflow explicitly forbidden.
+     * @method Carbon         subDecadesNoOverflow(int $value = 1)                                                  Sub decades (the $value count passed in) to the instance (using date interval) with overflow explicitly forbidden.
+     * @method Carbon         subDecadeNoOverflow()                                                                 Sub one decade to the instance (using date interval) with overflow explicitly forbidden.
+     * @method Carbon         addQuarters(int $value = 1)                                                           Add quarters (the $value count passed in) to the instance (using date interval).
+     * @method Carbon         addQuarter()                                                                          Add one quarter to the instance (using date interval).
+     * @method Carbon         subQuarters(int $value = 1)                                                           Sub quarters (the $value count passed in) to the instance (using date interval).
+     * @method Carbon         subQuarter()                                                                          Sub one quarter to the instance (using date interval).
+     * @method Carbon         addQuartersWithOverflow(int $value = 1)                                               Add quarters (the $value count passed in) to the instance (using date interval) with overflow explicitly allowed.
+     * @method Carbon         addQuarterWithOverflow()                                                              Add one quarter to the instance (using date interval) with overflow explicitly allowed.
+     * @method Carbon         subQuartersWithOverflow(int $value = 1)                                               Sub quarters (the $value count passed in) to the instance (using date interval) with overflow explicitly allowed.
+     * @method Carbon         subQuarterWithOverflow()                                                              Sub one quarter to the instance (using date interval) with overflow explicitly allowed.
+     * @method Carbon         addQuartersWithoutOverflow(int $value = 1)                                            Add quarters (the $value count passed in) to the instance (using date interval) with overflow explicitly forbidden.
+     * @method Carbon         addQuarterWithoutOverflow()                                                           Add one quarter to the instance (using date interval) with overflow explicitly forbidden.
+     * @method Carbon         subQuartersWithoutOverflow(int $value = 1)                                            Sub quarters (the $value count passed in) to the instance (using date interval) with overflow explicitly forbidden.
+     * @method Carbon         subQuarterWithoutOverflow()                                                           Sub one quarter to the instance (using date interval) with overflow explicitly forbidden.
+     * @method Carbon         addQuartersWithNoOverflow(int $value = 1)                                             Add quarters (the $value count passed in) to the instance (using date interval) with overflow explicitly forbidden.
+     * @method Carbon         addQuarterWithNoOverflow()                                                            Add one quarter to the instance (using date interval) with overflow explicitly forbidden.
+     * @method Carbon         subQuartersWithNoOverflow(int $value = 1)                                             Sub quarters (the $value count passed in) to the instance (using date interval) with overflow explicitly forbidden.
+     * @method Carbon         subQuarterWithNoOverflow()                                                            Sub one quarter to the instance (using date interval) with overflow explicitly forbidden.
+     * @method Carbon         addQuartersNoOverflow(int $value = 1)                                                 Add quarters (the $value count passed in) to the instance (using date interval) with overflow explicitly forbidden.
+     * @method Carbon         addQuarterNoOverflow()                                                                Add one quarter to the instance (using date interval) with overflow explicitly forbidden.
+     * @method Carbon         subQuartersNoOverflow(int $value = 1)                                                 Sub quarters (the $value count passed in) to the instance (using date interval) with overflow explicitly forbidden.
+     * @method Carbon         subQuarterNoOverflow()                                                                Sub one quarter to the instance (using date interval) with overflow explicitly forbidden.
+     * @method Carbon         addWeeks(int $value = 1)                                                              Add weeks (the $value count passed in) to the instance (using date interval).
+     * @method Carbon         addWeek()                                                                             Add one week to the instance (using date interval).
+     * @method Carbon         subWeeks(int $value = 1)                                                              Sub weeks (the $value count passed in) to the instance (using date interval).
+     * @method Carbon         subWeek()                                                                             Sub one week to the instance (using date interval).
+     * @method Carbon         addWeekdays(int $value = 1)                                                           Add weekdays (the $value count passed in) to the instance (using date interval).
+     * @method Carbon         addWeekday()                                                                          Add one weekday to the instance (using date interval).
+     * @method Carbon         subWeekdays(int $value = 1)                                                           Sub weekdays (the $value count passed in) to the instance (using date interval).
+     * @method Carbon         subWeekday()                                                                          Sub one weekday to the instance (using date interval).
+     * @method Carbon         addRealMicros(int $value = 1)                                                         Add microseconds (the $value count passed in) to the instance (using timestamp).
+     * @method Carbon         addRealMicro()                                                                        Add one microsecond to the instance (using timestamp).
+     * @method Carbon         subRealMicros(int $value = 1)                                                         Sub microseconds (the $value count passed in) to the instance (using timestamp).
+     * @method Carbon         subRealMicro()                                                                        Sub one microsecond to the instance (using timestamp).
+     * @method CarbonPeriod   microsUntil($endDate = null, int $factor = 1)                                         Return an iterable period from current date to given end (string, DateTime or Carbon instance) for each microsecond or every X microseconds if a factor is given.
+     * @method Carbon         addRealMicroseconds(int $value = 1)                                                   Add microseconds (the $value count passed in) to the instance (using timestamp).
+     * @method Carbon         addRealMicrosecond()                                                                  Add one microsecond to the instance (using timestamp).
+     * @method Carbon         subRealMicroseconds(int $value = 1)                                                   Sub microseconds (the $value count passed in) to the instance (using timestamp).
+     * @method Carbon         subRealMicrosecond()                                                                  Sub one microsecond to the instance (using timestamp).
+     * @method CarbonPeriod   microsecondsUntil($endDate = null, int $factor = 1)                                   Return an iterable period from current date to given end (string, DateTime or Carbon instance) for each microsecond or every X microseconds if a factor is given.
+     * @method Carbon         addRealMillis(int $value = 1)                                                         Add milliseconds (the $value count passed in) to the instance (using timestamp).
+     * @method Carbon         addRealMilli()                                                                        Add one millisecond to the instance (using timestamp).
+     * @method Carbon         subRealMillis(int $value = 1)                                                         Sub milliseconds (the $value count passed in) to the instance (using timestamp).
+     * @method Carbon         subRealMilli()                                                                        Sub one millisecond to the instance (using timestamp).
+     * @method CarbonPeriod   millisUntil($endDate = null, int $factor = 1)                                         Return an iterable period from current date to given end (string, DateTime or Carbon instance) for each millisecond or every X milliseconds if a factor is given.
+     * @method Carbon         addRealMilliseconds(int $value = 1)                                                   Add milliseconds (the $value count passed in) to the instance (using timestamp).
+     * @method Carbon         addRealMillisecond()                                                                  Add one millisecond to the instance (using timestamp).
+     * @method Carbon         subRealMilliseconds(int $value = 1)                                                   Sub milliseconds (the $value count passed in) to the instance (using timestamp).
+     * @method Carbon         subRealMillisecond()                                                                  Sub one millisecond to the instance (using timestamp).
+     * @method CarbonPeriod   millisecondsUntil($endDate = null, int $factor = 1)                                   Return an iterable period from current date to given end (string, DateTime or Carbon instance) for each millisecond or every X milliseconds if a factor is given.
+     * @method Carbon         addRealSeconds(int $value = 1)                                                        Add seconds (the $value count passed in) to the instance (using timestamp).
+     * @method Carbon         addRealSecond()                                                                       Add one second to the instance (using timestamp).
+     * @method Carbon         subRealSeconds(int $value = 1)                                                        Sub seconds (the $value count passed in) to the instance (using timestamp).
+     * @method Carbon         subRealSecond()                                                                       Sub one second to the instance (using timestamp).
+     * @method CarbonPeriod   secondsUntil($endDate = null, int $factor = 1)                                        Return an iterable period from current date to given end (string, DateTime or Carbon instance) for each second or every X seconds if a factor is given.
+     * @method Carbon         addRealMinutes(int $value = 1)                                                        Add minutes (the $value count passed in) to the instance (using timestamp).
+     * @method Carbon         addRealMinute()                                                                       Add one minute to the instance (using timestamp).
+     * @method Carbon         subRealMinutes(int $value = 1)                                                        Sub minutes (the $value count passed in) to the instance (using timestamp).
+     * @method Carbon         subRealMinute()                                                                       Sub one minute to the instance (using timestamp).
+     * @method CarbonPeriod   minutesUntil($endDate = null, int $factor = 1)                                        Return an iterable period from current date to given end (string, DateTime or Carbon instance) for each minute or every X minutes if a factor is given.
+     * @method Carbon         addRealHours(int $value = 1)                                                          Add hours (the $value count passed in) to the instance (using timestamp).
+     * @method Carbon         addRealHour()                                                                         Add one hour to the instance (using timestamp).
+     * @method Carbon         subRealHours(int $value = 1)                                                          Sub hours (the $value count passed in) to the instance (using timestamp).
+     * @method Carbon         subRealHour()                                                                         Sub one hour to the instance (using timestamp).
+     * @method CarbonPeriod   hoursUntil($endDate = null, int $factor = 1)                                          Return an iterable period from current date to given end (string, DateTime or Carbon instance) for each hour or every X hours if a factor is given.
+     * @method Carbon         addRealDays(int $value = 1)                                                           Add days (the $value count passed in) to the instance (using timestamp).
+     * @method Carbon         addRealDay()                                                                          Add one day to the instance (using timestamp).
+     * @method Carbon         subRealDays(int $value = 1)                                                           Sub days (the $value count passed in) to the instance (using timestamp).
+     * @method Carbon         subRealDay()                                                                          Sub one day to the instance (using timestamp).
+     * @method CarbonPeriod   daysUntil($endDate = null, int $factor = 1)                                           Return an iterable period from current date to given end (string, DateTime or Carbon instance) for each day or every X days if a factor is given.
+     * @method Carbon         addRealWeeks(int $value = 1)                                                          Add weeks (the $value count passed in) to the instance (using timestamp).
+     * @method Carbon         addRealWeek()                                                                         Add one week to the instance (using timestamp).
+     * @method Carbon         subRealWeeks(int $value = 1)                                                          Sub weeks (the $value count passed in) to the instance (using timestamp).
+     * @method Carbon         subRealWeek()                                                                         Sub one week to the instance (using timestamp).
+     * @method CarbonPeriod   weeksUntil($endDate = null, int $factor = 1)                                          Return an iterable period from current date to given end (string, DateTime or Carbon instance) for each week or every X weeks if a factor is given.
+     * @method Carbon         addRealMonths(int $value = 1)                                                         Add months (the $value count passed in) to the instance (using timestamp).
+     * @method Carbon         addRealMonth()                                                                        Add one month to the instance (using timestamp).
+     * @method Carbon         subRealMonths(int $value = 1)                                                         Sub months (the $value count passed in) to the instance (using timestamp).
+     * @method Carbon         subRealMonth()                                                                        Sub one month to the instance (using timestamp).
+     * @method CarbonPeriod   monthsUntil($endDate = null, int $factor = 1)                                         Return an iterable period from current date to given end (string, DateTime or Carbon instance) for each month or every X months if a factor is given.
+     * @method Carbon         addRealQuarters(int $value = 1)                                                       Add quarters (the $value count passed in) to the instance (using timestamp).
+     * @method Carbon         addRealQuarter()                                                                      Add one quarter to the instance (using timestamp).
+     * @method Carbon         subRealQuarters(int $value = 1)                                                       Sub quarters (the $value count passed in) to the instance (using timestamp).
+     * @method Carbon         subRealQuarter()                                                                      Sub one quarter to the instance (using timestamp).
+     * @method CarbonPeriod   quartersUntil($endDate = null, int $factor = 1)                                       Return an iterable period from current date to given end (string, DateTime or Carbon instance) for each quarter or every X quarters if a factor is given.
+     * @method Carbon         addRealYears(int $value = 1)                                                          Add years (the $value count passed in) to the instance (using timestamp).
+     * @method Carbon         addRealYear()                                                                         Add one year to the instance (using timestamp).
+     * @method Carbon         subRealYears(int $value = 1)                                                          Sub years (the $value count passed in) to the instance (using timestamp).
+     * @method Carbon         subRealYear()                                                                         Sub one year to the instance (using timestamp).
+     * @method CarbonPeriod   yearsUntil($endDate = null, int $factor = 1)                                          Return an iterable period from current date to given end (string, DateTime or Carbon instance) for each year or every X years if a factor is given.
+     * @method Carbon         addRealDecades(int $value = 1)                                                        Add decades (the $value count passed in) to the instance (using timestamp).
+     * @method Carbon         addRealDecade()                                                                       Add one decade to the instance (using timestamp).
+     * @method Carbon         subRealDecades(int $value = 1)                                                        Sub decades (the $value count passed in) to the instance (using timestamp).
+     * @method Carbon         subRealDecade()                                                                       Sub one decade to the instance (using timestamp).
+     * @method CarbonPeriod   decadesUntil($endDate = null, int $factor = 1)                                        Return an iterable period from current date to given end (string, DateTime or Carbon instance) for each decade or every X decades if a factor is given.
+     * @method Carbon         addRealCenturies(int $value = 1)                                                      Add centuries (the $value count passed in) to the instance (using timestamp).
+     * @method Carbon         addRealCentury()                                                                      Add one century to the instance (using timestamp).
+     * @method Carbon         subRealCenturies(int $value = 1)                                                      Sub centuries (the $value count passed in) to the instance (using timestamp).
+     * @method Carbon         subRealCentury()                                                                      Sub one century to the instance (using timestamp).
+     * @method CarbonPeriod   centuriesUntil($endDate = null, int $factor = 1)                                      Return an iterable period from current date to given end (string, DateTime or Carbon instance) for each century or every X centuries if a factor is given.
+     * @method Carbon         addRealMillennia(int $value = 1)                                                      Add millennia (the $value count passed in) to the instance (using timestamp).
+     * @method Carbon         addRealMillennium()                                                                   Add one millennium to the instance (using timestamp).
+     * @method Carbon         subRealMillennia(int $value = 1)                                                      Sub millennia (the $value count passed in) to the instance (using timestamp).
+     * @method Carbon         subRealMillennium()                                                                   Sub one millennium to the instance (using timestamp).
+     * @method CarbonPeriod   millenniaUntil($endDate = null, int $factor = 1)                                      Return an iterable period from current date to given end (string, DateTime or Carbon instance) for each millennium or every X millennia if a factor is given.
+     * @method Carbon         roundYear(float $precision = 1, string $function = "round")                           Round the current instance year with given precision using the given function.
+     * @method Carbon         roundYears(float $precision = 1, string $function = "round")                          Round the current instance year with given precision using the given function.
+     * @method Carbon         floorYear(float $precision = 1)                                                       Truncate the current instance year with given precision.
+     * @method Carbon         floorYears(float $precision = 1)                                                      Truncate the current instance year with given precision.
+     * @method Carbon         ceilYear(float $precision = 1)                                                        Ceil the current instance year with given precision.
+     * @method Carbon         ceilYears(float $precision = 1)                                                       Ceil the current instance year with given precision.
+     * @method Carbon         roundMonth(float $precision = 1, string $function = "round")                          Round the current instance month with given precision using the given function.
+     * @method Carbon         roundMonths(float $precision = 1, string $function = "round")                         Round the current instance month with given precision using the given function.
+     * @method Carbon         floorMonth(float $precision = 1)                                                      Truncate the current instance month with given precision.
+     * @method Carbon         floorMonths(float $precision = 1)                                                     Truncate the current instance month with given precision.
+     * @method Carbon         ceilMonth(float $precision = 1)                                                       Ceil the current instance month with given precision.
+     * @method Carbon         ceilMonths(float $precision = 1)                                                      Ceil the current instance month with given precision.
+     * @method Carbon         roundDay(float $precision = 1, string $function = "round")                            Round the current instance day with given precision using the given function.
+     * @method Carbon         roundDays(float $precision = 1, string $function = "round")                           Round the current instance day with given precision using the given function.
+     * @method Carbon         floorDay(float $precision = 1)                                                        Truncate the current instance day with given precision.
+     * @method Carbon         floorDays(float $precision = 1)                                                       Truncate the current instance day with given precision.
+     * @method Carbon         ceilDay(float $precision = 1)                                                         Ceil the current instance day with given precision.
+     * @method Carbon         ceilDays(float $precision = 1)                                                        Ceil the current instance day with given precision.
+     * @method Carbon         roundHour(float $precision = 1, string $function = "round")                           Round the current instance hour with given precision using the given function.
+     * @method Carbon         roundHours(float $precision = 1, string $function = "round")                          Round the current instance hour with given precision using the given function.
+     * @method Carbon         floorHour(float $precision = 1)                                                       Truncate the current instance hour with given precision.
+     * @method Carbon         floorHours(float $precision = 1)                                                      Truncate the current instance hour with given precision.
+     * @method Carbon         ceilHour(float $precision = 1)                                                        Ceil the current instance hour with given precision.
+     * @method Carbon         ceilHours(float $precision = 1)                                                       Ceil the current instance hour with given precision.
+     * @method Carbon         roundMinute(float $precision = 1, string $function = "round")                         Round the current instance minute with given precision using the given function.
+     * @method Carbon         roundMinutes(float $precision = 1, string $function = "round")                        Round the current instance minute with given precision using the given function.
+     * @method Carbon         floorMinute(float $precision = 1)                                                     Truncate the current instance minute with given precision.
+     * @method Carbon         floorMinutes(float $precision = 1)                                                    Truncate the current instance minute with given precision.
+     * @method Carbon         ceilMinute(float $precision = 1)                                                      Ceil the current instance minute with given precision.
+     * @method Carbon         ceilMinutes(float $precision = 1)                                                     Ceil the current instance minute with given precision.
+     * @method Carbon         roundSecond(float $precision = 1, string $function = "round")                         Round the current instance second with given precision using the given function.
+     * @method Carbon         roundSeconds(float $precision = 1, string $function = "round")                        Round the current instance second with given precision using the given function.
+     * @method Carbon         floorSecond(float $precision = 1)                                                     Truncate the current instance second with given precision.
+     * @method Carbon         floorSeconds(float $precision = 1)                                                    Truncate the current instance second with given precision.
+     * @method Carbon         ceilSecond(float $precision = 1)                                                      Ceil the current instance second with given precision.
+     * @method Carbon         ceilSeconds(float $precision = 1)                                                     Ceil the current instance second with given precision.
+     * @method Carbon         roundMillennium(float $precision = 1, string $function = "round")                     Round the current instance millennium with given precision using the given function.
+     * @method Carbon         roundMillennia(float $precision = 1, string $function = "round")                      Round the current instance millennium with given precision using the given function.
+     * @method Carbon         floorMillennium(float $precision = 1)                                                 Truncate the current instance millennium with given precision.
+     * @method Carbon         floorMillennia(float $precision = 1)                                                  Truncate the current instance millennium with given precision.
+     * @method Carbon         ceilMillennium(float $precision = 1)                                                  Ceil the current instance millennium with given precision.
+     * @method Carbon         ceilMillennia(float $precision = 1)                                                   Ceil the current instance millennium with given precision.
+     * @method Carbon         roundCentury(float $precision = 1, string $function = "round")                        Round the current instance century with given precision using the given function.
+     * @method Carbon         roundCenturies(float $precision = 1, string $function = "round")                      Round the current instance century with given precision using the given function.
+     * @method Carbon         floorCentury(float $precision = 1)                                                    Truncate the current instance century with given precision.
+     * @method Carbon         floorCenturies(float $precision = 1)                                                  Truncate the current instance century with given precision.
+     * @method Carbon         ceilCentury(float $precision = 1)                                                     Ceil the current instance century with given precision.
+     * @method Carbon         ceilCenturies(float $precision = 1)                                                   Ceil the current instance century with given precision.
+     * @method Carbon         roundDecade(float $precision = 1, string $function = "round")                         Round the current instance decade with given precision using the given function.
+     * @method Carbon         roundDecades(float $precision = 1, string $function = "round")                        Round the current instance decade with given precision using the given function.
+     * @method Carbon         floorDecade(float $precision = 1)                                                     Truncate the current instance decade with given precision.
+     * @method Carbon         floorDecades(float $precision = 1)                                                    Truncate the current instance decade with given precision.
+     * @method Carbon         ceilDecade(float $precision = 1)                                                      Ceil the current instance decade with given precision.
+     * @method Carbon         ceilDecades(float $precision = 1)                                                     Ceil the current instance decade with given precision.
+     * @method Carbon         roundQuarter(float $precision = 1, string $function = "round")                        Round the current instance quarter with given precision using the given function.
+     * @method Carbon         roundQuarters(float $precision = 1, string $function = "round")                       Round the current instance quarter with given precision using the given function.
+     * @method Carbon         floorQuarter(float $precision = 1)                                                    Truncate the current instance quarter with given precision.
+     * @method Carbon         floorQuarters(float $precision = 1)                                                   Truncate the current instance quarter with given precision.
+     * @method Carbon         ceilQuarter(float $precision = 1)                                                     Ceil the current instance quarter with given precision.
+     * @method Carbon         ceilQuarters(float $precision = 1)                                                    Ceil the current instance quarter with given precision.
+     * @method Carbon         roundMillisecond(float $precision = 1, string $function = "round")                    Round the current instance millisecond with given precision using the given function.
+     * @method Carbon         roundMilliseconds(float $precision = 1, string $function = "round")                   Round the current instance millisecond with given precision using the given function.
+     * @method Carbon         floorMillisecond(float $precision = 1)                                                Truncate the current instance millisecond with given precision.
+     * @method Carbon         floorMilliseconds(float $precision = 1)                                               Truncate the current instance millisecond with given precision.
+     * @method Carbon         ceilMillisecond(float $precision = 1)                                                 Ceil the current instance millisecond with given precision.
+     * @method Carbon         ceilMilliseconds(float $precision = 1)                                                Ceil the current instance millisecond with given precision.
+     * @method Carbon         roundMicrosecond(float $precision = 1, string $function = "round")                    Round the current instance microsecond with given precision using the given function.
+     * @method Carbon         roundMicroseconds(float $precision = 1, string $function = "round")                   Round the current instance microsecond with given precision using the given function.
+     * @method Carbon         floorMicrosecond(float $precision = 1)                                                Truncate the current instance microsecond with given precision.
+     * @method Carbon         floorMicroseconds(float $precision = 1)                                               Truncate the current instance microsecond with given precision.
+     * @method Carbon         ceilMicrosecond(float $precision = 1)                                                 Ceil the current instance microsecond with given precision.
+     * @method Carbon         ceilMicroseconds(float $precision = 1)                                                Ceil the current instance microsecond with given precision.
+     * @method string         shortAbsoluteDiffForHumans(\DateTimeInterface $other = null, int $parts = 1)          Get the difference (short format, 'Absolute' mode) in a human readable format in the current locale. ($other and $parts parameters can be swapped.)
+     * @method string         longAbsoluteDiffForHumans(\DateTimeInterface $other = null, int $parts = 1)           Get the difference (long format, 'Absolute' mode) in a human readable format in the current locale. ($other and $parts parameters can be swapped.)
+     * @method string         shortRelativeDiffForHumans(\DateTimeInterface $other = null, int $parts = 1)          Get the difference (short format, 'Relative' mode) in a human readable format in the current locale. ($other and $parts parameters can be swapped.)
+     * @method string         longRelativeDiffForHumans(\DateTimeInterface $other = null, int $parts = 1)           Get the difference (long format, 'Relative' mode) in a human readable format in the current locale. ($other and $parts parameters can be swapped.)
+     * @method string         shortRelativeToNowDiffForHumans(\DateTimeInterface $other = null, int $parts = 1)     Get the difference (short format, 'RelativeToNow' mode) in a human readable format in the current locale. ($other and $parts parameters can be swapped.)
+     * @method string         longRelativeToNowDiffForHumans(\DateTimeInterface $other = null, int $parts = 1)      Get the difference (long format, 'RelativeToNow' mode) in a human readable format in the current locale. ($other and $parts parameters can be swapped.)
+     * @method string         shortRelativeToOtherDiffForHumans(\DateTimeInterface $other = null, int $parts = 1)   Get the difference (short format, 'RelativeToOther' mode) in a human readable format in the current locale. ($other and $parts parameters can be swapped.)
+     * @method string         longRelativeToOtherDiffForHumans(\DateTimeInterface $other = null, int $parts = 1)    Get the difference (long format, 'RelativeToOther' mode) in a human readable format in the current locale. ($other and $parts parameters can be swapped.)
+     * @method static Carbon  createFromImmutable(\DateTimeImmutable $dateTime)                                     Create a new Carbon object from an immutable date.
+     * @method static Carbon  createFromFormat(string $format, string $time, string|\DateTimeZone $timezone = null) Parse a string into a new Carbon object according to the specified format.
+     * @method static Carbon  __set_state(array $array)                                                             https://php.net/manual/en/datetime.set-state.php
+     *
+     * </autodoc>
+     */
+    class Carbon
     {
     }
  
@@ -18383,6 +19033,10 @@ namespace  {
     }
 
     class View extends \Illuminate\Support\Facades\View
+    {
+    }
+
+    class Carbon extends \Carbon\Carbon
     {
     }
 
