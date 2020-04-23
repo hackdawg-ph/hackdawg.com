@@ -22,7 +22,7 @@ make chore
 # Build frontend:
 yarn watch
 
-# Finally you can visit: https://hackdawg.test
+# Finally you can visit: http://www.hackdawg.test
 ```
 
 ### Connecting to the database from the host machine
