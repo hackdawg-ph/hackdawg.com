@@ -26,7 +26,7 @@ class ConsoleAccountControllerTest extends TestCase
 
     /** @test */
     public function it_can_update_the_account_information()
-    {        
+    {
         Storage::fake('avatars');
 
         $user = factory(User::class)->create();
@@ -51,7 +51,7 @@ class ConsoleAccountControllerTest extends TestCase
             'model_type' => User::class,
             'model_id' => $user->id,
             'collection_name' => 'avatars',
-            'file_name' => 'avatar.jpg'
+            'file_name' => 'avatar.jpg',
         ]);
     }
 }
