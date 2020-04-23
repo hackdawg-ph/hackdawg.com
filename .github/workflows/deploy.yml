@@ -3,6 +3,7 @@ name: Deploy
 on:
   push:
     branches:
+      - feat/s3-storage
       - master
 
 jobs:
@@ -56,7 +57,7 @@ jobs:
             cd /root/hackdawg.com
 
             # Reset everything
-            git fetch --all && git checkout master && git reset --hard && git pull
+            git fetch --all && git checkout feat/s3-storage && git reset --hard && git pull
             rm -rf .env && SECRET_PASSPHRASE=${{ secrets.SECRET_PASSPHRASE }} sh deploy/decrypt_secret.sh
             
             # Stop running containers
