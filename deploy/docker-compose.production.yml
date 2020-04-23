@@ -5,12 +5,16 @@ services:
             args:
                 APP_ENV: production
         restart: always
+        volumes:
+            - ../storage:/var/www/html/storage
 
     nginx:
         restart: always
         ports:
             - '80:80'
             - '443:443'
+        volumes:
+            - ../storage:/var/www/html/storage
         environment:
             DOMAIN: hackdawg.com
             EMAIL: hello@hackdawg.com
