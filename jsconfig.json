@@ -4,7 +4,8 @@
         "paths": {
             "@console/*": ["./resources/console/js/*"],
             "@/*": ["./resources/js/*"]
-        }
+        },
+        "jsx": "react"
     },
     "exclude": ["node_modules"]
 }

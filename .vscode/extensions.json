@@ -1,11 +1,13 @@
 {
     "recommendations": [
-        "ms-azuretools.vscode-docker",
         "adrianwilczynski.alpine-js-intellisense",
+        "bmewburn.vscode-intelephense-client",
         "bradlc.vscode-tailwindcss",
-        "hex-ci.stylelint-plus",
-        "dbaeumer.vscode-eslint",
         "cjhowe7.laravel-blade",
-        "bmewburn.vscode-intelephense-client"
+        "dbaeumer.vscode-eslint",
+        "hex-ci.stylelint-plus",
+        "ms-azuretools.vscode-docker",
+        "ofhumanbondage.react-proptypes-intellisense",
+        "visualstudioexptteam.vscodeintellicode"
     ]
 }
