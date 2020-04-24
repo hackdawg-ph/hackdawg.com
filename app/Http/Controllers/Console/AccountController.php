@@ -34,7 +34,7 @@ class AccountController extends Controller
     {
         $request->validate([
             'website' => 'url',
-            'avatar' => 'image|max:10240',
+            'avatar' => 'image|max:2048',
         ]);
 
         Auth::user()->update($request->only(['website', 'about']));
