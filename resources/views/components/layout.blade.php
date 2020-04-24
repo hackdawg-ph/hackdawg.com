@@ -23,7 +23,9 @@
 <body class="min-h-screen">
     <nav class="w-full bg-green-darkest">
         <div class="flex items-center w-4/5 h-24 mx-auto border-b-1/2px border-green-darker">
-            <img class="w-12 h-12 mr-5 rounded-full" src="{{ asset('png/logo.png') }}" alt="Logo">
+            <div class="w-12 h-12 mr-5 rounded-full shadow">
+                <img class="w-full h-full" src="{{ asset('png/logos/indigo-circle.png') }}" alt="Hackdawg">
+            </div>
             <a class="mx-5 text-sm {{ Request::path() === '/' ? 'text-blue' : 'text-gray' }}" href="{{ route('welcome') }}">
                 Home
             </a>
