@@ -8,8 +8,10 @@ services:
         image: hackdawg-web:latest
         depends_on:
             - db
+            - redis
         links:
             - db
+            - redis
         working_dir: /var/www/html
         networks:
             - app
@@ -34,10 +36,10 @@ services:
 
     nginx:
         container_name: nginx
+        image: hackdawg-nginx:latest
         build:
             context: ..
             dockerfile: deploy/nginx.Dockerfile
-        image: hackdawg-nginx:latest
         depends_on:
             - web
         working_dir: /var/www/html
@@ -47,6 +49,12 @@ services:
     db:
         container_name: db
         image: mysql:5.7
+        networks:
+            - app
+
+    redis:
+        container_name: redis
+        image: redis:alpine
         networks:
             - app
 

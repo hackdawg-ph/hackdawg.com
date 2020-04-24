@@ -10,10 +10,12 @@ services:
             - ./php.ini:/usr/local/etc/php/conf.d/local.ini
 
     scheduler:
+        restart: unless-stopped
         volumes:
             - ..:/var/www/html
 
     queuer:
+        restart: unless-stopped
         volumes:
             - ..:/var/www/html
 
@@ -30,12 +32,19 @@ services:
 
     db:
         restart: unless-stopped
-        volumes:
-            - ./db/data:/var/lib/mysql
         ports:
             - '33069:3306'
+        volumes:
+            - ./db/data:/var/lib/mysql
         environment:
             MYSQL_DATABASE: hackdawg
             MYSQL_USER: hackdawg
             MYSQL_PASSWORD: password
             MYSQL_ROOT_PASSWORD: password
+
+    redis:
+        restart: unless-stopped
+        ports:
+            - '6379:6379'
+        volumes:
+            - ./redis/data:/var/lib/redis

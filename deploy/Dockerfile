@@ -28,8 +28,9 @@ RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Install PHP extensions
 RUN docker-php-ext-install pdo_mysql bcmath mbstring zip exif pcntl && \
-    docker-php-ext-configure gd --with-freetype=/usr/include/ --with-webp=/usr/include/  --with-jpeg=/usr/include/ && \
+    docker-php-ext-configure gd --with-freetype=/usr/include/ --with-webp=/usr/include/ --with-jpeg=/usr/include/ && \
     docker-php-ext-install gd
+RUN pecl install redis && docker-php-ext-enable redis
 
 # Override default PHP configuration
 COPY deploy/php.ini /usr/local/etc/php/conf.d/local.ini:ro
