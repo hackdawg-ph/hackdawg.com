@@ -19,7 +19,20 @@ class User extends Authenticatable implements HasMedia
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'username', 'about',
+        'website',
+        'about',
+        'first_name',
+        'middlename',
+        'last_name',
+        'email',
+        'birthdate',
+        'gender',
+        'country',
+        'state',
+        'city',
+        'street_address',
+        'postal_code',
+        'password',
     ];
 
     /**
@@ -39,6 +52,16 @@ class User extends Authenticatable implements HasMedia
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Get the user's full name
+     *
+     * @return string
+     */
+    public function getNameAttribute()
+    {
+        return "{$this->first_name} {$this->middlename} {$this->last_name}";
+    }
 
     /**
      * Get the converted avatar media url.

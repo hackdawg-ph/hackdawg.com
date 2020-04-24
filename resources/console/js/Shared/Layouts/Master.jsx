@@ -17,7 +17,7 @@ import UserGroupOutlineIcon from '@console/Shared/Icons/UserGroupOutline';
 import XOutlineIcon from '@console/Shared/Icons/XOutline';
 import Notification from '@console/Shared/Notification';
 
-export default function Master({ title, metas = {}, white = false, pageTitle, children, className, ...props }) {
+export default function Master({ title, metas = {}, pageTitle, children, className, ...props }) {
     const { auth, message, errors } = usePage();
     const mobileNav = useToggle();
     const userMenu = useToggle();
@@ -53,10 +53,7 @@ export default function Master({ title, metas = {}, white = false, pageTitle, ch
     ];
 
     return (
-        <div
-            className={cx('h-screen flex overflow-hidden', { 'bg-white': white, ' bg-gray-100': !white }, className)}
-            {...props}
-        >
+        <div className={cx('h-screen flex overflow-hidden bg-gray-100', className)} {...props}>
             <Helmet>
                 {title && <title>{title} | Hackdawg</title>}
                 {Object.keys(metas).map(property => (
@@ -248,11 +245,11 @@ export default function Master({ title, metas = {}, white = false, pageTitle, ch
                                             aria-labelledby="user-menu"
                                         >
                                             <InertiaLink
-                                                href={$route('console.account')}
+                                                href={$route('console.account.index')}
                                                 className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition ease-in-out duration-150"
                                                 role="menuitem"
                                             >
-                                                Your Account
+                                                Account settings
                                             </InertiaLink>
                                             <a
                                                 href="#"

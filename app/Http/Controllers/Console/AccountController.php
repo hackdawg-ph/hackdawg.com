@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Console;
 
+use App\Country;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -16,29 +17,27 @@ class AccountController extends Controller
      */
     public function showAccountPage()
     {
-        return Inertia::render('Account');
+        return Inertia::render('Account', [
+            'countries' => Country::all(),
+        ]);
     }
 
     /**
-     * Handle a request to update the user.
+     * Handle a request to update the user's profile.
      *
      * @param \Illuminate\Http\Request  $request;
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response
      *
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function update(Request $request)
+    public function updateProfile(Request $request)
     {
         $request->validate([
-            'username' => 'required|string|unique:users,username,'.Auth::user()->id,
+            'website' => 'url',
             'avatar' => 'image|max:10240',
-            'name' => 'required|string',
-            'email' => 'required|email|unique:users,email,'.Auth::user()->id,
         ]);
 
-        Auth::user()->update(
-            $request->only('username', 'about', 'name', 'email')
-        );
+        Auth::user()->update($request->only(['website', 'about']));
 
         if ($request->hasFile('avatar')) {
             Auth::user()
@@ -48,7 +47,41 @@ class AccountController extends Controller
 
         return back()->with('message', [
             'title' => 'Succesfully saved!',
-            'body' => "Account information updated.",
+            'body' => "Profile information updated.",
+            'type' => 'success',
+        ]);
+    }
+
+    /**
+     * Handle a request to update the user's personal information.
+     *
+     * @param \Illuminate\Http\Request  $request;
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response
+     *
+     * @throws \Illuminate\Validation\ValidationException
+     */
+    public function updatePersonal(Request $request)
+    {
+        $request->validate([
+            'first_name' => 'required|string',
+            'last_name' => 'required|string',
+            'email' => 'required|email|unique:users,email,'.Auth::user()->id,
+        ]);
+
+        Auth::user()->update($request->only([
+            'first_name',
+            'last_name',
+            'email',
+            'country',
+            'state',
+            'city',
+            'street_address',
+            'postal_code',
+        ]));
+
+        return back()->with('message', [
+            'title' => 'Succesfully saved!',
+            'body' => "Personal information updated.",
             'type' => 'success',
         ]);
     }

@@ -14,38 +14,70 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         User::create([
-            'username' => 'leonardolouie30',
+            'website' => 'https://leonardo-louie.me',
             'about' => 'FullStack Developer / Music Enthusiast / DevOps Engineer',
-            'name' => 'Leonardo Ordonez',
+            'first_name' => 'Leonardo',
+            'last_name' => 'Ordonez',
             'email' => 'leonardolouie30@gmail.com',
             'email_verified_at' => now(),
+            'birthdate' => null,
+            'gender' => 'male',
+            'country' => null,
+            'state' => null,
+            'city' => null,
+            'street_address' => null,
+            'postal_code' => null,
             'password' => Hash::make('password'),
         ]);
 
         User::create([
-            'username' => 'ahgumasing',
+            'website' => null,
             'about' => null,
-            'name' => 'Abetteson Gumasing',
+            'first_name' => 'Abetteson',
+            'last_name' => 'Gumasing',
             'email' => 'ahgumasing@gmail.com',
             'email_verified_at' => now(),
+            'birthdate' => null,
+            'gender' => 'male',
+            'country' => null,
+            'state' => null,
+            'city' => null,
+            'street_address' => null,
+            'postal_code' => null,
             'password' => Hash::make('password'),
         ]);
         
         User::create([
-            'username' => 'rancyguanzon',
+            'website' => null,
             'about' => 'Brand / Graphic Design, UI / Visual Design, Product Design',
-            'name' => 'Lourd Rancy Guanzon',
+            'first_name' => 'Lourd Rancy',
+            'last_name' => 'Guanzon',
             'email' => 'lourdrancyguanzon@gmail.com',
             'email_verified_at' => now(),
+            'birthdate' => null,
+            'gender' => 'male',
+            'country' => null,
+            'state' => null,
+            'city' => null,
+            'street_address' => null,
+            'postal_code' => null,
             'password' => Hash::make('password'),
         ]);
 
         User::create([
-            'username' => 'jovertical',
+            'website' => 'https://jovertpalonpon.me',
             'about' => 'Full Stack Developer | DevOps | Loves coffee',
-            'name' => 'Jovert Palonpon',
+            'first_name' => 'Jovert',
+            'last_name' => 'Palonpon',
             'email' => 'jovertical@gmail.com',
             'email_verified_at' => now(),
+            'birthdate' => '1998-05-18',
+            'gender' => 'male',
+            'country' => null,
+            'state' => 'Bulacan',
+            'city' => 'Angat',
+            'street_address' => '776 Tugatog St. Marungko',
+            'postal_code' => '3012',
             'password' => Hash::make('password'),
         ]);
     }

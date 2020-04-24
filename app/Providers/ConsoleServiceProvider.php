@@ -36,12 +36,21 @@ class ConsoleServiceProvider extends ServiceProvider
             'auth' => function () {
                 return [
                     'user' => Auth::user() ? [
-                        'id'        => Auth::user()->id,
-                        'username'  => Auth::user()->username,
-                        'about'     => Auth::user()->about,
+                        'id' => Auth::user()->id,
+                        'website' => Auth::user()->website,
+                        'about' => Auth::user()->about,
                         'avatarUrl' => Auth::user()->avatarUrl,
-                        'name'      => Auth::user()->name,
-                        'email'     => Auth::user()->email,
+                        'first_name' => Auth::user()->first_name,
+                        'middlename' => Auth::user()->middlename,
+                        'last_name' => Auth::user()->last_name,
+                        'email' => Auth::user()->email,
+                        'birthdate' => Auth::user()->birthdate,
+                        'gender' => Auth::user()->gender,
+                        'country' => Auth::user()->country,
+                        'state' => Auth::user()->state,
+                        'city' => Auth::user()->city,
+                        'street_address' => Auth::user()->street_address,
+                        'postal_code' => Auth::user()->postal_code,
                     ] : null,
                 ];
             },

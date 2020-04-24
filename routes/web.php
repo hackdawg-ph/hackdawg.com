@@ -22,8 +22,12 @@ Route::domain(get_domain('console'))->namespace('Console')->name('console.')->gr
     Route::auth(['register' => false]);
 
     Route::middleware('auth')->group(function () {
-        Route::get('account', 'AccountController@showAccountPage')->name('account');
-        Route::post('account', 'AccountController@update');
+        Route::prefix('account')->name('account.')->group(function () {
+            Route::get('/', 'AccountController@showAccountPage')->name('index');
+            Route::post('profile', 'AccountController@updateProfile')->name('profile');
+            Route::post('personal', 'AccountController@updatePersonal')->name('personal');
+            Route::post('password', 'AccountController@updatePassword')->name('password');
+        });
 
         Route::get('/', 'HomeController@index')->name('home');
         Route::resource('tags', 'TagsController');

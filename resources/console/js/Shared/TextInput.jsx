@@ -6,7 +6,7 @@ import ExclamationCircleIcon from '@console/Shared/Icons/ExclamationCircle';
 export default function TextInput({
     className,
     id,
-    value = null,
+    value = '',
     label = null,
     description = null,
     addOn = null,
@@ -45,13 +45,13 @@ export default function TextInput({
                             className,
                         )}
                         id={id}
-                        defaultValue={value}
+                        defaultValue={value || ''}
                         {...props}
                     ></textarea>
                 ) : (
                     <input
                         className={cx(
-                            'form-input appearance-none flex-1 block w-full px-3 py-2 border-gray-300 placeholder-gray-400 focus:outline-none transition duration-150 ease-in-out sm:text-sm sm:leading-5',
+                            'form-input appearance-none block w-full px-3 py-2 border-gray-300 placeholder-gray-400 focus:outline-none transition duration-150 ease-in-out sm:text-sm sm:leading-5',
                             {
                                 'focus:shadow-outline-indigo focus:border-indigo-300': errors.length === 0,
                                 'form-input-danger text-red-900 placeholder-red-300 focus:border-red-300 focus:shadow-outline-red':
@@ -62,7 +62,7 @@ export default function TextInput({
                             className,
                         )}
                         id={id}
-                        value={value}
+                        value={value || ''}
                         {...props}
                     />
                 )}

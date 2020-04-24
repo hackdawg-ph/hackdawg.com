@@ -12,20 +12,50 @@
 
 namespace App{
 /**
+ * App\Country
+ *
+ * @property int $id
+ * @property string|null $name
+ * @property string|null $code
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Country newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Country newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Country query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Country whereCode($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Country whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Country whereName($value)
+ */
+    class Country extends \Eloquent
+    {
+    }
+}
+
+namespace App{
+/**
  * App\User
  *
  * @property int $id
- * @property string $name
+ * @property string|null $website
  * @property string|null $about
- * @property string $username
+ * @property string $first_name
+ * @property string|null $middlename
+ * @property string $last_name
  * @property string $email
  * @property \Illuminate\Support\Carbon|null $email_verified_at
+ * @property string|null $birthdate
+ * @property string|null $gender
+ * @property string|null $country
+ * @property string|null $state
+ * @property string|null $city
+ * @property string|null $street_address
+ * @property string|null $postal_code
  * @property string $password
  * @property string|null $remember_token
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Article[] $articles
  * @property-read int|null $articles_count
+ * @property-read string|null $avatar_url
+ * @property-read string $name
  * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\MediaLibrary\MediaCollections\Models\Media[] $media
  * @property-read int|null $media_count
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
@@ -34,15 +64,24 @@ namespace App{
  * @method static \Illuminate\Database\Eloquent\Builder|\App\User newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\User query()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereAbout($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereBirthdate($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereCity($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereCountry($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereEmail($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereEmailVerifiedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereFirstName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereGender($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereLastName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereMiddlename($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\User wherePassword($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\User wherePostalCode($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereRememberToken($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereState($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereStreetAddress($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereUsername($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereWebsite($value)
  */
     class User extends \Eloquent
     {

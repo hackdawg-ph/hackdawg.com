@@ -19,13 +19,13 @@ class ConsoleAccountControllerTest extends TestCase
         $user = factory(User::class)->create();
 
         $this->actingAs($user)
-            ->get(route('console.account'))
+            ->get(route('console.account.index'))
             ->assertOk()
             ->assertSee('Account');
     }
 
     /** @test */
-    public function it_can_update_the_account_information()
+    public function it_can_update_the_profile_information()
     {
         Storage::fake('avatars');
 
@@ -33,15 +33,14 @@ class ConsoleAccountControllerTest extends TestCase
         $file = UploadedFile::fake()->image('avatar.jpg');
 
         $data = [
-            'username' => $user->username,
+            'website' => $user->website,
             'about' => $this->faker->sentence(5),
             'avatar' => $file,
-            'name' => $this->faker->name,
             'email' => $user->email,
         ];
-        
+
         $this->actingAs($user)
-            ->post(route('console.account'), $data)
+            ->post(route('console.account.profile'), $data)
             ->assertRedirect();
 
         unset($data['avatar']);
@@ -53,5 +52,28 @@ class ConsoleAccountControllerTest extends TestCase
             'collection_name' => 'avatars',
             'file_name' => 'avatar.jpg',
         ]);
+    }
+
+    /** @test */
+    public function it_can_update_the_personal_information()
+    {
+        $user = factory(User::class)->create();
+
+        $data = [
+            'first_name' => $this->faker->firstName($user->gender),
+            'last_name' => $this->faker->lastName,
+            'email' => $user->email,
+            'country' => $this->faker->country,
+            'state' => $this->faker->state,
+            'city' => $this->faker->city,
+            'street_address' => $this->faker->streetAddress,
+            'postal_code' => $this->faker->postcode,
+        ];
+
+        $this->actingAs($user)
+            ->post(route('console.account.personal'), $data)
+            ->assertRedirect();
+
+        $this->assertDatabaseHas('users', $data);
     }
 }
