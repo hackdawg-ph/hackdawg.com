@@ -15,10 +15,10 @@ if (! function_exists('get_domain')) {
                 'local' => 'www.hackdawg.test',
                 'testing' => 'www.hackdawg.test',
             ],
-            'console' => [
+            'backend' => [
                 'production' => 'console.hackdawg.com',
                 'local' => 'console.hackdawg.test',
-                'testing' => 'www.hackdawg.test',
+                'testing' => 'console.hackdawg.test',
             ],
         ];
 

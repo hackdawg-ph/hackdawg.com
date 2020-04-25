@@ -23,7 +23,7 @@ class ContactControllerTest extends TestCase
 
         Mail::fake();
 
-        $this->post(route('contact'), $data)
+        $this->post(route('frontend.contact'), $data)
             ->assertRedirect()
             ->assertSessionHas('message', [
                 'title' => 'Message sent!',

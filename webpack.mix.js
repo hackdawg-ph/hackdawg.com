@@ -16,16 +16,16 @@ const tailwindcss = require('tailwindcss');
  |
  */
 
-mix.js('resources/console/js/app.js', 'public/console/js/app.js')
-    .postCss('resources/console/css/app.css', 'public/console/css/app.css', [
+mix.js('resources/backend/js/app.js', 'public/backend/js/app.js')
+    .postCss('resources/backend/css/app.css', 'public/backend/css/app.css', [
         cssImport(),
         cssNesting(),
-        tailwindcss('tailwind.console.config.js'),
+        tailwindcss('tailwind.backend.js'),
         ...mix.inProduction() ? [
             purgecss({
                 content: [
-                    './resources/console/js/{Pages,Shared}/**/*.jsx',
-                    './resources/console/views/**/*.blade.php',
+                    './resources/backend/js/{Pages,Shared}/**/*.jsx',
+                    './resources/backend/views/**/*.blade.php',
                 ],
                 defaultExtractor: content => content.match(/[\w-/.:]+(?<!:)/g) || [],
                 whitelistPatternsChildren: [/nprogress/],
@@ -34,28 +34,29 @@ mix.js('resources/console/js/app.js', 'public/console/js/app.js')
     ])
     .webpackConfig({
         output: {
-            chunkFilename: 'console/js/[name].js?id=[chunkhash]'
+            chunkFilename: 'backend/js/[name].js?id=[chunkhash]'
         },
     })
-    .js('resources/js/app.js', 'public/js')
-    .postCss('resources/css/app.css', 'public/css', [
+    .js('resources/frontend/js/app.js', 'public/frontend/js')
+    .postCss('resources/frontend/css/app.css', 'public/frontend/css', [
         cssImport(),
         cssNesting(),
-        tailwindcss('tailwind.config.js'),
+        tailwindcss('tailwind.frontend.js'),
         ...mix.inProduction() ? [
             purgecss({
                 content: [
-                    './resources/views/**/*.blade.php',
+                    './resources/frontend/views/**/*.blade.php',
                 ],
                 defaultExtractor: content => content.match(/[\w-/:.]+(?<!:)/g) || [],
             }),
         ] : [],
     ])
+    .copy('resources/frontend/fonts', 'public/frontend/fonts')
     .webpackConfig({
         resolve: {
             alias: {
-                '@console': path.resolve('resources/console/js'),
-                '@': path.resolve('resources/js'),
+                '@backend': path.resolve('resources/backend/js'),
+                '@frontend': path.resolve('resources/frontend/js'),
             },
         },
     })

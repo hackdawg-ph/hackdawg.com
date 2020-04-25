@@ -14,8 +14,8 @@ return [
     */
 
     'paths' => [
-        resource_path('console/views'),
-        resource_path('views'),
+        resource_path('backend/views'),
+        resource_path('frontend/views'),
     ],
 
     /*

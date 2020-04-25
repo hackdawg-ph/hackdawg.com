@@ -10,28 +10,26 @@
  */
 
 
-namespace App{
+namespace App\Models{
 /**
- * App\Country
+ * App\Models\Country
  *
  * @property int $id
  * @property string|null $name
  * @property string|null $code
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Country newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Country newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Country query()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Country whereCode($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Country whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Country whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Country newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Country newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Country query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Country whereCode($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Country whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Country whereName($value)
  */
-    class Country extends \Eloquent
-    {
-    }
+	class Country extends \Eloquent {}
 }
 
-namespace App{
+namespace App\Models{
 /**
- * App\User
+ * App\Models\User
  *
  * @property int $id
  * @property string|null $website
@@ -52,7 +50,7 @@ namespace App{
  * @property string|null $remember_token
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Article[] $articles
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Article[] $articles
  * @property-read int|null $articles_count
  * @property-read string|null $avatar_url
  * @property-read string $name
@@ -60,37 +58,35 @@ namespace App{
  * @property-read int|null $media_count
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
  * @property-read int|null $notifications_count
- * @method static \Illuminate\Database\Eloquent\Builder|\App\User newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\User newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\User query()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereAbout($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereBirthdate($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereCity($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereCountry($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereEmail($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereEmailVerifiedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereFirstName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereGender($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereLastName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereMiddlename($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\User wherePassword($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\User wherePostalCode($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereRememberToken($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereState($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereStreetAddress($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereWebsite($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereAbout($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereBirthdate($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereCity($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereCountry($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereEmail($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereEmailVerifiedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereFirstName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereGender($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereLastName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereMiddlename($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User wherePassword($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User wherePostalCode($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereRememberToken($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereState($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereStreetAddress($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereWebsite($value)
  */
-    class User extends \Eloquent
-    {
-    }
+	class User extends \Eloquent {}
 }
 
-namespace App{
+namespace App\Models{
 /**
- * App\Article
+ * App\Models\Article
  *
  * @property int $id
  * @property int $user_id
@@ -100,20 +96,19 @@ namespace App{
  * @property \Illuminate\Support\Carbon|null $published_at
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \App\User $user
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Article newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Article newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Article query()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Article whereBody($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Article whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Article whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Article wherePublishedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Article whereSlug($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Article whereTitle($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Article whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Article whereUserId($value)
+ * @property-read \App\Models\User $user
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Article newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Article newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Article query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Article whereBody($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Article whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Article whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Article wherePublishedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Article whereSlug($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Article whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Article whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Article whereUserId($value)
  */
-    class Article extends \Eloquent
-    {
-    }
+	class Article extends \Eloquent {}
 }
+

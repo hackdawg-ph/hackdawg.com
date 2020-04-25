@@ -1,9 +1,9 @@
 {
     "private": true,
     "scripts": {
-        "test:console:lint": "eslint --ext .js,.jsx resources/console/js",
-        "test:console": "yarn test:console:lint",
-        "test": "yarn test:console",
+        "test:backend:lint": "eslint --ext .js,.jsx resources/backend/js",
+        "test:backend": "yarn test:backend:lint",
+        "test": "yarn test:backend",
         "format": "prettier --write \"resources/**/*.{js,jsx,css}\"",
         "dev": "yarn development",
         "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",

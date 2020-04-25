@@ -2,8 +2,8 @@
     "compilerOptions": {
         "baseUrl": "./",
         "paths": {
-            "@console/*": ["./resources/console/js/*"],
-            "@/*": ["./resources/js/*"]
+            "@backend/*": ["./resources/backend/js/*"],
+            "@frontend/*": ["./resources/frontend/js/*"]
         },
         "jsx": "react"
     },

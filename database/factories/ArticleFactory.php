@@ -1,6 +1,6 @@
 <?php
 
-use App\Article;
+use App\Models\Article;
 use Faker\Generator as Faker;
 use Illuminate\Support\Str;
 
