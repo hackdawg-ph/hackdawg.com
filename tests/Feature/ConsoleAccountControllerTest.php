@@ -6,6 +6,8 @@ use App\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Tests\TestCase;
 
@@ -75,5 +77,22 @@ class ConsoleAccountControllerTest extends TestCase
             ->assertRedirect();
 
         $this->assertDatabaseHas('users', $data);
+    }
+
+    /** @test */
+    public function it_can_update_the_password()
+    {
+        $user = factory(User::class)->create();
+
+        $data = [
+            'old_password' => 'password',
+            'new_password' => 'hackdawg',
+        ];
+
+        $this->actingAs($user)
+            ->post(route('console.account.password'), $data)
+            ->assertRedirect();
+
+        $this->assertTrue(Hash::check('hackdawg', Auth::user()->password));
     }
 }

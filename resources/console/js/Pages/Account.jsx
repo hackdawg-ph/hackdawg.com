@@ -58,6 +58,13 @@ export default function Account() {
         );
     }
 
+    function handleSubmitPassword(e) {
+        e.preventDefault();
+
+        Inertia.post($route('console.account.password'), pick(values, ['old_password', 'new_password']));
+        updateValue('new_password', '');
+    }
+
     return (
         <Layout title="Account Settings">
             <div>
@@ -252,6 +259,58 @@ export default function Account() {
                                                 value={values.postal_code}
                                                 onChange={handleChange}
                                                 errors={errors.postal_code}
+                                            />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="px-4 py-3 bg-gray-50 text-right sm:px-6">
+                                    <Button type="submit">Save</Button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div className="hidden sm:block">
+                <div className="py-5">
+                    <div className="border-t border-gray-200"></div>
+                </div>
+            </div>
+
+            <div className="mt-10 sm:mt-0">
+                <div className="md:grid md:grid-cols-3 md:gap-6">
+                    <div className="md:col-span-1">
+                        <div className="px-4 sm:px-0">
+                            <h3 className="text-lg font-medium leading-6 text-gray-900">Password</h3>
+                            <p className="mt-1 text-sm leading-5 text-gray-600">
+                                New password must be atleast 8 characters.
+                            </p>
+                        </div>
+                    </div>
+                    <div className="mt-5 md:mt-0 md:col-span-2">
+                        <form onSubmit={handleSubmitPassword}>
+                            <div className="shadow overflow-hidden sm:rounded-md">
+                                <div className="px-4 py-5 bg-white sm:p-6">
+                                    <div className="grid grid-cols-6 gap-6">
+                                        <div className="col-span-6 sm:col-span-4">
+                                            <TextInput
+                                                id="old_password"
+                                                type="password"
+                                                label="Current password"
+                                                value={values.old_password}
+                                                onChange={handleChange}
+                                                errors={errors.old_password}
+                                            />
+                                        </div>
+                                        <div className="col-span-6 sm:col-span-4">
+                                            <TextInput
+                                                id="new_password"
+                                                type="password"
+                                                label="New password"
+                                                value={values.new_password}
+                                                onChange={handleChange}
+                                                errors={errors.new_password}
                                             />
                                         </div>
                                     </div>

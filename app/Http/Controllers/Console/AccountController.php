@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Console;
 
 use App\Country;
 use App\Http\Controllers\Controller;
+use App\Rules\OldPassword;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Inertia\Inertia;
 
 class AccountController extends Controller
@@ -47,7 +49,7 @@ class AccountController extends Controller
 
         return back()->with('message', [
             'title' => 'Succesfully saved!',
-            'body' => "Profile information updated.",
+            'body' => 'Profile information updated.',
             'type' => 'success',
         ]);
     }
@@ -81,7 +83,33 @@ class AccountController extends Controller
 
         return back()->with('message', [
             'title' => 'Succesfully saved!',
-            'body' => "Personal information updated.",
+            'body' => 'Personal information updated.',
+            'type' => 'success',
+        ]);
+    }
+
+    /**
+     * Handle a request to update the user's password.
+     *
+     * @param \Illuminate\Http\Request  $request;
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response
+     *
+     * @throws \Illuminate\Validation\ValidationException
+     */
+    public function updatePassword(Request $request)
+    {
+        $request->validate([
+            'old_password' => ['required', new OldPassword(Auth::user()->password)],
+            'new_password' => 'required|min:8',
+        ]);
+
+        Auth::user()->update([
+            'password' => Hash::make($request->new_password),
+        ]);
+
+        return back()->with('message', [
+            'title' => 'Succesfully saved!',
+            'body' => 'Password updated.',
             'type' => 'success',
         ]);
     }
