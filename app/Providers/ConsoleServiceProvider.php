@@ -27,6 +27,7 @@ class ConsoleServiceProvider extends ServiceProvider
     public function boot()
     {
         Inertia::share([
+            'status' => fn () => Session::get('status'),
             'message' => fn () => Session::get('message'),
             'errors' => function () {
                 return Session::get('errors')

@@ -3,14 +3,11 @@ import { Inertia } from '@inertiajs/inertia';
 import { InertiaLink } from '@inertiajs/inertia-react';
 import Button from '@console/Shared/Button';
 import Layout from '@console/Shared/Layouts/Auth';
-import Checkbox from '@console/Shared/Checkbox';
 import TextInput from '@console/Shared/TextInput';
 
-export default function Login() {
+export default function Email() {
     const [values, setValues] = useState({
         email: '',
-        password: '',
-        remember: false,
     });
 
     function handleChange(e) {
@@ -18,17 +15,19 @@ export default function Login() {
 
         setValues(values => ({
             ...values,
-            [e.target.id]: e.target.type === 'checkbox' ? e.target.checked : e.target.value,
+            [e.target.id]: e.target.value,
         }));
     }
 
-    function handleSubmit(e) {
+    async function handleSubmit(e) {
         e.preventDefault();
-        Inertia.post($route('console.login'), values);
+
+        await Inertia.post($route('console.password.email'), values);
+        setValues({ email: '' });
     }
 
     return (
-        <Layout title="Sign in to your account">
+        <Layout title="Reset Password">
             <form onSubmit={handleSubmit}>
                 <div>
                     <TextInput
@@ -40,29 +39,19 @@ export default function Login() {
                     />
                 </div>
 
-                <div className="mt-6">
-                    <TextInput
-                        id="password"
-                        type="password"
-                        label="Password"
-                        value={values.password}
-                        onChange={handleChange}
-                    />
-                </div>
-
                 <div className="mt-6 flex items-center justify-between">
-                    <Checkbox id="remember" label="Remember me" checked={values.remember} onChange={handleChange} />
+                    <div></div>
                     <InertiaLink
-                        href={$route('console.password.request')}
+                        href={$route('console.login')}
                         className="font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:underline transition ease-in-out duration-150"
                     >
-                        Forgot your password?
+                        Back to login
                     </InertiaLink>
                 </div>
 
                 <div className="mt-6">
                     <Button className="w-full flex justify-center" type="submit">
-                        Sign in
+                        Send Password Reset Link
                     </Button>
                 </div>
             </form>

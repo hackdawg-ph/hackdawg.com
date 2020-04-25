@@ -1,8 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { usePage } from '@inertiajs/inertia-react';
 import cx from 'classnames';
+import isEmpty from 'lodash/isEmpty';
+import Alert from '@console/Shared/Alert';
 
 export default function Auth({ title, children, className, ...props }) {
+    const { status, errors } = usePage();
+
     return (
         <div
             className={cx(
@@ -18,7 +23,33 @@ export default function Auth({ title, children, className, ...props }) {
                 </div>
 
                 <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-                    <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">{children}</div>
+                    <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
+                        {status && (
+                            <Alert
+                                message={{
+                                    title: 'Success!',
+                                    body: status,
+                                    type: 'success',
+                                }}
+                            />
+                        )}
+                        {!isEmpty(errors) && (
+                            <Alert
+                                message={{
+                                    title: `There were ${Object.values(errors).length} errors with your submission`,
+                                    body: (
+                                        <ul className="list-disc pl-5">
+                                            {Object.values(errors).map((error, key) => (
+                                                <li key={`error-item-${key}`}>{error}</li>
+                                            ))}
+                                        </ul>
+                                    ),
+                                    type: 'error',
+                                }}
+                            />
+                        )}
+                        <div className="mt-4">{children}</div>
+                    </div>
                 </div>
             </div>
         </div>

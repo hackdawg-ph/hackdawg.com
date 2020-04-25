@@ -29,7 +29,8 @@ Route::domain(get_domain('console'))->namespace('Console')->name('console.')->gr
             Route::post('password', 'AccountController@updatePassword')->name('password');
         });
 
-        Route::get('/', 'HomeController@index')->name('home');
+        Route::get('/', 'HomeController@index');
+        Route::get('home', 'HomeController@index')->name('home');
         Route::resource('tags', 'TagsController');
         Route::resource('articles', 'ArticlesController');
         Route::resource('users', 'UsersController');
