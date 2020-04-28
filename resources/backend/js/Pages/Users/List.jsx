@@ -2,7 +2,7 @@ import React from 'react';
 import { usePage } from '@inertiajs/inertia-react';
 import Avatar from '@backend/Shared/Avatar';
 import Layout from '@backend/Shared/Layouts/Master';
-import Pagination from '@backend/Shared/Pagination';
+import SimplePagination from '@backend/Shared/SimplePagination';
 
 export default function List() {
     const { users } = usePage();
@@ -70,13 +70,11 @@ export default function List() {
                             </tbody>
                         </table>
 
-                        <Pagination
+                        <SimplePagination
                             prevPageUrl={users.prev_page_url}
                             nextPageUrl={users.next_page_url}
                             from={users.from}
                             to={users.to}
-                            currentPage={users.current_page}
-                            lastPage={users.last_page}
                             total={users.total}
                         />
                     </div>
