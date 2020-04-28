@@ -13,7 +13,7 @@ export default function Avatar({ variant = 'rounded', size = 'md', url = null, c
     }, [url]);
 
     return (
-        <span
+        <div
             className={cx(
                 'overflow-hidden overflow-hidden bg-gray-100',
                 {
@@ -30,13 +30,13 @@ export default function Avatar({ variant = 'rounded', size = 'md', url = null, c
             ) : (
                 <img className="w-full h-full" src={url} onError={() => setHasError(true)} alt="Avatar" />
             )}
-        </span>
+        </div>
     );
 }
 
 Avatar.propTypes = {
     variant: PropTypes.oneOf(['rounded']),
-    size: PropTypes.oneOf(['sm', 'md', 'lg']),
+    size: PropTypes.oneOf(['custom', 'sm', 'md', 'lg']),
     url: PropTypes.string,
     className: PropTypes.string,
 };

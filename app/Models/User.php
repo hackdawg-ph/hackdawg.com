@@ -15,6 +15,16 @@ class User extends Authenticatable implements HasMedia
     use Notifiable, MustVerifyEmail, InteractsWithMedia;
 
     /**
+     * The accessors to append to the model's array form.
+     *
+     * @var array
+     */
+    protected $appends = [
+        'name',
+        'avatarUrl',
+    ];
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array
@@ -61,7 +71,7 @@ class User extends Authenticatable implements HasMedia
      */
     public function getNameAttribute()
     {
-        return "{$this->first_name} {$this->middlename} {$this->last_name}";
+        return "{$this->first_name} {$this->middle_name} {$this->last_name}";
     }
 
     /**

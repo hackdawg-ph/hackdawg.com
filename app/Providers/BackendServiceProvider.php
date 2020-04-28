@@ -42,7 +42,7 @@ class BackendServiceProvider extends ServiceProvider
                         'about' => Auth::user()->about,
                         'avatarUrl' => Auth::user()->avatarUrl,
                         'first_name' => Auth::user()->first_name,
-                        'middlename' => Auth::user()->middlename,
+                        'middle_name' => Auth::user()->middle_name,
                         'last_name' => Auth::user()->last_name,
                         'email' => Auth::user()->email,
                         'birthdate' => Auth::user()->birthdate,
