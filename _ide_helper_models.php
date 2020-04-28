@@ -35,7 +35,7 @@ namespace App\Models{
  * @property string|null $website
  * @property string|null $about
  * @property string $first_name
- * @property string|null $middlename
+ * @property string|null $middle_name
  * @property string $last_name
  * @property string $email
  * @property \Illuminate\Support\Carbon|null $email_verified_at
@@ -72,7 +72,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereGender($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereLastName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereMiddlename($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereMiddleName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User wherePassword($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User wherePostalCode($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereRememberToken($value)
