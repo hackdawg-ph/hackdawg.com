@@ -6,8 +6,8 @@ export default function Home() {
     const { auth } = usePage();
 
     return (
-        <Layout title={'Welcome ' + auth.user.first_name} pageTitle="Dashboard">
-            <div className="border-4 border-dashed border-gray-200 rounded-lg h-96"></div>
+        <Layout title={'Welcome ' + auth.user.first_name} pageTitle="Dashboard" withHeader={false}>
+            <div className="border-4 border-dashed border-gray-200 rounded-lg h-96" />
         </Layout>
     );
 }

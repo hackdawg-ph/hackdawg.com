@@ -1,17 +1,27 @@
 import React from 'react';
+import { Inertia } from '@inertiajs/inertia';
 import { usePage } from '@inertiajs/inertia-react';
 import Avatar from '@backend/Shared/Avatar';
 import Layout from '@backend/Shared/Layouts/Master';
 import SimplePagination from '@backend/Shared/SimplePagination';
+import Button from '@backend/Shared/Button';
 
 export default function List() {
     const { users } = usePage();
 
     return (
-        <Layout title="Users" pageTitle="Users">
+        <Layout
+            title="User List"
+            pageTitle="User List"
+            headerActions={
+                <span className="shadow-sm rounded-md">
+                    <Button onClick={() => Inertia.visit($route('backend.users.create'))}>Create</Button>
+                </span>
+            }
+        >
             <div className="flex flex-col">
                 <div className="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
-                    <div className="align-middle inline-block min-w-full shadow overflow-hidden sm:rounded-lg border-b border-gray-200">
+                    <div className="align-middle inline-block min-w-full mt-3 md:mt-5 shadow overflow-hidden sm:rounded-lg border-b border-gray-200">
                         <table className="min-w-full">
                             <thead>
                                 <tr>
