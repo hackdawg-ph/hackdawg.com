@@ -38,7 +38,7 @@ class AccountController extends Controller
             'avatar' => 'image|max:2048',
         ]);
 
-        Auth::user()->update($request->only(['website', 'about']));
+        Auth::user()->update($request->only(['job_title', 'company', 'website', 'about']));
 
         if ($request->hasFile('avatar')) {
             Auth::user()

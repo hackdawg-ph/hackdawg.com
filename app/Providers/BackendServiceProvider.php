@@ -37,6 +37,8 @@ class BackendServiceProvider extends ServiceProvider
             'auth' => fn () => [
                 'user' => Auth::user() ? [
                     'id' => Auth::user()->id,
+                    'job_title' => Auth::user()->job_title,
+                    'company' => Auth::user()->company,
                     'website' => Auth::user()->website,
                     'about' => Auth::user()->about,
                     'avatar_url' => Auth::user()->avatar_url,

@@ -21,6 +21,8 @@ use Illuminate\Support\Str;
 $factory->define(User::class, function (Faker $faker) {
     return [
         'gender' => ($gender = $faker->randomElement(['female', 'male'])),
+        'job_title' => $faker->jobTitle,
+        'company' => $faker->company,
         'website' => $faker->url,
         'about' => $faker->paragraph(5),
         'first_name' => $faker->firstName($gender),

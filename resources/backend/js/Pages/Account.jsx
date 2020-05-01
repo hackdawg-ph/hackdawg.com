@@ -32,6 +32,8 @@ export default function Account() {
 
         const data = new FormData();
 
+        data.append('job_title', values.job_title || '');
+        data.append('company', values.company || '');
         data.append('website', values.website || '');
         data.append('about', values.about || '');
 
@@ -83,8 +85,28 @@ export default function Account() {
                         <form onSubmit={handleSubmitProfile}>
                             <div className="shadow sm:rounded-md sm:overflow-hidden">
                                 <div className="px-4 py-5 bg-white sm:p-6">
-                                    <div className="grid grid-cols-3 gap-6">
-                                        <div className="col-span-3 sm:col-span-2">
+                                    <div className="grid grid-cols-6 gap-6">
+                                        <div className="col-span-6 sm:col-span-3">
+                                            <TextInput
+                                                id="job_title"
+                                                label="Job title"
+                                                value={values.job_title}
+                                                onChange={handleChange}
+                                                errors={form.errors.job_title}
+                                            />
+                                        </div>
+
+                                        <div className="col-span-6 sm:col-span-3">
+                                            <TextInput
+                                                id="company"
+                                                label="Company"
+                                                value={values.company}
+                                                onChange={handleChange}
+                                                errors={form.errors.company}
+                                            />
+                                        </div>
+
+                                        <div className="col-span-6 sm:col-span-4">
                                             <TextInput
                                                 id="website"
                                                 label="Website"
@@ -93,59 +115,29 @@ export default function Account() {
                                                 errors={form.errors.website}
                                             />
                                         </div>
-                                    </div>
 
-                                    <div className="mt-6">
-                                        <TextInput
-                                            id="about"
-                                            label="About"
-                                            value={values.about}
-                                            onChange={handleChange}
-                                            description="Write a few sentences about yourself"
-                                            errors={form.errors.about}
-                                            multiline
-                                            rows={3}
-                                        />
-                                    </div>
+                                        <div className="col-span-6">
+                                            <TextInput
+                                                id="about"
+                                                label="About"
+                                                value={values.about}
+                                                onChange={handleChange}
+                                                description="Write a few sentences about yourself"
+                                                errors={form.errors.about}
+                                                multiline
+                                                rows={3}
+                                            />
+                                        </div>
 
-                                    <div className="mt-6">
-                                        <ImagePicker
-                                            id="avatar"
-                                            label="Avatar"
-                                            description="File can be PNG, JPG, GIF up to 10MB"
-                                            onChange={file => updateValue('avatar', file)}
-                                            defaultValue={values.avatar_url}
-                                            errors={form.errors.avatar}
-                                        />
-                                    </div>
-
-                                    <div className="mt-6">
-                                        <label className="block text-sm leading-5 font-medium text-gray-700">
-                                            Cover photo
-                                        </label>
-                                        <div className="mt-2 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
-                                            <div className="text-center">
-                                                <svg
-                                                    className="mx-auto h-12 w-12 text-gray-400"
-                                                    stroke="currentColor"
-                                                    fill="none"
-                                                    viewBox="0 0 48 48"
-                                                >
-                                                    <path
-                                                        d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02"
-                                                        strokeWidth="2"
-                                                        strokeLinecap="round"
-                                                        strokeLinejoin="round"
-                                                    />
-                                                </svg>
-                                                <p className="mt-1 text-sm text-gray-600">
-                                                    <button className="font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:underline transition duration-150 ease-in-out">
-                                                        Upload a file
-                                                    </button>{' '}
-                                                    or drag and drop
-                                                </p>
-                                                <p className="mt-1 text-xs text-gray-500">PNG, JPG, GIF up to 10MB</p>
-                                            </div>
+                                        <div className="col-span-6">
+                                            <ImagePicker
+                                                id="avatar"
+                                                label="Avatar"
+                                                description="File can be PNG, JPG, GIF up to 10MB"
+                                                onChange={file => updateValue('avatar', file)}
+                                                defaultValue={values.avatar_url}
+                                                errors={form.errors.avatar}
+                                            />
                                         </div>
                                     </div>
                                 </div>
