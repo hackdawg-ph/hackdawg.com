@@ -11,7 +11,7 @@
 |
 */
 
-Route::auth(['verify' => true, 'register' => false]);
+Route::auth(['register' => false]);
 Route::middleware('auth')->group(function () {
     Route::prefix('account')->name('account.')->group(function () {
         Route::get('/', 'AccountController@showAccountPage')->name('index');
@@ -20,8 +20,7 @@ Route::middleware('auth')->group(function () {
         Route::post('password', 'AccountController@updatePassword')->name('password');
     });
 
-    Route::get('/', 'HomeController@index');
-    Route::get('home', 'HomeController@index')->name('home');
+    Route::get('/', 'HomeController@index')->name('home');
     Route::resource('tags', 'TagsController');
     Route::resource('articles', 'ArticlesController');
     Route::resource('users', 'UsersController');
