@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
@@ -65,5 +66,18 @@ class BackendUsersControllerTest extends TestCase
             ->assertRedirect();
 
         $this->assertDatabaseHas('users', $data);
+    }
+
+    /** @test */
+    public function it_can_delete_a_user()
+    {
+        $this->signIn();
+
+        $this->delete(route('backend.users.destroy', ($user = User::first())))
+            ->assertRedirect();
+
+        $this->assertDatabaseMissing('users', [
+            'email' => $user->email,
+        ]);
     }
 }

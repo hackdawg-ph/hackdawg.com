@@ -65,7 +65,7 @@ class UsersController extends Controller
         return redirect()->route('backend.users.index')->with('message', [
             'title' => 'Success!',
             'body' => 'User created.',
-            'type' => 'success',
+            'variant' => 'success',
         ]);
     }
 
@@ -114,18 +114,26 @@ class UsersController extends Controller
         return redirect()->route('backend.users.index')->with('message', [
             'title' => 'Success!',
             'body' => 'User details updated.',
-            'type' => 'success',
+            'variant' => 'success',
         ]);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\User  $user
+     * @param \App\Models\User $user
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response
+     *
+     * @throws \Exception
      */
     public function destroy(User $user)
     {
-        return back();
+        $user->delete();
+
+        return back()->with('message', [
+            'title' => 'Success!',
+            'body' => 'User deleted.',
+            'variant' => 'success',
+        ]);
     }
 }

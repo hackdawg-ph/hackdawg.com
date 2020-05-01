@@ -1,15 +1,33 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Inertia } from '@inertiajs/inertia';
 import { InertiaLink, usePage } from '@inertiajs/inertia-react';
 import Avatar from '@backend/Shared/Avatar';
 import Layout from '@backend/Shared/Layouts/Master';
+import AlertModal from '@backend/Shared/Modals/Alert';
 import SimplePagination from '@backend/Shared/SimplePagination';
 import Button from '@backend/Shared/Button';
 import useTitle from '@backend/hooks/useTitle';
 
 export default function List() {
-    const { users } = usePage();
+    const { users, auth } = usePage();
     useTitle('Users');
+
+    const [activeUser, setActiveUser] = useState(null);
+    const [alert, setAlert] = useState(null);
+
+    function handleDeleteConfirmed() {
+        setAlert(null);
+        return Inertia.delete($route('backend.users.destroy', activeUser));
+    }
+
+    function handleDeleteClicked(user) {
+        setActiveUser(user);
+        setAlert({
+            title: 'You are deleting a user!',
+            body: 'Data related to the user will also be destroyed. This action cannot be undone.',
+            variant: 'danger',
+        });
+    }
 
     return (
         <Layout
@@ -78,6 +96,15 @@ export default function List() {
                                             >
                                                 Edit
                                             </InertiaLink>
+
+                                            {user.id !== auth.user.id && (
+                                                <button
+                                                    onClick={() => handleDeleteClicked(user)}
+                                                    className="ml-3 text-red-600 hover:text-red-900"
+                                                >
+                                                    Delete
+                                                </button>
+                                            )}
                                         </td>
                                     </tr>
                                 ))}
@@ -94,6 +121,8 @@ export default function List() {
                     </div>
                 </div>
             </div>
+
+            {alert && <AlertModal message={alert} onCancel={() => setAlert(null)} onConfirm={handleDeleteConfirmed} />}
         </Layout>
     );
 }

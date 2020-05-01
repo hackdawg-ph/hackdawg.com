@@ -31,7 +31,7 @@ export default function Auth({ title, children, className, ...props }) {
                                 message={{
                                     title: 'Success!',
                                     body: status,
-                                    type: 'success',
+                                    variant: 'success',
                                 }}
                             />
                         )}
@@ -46,7 +46,7 @@ export default function Auth({ title, children, className, ...props }) {
                                             ))}
                                         </ul>
                                     ),
-                                    type: 'error',
+                                    variant: 'danger',
                                 }}
                             />
                         )}
