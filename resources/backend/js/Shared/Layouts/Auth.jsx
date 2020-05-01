@@ -6,7 +6,9 @@ import isEmpty from 'lodash/isEmpty';
 import Alert from '@backend/Shared/Alert';
 
 export default function Auth({ title, children, className, ...props }) {
-    const { status, errors } = usePage();
+    const {
+        form: { status, errors },
+    } = usePage();
 
     return (
         <div
@@ -29,7 +31,7 @@ export default function Auth({ title, children, className, ...props }) {
                                 message={{
                                     title: 'Success!',
                                     body: status,
-                                    type: 'success',
+                                    variant: 'success',
                                 }}
                             />
                         )}
@@ -44,7 +46,7 @@ export default function Auth({ title, children, className, ...props }) {
                                             ))}
                                         </ul>
                                     ),
-                                    type: 'error',
+                                    variant: 'danger',
                                 }}
                             />
                         )}

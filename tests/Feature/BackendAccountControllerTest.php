@@ -3,12 +3,12 @@
 namespace Tests\Feature;
 
 use App\Models\User;
+use Auth;
+use Hash;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Http\UploadedFile;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Storage;
+use Storage;
 use Tests\TestCase;
 
 class BackendAccountControllerTest extends TestCase
@@ -18,10 +18,9 @@ class BackendAccountControllerTest extends TestCase
     /** @test */
     public function it_shows_the_account_page()
     {
-        $user = factory(User::class)->create();
+        $this->signIn();
 
-        $this->actingAs($user)
-            ->get(route('backend.account.index'))
+        $this->get(route('backend.account.index'))
             ->assertOk()
             ->assertSee('Account');
     }
@@ -31,7 +30,7 @@ class BackendAccountControllerTest extends TestCase
     {
         Storage::fake('avatars');
 
-        $user = factory(User::class)->create();
+        $user = $this->signIn();
         $file = UploadedFile::fake()->image('avatar.jpg');
 
         $data = [
@@ -41,9 +40,7 @@ class BackendAccountControllerTest extends TestCase
             'email' => $user->email,
         ];
 
-        $this->actingAs($user)
-            ->post(route('backend.account.profile'), $data)
-            ->assertRedirect();
+        $this->post(route('backend.account.profile'), $data)->assertRedirect();
 
         unset($data['avatar']);
 
@@ -59,7 +56,7 @@ class BackendAccountControllerTest extends TestCase
     /** @test */
     public function it_can_update_the_personal_information()
     {
-        $user = factory(User::class)->create();
+        $user = $this->signIn();
 
         $data = [
             'first_name' => $this->faker->firstName($user->gender),
@@ -82,7 +79,7 @@ class BackendAccountControllerTest extends TestCase
     /** @test */
     public function it_can_update_the_password()
     {
-        $user = factory(User::class)->create();
+        $user = $this->signIn();
 
         $data = [
             'old_password' => 'password',

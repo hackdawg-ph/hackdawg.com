@@ -9,6 +9,10 @@ import XCircleOutlineIcon from '@backend/Shared/Icons/XCircleOutline';
 
 const notificationRoot = document.getElementById('notification-portal');
 
+Portal.propTypes = {
+    children: PropTypes.node.isRequired,
+};
+
 function Portal({ children }) {
     const el = document.createElement('div');
 
@@ -23,8 +27,13 @@ function Portal({ children }) {
     return ReactDOM.createPortal(children, el);
 }
 
-Portal.propTypes = {
-    children: PropTypes.node.isRequired,
+Notification.propTypes = {
+    timeout: PropTypes.number,
+    message: PropTypes.shape({
+        title: PropTypes.string.isRequired,
+        body: PropTypes.string.isRequired,
+        variant: PropTypes.oneOf(['info', 'success', 'warning', 'danger']),
+    }),
 };
 
 export default function Notification({ timeout = 3000, message }) {
@@ -61,27 +70,27 @@ export default function Notification({ timeout = 3000, message }) {
     return (
         <Portal>
             <div className="fixed inset-0 z-50 flex items-end justify-center px-4 py-6 pointer-events-none sm:p-6 sm:items-start sm:justify-end">
-                {/* 
+                {/*
                     Notification panel, show/hide based on alert state.
                     Entering: "transform ease-out duration-300 transition"
                     From: "translate-y-2 opacity-0 sm:translate-y-0 sm:translate-x-2"
                     To: "translate-y-0 opacity-100 sm:translate-x-0"
                     Leaving: "transition ease-in duration-100"
                     From: "opacity-100"
-                    To: "opacity-0" 
+                    To: "opacity-0"
                 */}
                 <div className="max-w-sm w-full bg-white shadow-lg rounded-lg pointer-events-auto">
                     <div className="rounded-lg shadow-xs overflow-hidden">
                         <div className="p-4">
                             <div className="flex items-start">
                                 <div className="flex-shrink-0">
-                                    {message.type === 'info' ? (
+                                    {message.variant === 'info' ? (
                                         <InformationCircleOutlineIcon className="h-6 w-6 text-blue-400" />
-                                    ) : message.type === 'success' ? (
+                                    ) : message.variant === 'success' ? (
                                         <CheckCircleOutlineIcon className="h-6 w-6 text-green-400" />
-                                    ) : message.type === 'warning' ? (
+                                    ) : message.variant === 'warning' ? (
                                         <ExclamationOutlineIcon className="h-6 w-6 text-orange-400" />
-                                    ) : message.type === 'error' ? (
+                                    ) : message.variant === 'danger' ? (
                                         <XCircleOutlineIcon className="h-6 w-6 text-red-400" />
                                     ) : null}
                                 </div>
@@ -105,12 +114,3 @@ export default function Notification({ timeout = 3000, message }) {
         </Portal>
     );
 }
-
-Notification.propTypes = {
-    timeout: PropTypes.number,
-    message: PropTypes.shape({
-        title: PropTypes.string.isRequired,
-        body: PropTypes.string.isRequired,
-        type: PropTypes.oneOf(['info', 'success', 'warning', 'error']),
-    }),
-};

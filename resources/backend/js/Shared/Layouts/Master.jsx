@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Inertia } from '@inertiajs/inertia';
 import { InertiaLink, usePage } from '@inertiajs/inertia-react';
-import { Helmet } from 'react-helmet';
 import cx from 'classnames';
 import isEmpty from 'lodash/isEmpty';
 import useToggle from '@backend/hooks/useToggle';
@@ -17,8 +16,20 @@ import UserGroupOutlineIcon from '@backend/Shared/Icons/UserGroupOutline';
 import XOutlineIcon from '@backend/Shared/Icons/XOutline';
 import Notification from '@backend/Shared/Notification';
 
-export default function Master({ title, metas = {}, pageTitle, children, className, ...props }) {
-    const { auth, message, errors } = usePage();
+Master.propTypes = {
+    title: PropTypes.string,
+    headerActions: PropTypes.node,
+    withHeader: PropTypes.bool,
+    children: PropTypes.node.isRequired,
+    className: PropTypes.string,
+};
+
+export default function Master({ title, headerActions, withHeader = true, children, className, ...props }) {
+    const {
+        auth,
+        message,
+        form: { errors },
+    } = usePage();
     const mobileNav = useToggle();
     const userMenu = useToggle();
 
@@ -54,13 +65,6 @@ export default function Master({ title, metas = {}, pageTitle, children, classNa
 
     return (
         <div className={cx('h-screen flex overflow-hidden bg-gray-100', className)} {...props}>
-            <Helmet>
-                {title && <title>{title} | Hackdawg</title>}
-                {Object.keys(metas).map(property => (
-                    <meta key={'meta-' + property} name={property} content={metas[property]} />
-                ))}
-            </Helmet>
-
             {/* Off-canvas menu htmlFor mobile */}
             <div className="md:hidden">
                 {mobileNav.open && (
@@ -71,7 +75,7 @@ export default function Master({ title, metas = {}, pageTitle, children, classNa
                             To: "opacity-100"
                             Leaving: "transition-opacity ease-linear duration-300"
                             From: "opacity-100"
-                            To: "opacity-0" 
+                            To: "opacity-0"
                         */}
                         <div className="fixed inset-0">
                             <div className="absolute inset-0 bg-gray-600 opacity-75"></div>
@@ -82,7 +86,7 @@ export default function Master({ title, metas = {}, pageTitle, children, classNa
                             To: "translate-x-0"
                             Leaving: "transition ease-in-out duration-300 transform"
                             From: "translate-x-0"
-                            To: "-translate-x-full" 
+                            To: "-translate-x-full"
                         */}
                         <div className="relative flex-1 flex flex-col max-w-xs w-full pt-5 pb-4 bg-gray-800">
                             <div className="absolute top-0 right-0 -mr-14 p-1">
@@ -180,8 +184,10 @@ export default function Master({ title, metas = {}, pageTitle, children, classNa
                     </div>
                 </div>
             </div>
+
             <div className="flex flex-col w-0 flex-1 overflow-hidden">
-                <div className="relative z-10 flex-shrink-0 flex h-16 bg-white shadow">
+                {/* Header */}
+                <div className="relative z-10 flex-shrink-0 flex h-16 bg-white shadow-sm">
                     <button
                         className="px-4 border-r border-gray-200 text-gray-500 focus:outline-none focus:bg-gray-100 focus:text-gray-600 md:hidden"
                         onClick={() => mobileNav.setOpen(true)}
@@ -226,7 +232,7 @@ export default function Master({ title, metas = {}, pageTitle, children, classNa
                                         aria-haspopup="true"
                                         onClick={() => userMenu.setOpen(true)}
                                     >
-                                        <Avatar size="sm" url={auth.user.avatarUrl} />
+                                        <Avatar size="sm" url={auth.user.avatar_url} />
                                     </button>
                                 </div>
                                 {/* Profile dropdown panel, show/hide based on dropdown state.
@@ -235,7 +241,7 @@ export default function Master({ title, metas = {}, pageTitle, children, classNa
                                         To: "transform opacity-100 scale-100"
                                     Leaving: "transition ease-in duration-75"
                                         From: "transform opacity-100 scale-100"
-                                        To: "transform opacity-0 scale-95" 
+                                        To: "transform opacity-0 scale-95"
                                 */}
                                 {userMenu.open && (
                                     <div
@@ -270,11 +276,33 @@ export default function Master({ title, metas = {}, pageTitle, children, classNa
                         </div>
                     </div>
                 </div>
+                {/* End: Header */}
 
-                <main className="flex-1 relative z-0 overflow-y-auto py-6 focus:outline-none" tabIndex="0">
-                    {pageTitle && (
-                        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
-                            <h1 className="text-2xl font-semibold text-gray-900">{pageTitle}</h1>
+                {withHeader && (
+                    <div className="p-6 bg-white shadow">
+                        {/* Breadcrumbs */}
+
+                        <div className="md:flex md:items-center md:justify-between">
+                            <div className="flex-1 min-w-0">
+                                <h2 className="text-2xl font-bold leading-5 text-gray-900 sm:text-2xl sm:leading-7 sm:truncate">
+                                    {title}
+                                </h2>
+                            </div>
+                            <div className="mt-4 flex-shrink-0 flex md:mt-0 md:ml-4">{headerActions}</div>
+                        </div>
+                    </div>
+                )}
+
+                <main
+                    className={cx('flex-1 relative z-0 overflow-y-auto focus:outline-none', {
+                        'py-6': !withHeader,
+                        'pb-6': withHeader,
+                    })}
+                    tabIndex="0"
+                >
+                    {!withHeader && (
+                        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                            <h1 className="text-2xl font-semibold text-gray-900">{title}</h1>
                         </div>
                     )}
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
@@ -296,12 +324,3 @@ export default function Master({ title, metas = {}, pageTitle, children, classNa
         </div>
     );
 }
-
-Master.propTypes = {
-    title: PropTypes.string.isRequired,
-    metas: PropTypes.object,
-    pageTitle: PropTypes.string,
-    white: PropTypes.bool,
-    children: PropTypes.node.isRequired,
-    className: PropTypes.string,
-};

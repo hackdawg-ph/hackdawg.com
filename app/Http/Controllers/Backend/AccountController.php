@@ -34,7 +34,7 @@ class AccountController extends Controller
     public function updateProfile(Request $request)
     {
         $request->validate([
-            'website' => 'url',
+            'website' => 'nullable|url',
             'avatar' => 'image|max:2048',
         ]);
 
@@ -49,7 +49,7 @@ class AccountController extends Controller
         return back()->with('message', [
             'title' => 'Succesfully saved!',
             'body' => 'Profile information updated.',
-            'type' => 'success',
+            'variant' => 'success',
         ]);
     }
 
@@ -83,7 +83,7 @@ class AccountController extends Controller
         return back()->with('message', [
             'title' => 'Succesfully saved!',
             'body' => 'Personal information updated.',
-            'type' => 'success',
+            'variant' => 'success',
         ]);
     }
 
@@ -109,7 +109,7 @@ class AccountController extends Controller
         return back()->with('message', [
             'title' => 'Succesfully saved!',
             'body' => 'Password updated.',
-            'type' => 'success',
+            'variant' => 'success',
         ]);
     }
 }
