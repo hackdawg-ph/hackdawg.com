@@ -12,20 +12,20 @@ class PasswordReset extends Notification implements ShouldQueue
     use Queueable;
 
     /**
-     * Password reset token.
+     * Password reset url.
      *
      * @var string
      */
-    protected $token;
+    protected $url;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct($token)
+    public function __construct($url)
     {
-        $this->token = $token;
+        $this->url = $url;
     }
 
     /**
@@ -49,7 +49,7 @@ class PasswordReset extends Notification implements ShouldQueue
     {
         return (new MailMessage)
                     ->line('You recently requested to reset your password for your '.config('app.name').' account')
-                    ->action('Reset Password', route('backend.password.reset', ['token' => $this->token]))
+                    ->action('Reset Password', $this->url)
                     ->line('If you did not request a password reset, please ignore this email.');
     }
 

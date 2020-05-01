@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\Notifications\PasswordReset;
 use Illuminate\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -101,7 +100,7 @@ class User extends Authenticatable implements HasMedia
      *
      * @param array $attributes
      *
-     * @return \Illuminate\Database\Eloquent\Collection
+     * @return \Illuminate\Database\Eloquent\Model
      */
     public function createArticle($attributes)
     {
@@ -114,17 +113,5 @@ class User extends Authenticatable implements HasMedia
             ->width(240)
             ->height(240)
             ->sharpen(10);
-    }
-
-    /**
-     * Sends the password reset notification.
-     *
-     * @param  string $token
-     *
-     * @return void
-     */
-    public function sendPasswordResetNotification($token)
-    {
-        $this->notify(new PasswordReset($token));
     }
 }

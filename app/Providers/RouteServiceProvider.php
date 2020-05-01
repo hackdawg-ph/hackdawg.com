@@ -54,7 +54,7 @@ class RouteServiceProvider extends ServiceProvider
     protected function mapFrontendRoutes()
     {
         Route::middleware('web')
-            ->name('frontend.')
+             ->name('frontend.')
              ->namespace($this->namespace.'\Frontend')
              ->domain(get_domain('frontend'))
              ->group(base_path('routes/frontend.php'));
