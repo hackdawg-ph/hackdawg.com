@@ -13,7 +13,7 @@ export default function List() {
 
     return (
         <Layout
-            pageTitle="User List"
+            title="User List"
             headerActions={
                 <span className="shadow-sm rounded-md">
                     <Button onClick={() => Inertia.visit($route('backend.users.create'))}>Create</Button>

@@ -6,7 +6,7 @@ export default function List() {
     useTitle('Articles');
 
     return (
-        <Layout pageTitle="Articles">
+        <Layout title="Articles">
             <div className="border-4 border-dashed border-gray-200 rounded-lg h-96" />
         </Layout>
     );

@@ -17,14 +17,14 @@ import XOutlineIcon from '@backend/Shared/Icons/XOutline';
 import Notification from '@backend/Shared/Notification';
 
 Master.propTypes = {
-    pageTitle: PropTypes.string,
+    title: PropTypes.string,
     headerActions: PropTypes.node,
     withHeader: PropTypes.bool,
     children: PropTypes.node.isRequired,
     className: PropTypes.string,
 };
 
-export default function Master({ pageTitle, headerActions, withHeader = true, children, className, ...props }) {
+export default function Master({ title, headerActions, withHeader = true, children, className, ...props }) {
     const { auth, message, errors } = usePage();
     const mobileNav = useToggle();
     const userMenu = useToggle();
@@ -281,7 +281,7 @@ export default function Master({ pageTitle, headerActions, withHeader = true, ch
                         <div className="md:flex md:items-center md:justify-between">
                             <div className="flex-1 min-w-0">
                                 <h2 className="text-2xl font-bold leading-5 text-gray-900 sm:text-2xl sm:leading-7 sm:truncate">
-                                    {pageTitle}
+                                    {title}
                                 </h2>
                             </div>
                             <div className="mt-4 flex-shrink-0 flex md:mt-0 md:ml-4">{headerActions}</div>
@@ -298,7 +298,7 @@ export default function Master({ pageTitle, headerActions, withHeader = true, ch
                 >
                     {!withHeader && (
                         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                            <h1 className="text-2xl font-semibold text-gray-900">{pageTitle}</h1>
+                            <h1 className="text-2xl font-semibold text-gray-900">{title}</h1>
                         </div>
                     )}
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">

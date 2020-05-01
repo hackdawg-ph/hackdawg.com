@@ -8,7 +8,7 @@ export default function Home() {
     useTitle('Welcome ' + auth.user.first_name);
 
     return (
-        <Layout pageTitle="Dashboard" withHeader={false}>
+        <Layout title="Dashboard" withHeader={false}>
             <div className="border-4 border-dashed border-gray-200 rounded-lg h-96" />
         </Layout>
     );
