@@ -1,8 +1,5 @@
-const cssImport = require('postcss-import');
-const cssNesting = require('postcss-nesting');
 const mix = require('laravel-mix');
 const path = require('path');
-const purgecss = require('@fullhuman/postcss-purgecss');
 const tailwindcss = require('tailwindcss');
 
 /*
@@ -17,40 +14,14 @@ const tailwindcss = require('tailwindcss');
  */
 
 mix.js('resources/backend/js/app.js', 'public/backend/js/app.js')
-    .postCss('resources/backend/css/app.css', 'public/backend/css/app.css', [
-        cssImport(),
-        cssNesting(),
-        tailwindcss('tailwind.backend.js'),
-        ...mix.inProduction() ? [
-            purgecss({
-                content: [
-                    './resources/backend/js/{Pages,Shared}/**/*.jsx',
-                    './resources/backend/views/**/*.blade.php',
-                ],
-                defaultExtractor: content => content.match(/[\w-/.:]+(?<!:)/g) || [],
-                whitelistPatternsChildren: [/nprogress/],
-            })
-        ] : []
-    ])
+    .postCss('resources/backend/css/app.css', 'public/backend/css/app.css', [tailwindcss('tailwind.backend.js')])
     .webpackConfig({
         output: {
-            chunkFilename: 'backend/js/[name].js?id=[chunkhash]'
+            chunkFilename: 'backend/js/[name].js?id=[chunkhash]',
         },
     })
     .js('resources/frontend/js/app.js', 'public/frontend/js')
-    .postCss('resources/frontend/css/app.css', 'public/frontend/css', [
-        cssImport(),
-        cssNesting(),
-        tailwindcss('tailwind.frontend.js'),
-        ...mix.inProduction() ? [
-            purgecss({
-                content: [
-                    './resources/frontend/views/**/*.blade.php',
-                ],
-                defaultExtractor: content => content.match(/[\w-/:.]+(?<!:)/g) || [],
-            }),
-        ] : [],
-    ])
+    .postCss('resources/frontend/css/app.css', 'public/frontend/css', [tailwindcss('tailwind.frontend.js')])
     .copy('resources/frontend/fonts', 'public/frontend/fonts')
     .webpackConfig({
         resolve: {

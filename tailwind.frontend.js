@@ -1,39 +1,40 @@
 module.exports = {
+    purge: ['./resources/frontend/views/**/*.blade.php'],
     theme: {
         extend: {
             colors: {
                 blue: {
-                    default: '#007CFF'
+                    default: '#007CFF',
                 },
 
                 indigo: {
                     light: '#4219E5',
-                    default: '#2B00D4'
+                    default: '#2B00D4',
                 },
 
                 gray: {
                     lightest: '#F9F9F9',
-                    default: '#B1B1B1'
+                    default: '#B1B1B1',
                 },
 
                 green: {
                     lighter: '#00CFBE',
                     default: '#266963',
                     darker: '#003B36',
-                    darkest: '#042825'
+                    darkest: '#042825',
                 },
 
                 red: {
-                    default: '#C81313'
+                    default: '#C81313',
                 },
 
                 yellow: {
-                    default: '#FFDB69'
+                    default: '#FFDB69',
                 },
             },
 
             zIndex: {
-                '-1': '-1'
+                '-1': '-1',
             },
 
             spacing: {
@@ -42,7 +43,7 @@ module.exports = {
 
             borderWidth: {
                 '1/2px': '0.5px',
-            }
+            },
         },
         opacity: {
             '0': '0',
@@ -56,8 +57,8 @@ module.exports = {
             '80': '.8',
             '90': '.9',
             '100': '1',
-        }
+        },
     },
     variants: {},
     plugins: [],
-}
+};
