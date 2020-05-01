@@ -8,9 +8,11 @@ import ImagePicker from '@backend/Shared/ImagePicker';
 import Layout from '@backend/Shared/Layouts/Master';
 import Select from '@backend/Shared/Select';
 import TextInput from '@backend/Shared/TextInput';
+import useTitle from '@backend/hooks/useTitle';
 
 export default function Account() {
     const { countries, errors, auth } = usePage();
+    useTitle('Account Settings');
     const [values, setValues] = useState(omit(auth.user, ['id']));
 
     function updateValue(key, value) {
@@ -66,7 +68,7 @@ export default function Account() {
     }
 
     return (
-        <Layout title="Account Settings" withHeader={false}>
+        <Layout withHeader={false}>
             <div>
                 <div className="md:grid md:grid-cols-3 md:gap-6">
                     <div className="md:col-span-1">

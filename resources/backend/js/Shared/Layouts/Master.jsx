@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Inertia } from '@inertiajs/inertia';
 import { InertiaLink, usePage } from '@inertiajs/inertia-react';
-import { Helmet } from 'react-helmet';
 import cx from 'classnames';
 import isEmpty from 'lodash/isEmpty';
 import useToggle from '@backend/hooks/useToggle';
@@ -17,16 +16,15 @@ import UserGroupOutlineIcon from '@backend/Shared/Icons/UserGroupOutline';
 import XOutlineIcon from '@backend/Shared/Icons/XOutline';
 import Notification from '@backend/Shared/Notification';
 
-export default function Master({
-    title,
-    metas = {},
-    pageTitle,
-    headerActions,
-    withHeader = true,
-    children,
-    className,
-    ...props
-}) {
+Master.propTypes = {
+    pageTitle: PropTypes.string,
+    headerActions: PropTypes.node,
+    withHeader: PropTypes.bool,
+    children: PropTypes.node.isRequired,
+    className: PropTypes.string,
+};
+
+export default function Master({ pageTitle, headerActions, withHeader = true, children, className, ...props }) {
     const { auth, message, errors } = usePage();
     const mobileNav = useToggle();
     const userMenu = useToggle();
@@ -63,13 +61,6 @@ export default function Master({
 
     return (
         <div className={cx('h-screen flex overflow-hidden bg-gray-100', className)} {...props}>
-            <Helmet>
-                {title && <title>{title} | Hackdawg</title>}
-                {Object.keys(metas).map(property => (
-                    <meta key={'meta-' + property} name={property} content={metas[property]} />
-                ))}
-            </Helmet>
-
             {/* Off-canvas menu htmlFor mobile */}
             <div className="md:hidden">
                 {mobileNav.open && (
@@ -329,13 +320,3 @@ export default function Master({
         </div>
     );
 }
-
-Master.propTypes = {
-    title: PropTypes.string.isRequired,
-    metas: PropTypes.object,
-    pageTitle: PropTypes.string,
-    headerActions: PropTypes.node,
-    withHeader: PropTypes.bool,
-    children: PropTypes.node.isRequired,
-    className: PropTypes.string,
-};

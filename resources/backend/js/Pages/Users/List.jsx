@@ -5,13 +5,14 @@ import Avatar from '@backend/Shared/Avatar';
 import Layout from '@backend/Shared/Layouts/Master';
 import SimplePagination from '@backend/Shared/SimplePagination';
 import Button from '@backend/Shared/Button';
+import useTitle from '@backend/hooks/useTitle';
 
 export default function List() {
     const { users } = usePage();
+    useTitle('Users');
 
     return (
         <Layout
-            title="User List"
             pageTitle="User List"
             headerActions={
                 <span className="shadow-sm rounded-md">
