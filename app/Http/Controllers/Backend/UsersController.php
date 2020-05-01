@@ -63,8 +63,8 @@ class UsersController extends Controller
         // TODO: Send an email for the user to set their password.
 
         return redirect()->route('backend.users.index')->with('message', [
-            'title' => 'Succesfully saved!',
-            'body' => 'Personal information updated.',
+            'title' => 'Success!',
+            'body' => 'User created.',
             'type' => 'success',
         ]);
     }
@@ -72,11 +72,15 @@ class UsersController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
+     * @param  \App\Models\User $user
      * @return \Inertia\Response
      */
-    public function edit()
+    public function edit(User $user)
     {
-        return Inertia::render('Users/Edit');
+        return Inertia::render('Users/Edit', [
+            'countries' => Country::all(),
+            'user' => $user,
+        ]);
     }
 
     /**
@@ -90,7 +94,28 @@ class UsersController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        return back();
+        $request->validate([
+            'first_name' => 'required|string',
+            'last_name' => 'required|string',
+            'email' => 'required|email|unique:users,email,'.$user->id,
+        ]);
+
+        $user->update($request->only([
+            'first_name',
+            'last_name',
+            'email',
+            'country',
+            'state',
+            'city',
+            'street_address',
+            'postal_code',
+        ]));
+
+        return redirect()->route('backend.users.index')->with('message', [
+            'title' => 'Success!',
+            'body' => 'User details updated.',
+            'type' => 'success',
+        ]);
     }
 
     /**

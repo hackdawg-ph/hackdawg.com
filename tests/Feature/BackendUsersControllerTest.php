@@ -45,4 +45,25 @@ class BackendUsersControllerTest extends TestCase
 
         $this->assertDatabaseHas('users', $data);
     }
+
+    /** @test */
+    public function it_can_update_a_user()
+    {
+        $user = $this->signIn();
+
+        $this->get(route('backend.users.edit', $user))
+            ->assertOk()
+            ->assertSee('Users\/Edit');
+
+        $data = [
+            'first_name' => $user->first_name,
+            'last_name' => $this->faker->lastName,
+            'email' => $user->email,
+        ];
+
+        $this->patch(route('backend.users.update', $user), $data)
+            ->assertRedirect();
+
+        $this->assertDatabaseHas('users', $data);
+    }
 }

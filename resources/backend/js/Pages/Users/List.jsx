@@ -1,6 +1,6 @@
 import React from 'react';
 import { Inertia } from '@inertiajs/inertia';
-import { usePage } from '@inertiajs/inertia-react';
+import { InertiaLink, usePage } from '@inertiajs/inertia-react';
 import Avatar from '@backend/Shared/Avatar';
 import Layout from '@backend/Shared/Layouts/Master';
 import SimplePagination from '@backend/Shared/SimplePagination';
@@ -72,9 +72,12 @@ export default function List() {
                                             Owner
                                         </td>
                                         <td className="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-200 text-sm leading-5 font-medium">
-                                            <a href="#" className="text-indigo-600 hover:text-indigo-900">
+                                            <InertiaLink
+                                                href={$route('backend.users.edit', user.id)}
+                                                className="text-indigo-600 hover:text-indigo-900"
+                                            >
                                                 Edit
-                                            </a>
+                                            </InertiaLink>
                                         </td>
                                     </tr>
                                 ))}
