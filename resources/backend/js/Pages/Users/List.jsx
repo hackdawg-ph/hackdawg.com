@@ -48,7 +48,7 @@ export default function List() {
                                             <div className="flex items-center">
                                                 <Avatar
                                                     className="flex-shrink-0 w-10 h-10"
-                                                    url={user.avatarUrl}
+                                                    url={user.avatar_url}
                                                     size="custom"
                                                 />
                                                 <div className="ml-4">

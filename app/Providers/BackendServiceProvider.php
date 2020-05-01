@@ -27,34 +27,32 @@ class BackendServiceProvider extends ServiceProvider
     public function boot()
     {
         Inertia::share([
-            'status' => fn () => Session::get('status'),
             'message' => fn () => Session::get('message'),
-            'errors' => function () {
-                return Session::get('errors')
+            'form' => fn () => [
+                'status' => Session::get('status'),
+                'errors' => Session::get('errors')
                     ? Session::get('errors')->getBag('default')->getMessages()
-                    : (object) [];
-            },
-            'auth' => function () {
-                return [
-                    'user' => Auth::user() ? [
-                        'id' => Auth::user()->id,
-                        'website' => Auth::user()->website,
-                        'about' => Auth::user()->about,
-                        'avatarUrl' => Auth::user()->avatarUrl,
-                        'first_name' => Auth::user()->first_name,
-                        'middle_name' => Auth::user()->middle_name,
-                        'last_name' => Auth::user()->last_name,
-                        'email' => Auth::user()->email,
-                        'birthdate' => Auth::user()->birthdate,
-                        'gender' => Auth::user()->gender,
-                        'country' => Auth::user()->country,
-                        'state' => Auth::user()->state,
-                        'city' => Auth::user()->city,
-                        'street_address' => Auth::user()->street_address,
-                        'postal_code' => Auth::user()->postal_code,
-                    ] : null,
-                ];
-            },
+                    : (object) [],
+            ],
+            'auth' => fn () => [
+                'user' => Auth::user() ? [
+                    'id' => Auth::user()->id,
+                    'website' => Auth::user()->website,
+                    'about' => Auth::user()->about,
+                    'avatar_url' => Auth::user()->avatar_url,
+                    'first_name' => Auth::user()->first_name,
+                    'middle_name' => Auth::user()->middle_name,
+                    'last_name' => Auth::user()->last_name,
+                    'email' => Auth::user()->email,
+                    'birthdate' => Auth::user()->birthdate,
+                    'gender' => Auth::user()->gender,
+                    'country' => Auth::user()->country,
+                    'state' => Auth::user()->state,
+                    'city' => Auth::user()->city,
+                    'street_address' => Auth::user()->street_address,
+                    'postal_code' => Auth::user()->postal_code,
+                ] : null,
+            ],
         ]);
     }
 }

@@ -11,7 +11,7 @@ import TextInput from '@backend/Shared/TextInput';
 import useTitle from '@backend/hooks/useTitle';
 
 export default function Account() {
-    const { countries, errors, auth } = usePage();
+    const { countries, form, auth } = usePage();
     useTitle('Account Settings');
     const [values, setValues] = useState(omit(auth.user, ['id']));
 
@@ -90,7 +90,7 @@ export default function Account() {
                                                 label="Website"
                                                 value={values.website}
                                                 onChange={handleChange}
-                                                errors={errors.website}
+                                                errors={form.errors.website}
                                             />
                                         </div>
                                     </div>
@@ -102,7 +102,7 @@ export default function Account() {
                                             value={values.about}
                                             onChange={handleChange}
                                             description="Write a few sentences about yourself"
-                                            errors={errors.about}
+                                            errors={form.errors.about}
                                             multiline
                                             rows={3}
                                         />
@@ -114,8 +114,8 @@ export default function Account() {
                                             label="Avatar"
                                             description="File can be PNG, JPG, GIF up to 10MB"
                                             onChange={file => updateValue('avatar', file)}
-                                            defaultValue={values.avatarUrl}
-                                            errors={errors.avatar}
+                                            defaultValue={values.avatar_url}
+                                            errors={form.errors.avatar}
                                         />
                                     </div>
 
@@ -162,7 +162,7 @@ export default function Account() {
 
             <div className="hidden sm:block">
                 <div className="py-5">
-                    <div className="border-t border-gray-200"></div>
+                    <div className="border-t border-gray-200" />
                 </div>
             </div>
 
@@ -187,7 +187,7 @@ export default function Account() {
                                                 label="First name"
                                                 value={values.first_name}
                                                 onChange={handleChange}
-                                                errors={errors.first_name}
+                                                errors={form.errors.first_name}
                                             />
                                         </div>
 
@@ -197,7 +197,7 @@ export default function Account() {
                                                 label="Last name"
                                                 value={values.last_name}
                                                 onChange={handleChange}
-                                                errors={errors.last_name}
+                                                errors={form.errors.last_name}
                                             />
                                         </div>
 
@@ -207,7 +207,7 @@ export default function Account() {
                                                 label="Email address"
                                                 value={values.email}
                                                 onChange={handleChange}
-                                                errors={errors.email}
+                                                errors={form.errors.email}
                                             />
                                         </div>
 
@@ -230,7 +230,7 @@ export default function Account() {
                                                 label="Street address"
                                                 value={values.street_address}
                                                 onChange={handleChange}
-                                                errors={errors.street_address}
+                                                errors={form.errors.street_address}
                                             />
                                         </div>
 
@@ -240,7 +240,7 @@ export default function Account() {
                                                 label="City"
                                                 value={values.city}
                                                 onChange={handleChange}
-                                                errors={errors.city}
+                                                errors={form.errors.city}
                                             />
                                         </div>
 
@@ -250,7 +250,7 @@ export default function Account() {
                                                 label="State / Province"
                                                 value={values.state}
                                                 onChange={handleChange}
-                                                errors={errors.state}
+                                                errors={form.errors.state}
                                             />
                                         </div>
 
@@ -260,7 +260,7 @@ export default function Account() {
                                                 label="ZIP / Postal"
                                                 value={values.postal_code}
                                                 onChange={handleChange}
-                                                errors={errors.postal_code}
+                                                errors={form.errors.postal_code}
                                             />
                                         </div>
                                     </div>
@@ -302,7 +302,7 @@ export default function Account() {
                                                 label="Current password"
                                                 value={values.old_password}
                                                 onChange={handleChange}
-                                                errors={errors.old_password}
+                                                errors={form.errors.old_password}
                                             />
                                         </div>
                                         <div className="col-span-6 sm:col-span-4">
@@ -312,7 +312,7 @@ export default function Account() {
                                                 label="New password"
                                                 value={values.new_password}
                                                 onChange={handleChange}
-                                                errors={errors.new_password}
+                                                errors={form.errors.new_password}
                                             />
                                         </div>
                                     </div>

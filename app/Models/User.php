@@ -21,7 +21,7 @@ class User extends Authenticatable implements HasMedia
      */
     protected $appends = [
         'name',
-        'avatarUrl',
+        'avatar_url',
     ];
 
     /**

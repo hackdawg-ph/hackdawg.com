@@ -24,7 +24,9 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Country whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Country whereName($value)
  */
-	class Country extends \Eloquent {}
+    class Country extends \Eloquent
+    {
+    }
 }
 
 namespace App\Models{
@@ -81,7 +83,9 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereWebsite($value)
  */
-	class User extends \Eloquent {}
+    class User extends \Eloquent
+    {
+    }
 }
 
 namespace App\Models{
@@ -109,6 +113,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Article whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Article whereUserId($value)
  */
-	class Article extends \Eloquent {}
+    class Article extends \Eloquent
+    {
+    }
 }
-

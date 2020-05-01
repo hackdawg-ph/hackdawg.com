@@ -2,18 +2,17 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Models\Country;
 use App\Models\User;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
-use Inertia\Response as InertiaResponse;
 
 class UsersController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return InertiaResponse
+     * @return \Inertia\Response
      */
     public function index()
     {
@@ -25,27 +24,55 @@ class UsersController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return InertiaResponse
+     * @return \Inertia\Response
      */
     public function create()
     {
-        return Inertia::render('Users/Create');
+        return Inertia::render('Users/Create', [
+            'countries' => Country::all(),
+        ]);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @return RedirectResponse
+     * @param  \Illuminate\Http\Request  $request;
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response
+     *
+     * @throws \Illuminate\Validation\ValidationException
      */
-    public function store()
+    public function store(Request $request)
     {
-        return back();
+        $request->validate([
+            'first_name' => 'required|string',
+            'last_name' => 'required|string',
+            'email' => 'required|email|unique:users',
+        ]);
+
+        User::create($request->only([
+            'first_name',
+            'last_name',
+            'email',
+            'country',
+            'state',
+            'city',
+            'street_address',
+            'postal_code',
+        ]));
+
+        // TODO: Send an email for the user to set their password.
+
+        return redirect()->route('backend.users.index')->with('message', [
+            'title' => 'Succesfully saved!',
+            'body' => 'Personal information updated.',
+            'type' => 'success',
+        ]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @return InertiaResponse
+     * @return \Inertia\Response
      */
     public function edit()
     {
@@ -55,9 +82,11 @@ class UsersController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  Request $request
-     * @param  User  $user
-     * @return RedirectResponse
+     * @param  \Illuminate\Http\Request $request
+     * @param  \App\Models\User  $user
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response
+     *
+     * @throws \Illuminate\Validation\ValidationException
      */
     public function update(Request $request, User $user)
     {
@@ -67,8 +96,8 @@ class UsersController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  User  $user
-     * @return RedirectResponse
+     * @param  \App\Models\User  $user
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response
      */
     public function destroy(User $user)
     {

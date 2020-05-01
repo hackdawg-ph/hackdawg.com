@@ -19,4 +19,30 @@ class BackendUsersControllerTest extends TestCase
             ->assertOk()
             ->assertSee('Users\/List');
     }
+
+    /** @test */
+    public function it_can_create_a_user()
+    {
+        $this->signIn();
+
+        $this->get(route('backend.users.create'))
+            ->assertOk()
+            ->assertSee('Users\/Create');
+
+        $data = [
+            'first_name' => $this->faker->firstName(),
+            'last_name' => $this->faker->lastName,
+            'email' => $this->faker->email,
+            'country' => $this->faker->country,
+            'state' => $this->faker->state,
+            'city' => $this->faker->city,
+            'street_address' => $this->faker->streetAddress,
+            'postal_code' => $this->faker->postcode,
+        ];
+
+        $this->post(route('backend.users.store'), $data)
+            ->assertRedirect();
+
+        $this->assertDatabaseHas('users', $data);
+    }
 }

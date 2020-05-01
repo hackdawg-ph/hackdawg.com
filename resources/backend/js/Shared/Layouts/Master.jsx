@@ -25,7 +25,11 @@ Master.propTypes = {
 };
 
 export default function Master({ title, headerActions, withHeader = true, children, className, ...props }) {
-    const { auth, message, errors } = usePage();
+    const {
+        auth,
+        message,
+        form: { errors },
+    } = usePage();
     const mobileNav = useToggle();
     const userMenu = useToggle();
 
@@ -228,7 +232,7 @@ export default function Master({ title, headerActions, withHeader = true, childr
                                         aria-haspopup="true"
                                         onClick={() => userMenu.setOpen(true)}
                                     >
-                                        <Avatar size="sm" url={auth.user.avatarUrl} />
+                                        <Avatar size="sm" url={auth.user.avatar_url} />
                                     </button>
                                 </div>
                                 {/* Profile dropdown panel, show/hide based on dropdown state.

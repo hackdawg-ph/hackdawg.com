@@ -6,7 +6,9 @@ import isEmpty from 'lodash/isEmpty';
 import Alert from '@backend/Shared/Alert';
 
 export default function Auth({ title, children, className, ...props }) {
-    const { status, errors } = usePage();
+    const {
+        form: { status, errors },
+    } = usePage();
 
     return (
         <div

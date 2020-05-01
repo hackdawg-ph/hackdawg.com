@@ -34,7 +34,7 @@ class AccountController extends Controller
     public function updateProfile(Request $request)
     {
         $request->validate([
-            'website' => 'url',
+            'website' => 'nullable|url',
             'avatar' => 'image|max:2048',
         ]);
 
