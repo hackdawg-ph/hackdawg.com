@@ -2,10 +2,11 @@
 
 namespace Tests\Feature;
 
-use App\Mail\MessageSent;
+use App\Models\User;
+use App\Notifications\MessageSent;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
-use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Notification;
 use Tests\TestCase;
 
 class ContactControllerTest extends TestCase
@@ -15,13 +16,16 @@ class ContactControllerTest extends TestCase
     /** @test */
     public function it_sends_the_message()
     {
+        $user = factory(User::class)
+            ->create(['email' => 'hello@hackdawg.com']);
+
         $data = [
             'name' => $this->faker->name,
             'email' => $this->faker->companyEmail,
             'message' => $this->faker->paragraph(5),
         ];
 
-        Mail::fake();
+        Notification::fake();
 
         $this->post(route('frontend.contact'), $data)
             ->assertRedirect()
@@ -31,6 +35,6 @@ class ContactControllerTest extends TestCase
                 'type' => 'success',
             ]);
 
-        Mail::assertQueued(MessageSent::class);
+        Notification::assertSentTo($user, MessageSent::class);
     }
 }

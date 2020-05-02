@@ -46,7 +46,7 @@ class UsersTableSeeder extends Seeder
             'postal_code' => null,
             'password' => Hash::make('password'),
         ]);
-        
+
         User::create([
             'website' => null,
             'about' => 'Brand / Graphic Design, UI / Visual Design, Product Design',
@@ -73,11 +73,28 @@ class UsersTableSeeder extends Seeder
             'email_verified_at' => now(),
             'birthdate' => '1998-05-18',
             'gender' => 'male',
-            'country' => null,
+            'country' => 'PH',
             'state' => 'Bulacan',
             'city' => 'Angat',
             'street_address' => '776 Tugatog St. Marungko',
             'postal_code' => '3012',
+            'password' => Hash::make('password'),
+        ]);
+
+        User::create([
+            'website' => null,
+            'about' => null,
+            'first_name' => 'Juan',
+            'last_name' => 'Dela Cruz',
+            'email' => 'hello@hackdawg.com',
+            'email_verified_at' => now(),
+            'birthdate' => null,
+            'gender' => 'male',
+            'country' => 'PH',
+            'state' => null,
+            'city' => null,
+            'street_address' => null,
+            'postal_code' => null,
             'password' => Hash::make('password'),
         ]);
     }

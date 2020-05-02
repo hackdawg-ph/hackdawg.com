@@ -2,27 +2,30 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use App\Mail\MessageSent;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Mail;
+use App\Models\User;
+use App\Notifications\MessageSent;
 
 class ContactController extends Controller
 {
     /**
      * Send a message from the user to our emails.
      *
-     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\RedirectResponse
+     *
+     * @throws \Illuminate\Validation\ValidationException
      */
-    public function sendMessage(Request $request)
+    public function sendMessage()
     {
-        $request->validate([
+        $this->validate(request(), [
             'name' => 'required',
             'email' => 'required|email',
             'message' => 'required',
         ]);
 
-        Mail::send(new MessageSent($request->only('name', 'email', 'message')));
+        $user = User::where('email', 'hello@hackdawg.com')->firstOrFail();
+        $user->notify(
+            new MessageSent(request()->only('name', 'email', 'message'))
+        );
 
         return back()->with('message', [
             'title' => 'Message sent!',
