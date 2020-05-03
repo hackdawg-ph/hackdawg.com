@@ -59,7 +59,7 @@ jobs:
             git fetch --all && git checkout master && git reset --hard && git pull
             rm -rf .env && SECRET_PASSPHRASE=${{ secrets.SECRET_PASSPHRASE }} sh deploy/decrypt_secret.sh
 
-            # Stop running containers
+            # Stop running containers, remove local images
             docker-compose -f ./deploy/docker-compose.yml down --rmi=local --remove-orphans
             docker image prune -f
 
@@ -69,3 +69,7 @@ jobs:
             ## Here we go...
             make copy-hosts@production
             make deploy@production
+
+            ## Perform post deploy tasks...
+            sleep 3
+            make chore@production

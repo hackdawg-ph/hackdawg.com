@@ -17,7 +17,7 @@ make copy-hosts@local
 
 # Boot the docker containers:
 make deploy@local
-make chore
+make chore@local
 
 # Build frontend:
 yarn watch

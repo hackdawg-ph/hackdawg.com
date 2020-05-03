@@ -11,3 +11,10 @@ php artisan migrate --force
 # Link storage directory
 echo "Linking storage direcory..."
 php artisan storage:link
+
+if [[ $APP_ENV == "production" ]]; then
+    # Optimize Laravel
+    php artisan config:cache
+    php artisan route:cache
+    php artisan view:cache
+fi
