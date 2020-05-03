@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
-import Avatar from '@backend/Shared/Avatar';
+import { Inertia } from '@inertiajs/inertia';
 import { InertiaLink } from '@inertiajs/inertia-react';
+import Avatar from '@backend/Shared/Avatar';
+import AlertModal from '@backend/Shared/Modals/Alert';
 import SimplePagination from '@backend/Shared/SimplePagination';
 
 Table.propTypes = {
@@ -28,8 +30,7 @@ Table.propTypes = {
         PropTypes.arrayOf(
             PropTypes.shape({
                 type: PropTypes.oneOf(['edit', 'delete']),
-                editUrl: PropTypes.string,
-                onDeleting: PropTypes.func,
+                action: PropTypes.string,
             }),
         ),
     ),
@@ -43,6 +44,23 @@ Table.propTypes = {
 };
 
 export default function Table({ headings, collection, actions, pagination }) {
+    const [action, setAction] = useState('');
+    const [alert, setAlert] = useState(null);
+
+    function handleDeleteConfirmed() {
+        setAlert(null);
+        return Inertia.delete(action);
+    }
+
+    function handleDeleteClicked(action) {
+        setAction(action);
+        setAlert({
+            title: 'You are deleting a resource!',
+            body: 'Other data related to the user will also be destroyed. You cannot undo this action.',
+            variant: 'danger',
+        });
+    }
+
     return (
         <div className="align-middle inline-block min-w-full mt-3 md:mt-5 shadow overflow-hidden sm:rounded-lg border-b border-gray-200">
             <table className="min-w-full">
@@ -99,18 +117,18 @@ export default function Table({ headings, collection, actions, pagination }) {
                                     </td>
                                 ))}
                                 <td className="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-200 text-sm leading-5 font-medium">
-                                    {actions[i].map(({ type, editUrl, onDeleting }) => (
+                                    {actions[i].map(({ type, action }) => (
                                         <React.Fragment key={type}>
                                             {type === 'delete' ? (
                                                 <button
-                                                    onClick={onDeleting}
+                                                    onClick={() => handleDeleteClicked(action)}
                                                     className="ml-3 text-red-600 hover:text-red-900"
                                                 >
                                                     Delete
                                                 </button>
                                             ) : type === 'edit' ? (
                                                 <InertiaLink
-                                                    href={editUrl}
+                                                    href={action}
                                                     className="text-indigo-600 hover:text-indigo-900"
                                                 >
                                                     Edit
@@ -126,6 +144,8 @@ export default function Table({ headings, collection, actions, pagination }) {
             </table>
 
             <SimplePagination {...pagination} />
+
+            {alert && <AlertModal message={alert} onCancel={() => setAlert(null)} onConfirm={handleDeleteConfirmed} />}
         </div>
     );
 }

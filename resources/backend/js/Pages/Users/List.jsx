@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Inertia } from '@inertiajs/inertia';
 import { usePage } from '@inertiajs/inertia-react';
 import Layout from '@backend/Shared/Layouts/Master';
-import AlertModal from '@backend/Shared/Modals/Alert';
 import Button from '@backend/Shared/Button';
 import Table from '@backend/Shared/Table';
 import useTitle from '@backend/hooks/useTitle';
@@ -10,23 +9,6 @@ import useTitle from '@backend/hooks/useTitle';
 export default function List() {
     const { users } = usePage();
     useTitle('Users');
-
-    const [activeUser, setActiveUser] = useState(null);
-    const [alert, setAlert] = useState(null);
-
-    function handleDeleteConfirmed() {
-        setAlert(null);
-        return Inertia.delete($route('backend.users.destroy', activeUser));
-    }
-
-    function handleDeleteClicked(user) {
-        setActiveUser(user);
-        setAlert({
-            title: 'You are deleting a user!',
-            body: 'Other data related to the user will also be destroyed. You cannot undo this action.',
-            variant: 'danger',
-        });
-    }
 
     return (
         <Layout
@@ -69,11 +51,11 @@ export default function List() {
                         actions={users.data.map(user => [
                             {
                                 type: 'edit',
-                                editUrl: $route('backend.users.edit', user),
+                                action: $route('backend.users.edit', user),
                             },
                             {
                                 type: 'delete',
-                                onDeleting: () => handleDeleteClicked(user),
+                                action: $route('backend.users.destroy', user),
                             },
                         ])}
                         pagination={{
@@ -86,8 +68,6 @@ export default function List() {
                     />
                 </div>
             </div>
-
-            {alert && <AlertModal message={alert} onCancel={() => setAlert(null)} onConfirm={handleDeleteConfirmed} />}
         </Layout>
     );
 }
