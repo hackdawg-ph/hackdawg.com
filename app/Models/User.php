@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use Illuminate\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Str;
@@ -13,7 +13,7 @@ use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable implements HasMedia
 {
-    use Notifiable, MustVerifyEmail, InteractsWithMedia, HasRoles;
+    use Notifiable, SoftDeletes, InteractsWithMedia, HasRoles;
 
     /**
      * The accessors to append to the model's array form.
