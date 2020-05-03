@@ -71,5 +71,5 @@ jobs:
             make deploy@production
 
             ## Perform post deploy tasks...
-            sleep 3
+            sleep 60
             make chore@production
