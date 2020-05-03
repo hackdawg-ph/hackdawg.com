@@ -78,6 +78,7 @@ class BackendUsersControllerTest extends TestCase
 
         $this->assertDatabaseMissing('users', [
             'email' => $user->email,
+            'deleted_at' => null,
         ]);
     }
 }
