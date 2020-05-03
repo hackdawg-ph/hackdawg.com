@@ -3,6 +3,8 @@
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 
 class UsersTableSeeder extends Seeder
 {
@@ -13,7 +15,20 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        User::create([
+        $superAdmin = Role::create(['name' => 'super admin']);
+        $writer = Role::create(['name' => 'writer']);
+
+        $createTags = Permission::create(['name' => 'create tags']);
+        $editTags = Permission::create(['name' => 'edit tags']);
+        $createArticles = Permission::create(['name' => 'create articles']);
+        $editArticles = Permission::create(['name' => 'edit articles']);
+
+        $writer->givePermissionTo($createTags);
+        $writer->givePermissionTo($editTags);
+        $writer->givePermissionTo($createArticles);
+        $writer->givePermissionTo($editArticles);
+
+        $leonardo = User::create([
             'website' => 'https://leonardo-louie.me',
             'about' => 'FullStack Developer / Music Enthusiast / DevOps Engineer',
             'first_name' => 'Leonardo',
@@ -30,7 +45,9 @@ class UsersTableSeeder extends Seeder
             'password' => Hash::make('password'),
         ]);
 
-        User::create([
+        $leonardo->assignRole($superAdmin);
+
+        $abette = User::create([
             'website' => null,
             'about' => null,
             'first_name' => 'Abetteson',
@@ -47,7 +64,9 @@ class UsersTableSeeder extends Seeder
             'password' => Hash::make('password'),
         ]);
 
-        User::create([
+        $abette->assignRole($superAdmin);
+
+        $rancy = User::create([
             'website' => null,
             'about' => 'Brand / Graphic Design, UI / Visual Design, Product Design',
             'first_name' => 'Lourd Rancy',
@@ -64,7 +83,9 @@ class UsersTableSeeder extends Seeder
             'password' => Hash::make('password'),
         ]);
 
-        User::create([
+        $rancy->assignRole($superAdmin);
+
+        $jovert = User::create([
             'website' => 'https://jovertpalonpon.me',
             'about' => 'Full Stack Developer | DevOps | Loves coffee',
             'first_name' => 'Jovert',
@@ -81,7 +102,9 @@ class UsersTableSeeder extends Seeder
             'password' => Hash::make('password'),
         ]);
 
-        User::create([
+        $jovert->assignRole($superAdmin);
+
+        $hackdawg = User::create([
             'website' => null,
             'about' => null,
             'first_name' => 'Juan',
@@ -97,5 +120,7 @@ class UsersTableSeeder extends Seeder
             'postal_code' => null,
             'password' => Hash::make('password'),
         ]);
+
+        $hackdawg->assignRole($superAdmin);
     }
 }

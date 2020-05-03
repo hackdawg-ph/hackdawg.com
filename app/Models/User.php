@@ -5,13 +5,15 @@ namespace App\Models;
 use Illuminate\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Str;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
+use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable implements HasMedia
 {
-    use Notifiable, MustVerifyEmail, InteractsWithMedia;
+    use Notifiable, MustVerifyEmail, InteractsWithMedia, HasRoles;
 
     /**
      * The accessors to append to the model's array form.
@@ -21,6 +23,7 @@ class User extends Authenticatable implements HasMedia
     protected $appends = [
         'name',
         'avatar_url',
+        'role_name',
     ];
 
     /**
@@ -83,6 +86,16 @@ class User extends Authenticatable implements HasMedia
     public function getAvatarUrlAttribute()
     {
         return optional($this->getMedia('avatars')->last())->getUrl('thumb');
+    }
+
+    /**
+     * Get the converted avatar media url.
+     *
+     * @return string|null
+     */
+    public function getRoleNameAttribute()
+    {
+        return Str::ucfirst(optional($this->roles()->first())->name);
     }
 
     /**

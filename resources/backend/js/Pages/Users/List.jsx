@@ -24,7 +24,7 @@ export default function List() {
         setActiveUser(user);
         setAlert({
             title: 'You are deleting a user!',
-            body: 'Data related to the user will also be destroyed. This action cannot be undone.',
+            body: 'Data related to the user will also be destroyed. You cannot action cannot be undone.',
             variant: 'danger',
         });
     }
@@ -87,7 +87,7 @@ export default function List() {
                                             </span>
                                         </td>
                                         <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 text-gray-500">
-                                            Owner
+                                            {user.role_name}
                                         </td>
                                         <td className="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-200 text-sm leading-5 font-medium">
                                             <InertiaLink

@@ -34,6 +34,8 @@ namespace App\Models{
  * App\Models\User
  *
  * @property int $id
+ * @property string|null $job_title
+ * @property string|null $company
  * @property string|null $website
  * @property string|null $about
  * @property string $first_name
@@ -48,7 +50,7 @@ namespace App\Models{
  * @property string|null $city
  * @property string|null $street_address
  * @property string|null $postal_code
- * @property string $password
+ * @property string|null $password
  * @property string|null $remember_token
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
@@ -60,12 +62,19 @@ namespace App\Models{
  * @property-read int|null $media_count
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
  * @property-read int|null $notifications_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\Permission\Models\Permission[] $permissions
+ * @property-read int|null $permissions_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\Permission\Models\Role[] $roles
+ * @property-read int|null $roles_count
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User permission($permissions)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User role($roles, $guard = null)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereAbout($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereBirthdate($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereCity($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereCompany($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereCountry($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereEmail($value)
@@ -73,6 +82,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereFirstName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereGender($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereJobTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereLastName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereMiddleName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User wherePassword($value)
@@ -83,7 +93,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereWebsite($value)
  */
-    class User extends \Eloquent
+    class User extends \Eloquent implements \Spatie\MediaLibrary\HasMedia
     {
     }
 }

@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Backend;
 
 use App\Models\Country;
 use App\Models\User;
-use Illuminate\Http\Request;
 use Inertia\Inertia;
 
 class UsersController extends Controller
@@ -17,7 +16,7 @@ class UsersController extends Controller
     public function index()
     {
         return Inertia::render('Users/List', [
-            'users' => User::paginate(5),
+            'users' => User::with('roles')->paginate(5),
         ]);
     }
 
@@ -36,20 +35,19 @@ class UsersController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request;
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response
      *
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function store(Request $request)
+    public function store()
     {
-        $request->validate([
+        $this->validate(request(), [
             'first_name' => 'required|string',
             'last_name' => 'required|string',
             'email' => 'required|email|unique:users',
         ]);
 
-        User::create($request->only([
+        User::create(request([
             'first_name',
             'last_name',
             'email',
@@ -86,21 +84,20 @@ class UsersController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response
      *
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function update(Request $request, User $user)
+    public function update(User $user)
     {
-        $request->validate([
+        $this->validate(request(), [
             'first_name' => 'required|string',
             'last_name' => 'required|string',
             'email' => 'required|email|unique:users,email,'.$user->id,
         ]);
 
-        $user->update($request->only([
+        $user->update(request([
             'first_name',
             'last_name',
             'email',
