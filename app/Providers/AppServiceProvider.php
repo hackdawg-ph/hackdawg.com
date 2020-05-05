@@ -26,35 +26,47 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Inertia::share([
-            'message' => fn () => Session::get('message'),
-            'form' => fn () => [
-                'status' => Session::get('status'),
-                'errors' => Session::get('errors')
-                    ? Session::get('errors')->getBag('default')->getMessages()
-                    : (object) [],
-            ],
-            'auth' => fn () => [
-                'user' => Auth::user() ? [
-                    'id' => Auth::user()->id,
-                    'job_title' => Auth::user()->job_title,
-                    'company' => Auth::user()->company,
-                    'website' => Auth::user()->website,
-                    'about' => Auth::user()->about,
-                    'avatar_url' => Auth::user()->avatar_url,
-                    'first_name' => Auth::user()->first_name,
-                    'middle_name' => Auth::user()->middle_name,
-                    'last_name' => Auth::user()->last_name,
-                    'email' => Auth::user()->email,
-                    'birthdate' => Auth::user()->birthdate,
-                    'gender' => Auth::user()->gender,
-                    'country' => Auth::user()->country,
-                    'state' => Auth::user()->state,
-                    'city' => Auth::user()->city,
-                    'street_address' => Auth::user()->street_address,
-                    'postal_code' => Auth::user()->postal_code,
-                ] : null,
-            ],
-        ]);
+        $this->shareBackendData();
+    }
+
+    /**
+     * Share backend application data.
+     *
+     * @return void
+     */
+    protected function shareBackendData()
+    {
+        if (in_backend()) {
+            Inertia::share([
+                'message' => fn () => Session::get('message'),
+                'form' => fn () => [
+                    'status' => Session::get('status'),
+                    'errors' => Session::get('errors')
+                        ? Session::get('errors')->getBag('default')->getMessages()
+                        : (object) [],
+                ],
+                'auth' => fn () => [
+                    'user' => Auth::user() ? [
+                        'id' => Auth::user()->id,
+                        'job_title' => Auth::user()->job_title,
+                        'company' => Auth::user()->company,
+                        'website' => Auth::user()->website,
+                        'about' => Auth::user()->about,
+                        'avatar_url' => Auth::user()->avatar_url,
+                        'first_name' => Auth::user()->first_name,
+                        'middle_name' => Auth::user()->middle_name,
+                        'last_name' => Auth::user()->last_name,
+                        'email' => Auth::user()->email,
+                        'birthdate' => Auth::user()->birthdate,
+                        'gender' => Auth::user()->gender,
+                        'country' => Auth::user()->country,
+                        'state' => Auth::user()->state,
+                        'city' => Auth::user()->city,
+                        'street_address' => Auth::user()->street_address,
+                        'postal_code' => Auth::user()->postal_code,
+                    ] : null,
+                ],
+            ]);
+        }
     }
 }
