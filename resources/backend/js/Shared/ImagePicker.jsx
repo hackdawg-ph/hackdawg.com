@@ -3,6 +3,15 @@ import PropTypes from 'prop-types';
 import noop from 'lodash/noop';
 import Avatar from '@backend/Shared/Avatar';
 
+ImagePicker.propTypes = {
+    id: PropTypes.string.isRequired,
+    label: PropTypes.string.isRequired,
+    description: PropTypes.string,
+    defaultValue: PropTypes.string,
+    onChange: PropTypes.func,
+    errors: PropTypes.arrayOf(PropTypes.string),
+};
+
 export default function ImagePicker({ id, label, description, defaultValue = null, onChange = noop, errors = [] }) {
     const [file, setFile] = useState(defaultValue);
 
@@ -62,12 +71,3 @@ export default function ImagePicker({ id, label, description, defaultValue = nul
         </div>
     );
 }
-
-ImagePicker.propTypes = {
-    id: PropTypes.string.isRequired,
-    label: PropTypes.string.isRequired,
-    description: PropTypes.string,
-    defaultValue: PropTypes.string,
-    onChange: PropTypes.func,
-    errors: PropTypes.arrayOf(PropTypes.string),
-};

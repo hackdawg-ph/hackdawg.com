@@ -3,6 +3,17 @@ import PropTypes from 'prop-types';
 import cx from 'classnames';
 import ExclamationCircleIcon from '@backend/Shared/Icons/ExclamationCircle';
 
+TextInput.propTypes = {
+    className: PropTypes.string,
+    id: PropTypes.string.isRequired,
+    value: PropTypes.string,
+    label: PropTypes.string,
+    description: PropTypes.string,
+    addOn: PropTypes.string,
+    errors: PropTypes.arrayOf(PropTypes.string),
+    multiline: PropTypes.bool,
+};
+
 export default function TextInput({
     className,
     id,
@@ -47,7 +58,7 @@ export default function TextInput({
                         id={id}
                         defaultValue={value || ''}
                         {...props}
-                    ></textarea>
+                    />
                 ) : (
                     <input
                         className={cx(
@@ -88,14 +99,3 @@ export default function TextInput({
         </div>
     );
 }
-
-TextInput.propTypes = {
-    className: PropTypes.string,
-    id: PropTypes.string.isRequired,
-    value: PropTypes.string,
-    label: PropTypes.string,
-    description: PropTypes.string,
-    addOn: PropTypes.string,
-    errors: PropTypes.arrayOf(PropTypes.string),
-    multiline: PropTypes.bool,
-};

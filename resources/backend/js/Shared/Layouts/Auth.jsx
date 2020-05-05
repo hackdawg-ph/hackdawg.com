@@ -5,6 +5,12 @@ import cx from 'classnames';
 import isEmpty from 'lodash/isEmpty';
 import Alert from '@backend/Shared/Alert';
 
+Auth.propTypes = {
+    title: PropTypes.string.isRequired,
+    children: PropTypes.node.isRequired,
+    className: PropTypes.string,
+};
+
 export default function Auth({ title, children, className, ...props }) {
     const {
         form: { status, errors },
@@ -57,9 +63,3 @@ export default function Auth({ title, children, className, ...props }) {
         </div>
     );
 }
-
-Auth.propTypes = {
-    title: PropTypes.string.isRequired,
-    children: PropTypes.node.isRequired,
-    className: PropTypes.string,
-};

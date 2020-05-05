@@ -2,6 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 
+Button.propTypes = {
+    variant: PropTypes.oneOf(['primary', 'secondary']),
+    size: PropTypes.oneOf(['sm', 'md', 'lg']),
+    children: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
+    className: PropTypes.string,
+    type: PropTypes.oneOf(['reset', 'submit', 'button']),
+};
+
 export default function Button({ variant = 'primary', size = 'md', className, children, type = 'button', ...props }) {
     return (
         <button
@@ -24,11 +32,3 @@ export default function Button({ variant = 'primary', size = 'md', className, ch
         </button>
     );
 }
-
-Button.propTypes = {
-    variant: PropTypes.oneOf(['primary', 'secondary']),
-    size: PropTypes.oneOf(['sm', 'md', 'lg']),
-    children: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
-    className: PropTypes.string,
-    type: PropTypes.oneOf(['reset', 'submit', 'button']),
-};

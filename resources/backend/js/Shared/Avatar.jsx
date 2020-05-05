@@ -3,6 +3,13 @@ import PropTypes from 'prop-types';
 import cx from 'classnames';
 import UserCustomIcon from '@backend/Shared/Icons/UserCustom';
 
+Avatar.propTypes = {
+    variant: PropTypes.oneOf(['rounded']),
+    size: PropTypes.oneOf(['custom', 'sm', 'md', 'lg']),
+    url: PropTypes.string,
+    className: PropTypes.string,
+};
+
 export default function Avatar({ variant = 'rounded', size = 'md', url = null, className }) {
     const [hasError, setHasError] = useState(false);
 
@@ -33,10 +40,3 @@ export default function Avatar({ variant = 'rounded', size = 'md', url = null, c
         </div>
     );
 }
-
-Avatar.propTypes = {
-    variant: PropTypes.oneOf(['rounded']),
-    size: PropTypes.oneOf(['custom', 'sm', 'md', 'lg']),
-    url: PropTypes.string,
-    className: PropTypes.string,
-};

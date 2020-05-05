@@ -2,6 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { InertiaLink } from '@inertiajs/inertia-react';
 
+SimplePagination.propTypes = {
+    prevPageUrl: PropTypes.string,
+    nextPageUrl: PropTypes.string,
+    from: PropTypes.number.isRequired,
+    to: PropTypes.number.isRequired,
+    total: PropTypes.number.isRequired,
+};
+
 export default function SimplePagination({ prevPageUrl = null, nextPageUrl = null, from, to, total }) {
     return (
         <div className="bg-white px-4 py-3 flex items-center justify-between border-t border-gray-200 sm:px-6">
@@ -37,11 +45,3 @@ export default function SimplePagination({ prevPageUrl = null, nextPageUrl = nul
         </div>
     );
 }
-
-SimplePagination.propTypes = {
-    prevPageUrl: PropTypes.string,
-    nextPageUrl: PropTypes.string,
-    from: PropTypes.number.isRequired,
-    to: PropTypes.number.isRequired,
-    total: PropTypes.number.isRequired,
-};

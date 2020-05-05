@@ -1,6 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+Select.propTypes = {
+    id: PropTypes.string.isRequired,
+    label: PropTypes.string,
+    options: PropTypes.array.isRequired,
+    defaultValue: PropTypes.string,
+};
+
 export default function Select({ id, label, options = [], ...props }) {
     return (
         <div>
@@ -21,10 +28,3 @@ export default function Select({ id, label, options = [], ...props }) {
         </div>
     );
 }
-
-Select.propTypes = {
-    id: PropTypes.string.isRequired,
-    label: PropTypes.string,
-    options: PropTypes.array.isRequired,
-    defaultValue: PropTypes.string,
-};
