@@ -37,10 +37,10 @@ services:
         volumes:
             - ./db/data:/var/lib/mysql
         environment:
-            MYSQL_DATABASE: hackdawg
-            MYSQL_USER: hackdawg
-            MYSQL_PASSWORD: password
-            MYSQL_ROOT_PASSWORD: password
+            MYSQL_DATABASE: ${DB_DATABASE}
+            MYSQL_USER: ${DB_USERNAME}
+            MYSQL_PASSWORD: ${DB_PASSWORD}
+            MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
 
     redis:
         restart: unless-stopped
