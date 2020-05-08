@@ -1,5 +1,7 @@
 <?php
 
+/** @var \Illuminate\Database\Eloquent\Factory $factory */
+
 use App\Models\Article;
 use Faker\Generator as Faker;
 use Illuminate\Support\Str;
@@ -17,7 +19,7 @@ use Illuminate\Support\Str;
 
 $factory->define(Article::class, function (Faker $faker) {
     return [
-        'user_id' => $faker->numberBetween(0, 1000),
+        'user_id' => factory(\App\Models\User::class),
         'title' => ($title = $faker->sentence),
         'slug' => Str::slug($title),
         'body' => $faker->paragraph,

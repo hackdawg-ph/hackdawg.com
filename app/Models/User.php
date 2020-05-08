@@ -98,11 +98,6 @@ class User extends Authenticatable implements HasMedia
         return Str::ucfirst(optional($this->roles()->first())->name);
     }
 
-    /**
-     * Get the articles for the user.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
     public function articles()
     {
         return $this->hasMany(Article::class);
