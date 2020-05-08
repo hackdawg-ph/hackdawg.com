@@ -36,6 +36,8 @@ services:
             - '33069:3306'
         volumes:
             - ./db/data:/var/lib/mysql
+        env_file:
+          - ../.env
         environment:
             MYSQL_DATABASE: ${DB_DATABASE}
             MYSQL_USER: ${DB_USERNAME}

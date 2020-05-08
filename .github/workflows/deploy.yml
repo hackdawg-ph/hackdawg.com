@@ -44,6 +44,15 @@ jobs:
           script: |
             echo "God is good, all the time!"
 
+            # Copy bash aliases
+            rm -f /root/.bash_aliases
+            cp /root/hackdawg.com/deploy/.bash_aliases /root/.bash_aliases
+            source /root/.bash_aliases
+
+            # Install linux utilities
+            apt-get update -y
+            apt-get install -y make
+
             # Install Node.js &
             curl -sL https://deb.nodesource.com/setup_12.x | bash -
             apt-get install -y nodejs
