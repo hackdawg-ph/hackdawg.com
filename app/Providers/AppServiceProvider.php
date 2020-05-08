@@ -26,6 +26,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        if (in_backend() || config('app.env') === 'testing') {
+            Inertia::setRootView('backend.app');
+        }
+
         $this->shareBackendData();
     }
 

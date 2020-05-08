@@ -1,7 +1,9 @@
 /node_modules
 /public/mix-manifest.json
-/public/backend
-/public/frontend
+/public/images
+/public/fonts
+/public/js
+/public/css
 /public/hot
 /public/storage
 /storage/*.key

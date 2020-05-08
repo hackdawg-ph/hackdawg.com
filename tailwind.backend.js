@@ -2,7 +2,7 @@ const defaultTheme = require('tailwindcss/defaultTheme');
 
 module.exports = {
     purge: {
-        content: ['./resources/backend/js/{Pages,Shared}/**/*.jsx', './resources/backend/views/**/*.blade.php'],
+        content: ['./resources/js/backend/{Pages,Shared}/**/*.jsx', './resources/views/backend/**/*.blade.php'],
         whitelistPatternsChildren: [/nprogress/],
     },
     theme: {

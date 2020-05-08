@@ -2,8 +2,7 @@
     "compilerOptions": {
         "baseUrl": "./",
         "paths": {
-            "@backend/*": ["./resources/backend/js/*"],
-            "@frontend/*": ["./resources/frontend/js/*"]
+            "@/*": ["./resources/js/*"]
         },
         "jsx": "react"
     },

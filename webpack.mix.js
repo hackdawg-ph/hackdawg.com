@@ -13,21 +13,20 @@ const tailwindcss = require('tailwindcss');
  |
  */
 
-mix.js('resources/backend/js/app.js', 'public/backend/js/app.js')
-    .postCss('resources/backend/css/app.css', 'public/backend/css/app.css', [tailwindcss('tailwind.backend.js')])
+mix.js('resources/js/backend/app.js', 'public/js/backend/app.js')
+    .postCss('resources/css/backend/app.css', 'public/css/backend/app.css', [tailwindcss('tailwind.backend.js')])
     .webpackConfig({
         output: {
-            chunkFilename: 'backend/js/[name].js?id=[chunkhash]',
+            chunkFilename: 'js/backend/[name].js?id=[chunkhash]',
         },
     })
-    .js('resources/frontend/js/app.js', 'public/frontend/js')
-    .postCss('resources/frontend/css/app.css', 'public/frontend/css', [tailwindcss('tailwind.frontend.js')])
-    .copy('resources/frontend/fonts', 'public/frontend/fonts')
+    .js('resources/js/app.js', 'public/js/app.js')
+    .postCss('resources/css/app.css', 'public/css/app.css', [tailwindcss('tailwind.frontend.js')])
+    .copy('resources/fonts', 'public/fonts')
     .webpackConfig({
         resolve: {
             alias: {
-                '@backend': path.resolve('resources/backend/js'),
-                '@frontend': path.resolve('resources/frontend/js'),
+                '@': path.resolve('resources/js'),
             },
         },
     })
