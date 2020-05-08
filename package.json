@@ -1,7 +1,7 @@
 {
     "private": true,
     "scripts": {
-        "test:backend:lint": "eslint --ext .js,.jsx resources/backend/js",
+        "test:backend:lint": "eslint --ext .js,.jsx resources/js/backend",
         "test:backend": "yarn test:backend:lint",
         "test": "yarn test:backend",
         "format": "prettier --write \"resources/**/*.{js,jsx,css}\"",
