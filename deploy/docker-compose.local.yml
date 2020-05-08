@@ -8,6 +8,8 @@ services:
         volumes:
             - ..:/var/www/html
             - ./php.ini:/usr/local/etc/php/conf.d/local.ini
+        env_file:
+          - ../.env
 
     scheduler:
         restart: unless-stopped

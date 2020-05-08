@@ -5,6 +5,8 @@ services:
             args:
                 APP_ENV: production
         restart: always
+        env_file:
+          - ../.env
 
     scheduler:
         restart: always
