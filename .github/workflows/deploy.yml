@@ -46,7 +46,7 @@ jobs:
 
             # Copy bash aliases
             rm -f /root/.bash_aliases
-            cp /root/hackdawg.com/deploy/.bash_aliases /root/.bash_aliases
+            cp /root/hackdawg.com/deploy/.bash_aliases /root
             source /root/.bash_aliases
 
             # Install linux utilities
