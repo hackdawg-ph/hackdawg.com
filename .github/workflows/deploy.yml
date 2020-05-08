@@ -79,7 +79,7 @@ jobs:
             make copy-hosts@production
             make deploy@production
 
-            sleep 30
+            sleep 2m
 
             ## Perform post deploy tasks...
             make chore@production
