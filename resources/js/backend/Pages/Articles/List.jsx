@@ -1,6 +1,6 @@
 import React from 'react';
-import Layout from '@/backend/Shared/Layouts/Master';
 import useTitle from '@/backend/hooks/useTitle';
+import Layout from '@/backend/Shared/Layouts/Master';
 
 export default function List() {
     useTitle('Articles');
