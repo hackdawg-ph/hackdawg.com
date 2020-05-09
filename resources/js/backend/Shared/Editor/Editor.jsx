@@ -1,4 +1,5 @@
 import React, { useCallback, useMemo, useState } from 'react';
+import PropTypes from 'prop-types';
 import { Editor, Transforms, createEditor } from 'slate';
 import { Slate, Editable, withReact, useSlate } from 'slate-react';
 import isHotkey from 'is-hotkey';
@@ -6,7 +7,6 @@ import Icon from '@/backend/Shared/Editor/Icon';
 import Button from '@/backend/Shared/Editor/Button';
 import Element from '@/backend/Shared/Editor/Element';
 import Leaf from '@/backend/Shared/Editor/Leaf';
-import PropTypes from 'prop-types';
 
 const HOTKEYS = {
     'mod+b': 'bold',
@@ -17,15 +17,27 @@ const HOTKEYS = {
 
 const LIST_TYPES = ['numbered-list', 'bulleted-list'];
 
-export default function HackdawgEditor() {
-    const [value, setValue] = useState(initialValue);
+HackdawgEditor.propTypes = {
+    defaultValue: PropTypes.string,
+    onChange: PropTypes.func.isRequired,
+};
+
+export default function HackdawgEditor({ defaultValue = '', onChange }) {
+    const [value, setValue] = useState(JSON.parse(defaultValue || '[{"children":[{"text":""}]}]'));
     const renderElement = useCallback(props => <Element {...props} />, []);
     const renderLeaf = useCallback(props => <Leaf {...props} />, []);
     const editor = useMemo(() => withReact(createEditor()), []);
 
     return (
         <div className="w-1/2 bg-white relative rounded-md shadow-sm">
-            <Slate editor={editor} value={value} onChange={value => setValue(value)}>
+            <Slate
+                editor={editor}
+                value={value}
+                onChange={value => {
+                    setValue(value);
+                    onChange(JSON.stringify(value));
+                }}
+            >
                 <div className="flex items-center border-b p-5">
                     <MarkButton format="bold" icon="format_bold" />
                     <MarkButton format="italic" icon="format_italic" />
@@ -37,10 +49,12 @@ export default function HackdawgEditor() {
                     <BlockButton format="numbered-list" icon="format_list_numbered" />
                     <BlockButton format="bulleted-list" icon="format_list_bulleted" />
                 </div>
-                <div className="p-5">
+                <div className="h-48 p-5">
                     <Editable
                         renderElement={renderElement}
                         renderLeaf={renderLeaf}
+                        spellCheck
+                        autoFocus
                         onKeyDown={event => {
                             for (const hotkey in HOTKEYS) {
                                 if (isHotkey(hotkey, event)) {
@@ -140,10 +154,3 @@ const isMarkActive = (editor, format) => {
     const marks = Editor.marks(editor);
     return marks ? marks[format] === true : false;
 };
-
-const initialValue = [
-    {
-        type: 'paragraph',
-        children: [{ text: '' }],
-    },
-];

@@ -1,6 +1,5 @@
 import React from 'react';
 import useTitle from '@/backend/hooks/useTitle';
-import Editor from '@/backend/Shared/Editor/Editor';
 import Layout from '@/backend/Shared/Layouts/Master';
 
 export default function List() {
@@ -8,7 +7,7 @@ export default function List() {
 
     return (
         <Layout title="Articles">
-            <Editor />
+            <div className="border-4 border-dashed border-gray-200 rounded-lg h-96" />
         </Layout>
     );
 }

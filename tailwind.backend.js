@@ -7,6 +7,16 @@ module.exports = {
     },
     theme: {
         extend: {
+            minWidth: {
+                '48': '12rem',
+                '56': '14rem',
+                '64': '16rem',
+            },
+            minHeight: {
+                '48': '12rem',
+                '56': '14rem',
+                '64': '16rem',
+            },
             spacing: {
                 '72': '18rem',
                 '84': '21rem',
