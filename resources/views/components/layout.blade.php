@@ -17,7 +17,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
 
     <!-- Main Style -->
-    <link href="{{ mix('frontend/backend/app.backend') }}" rel="stylesheet">
+    <link href="{{ mix('css/app.css') }}" rel="stylesheet">
 </head>
 
 <body class="min-h-screen">
@@ -102,7 +102,7 @@
     </footer>
 
     <!-- Main Script -->
-    <script src="{{ mix('frontend/js/app.js') }}"></script>
+    <script src="{{ mix('js/app.js') }}"></script>
 
     @if ($errors->count())
         <script>
