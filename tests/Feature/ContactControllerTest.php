@@ -27,7 +27,7 @@ class ContactControllerTest extends TestCase
 
         Notification::fake();
 
-        $this->post(route('frontend.contact'), $data)
+        $this->post(route('contact'), $data)
             ->assertRedirect()
             ->assertSessionHas('message', [
                 'title' => 'Message sent!',

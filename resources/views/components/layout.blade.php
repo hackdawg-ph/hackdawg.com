@@ -26,16 +26,16 @@
             <div class="w-12 h-12 mr-5 rounded-full shadow">
                 <img class="w-full h-full" src="{{ asset('png/logos/indigo-circle.png') }}" alt="Hackdawg">
             </div>
-            <a class="mx-5 text-sm {{ Request::path() === '/' ? 'text-blue' : 'text-gray' }}" href="{{ route('frontend.welcome') }}">
+            <a class="mx-5 text-sm {{ Request::path() === '/' ? 'text-blue' : 'text-gray' }}" href="{{ route('welcome') }}">
                 Home
             </a>
             <a class="mx-5 text-sm text-gray" href="#">
                 Portfolio
             </a>
-            <a class="mx-5 text-sm text-gray" href="{{ route('frontend.articles.index') }}">
+            <a class="mx-5 text-sm text-gray" href="{{ route('articles.index') }}">
                 Articles
             </a>
-            <a class="mx-5 text-sm {{ Request::path() === 'about' ? 'text-blue' : 'text-gray' }}" href="{{ route('frontend.about') }}">
+            <a class="mx-5 text-sm {{ Request::path() === 'about' ? 'text-blue' : 'text-gray' }}" href="{{ route('about') }}">
                 About Us
             </a>
             <span class="flex-grow translate-x-full"></span>

@@ -24,7 +24,9 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Country whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Country whereName($value)
  */
-	class Country extends \Eloquent {}
+    class Country extends \Eloquent
+    {
+    }
 }
 
 namespace App\Models{
@@ -47,7 +49,9 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Tag whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Tag whereUpdatedAt($value)
  */
-	class Tag extends \Eloquent {}
+    class Tag extends \Eloquent
+    {
+    }
 }
 
 namespace App\Models{
@@ -120,7 +124,9 @@ namespace App\Models{
  * @method static \Illuminate\Database\Query\Builder|\App\Models\User withTrashed()
  * @method static \Illuminate\Database\Query\Builder|\App\Models\User withoutTrashed()
  */
-	class User extends \Eloquent implements \Spatie\MediaLibrary\HasMedia {}
+    class User extends \Eloquent implements \Spatie\MediaLibrary\HasMedia
+    {
+    }
 }
 
 namespace App\Models{
@@ -152,6 +158,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Article whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Article whereUserId($value)
  */
-	class Article extends \Eloquent {}
+    class Article extends \Eloquent
+    {
+    }
 }
-

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Backend\Auth;
 
-use App\Http\Controllers\Backend\Controller;
+use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Notifications\PasswordReset;
 use Carbon\Carbon;

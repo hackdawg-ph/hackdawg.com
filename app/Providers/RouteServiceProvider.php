@@ -21,7 +21,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    public const HOME = '/';
+    public const HOME = '/admin';
 
     /**
      * Define your route model bindings, pattern filters, etc.
@@ -54,9 +54,7 @@ class RouteServiceProvider extends ServiceProvider
     protected function mapFrontendRoutes()
     {
         Route::middleware('web')
-             ->name('frontend.')
-             ->namespace($this->namespace.'\Frontend')
-             ->domain(get_domain('frontend'))
+             ->namespace($this->namespace)
              ->group(base_path('routes/frontend.php'));
     }
 
@@ -72,7 +70,7 @@ class RouteServiceProvider extends ServiceProvider
         Route::middleware('web')
              ->name('backend.')
              ->namespace($this->namespace.'\Backend')
-             ->domain(get_domain('backend'))
+             ->prefix('/admin')
              ->group(base_path('routes/backend.php'));
     }
 }

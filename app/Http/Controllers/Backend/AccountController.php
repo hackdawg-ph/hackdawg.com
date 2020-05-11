@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Http\Controllers\Controller;
 use App\Models\Country;
 use App\Rules\OldPassword;
 use Illuminate\Http\Request;

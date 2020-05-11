@@ -23,14 +23,14 @@
             <a class="text-white" href="mailto:hello@hackdawg.com">hello@hackdawg.com</a>
         </div>
         <div class="w-3/4">
-            <form method="POST" action="{{ route('frontend.contact') }}">
+            <form method="POST" action="{{ route('contact') }}">
                 @csrf
                 <div class="form-group">
                     <label class="label" for="name">Name</label>
-                    <input 
-                        class="input" 
-                        type="text" 
-                        name="name" 
+                    <input
+                        class="input"
+                        type="text"
+                        name="name"
                         id="name"
                         placeholder="John"
                         required
@@ -39,10 +39,10 @@
 
                 <div class="form-group">
                     <label class="label" for="email">Email</label>
-                    <input 
-                        class="input" 
-                        type="email" 
-                        name="email" 
+                    <input
+                        class="input"
+                        type="email"
+                        name="email"
                         id="email"
                         placeholder="john@hackdawg.com"
                         required
@@ -51,9 +51,9 @@
 
                 <div class="form-group">
                     <label class="label" for="message">Message</label>
-                    <textarea 
-                        class="input" 
-                        name="message" 
+                    <textarea
+                        class="input"
+                        name="message"
                         id="message"
                         placeholder="We need help to redesign our chatbot..."
                         rows="3"

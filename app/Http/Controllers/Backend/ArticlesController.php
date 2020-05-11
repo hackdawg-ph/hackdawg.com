@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Http\Controllers\Controller;
 use Inertia\Inertia;
 
 class ArticlesController extends Controller
