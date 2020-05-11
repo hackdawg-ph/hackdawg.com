@@ -1,7 +1,16 @@
 server {
+	listen 80;
+	listen [::]:80;
+	server_name {{NGINX_HOST}};
+    location / {
+        return 301 http://www.$host$request_uri;
+    }
+}
+
+server {
     listen 80;
     listen [::]:80;
-    server_name {{NGINX_HOST}};
+    server_name {{NGINX_HOST}} www.{{NGINX_HOST}};
     root /var/www/html/public;
 
     add_header X-Frame-Options "SAMEORIGIN";
