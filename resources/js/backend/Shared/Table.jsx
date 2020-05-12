@@ -112,7 +112,14 @@ export default function Table({ headings, collection, actions, pagination }) {
                                                 {status.text}
                                             </span>
                                         ) : type === 'text' ? (
-                                            <span className="text-sm leading-5 text-gray-500">{text}</span>
+                                            <span
+                                                className={cx('text-sm leading-5', {
+                                                    'font-medium text-gray-900': i === 0,
+                                                    'text-gray-500': i !== 0,
+                                                })}
+                                            >
+                                                {text}
+                                            </span>
                                         ) : null}
                                     </td>
                                 ))}
