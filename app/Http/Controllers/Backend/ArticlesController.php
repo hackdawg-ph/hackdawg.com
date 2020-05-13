@@ -39,7 +39,16 @@ class ArticlesController extends Controller
      */
     public function store()
     {
-        Article::create($this->validateArticle());
+        $this->validateArticle();
+
+        $article = auth()->user()->createArticle(request(['title', 'body']));
+        $article->tags()->attach(request('tags'));
+
+        return redirect()->route('backend.articles.index')->with('message', [
+            'title' => 'Success!',
+            'body' => 'Article created.',
+            'variant' => 'success',
+        ]);
     }
 
     /**
@@ -52,7 +61,9 @@ class ArticlesController extends Controller
     protected function validateArticle($article = null)
     {
         return request()->validate([
-            //
+            'title' => 'required',
+            'body' => 'required',
+            'tags' => 'exists:tags,id',
         ]);
     }
 }

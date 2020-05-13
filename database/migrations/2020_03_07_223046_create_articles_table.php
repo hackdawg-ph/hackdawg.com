@@ -17,7 +17,7 @@ class CreateArticlesTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->string('title');
-            $table->string('slug')->unique();
+            $table->string('slug');
             $table->text('body');
             $table->timestamp('published_at')->nullable();
             $table->timestamps();

@@ -4,9 +4,13 @@ namespace App\Models;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Sluggable\HasSlug;
+use Spatie\Sluggable\SlugOptions;
 
 class Article extends Model
 {
+    use HasSlug;
+
     /**
      * The accessors to append to the model's array form.
      *
@@ -38,6 +42,7 @@ class Article extends Model
      * The published date formatted since the current moment.
      *
      * @return string|null
+     * @throws \Exception
      */
     public function getPublishedSinceAttribute()
     {
@@ -62,5 +67,15 @@ class Article extends Model
     public function tags()
     {
         return $this->belongsToMany(Tag::class)->withTimestamps();
+    }
+
+    /**
+     * Get the options for generating the slug.
+     */
+    public function getSlugOptions()
+    {
+        return SlugOptions::create()
+            ->generateSlugsFrom('title')
+            ->saveSlugsTo('slug');
     }
 }

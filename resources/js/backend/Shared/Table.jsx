@@ -56,7 +56,7 @@ export default function Table({ headings, collection, actions, pagination }) {
         setAction(action);
         setAlert({
             title: 'You are deleting a resource!',
-            body: 'Other data related to the user will also be destroyed. You cannot undo this action.',
+            body: 'Other data related to the resource will also be destroyed. You cannot undo this action.',
             variant: 'danger',
         });
     }

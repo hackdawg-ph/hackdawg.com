@@ -20,6 +20,7 @@ class BackendArticlesControllerTest extends TestCase
             ->assertSee('Articles\/List');
     }
 
+    /** @test */
     public function it_can_create_an_article()
     {
         $this->signIn();
@@ -29,7 +30,8 @@ class BackendArticlesControllerTest extends TestCase
             ->assertSee('Articles\/Create');
 
         $data = [
-            //
+            'title' => $this->faker->sentence,
+            'body' => $this->faker->paragraph,
         ];
 
         $this->post(route('backend.articles.store'), $data)
