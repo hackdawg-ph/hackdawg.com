@@ -40,11 +40,11 @@ export default function List() {
                         actions={articles.data.map(article => [
                             {
                                 type: 'edit',
-                                action: $route('backend.articles.edit', article),
+                                action: $route('backend.articles.edit', article.slug),
                             },
                             {
                                 type: 'delete',
-                                action: $route('backend.articles.destroy', article),
+                                action: $route('backend.articles.destroy', article.slug),
                             },
                         ])}
                         pagination={{

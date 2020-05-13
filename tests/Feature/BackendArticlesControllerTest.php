@@ -49,4 +49,15 @@ class BackendArticlesControllerTest extends TestCase
 
         $this->assertEquals($attachedTags, $article->tags->pluck('id')->toArray());
     }
+
+    /** @test */
+    public function it_can_delete_an_article()
+    {
+        $this->signIn();
+
+        $this->delete(route('backend.articles.destroy', ($article = factory(Article::class)->create())))
+            ->assertRedirect();
+
+        $this->assertDatabaseMissing('articles', ['id' => $article->id]);
+    }
 }

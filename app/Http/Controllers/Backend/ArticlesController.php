@@ -55,6 +55,25 @@ class ArticlesController extends Controller
     }
 
     /**
+     * Remove the specified article from storage.
+     *
+     * @param \App\Models\Article $article
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response
+     *
+     * @throws \Exception
+     */
+    public function destroy(Article $article)
+    {
+        $article->delete();
+
+        return back()->with('message', [
+            'title' => 'Success!',
+            'body' => 'Article deleted.',
+            'variant' => 'success',
+        ]);
+    }
+
+    /**
      * Validate the properties of the article.
      *
      * @param \App\Models\Article|null $article
