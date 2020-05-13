@@ -4,10 +4,12 @@ import { InertiaLink, usePage } from '@inertiajs/inertia-react';
 import useTitle from '@/backend/hooks/useTitle';
 import Editor from '@/backend/Shared/Editor/Editor';
 import Layout from '@/backend/Shared/Layouts/Slave';
+import MultipleInput from '@/backend/Shared/MultipleInput';
 import TextInput from '@/backend/Shared/TextInput';
 
 export default function Create() {
     const {
+        tags = [],
         form: { errors },
     } = usePage();
 
@@ -65,6 +67,19 @@ export default function Create() {
                                 defaultValue={values.body}
                                 onChange={value => updateValue('body', value)}
                                 errors={errors.body}
+                            />
+                        </div>
+
+                        <div className="sm:col-span-6">
+                            <MultipleInput
+                                id="tags"
+                                label="Tags"
+                                dataset={tags.map(tag => ({
+                                    key: tag.id,
+                                    name: tag.name,
+                                }))}
+                                defaultValue={values.tags}
+                                onChange={value => updateValue('tags', value)}
                             />
                         </div>
                     </div>

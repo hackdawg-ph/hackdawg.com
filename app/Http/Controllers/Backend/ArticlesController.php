@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Article;
+use App\Models\Tag;
 use Inertia\Inertia;
 
 class ArticlesController extends Controller
@@ -27,7 +28,9 @@ class ArticlesController extends Controller
      */
     public function create()
     {
-        return Inertia::render('Articles/Create');
+        return Inertia::render('Articles/Create', [
+            'tags' => Tag::get(['id', 'name']),
+        ]);
     }
 
     /**
