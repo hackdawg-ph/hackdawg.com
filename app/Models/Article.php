@@ -12,9 +12,18 @@ class Article extends Model
     use HasSlug;
 
     /**
+     * The relations to eager load on every query.
+     *
+     * @var array<string>
+     */
+    protected $with = [
+        'tags',
+    ];
+
+    /**
      * The accessors to append to the model's array form.
      *
-     * @var array
+     * @var array<string>
      */
     protected $appends = [
         'published_since',
@@ -23,7 +32,7 @@ class Article extends Model
     /**
      * The attributes that are mass assignable.
      *
-     * @var array
+     * @var array<string>
      */
     protected $fillable = [
         'user_id', 'title', 'slug', 'body', 'published_at',
@@ -32,7 +41,7 @@ class Article extends Model
     /**
      * The attributes that should be cast to native types.
      *
-     * @var array
+     * @var array<string, mixed>
      */
     protected $casts = [
         'published_at' => 'datetime',

@@ -51,6 +51,35 @@ class BackendArticlesControllerTest extends TestCase
     }
 
     /** @test */
+    public function it_can_update_an_article()
+    {
+        $this->signIn();
+
+        $this->get(route('backend.articles.edit', ($article = factory(Article::class)->create())))
+            ->assertOk()
+            ->assertSee('Articles\/Edit');
+
+        $tags = factory(Tag::class, rand(1, 10))->create();
+
+        $data = [
+            'title' => $article->title,
+            'body' => $this->faker->paragraph(rand(5, 10)),
+            'tags' => ($attachedTags = $tags->random()->pluck('id')->toArray()),
+        ];
+
+        $this->patch(route('backend.articles.update', $article), $data)
+            ->assertRedirect();
+
+        unset($data['tags']);
+
+        $this->assertDatabaseHas('articles', $data);
+
+        $article = Article::latest()->firstOrFail();
+
+        $this->assertEquals($attachedTags, $article->tags->pluck('id')->toArray());
+    }
+
+    /** @test */
     public function it_can_delete_an_article()
     {
         $this->signIn();

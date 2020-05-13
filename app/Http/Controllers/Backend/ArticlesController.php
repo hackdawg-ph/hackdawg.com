@@ -55,6 +55,43 @@ class ArticlesController extends Controller
     }
 
     /**
+     * Show the form for editing the specified article.
+     *
+     * @param  \App\Models\Article $article
+     * @return \Inertia\Response
+     */
+    public function edit(Article $article)
+    {
+        return Inertia::render('Articles/Edit', [
+            'article' => $article,
+            'tags' => Tag::all(),
+        ]);
+    }
+
+    /**
+     * Update the specified article in storage.
+     *
+     * @param  \App\Models\Article  $article
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response
+     *
+     * @throws \Illuminate\Validation\ValidationException
+     */
+    public function update(Article $article)
+    {
+        $this->validateArticle();
+
+        $article->update(request(['title', 'body']));
+        $article->tags()->detach();
+        $article->tags()->attach(request('tags'));
+
+        return redirect()->route('backend.articles.index')->with('message', [
+            'title' => 'Success!',
+            'body' => 'Article details updated.',
+            'variant' => 'success',
+        ]);
+    }
+
+    /**
      * Remove the specified article from storage.
      *
      * @param \App\Models\Article $article
@@ -76,11 +113,9 @@ class ArticlesController extends Controller
     /**
      * Validate the properties of the article.
      *
-     * @param \App\Models\Article|null $article
-     *
      * @return array
      */
-    protected function validateArticle($article = null)
+    protected function validateArticle()
     {
         return request()->validate([
             'title' => 'required',
