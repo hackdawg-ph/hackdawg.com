@@ -32,7 +32,7 @@ Notification.propTypes = {
     message: PropTypes.shape({
         title: PropTypes.string.isRequired,
         body: PropTypes.string.isRequired,
-        variant: PropTypes.oneOf(['info', 'success', 'warning', 'danger']),
+        variant: PropTypes.oneOf(['info', 'success', 'warning', 'error']),
     }),
 };
 
@@ -90,7 +90,7 @@ export default function Notification({ timeout = 3000, message }) {
                                         <CheckCircleOutlineIcon className="h-6 w-6 text-green-400" />
                                     ) : message.variant === 'warning' ? (
                                         <ExclamationOutlineIcon className="h-6 w-6 text-orange-400" />
-                                    ) : message.variant === 'danger' ? (
+                                    ) : message.variant === 'error' ? (
                                         <XCircleOutlineIcon className="h-6 w-6 text-red-400" />
                                     ) : null}
                                 </div>

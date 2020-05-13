@@ -44,7 +44,7 @@ export default function Slave({ backUrl = '/home', children }) {
                     message={{
                         title: 'Whooops?!',
                         body: 'Check the fields and try again.',
-                        type: 'error',
+                        variant: 'error',
                     }}
                 />
             )}

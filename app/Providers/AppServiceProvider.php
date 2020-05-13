@@ -36,11 +36,6 @@ class AppServiceProvider extends ServiceProvider
         $this->shareBackendData();
     }
 
-    /**
-     * Share backend application data.
-     *
-     * @return void
-     */
     protected function shareBackendData()
     {
         if (in_backend()) {

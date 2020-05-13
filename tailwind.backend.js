@@ -7,6 +7,10 @@ module.exports = {
     },
     theme: {
         extend: {
+            inset: {
+                '1/2': '50%',
+                full: '100%',
+            },
             minWidth: {
                 '48': '12rem',
                 '56': '14rem',

@@ -51,7 +51,7 @@ class TagsController extends Controller
     /**
      * Show the form for editing the specified tag.
      *
-     * @param  \App\Models\Tag tag
+     * @param  \App\Models\Tag $tag
      * @return \Inertia\Response
      */
     public function edit(Tag $tag)

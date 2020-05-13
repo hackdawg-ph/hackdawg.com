@@ -56,7 +56,7 @@ export default function Table({ headings, collection, actions, pagination }) {
         setAction(action);
         setAlert({
             title: 'You are deleting a resource!',
-            body: 'Other data related to the user will also be destroyed. You cannot undo this action.',
+            body: 'Other data related to the resource will also be destroyed. You cannot undo this action.',
             variant: 'danger',
         });
     }
@@ -112,7 +112,14 @@ export default function Table({ headings, collection, actions, pagination }) {
                                                 {status.text}
                                             </span>
                                         ) : type === 'text' ? (
-                                            <span className="text-sm leading-5 text-gray-500">{text}</span>
+                                            <span
+                                                className={cx('text-sm leading-5', {
+                                                    'font-medium text-gray-900': i === 0,
+                                                    'text-gray-500': i !== 0,
+                                                })}
+                                            >
+                                                {text}
+                                            </span>
                                         ) : null}
                                     </td>
                                 ))}

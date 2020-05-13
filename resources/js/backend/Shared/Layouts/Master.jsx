@@ -317,7 +317,7 @@ export default function Master({ title, headerActions, withHeader = true, childr
                     message={{
                         title: 'Whooops?!',
                         body: 'Check the fields and try again.',
-                        type: 'error',
+                        variant: 'error',
                     }}
                 />
             )}
