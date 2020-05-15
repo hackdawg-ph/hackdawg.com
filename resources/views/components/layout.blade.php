@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" xmlns:livewire="http://www.w3.org/1999/html">
 
 <head>
     <!-- Metas -->
@@ -15,6 +15,9 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+
+    <!-- Livewire Style -->
+    <livewire:styles />
 
     <!-- Main Style -->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
@@ -39,11 +42,7 @@
                 About Us
             </a>
             <span class="flex-grow translate-x-full"></span>
-            <x-contact>
-                <button @click="open = true" class="btn btn-blue">
-                    Contact Us
-                </button>
-            </x-contact>
+            <livewire:contact-form />
         </div>
     </nav>
 
@@ -101,28 +100,11 @@
         </div>
     </footer>
 
+    <!-- Livewire Script -->
+    <livewire:scripts />
+
     <!-- Main Script -->
     <script src="{{ mix('js/app.js') }}"></script>
-
-    @if ($errors->count())
-        <script>
-            Swal.fire(
-                'Whooops?!',
-                '{{ $errors->first() }}',
-                'error'
-            );
-        </script>
-    @endif
-
-    @if ($message = Session::get('message'))
-        <script>
-            Swal.fire(
-                '{{ $message['title'] }}',
-                '{{ $message['body'] }}',
-                '{{ $message['type'] ?? 'info' }}'
-            )
-        </script>
-    @endif
 </body>
 
 </html>

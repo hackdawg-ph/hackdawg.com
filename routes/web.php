@@ -13,5 +13,4 @@
 
 Route::get('/', 'PagesController@welcome')->name('welcome');
 Route::get('about', 'PagesController@about')->name('about');
-Route::post('contact', 'ContactController@sendMessage')->name('contact');
 Route::resource('articles', 'ArticlesController')->only(['index', 'show']);

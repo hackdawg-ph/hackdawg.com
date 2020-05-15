@@ -12,6 +12,10 @@ class TagsTableSeeder extends Seeder
      */
     public function run()
     {
+        Tag::create(['name' => 'design']);
+        Tag::create(['name' => 'development']);
+        Tag::create(['name' => 'ar/vr']);
+        Tag::create(['name' => 'infrastructure']);
         Tag::create(['name' => 'php']);
         Tag::create(['name' => 'laravel']);
         Tag::create(['name' => 'sql']);

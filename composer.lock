@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "90fd88229d03034391e4960a29043af6",
+    "content-hash": "eeb985fe9682df4e9707e851a343bf3f",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -60,16 +60,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.137.8",
+            "version": "3.138.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "0116efff39048d9bc163d3c287a85cce30b9aa20"
+                "reference": "66df78e714c7ac87a9ea2bbb77cde586649d0141"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/0116efff39048d9bc163d3c287a85cce30b9aa20",
-                "reference": "0116efff39048d9bc163d3c287a85cce30b9aa20",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/66df78e714c7ac87a9ea2bbb77cde586649d0141",
+                "reference": "66df78e714c7ac87a9ea2bbb77cde586649d0141",
                 "shasum": ""
             },
             "require": {
@@ -140,7 +140,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2020-05-12T18:14:22+00:00"
+            "time": "2020-05-14T18:17:11+00:00"
         },
         {
             "name": "brick/math",
@@ -1489,6 +1489,69 @@
             "time": "2019-04-03T23:46:42+00:00"
         },
         {
+            "name": "livewire/livewire",
+            "version": "v1.0.14",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/livewire/livewire.git",
+                "reference": "a6b43843c89304fe96f9f98fcb3f1e2660b0deae"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/livewire/livewire/zipball/a6b43843c89304fe96f9f98fcb3f1e2660b0deae",
+                "reference": "a6b43843c89304fe96f9f98fcb3f1e2660b0deae",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/database": "~5.6.0|~5.7.0|~5.8.0|^6.0|^7.0",
+                "illuminate/support": "~5.6.0|~5.7.0|~5.8.0|^6.0|^7.0",
+                "illuminate/validation": "~5.6.0|~5.7.0|~5.8.0|^6.0|^7.0",
+                "php": "^7.1.3",
+                "symfony/http-kernel": "^4.0|^5.0"
+            },
+            "require-dev": {
+                "laravel/framework": "~5.6.0|~5.7.0|~5.8.0|^6.0|^7.0",
+                "mockery/mockery": "^1.3.1",
+                "orchestra/testbench": "~3.6.0|~3.7.0|~3.8.0|^4.0|^5.0",
+                "phpunit/phpunit": "^7.5.15|^8.4|^9.0",
+                "psy/psysh": "@stable"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Livewire\\LivewireServiceProvider"
+                    ],
+                    "aliases": {
+                        "Livewire": "Livewire\\Livewire"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Livewire\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Caleb Porzio",
+                    "email": "calebporzio@gmail.com"
+                }
+            ],
+            "description": "A front-end framework for Laravel.",
+            "funding": [
+                {
+                    "url": "https://github.com/calebporzio",
+                    "type": "github"
+                }
+            ],
+            "time": "2020-04-27T13:47:28+00:00"
+        },
+        {
             "name": "maennchen/zipstream-php",
             "version": "2.0.0",
             "source": {
@@ -2640,16 +2703,16 @@
         },
         {
             "name": "spatie/laravel-medialibrary",
-            "version": "8.2.6",
+            "version": "8.2.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-medialibrary.git",
-                "reference": "f1cf9f63c65156ec3b03f6224f0d13721db3b557"
+                "reference": "117852093c0e8b5390a6c7dd5f9109dbce969788"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-medialibrary/zipball/f1cf9f63c65156ec3b03f6224f0d13721db3b557",
-                "reference": "f1cf9f63c65156ec3b03f6224f0d13721db3b557",
+                "url": "https://api.github.com/repos/spatie/laravel-medialibrary/zipball/117852093c0e8b5390a6c7dd5f9109dbce969788",
+                "reference": "117852093c0e8b5390a6c7dd5f9109dbce969788",
                 "shasum": ""
             },
             "require": {
@@ -2736,20 +2799,20 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-05-10T20:39:19+00:00"
+            "time": "2020-05-13T12:04:55+00:00"
         },
         {
             "name": "spatie/laravel-permission",
-            "version": "3.11.0",
+            "version": "3.12.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-permission.git",
-                "reference": "e90ed6242a8fa29735529160b9c21cb77b233e7f"
+                "reference": "ee3d83e6c85f480e595ae4d96aab656063efe85a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-permission/zipball/e90ed6242a8fa29735529160b9c21cb77b233e7f",
-                "reference": "e90ed6242a8fa29735529160b9c21cb77b233e7f",
+                "url": "https://api.github.com/repos/spatie/laravel-permission/zipball/ee3d83e6c85f480e595ae4d96aab656063efe85a",
+                "reference": "ee3d83e6c85f480e595ae4d96aab656063efe85a",
                 "shasum": ""
             },
             "require": {
@@ -2810,7 +2873,7 @@
                     "type": "custom"
                 }
             ],
-            "time": "2020-03-03T21:31:02+00:00"
+            "time": "2020-05-14T16:42:35+00:00"
         },
         {
             "name": "spatie/laravel-sluggable",
@@ -8378,7 +8441,8 @@
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": "^7.4"
+        "php": "^7.4",
+        "ext-json": "*"
     },
     "platform-dev": [],
     "plugin-api-version": "1.1.0"
