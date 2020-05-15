@@ -47,7 +47,7 @@ COPY deploy/scheduler.sh /usr/local/bin/hackdawg-scheduler
 RUN deploy/composer.sh
 
 # Give proper file permissions
-RUN chown -R www-data:www-data ${DIR}/storage
+RUN chown -R www-data:www-data ${DIR}/storage ${DIR}/bootstrap/cache
 RUN chmod -R 775 ${DIR}/storage ${DIR}/bootstrap/cache
 RUN chmod +x /usr/local/bin/hackdawg-chore
 RUN chmod +x /usr/local/bin/hackdawg-queuer
