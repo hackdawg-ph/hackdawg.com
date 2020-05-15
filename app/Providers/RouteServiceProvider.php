@@ -40,22 +40,8 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function map()
     {
-        $this->mapFrontendRoutes();
         $this->mapBackendRoutes();
-    }
-
-    /**
-     * Define the "frontend" routes for the application.
-     *
-     * These routes all receive session state, CSRF protection, etc.
-     *
-     * @return void
-     */
-    protected function mapFrontendRoutes()
-    {
-        Route::middleware('web')
-             ->namespace($this->namespace)
-             ->group(base_path('routes/frontend.php'));
+        $this->mapWebRoutes();
     }
 
     /**
@@ -68,9 +54,23 @@ class RouteServiceProvider extends ServiceProvider
     protected function mapBackendRoutes()
     {
         Route::middleware('web')
-             ->name('backend.')
-             ->namespace($this->namespace.'\Backend')
-             ->prefix('/admin')
-             ->group(base_path('routes/backend.php'));
+            ->name('backend.')
+            ->namespace($this->namespace.'\Backend')
+            ->prefix('/admin')
+            ->group(base_path('routes/backend.php'));
+    }
+
+    /**
+     * Define the "web" routes for the application.
+     *
+     * These routes all receive session state, CSRF protection, etc.
+     *
+     * @return void
+     */
+    protected function mapWebRoutes()
+    {
+        Route::middleware('web')
+             ->namespace($this->namespace)
+             ->group(base_path('routes/web.php'));
     }
 }
