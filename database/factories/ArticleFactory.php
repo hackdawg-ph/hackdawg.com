@@ -23,6 +23,6 @@ $factory->define(Article::class, function (Faker $faker) {
         'title' => ($title = $faker->sentence),
         'slug' => Str::slug($title),
         'body' => $faker->paragraph,
-        'published_at' => $faker->dateTime()->format('Y-m-d H:i:s.u') . 'Z',
+        'published_at' => $faker->dateTime()->format('Y-m-d H:i:s.u'),
     ];
 });

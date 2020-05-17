@@ -16,7 +16,6 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
 
-    <!-- Livewire Style -->
     <livewire:styles />
 
     <!-- Main Style -->
@@ -24,24 +23,24 @@
 </head>
 
 <body class="min-h-screen">
-    <nav class="w-full bg-green-darkest">
-        <div class="flex items-center w-4/5 h-24 mx-auto border-b-1/2px border-green-darker">
+    <nav class="w-full {{ $variant === 'secondary' ? 'bg-white' : 'bg-green-darkest' }}">
+        <div class="hidden md:flex items-center px-4 md:px-24 lg:px-40 h-24">
             <div class="w-12 h-12 mr-5 rounded-full shadow">
                 <img class="w-full h-full" src="{{ asset('png/logos/indigo-circle.png') }}" alt="Hackdawg">
             </div>
             <a class="mx-5 text-sm {{ Request::path() === '/' ? 'text-blue' : 'text-gray' }}" href="{{ route('welcome') }}">
                 Home
             </a>
-            <a class="mx-5 text-sm text-gray" href="#">
+            <a class="mx-5 text-sm {{ Request::path() === 'portfolio' ? 'text-blue' : 'text-gray' }}" href="#">
                 Portfolio
             </a>
-            <a class="mx-5 text-sm text-gray" href="{{ route('articles.index') }}">
+            <a class="mx-5 text-sm {{ Request::path() === 'articles' ? 'text-blue' : 'text-gray' }}" href="{{ route('articles.index') }}">
                 Articles
             </a>
             <a class="mx-5 text-sm {{ Request::path() === 'about' ? 'text-blue' : 'text-gray' }}" href="{{ route('about') }}">
                 About Us
             </a>
-            <span class="flex-grow translate-x-full"></span>
+            <div class="flex-grow translate-x-full"></div>
             <livewire:contact-form />
         </div>
     </nav>
@@ -50,8 +49,8 @@
         {{ $slot }}
     </main>
 
-    <footer class="w-full bg-gray-lightest">
-        <div class="w-4/5 mx-auto">
+    <footer class="hidden md:block w-full bg-gray-lightest">
+        <div class="px-4 md:px-24 lg:px-40">
             <div class="flex flex-wrap justify-between -mx-8 pt-10 pb-20">
                 <div class="px-8">
                     <div class="h-12 mb-5">
@@ -100,7 +99,6 @@
         </div>
     </footer>
 
-    <!-- Livewire Script -->
     <livewire:scripts />
 
     <!-- Main Script -->

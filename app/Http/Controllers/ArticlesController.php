@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Article;
+use App\Queries\TopAuthorsQuery;
+use App\Queries\TopTagsQuery;
 
 class ArticlesController extends Controller
 {
@@ -13,8 +15,21 @@ class ArticlesController extends Controller
      */
     public function index()
     {
+        $articles = Article::with(['tags', 'author', 'author.media'])
+            ->orderByDesc('published_at');
+
+        if ($tag = request('tag')) {
+            $articles = $articles->whereHas('tags', fn ($query) => $query->where('name', $tag));
+        }
+
+        if ($author = request('author')) {
+            $articles = $articles->where('user_id', $author);
+        }
+
         return view('articles.index', [
-            'articles' => Article::take(10)->get(),
+            'articles' => $articles->simplePaginate(10),
+            'tags' => TopTagsQuery::run(),
+            'authors' => TopAuthorsQuery::run(),
         ]);
     }
 }

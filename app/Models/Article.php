@@ -59,6 +59,16 @@ class Article extends Model
     }
 
     /**
+     * Get the path to show the article.
+     *
+     * @return string
+     */
+    public function path()
+    {
+        return route('articles.show', $this);
+    }
+
+    /**
      * Get the route key for the model.
      *
      * @return string
