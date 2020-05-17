@@ -90,6 +90,8 @@ class Article extends Model
 
     /**
      * Get the options for generating the slug.
+     *
+     * @return \Spatie\Sluggable\SlugOptions
      */
     public function getSlugOptions()
     {

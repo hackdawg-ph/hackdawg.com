@@ -112,7 +112,9 @@ class User extends Authenticatable implements HasMedia
      */
     public function createArticle($attributes)
     {
-        return $this->articles()->create($attributes);
+        return $this->articles()->create(array_merge($attributes, [
+            'published_at' => now(),
+        ]));
     }
 
     public function registerAllMediaConversions(?Media $media = null): void
