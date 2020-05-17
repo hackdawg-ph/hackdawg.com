@@ -32,4 +32,14 @@ class ArticlesController extends Controller
             'authors' => TopAuthorsQuery::run(),
         ]);
     }
+
+    /**
+     * Display the specified article.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function show(Article $article)
+    {
+        return view('articles.show', compact('article'));
+    }
 }

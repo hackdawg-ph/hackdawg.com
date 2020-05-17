@@ -13,4 +13,8 @@
 
 Route::get('/', 'PagesController@welcome')->name('welcome');
 Route::get('about', 'PagesController@about')->name('about');
-Route::resource('articles', 'ArticlesController')->only(['index', 'show']);
+
+Route::prefix('articles')->name('articles.')->group(function () {
+    Route::get('/', 'ArticlesController@index')->name('index');
+    Route::get('{article:slug}', 'ArticlesController@show')->name('show');
+});
