@@ -1,31 +1,20 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Inertia } from '@inertiajs/inertia';
 import { usePage } from '@inertiajs/inertia-react';
 import pick from 'lodash/pick';
 import omit from 'lodash/omit';
+import useTitle from '@/backend/hooks/useTitle';
+import useForm from '@/backend/hooks/useForm';
 import AvatarPicker from '@/backend/Shared/AvatarPicker';
 import Button from '@/backend/Shared/Button';
 import Layout from '@/backend/Shared/Layouts/Master';
 import Select from '@/backend/Shared/Select';
 import TextInput from '@/backend/Shared/TextInput';
-import useTitle from '@/backend/hooks/useTitle';
 
 export default function Account() {
     const { countries, form, auth } = usePage();
     useTitle('Account Settings');
-    const [values, setValues] = useState(omit(auth.user, ['id']));
-
-    function updateValue(key, value) {
-        setValues(values => ({
-            ...values,
-            [key]: value,
-        }));
-    }
-
-    function handleChange(e) {
-        e.persist();
-        updateValue(e.target.id, e.target.type === 'checkbox' ? e.target.checked : e.target.value);
-    }
+    const { values, onChange, updateValue } = useForm(omit(auth.user, ['id']));
 
     function handleSubmitProfile(e) {
         e.preventDefault();
@@ -91,7 +80,7 @@ export default function Account() {
                                                 id="job_title"
                                                 label="Job title"
                                                 value={values.job_title}
-                                                onChange={handleChange}
+                                                onChange={onChange}
                                                 errors={form.errors.job_title}
                                             />
                                         </div>
@@ -101,7 +90,7 @@ export default function Account() {
                                                 id="company"
                                                 label="Company"
                                                 value={values.company}
-                                                onChange={handleChange}
+                                                onChange={onChange}
                                                 errors={form.errors.company}
                                             />
                                         </div>
@@ -111,7 +100,7 @@ export default function Account() {
                                                 id="website"
                                                 label="Website"
                                                 value={values.website}
-                                                onChange={handleChange}
+                                                onChange={onChange}
                                                 errors={form.errors.website}
                                             />
                                         </div>
@@ -121,7 +110,7 @@ export default function Account() {
                                                 id="about"
                                                 label="About"
                                                 value={values.about}
-                                                onChange={handleChange}
+                                                onChange={onChange}
                                                 description="Write a few sentences about yourself"
                                                 errors={form.errors.about}
                                                 multiline
@@ -177,7 +166,7 @@ export default function Account() {
                                                 id="first_name"
                                                 label="First name"
                                                 value={values.first_name}
-                                                onChange={handleChange}
+                                                onChange={onChange}
                                                 errors={form.errors.first_name}
                                             />
                                         </div>
@@ -187,7 +176,7 @@ export default function Account() {
                                                 id="last_name"
                                                 label="Last name"
                                                 value={values.last_name}
-                                                onChange={handleChange}
+                                                onChange={onChange}
                                                 errors={form.errors.last_name}
                                             />
                                         </div>
@@ -197,7 +186,7 @@ export default function Account() {
                                                 id="email"
                                                 label="Email address"
                                                 value={values.email}
-                                                onChange={handleChange}
+                                                onChange={onChange}
                                                 errors={form.errors.email}
                                             />
                                         </div>
@@ -211,7 +200,7 @@ export default function Account() {
                                                     label: country.name,
                                                 }))}
                                                 defaultValue={values.country || 'PH'}
-                                                onChange={handleChange}
+                                                onChange={onChange}
                                             />
                                         </div>
 
@@ -220,7 +209,7 @@ export default function Account() {
                                                 id="street_address"
                                                 label="Street address"
                                                 value={values.street_address}
-                                                onChange={handleChange}
+                                                onChange={onChange}
                                                 errors={form.errors.street_address}
                                             />
                                         </div>
@@ -230,7 +219,7 @@ export default function Account() {
                                                 id="city"
                                                 label="City"
                                                 value={values.city}
-                                                onChange={handleChange}
+                                                onChange={onChange}
                                                 errors={form.errors.city}
                                             />
                                         </div>
@@ -240,7 +229,7 @@ export default function Account() {
                                                 id="state"
                                                 label="State / Province"
                                                 value={values.state}
-                                                onChange={handleChange}
+                                                onChange={onChange}
                                                 errors={form.errors.state}
                                             />
                                         </div>
@@ -250,7 +239,7 @@ export default function Account() {
                                                 id="postal_code"
                                                 label="ZIP / Postal"
                                                 value={values.postal_code}
-                                                onChange={handleChange}
+                                                onChange={onChange}
                                                 errors={form.errors.postal_code}
                                             />
                                         </div>
@@ -292,7 +281,7 @@ export default function Account() {
                                                 type="password"
                                                 label="Current password"
                                                 value={values.old_password}
-                                                onChange={handleChange}
+                                                onChange={onChange}
                                                 errors={form.errors.old_password}
                                             />
                                         </div>
@@ -302,7 +291,7 @@ export default function Account() {
                                                 type="password"
                                                 label="New password"
                                                 value={values.new_password}
-                                                onChange={handleChange}
+                                                onChange={onChange}
                                                 errors={form.errors.new_password}
                                             />
                                         </div>

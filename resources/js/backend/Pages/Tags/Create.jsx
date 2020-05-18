@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Inertia } from '@inertiajs/inertia';
 import { InertiaLink, usePage } from '@inertiajs/inertia-react';
+import useForm from '@/backend/hooks/useForm';
 import useTitle from '@/backend/hooks/useTitle';
 import Layout from '@/backend/Shared/Layouts/Slave';
 import TextInput from '@/backend/Shared/TextInput';
@@ -12,22 +13,10 @@ export default function Create() {
 
     useTitle('Create Tag');
 
-    const [values, setValues] = useState({
+    const { values, onChange } = useForm({
         name: '',
         description: '',
     });
-
-    function updateValue(key, value) {
-        setValues(values => ({
-            ...values,
-            [key]: value,
-        }));
-    }
-
-    function handleChange(e) {
-        e.persist();
-        updateValue(e.target.id, e.target.value);
-    }
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -51,7 +40,7 @@ export default function Create() {
                                 id="name"
                                 label="Name"
                                 value={values.name}
-                                onChange={handleChange}
+                                onChange={onChange}
                                 errors={errors.name}
                             />
                         </div>
@@ -61,7 +50,7 @@ export default function Create() {
                                 id="description"
                                 label="Description"
                                 value={values.description}
-                                onChange={handleChange}
+                                onChange={onChange}
                                 errors={errors.description}
                                 multiline
                                 rows={3}

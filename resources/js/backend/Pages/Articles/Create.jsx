@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Inertia } from '@inertiajs/inertia';
 import { InertiaLink, usePage } from '@inertiajs/inertia-react';
+import useForm from '@/backend/hooks/useForm';
 import useTitle from '@/backend/hooks/useTitle';
 import Editor from '@/backend/Shared/Editor/Editor';
 import Dropzone from '@/backend/Shared/Dropzone';
@@ -16,24 +17,12 @@ export default function Create() {
 
     useTitle('Create Article');
 
-    const [values, setValues] = useState({
+    const { values, onChange, updateValue } = useForm({
         title: '',
         body: '',
         tags: [],
         cover: null,
     });
-
-    function updateValue(key, value) {
-        setValues(values => ({
-            ...values,
-            [key]: value,
-        }));
-    }
-
-    function handleChange(e) {
-        e.persist();
-        updateValue(e.target.id, e.target.value);
-    }
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -68,7 +57,7 @@ export default function Create() {
                                 id="title"
                                 label="Title"
                                 value={values.title}
-                                onChange={handleChange}
+                                onChange={onChange}
                                 errors={errors.title}
                             />
                         </div>

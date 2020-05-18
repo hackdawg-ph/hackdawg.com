@@ -1,42 +1,29 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Inertia } from '@inertiajs/inertia';
 import { InertiaLink } from '@inertiajs/inertia-react';
+import useForm from '@/backend/hooks/useForm';
 import Button from '@/backend/Shared/Button';
 import Layout from '@/backend/Shared/Layouts/Auth';
 import TextInput from '@/backend/Shared/TextInput';
 
 export default function Email() {
-    const [values, setValues] = useState({
+    const { values, onChange, updateValue } = useForm({
         email: '',
     });
-
-    function handleChange(e) {
-        e.persist();
-
-        setValues(values => ({
-            ...values,
-            [e.target.id]: e.target.value,
-        }));
-    }
 
     async function handleSubmit(e) {
         e.preventDefault();
 
         await Inertia.post($route('backend.password.email'), values);
-        setValues({ email: '' });
+
+        updateValue('email', '');
     }
 
     return (
         <Layout title="Reset Password">
             <form onSubmit={handleSubmit}>
                 <div>
-                    <TextInput
-                        id="email"
-                        type="email"
-                        label="Email address"
-                        value={values.email}
-                        onChange={handleChange}
-                    />
+                    <TextInput id="email" type="email" label="Email address" value={values.email} onChange={onChange} />
                 </div>
 
                 <div className="mt-6 flex items-center justify-between">

@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Inertia } from '@inertiajs/inertia';
 import { InertiaLink, usePage } from '@inertiajs/inertia-react';
 import pick from 'lodash/pick';
+import useForm from '@/backend/hooks/useForm';
 import useTitle from '@/backend/hooks/useTitle';
 import Layout from '@/backend/Shared/Layouts/Slave';
 import Select from '@/backend/Shared/Select';
@@ -16,21 +17,9 @@ export default function Edit() {
 
     useTitle('Edit User');
 
-    const [values, setValues] = useState(
+    const { values, onChange } = useForm(
         pick(user, ['first_name', 'last_name', 'email', 'country', 'state', 'city', 'street_address', 'postal_code']),
     );
-
-    function updateValue(key, value) {
-        setValues(values => ({
-            ...values,
-            [key]: value,
-        }));
-    }
-
-    function handleChange(e) {
-        e.persist();
-        updateValue(e.target.id, e.target.type === 'checkbox' ? e.target.checked : e.target.value);
-    }
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -54,7 +43,7 @@ export default function Edit() {
                                 id="first_name"
                                 label="First name"
                                 value={values.first_name}
-                                onChange={handleChange}
+                                onChange={onChange}
                                 errors={errors.first_name}
                             />
                         </div>
@@ -64,7 +53,7 @@ export default function Edit() {
                                 id="last_name"
                                 label="Last name"
                                 value={values.last_name}
-                                onChange={handleChange}
+                                onChange={onChange}
                                 errors={errors.last_name}
                             />
                         </div>
@@ -75,7 +64,7 @@ export default function Edit() {
                                 id="email"
                                 label="Email address"
                                 value={values.email}
-                                onChange={handleChange}
+                                onChange={onChange}
                                 errors={errors.email}
                             />
                         </div>
@@ -89,7 +78,7 @@ export default function Edit() {
                                     label: country.name,
                                 }))}
                                 defaultValue={values.country || 'PH'}
-                                onChange={handleChange}
+                                onChange={onChange}
                             />
                         </div>
 
@@ -98,7 +87,7 @@ export default function Edit() {
                                 id="street_address"
                                 label="Street address"
                                 value={values.street_address}
-                                onChange={handleChange}
+                                onChange={onChange}
                                 errors={errors.street_address}
                             />
                         </div>
@@ -108,7 +97,7 @@ export default function Edit() {
                                 id="city"
                                 label="City"
                                 value={values.city}
-                                onChange={handleChange}
+                                onChange={onChange}
                                 errors={errors.city}
                             />
                         </div>
@@ -118,7 +107,7 @@ export default function Edit() {
                                 id="state"
                                 label="State / Province"
                                 value={values.state}
-                                onChange={handleChange}
+                                onChange={onChange}
                                 errors={errors.state}
                             />
                         </div>
@@ -128,7 +117,7 @@ export default function Edit() {
                                 id="postal_code"
                                 label="ZIP / Postal"
                                 value={values.postal_code}
-                                onChange={handleChange}
+                                onChange={onChange}
                                 errors={errors.postal_code}
                             />
                         </div>

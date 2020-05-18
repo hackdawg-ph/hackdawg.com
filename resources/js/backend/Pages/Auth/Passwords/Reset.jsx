@@ -1,26 +1,18 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Inertia } from '@inertiajs/inertia';
 import { InertiaLink, usePage } from '@inertiajs/inertia-react';
+import useForm from '@/backend/hooks/useForm';
 import Button from '@/backend/Shared/Button';
 import Layout from '@/backend/Shared/Layouts/Auth';
 import TextInput from '@/backend/Shared/TextInput';
 
 export default function Reset() {
     const { token } = usePage();
-    const [values, setValues] = useState({
+    const { values, onChange, updateValue } = useForm({
         email: '',
         password: '',
         password_confirmation: '',
     });
-
-    function handleChange(e) {
-        e.persist();
-
-        setValues(values => ({
-            ...values,
-            [e.target.id]: e.target.value,
-        }));
-    }
 
     async function handleSubmit(e) {
         e.preventDefault();
@@ -29,20 +21,15 @@ export default function Reset() {
             ...values,
             token,
         });
-        setValues({ email: '' });
+
+        updateValue('email', '');
     }
 
     return (
         <Layout title="Reset Password">
             <form onSubmit={handleSubmit}>
                 <div>
-                    <TextInput
-                        id="email"
-                        type="email"
-                        label="Email address"
-                        value={values.email}
-                        onChange={handleChange}
-                    />
+                    <TextInput id="email" type="email" label="Email address" value={values.email} onChange={onChange} />
                 </div>
 
                 <div className="mt-6">
@@ -51,7 +38,7 @@ export default function Reset() {
                         type="password"
                         label="Password"
                         value={values.password}
-                        onChange={handleChange}
+                        onChange={onChange}
                     />
                 </div>
 
@@ -61,7 +48,7 @@ export default function Reset() {
                         type="password"
                         label="Confirm password"
                         value={values.password_confirmation}
-                        onChange={handleChange}
+                        onChange={onChange}
                     />
                 </div>
 

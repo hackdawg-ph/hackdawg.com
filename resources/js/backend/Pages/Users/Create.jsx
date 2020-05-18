@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Inertia } from '@inertiajs/inertia';
 import { InertiaLink, usePage } from '@inertiajs/inertia-react';
+import useForm from '@/backend/hooks/useForm';
 import useTitle from '@/backend/hooks/useTitle';
 import Layout from '@/backend/Shared/Layouts/Slave';
 import Select from '@/backend/Shared/Select';
@@ -14,7 +15,7 @@ export default function Create() {
 
     useTitle('Create User');
 
-    const [values, setValues] = useState({
+    const { values, onChange } = useForm({
         first_name: '',
         last_name: '',
         email: '',
@@ -24,18 +25,6 @@ export default function Create() {
         street_address: '',
         postal_code: '',
     });
-
-    function updateValue(key, value) {
-        setValues(values => ({
-            ...values,
-            [key]: value,
-        }));
-    }
-
-    function handleChange(e) {
-        e.persist();
-        updateValue(e.target.id, e.target.type === 'checkbox' ? e.target.checked : e.target.value);
-    }
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -59,7 +48,7 @@ export default function Create() {
                                 id="first_name"
                                 label="First name"
                                 value={values.first_name}
-                                onChange={handleChange}
+                                onChange={onChange}
                                 errors={errors.first_name}
                             />
                         </div>
@@ -69,7 +58,7 @@ export default function Create() {
                                 id="last_name"
                                 label="Last name"
                                 value={values.last_name}
-                                onChange={handleChange}
+                                onChange={onChange}
                                 errors={errors.last_name}
                             />
                         </div>
@@ -80,7 +69,7 @@ export default function Create() {
                                 id="email"
                                 label="Email address"
                                 value={values.email}
-                                onChange={handleChange}
+                                onChange={onChange}
                                 errors={errors.email}
                             />
                         </div>
@@ -94,7 +83,7 @@ export default function Create() {
                                     label: country.name,
                                 }))}
                                 defaultValue={values.country || 'PH'}
-                                onChange={handleChange}
+                                onChange={onChange}
                             />
                         </div>
 
@@ -103,7 +92,7 @@ export default function Create() {
                                 id="street_address"
                                 label="Street address"
                                 value={values.street_address}
-                                onChange={handleChange}
+                                onChange={onChange}
                                 errors={errors.street_address}
                             />
                         </div>
@@ -113,7 +102,7 @@ export default function Create() {
                                 id="city"
                                 label="City"
                                 value={values.city}
-                                onChange={handleChange}
+                                onChange={onChange}
                                 errors={errors.city}
                             />
                         </div>
@@ -123,7 +112,7 @@ export default function Create() {
                                 id="state"
                                 label="State / Province"
                                 value={values.state}
-                                onChange={handleChange}
+                                onChange={onChange}
                                 errors={errors.state}
                             />
                         </div>
@@ -133,7 +122,7 @@ export default function Create() {
                                 id="postal_code"
                                 label="ZIP / Postal"
                                 value={values.postal_code}
-                                onChange={handleChange}
+                                onChange={onChange}
                                 errors={errors.postal_code}
                             />
                         </div>
