@@ -35,7 +35,12 @@ export default function Avatar({ variant = 'rounded', size = 'md', url = null, c
             {url === null || hasError ? (
                 <UserCustomIcon className="w-full h-full text-gray-300" />
             ) : (
-                <img className="w-full h-full" src={url} onError={() => setHasError(true)} alt="Avatar" />
+                <img
+                    className="w-full h-full object-cover object-center"
+                    src={url}
+                    onError={() => setHasError(true)}
+                    alt="Avatar"
+                />
             )}
         </div>
     );

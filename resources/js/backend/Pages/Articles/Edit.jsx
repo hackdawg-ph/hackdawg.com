@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Inertia } from '@inertiajs/inertia';
 import { InertiaLink, usePage } from '@inertiajs/inertia-react';
 import useTitle from '@/backend/hooks/useTitle';
+import Dropzone from '@/backend/Shared/Dropzone';
 import Editor from '@/backend/Shared/Editor/Editor';
 import Layout from '@/backend/Shared/Layouts/Slave';
 import MultipleInput from '@/backend/Shared/MultipleInput';
@@ -18,6 +19,7 @@ export default function Edit() {
 
     const [values, setValues] = useState({
         title: article.title,
+        cover_url: article.cover_url,
         body: article.body,
         tags: article.tags.map(tag => tag.id),
     });
@@ -36,7 +38,20 @@ export default function Edit() {
 
     function handleSubmit(e) {
         e.preventDefault();
-        return Inertia.patch($route('backend.articles.update', article.slug), values);
+
+        const data = new FormData();
+
+        data.append('_method', 'PATCH');
+        data.append('title', values.title || '');
+        data.append('body', values.body || '');
+        data.append('tags', values.tags || []);
+
+        if (values.cover) {
+            data.append('cover', values.cover || '');
+        }
+
+        // TODO: This should be .patch(...), but Inertia does not work unfortunately.
+        return Inertia.post($route('backend.articles.update', article.slug), data);
     }
 
     return (
@@ -58,6 +73,17 @@ export default function Edit() {
                                 value={values.title}
                                 onChange={handleChange}
                                 errors={errors.title}
+                            />
+                        </div>
+
+                        <div className="sm:col-span-6">
+                            <Dropzone
+                                id="cover"
+                                label="Cover Photo"
+                                accept="image/*"
+                                defaultValue={values.cover_url}
+                                onChange={file => updateValue('cover', file)}
+                                errors={errors.cover}
                             />
                         </div>
 

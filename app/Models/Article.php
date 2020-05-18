@@ -4,12 +4,15 @@ namespace App\Models;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 
-class Article extends Model
+class Article extends Model implements HasMedia
 {
-    use HasSlug;
+    use HasSlug, InteractsWithMedia;
 
     /**
      * The relations to eager load on every query.
@@ -26,7 +29,7 @@ class Article extends Model
      * @var array<string>
      */
     protected $appends = [
-        'published_since',
+        'cover_url', 'published_since',
     ];
 
     /**
@@ -46,6 +49,16 @@ class Article extends Model
     protected $casts = [
         'published_at' => 'datetime',
     ];
+
+    /**
+     * Get the converted cover media url.
+     *
+     * @return string|null
+     */
+    public function getCoverUrlAttribute()
+    {
+        return optional($this->getMedia('covers')->last())->getUrl('thumb');
+    }
 
     /**
      * The published date formatted since the current moment.
@@ -98,5 +111,13 @@ class Article extends Model
         return SlugOptions::create()
             ->generateSlugsFrom('title')
             ->saveSlugsTo('slug');
+    }
+
+    public function registerAllMediaConversions(?Media $media = null): void
+    {
+        $this->addMediaConversion('thumb')
+            ->width(1024)
+            ->height(768)
+            ->sharpen(10);
     }
 }

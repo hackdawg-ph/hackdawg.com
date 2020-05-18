@@ -3,6 +3,7 @@ import { Inertia } from '@inertiajs/inertia';
 import { InertiaLink, usePage } from '@inertiajs/inertia-react';
 import useTitle from '@/backend/hooks/useTitle';
 import Editor from '@/backend/Shared/Editor/Editor';
+import Dropzone from '@/backend/Shared/Dropzone';
 import Layout from '@/backend/Shared/Layouts/Slave';
 import MultipleInput from '@/backend/Shared/MultipleInput';
 import TextInput from '@/backend/Shared/TextInput';
@@ -19,6 +20,7 @@ export default function Create() {
         title: '',
         body: '',
         tags: [],
+        cover: null,
     });
 
     function updateValue(key, value) {
@@ -35,6 +37,17 @@ export default function Create() {
 
     function handleSubmit(e) {
         e.preventDefault();
+
+        const data = new FormData();
+
+        data.append('title', values.title || '');
+        data.append('body', values.body || '');
+        data.append('tags', values.tags || '');
+
+        if (values.cover) {
+            data.append('cover', values.cover || '');
+        }
+
         return Inertia.post($route('backend.articles.store'), values);
     }
 
@@ -57,6 +70,17 @@ export default function Create() {
                                 value={values.title}
                                 onChange={handleChange}
                                 errors={errors.title}
+                            />
+                        </div>
+
+                        <div className="sm:col-span-6">
+                            <Dropzone
+                                id="cover"
+                                label="Cover Photo"
+                                accept="image/*"
+                                defaultValue={values.cover_url}
+                                onChange={file => updateValue('cover', file)}
+                                errors={errors.cover}
                             />
                         </div>
 

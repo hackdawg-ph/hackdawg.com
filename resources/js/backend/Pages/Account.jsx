@@ -3,8 +3,8 @@ import { Inertia } from '@inertiajs/inertia';
 import { usePage } from '@inertiajs/inertia-react';
 import pick from 'lodash/pick';
 import omit from 'lodash/omit';
+import AvatarPicker from '@/backend/Shared/AvatarPicker';
 import Button from '@/backend/Shared/Button';
-import ImagePicker from '@/backend/Shared/ImagePicker';
 import Layout from '@/backend/Shared/Layouts/Master';
 import Select from '@/backend/Shared/Select';
 import TextInput from '@/backend/Shared/TextInput';
@@ -130,12 +130,11 @@ export default function Account() {
                                         </div>
 
                                         <div className="col-span-6">
-                                            <ImagePicker
+                                            <AvatarPicker
                                                 id="avatar"
                                                 label="Avatar"
-                                                description="File can be PNG, JPG, GIF up to 10MB"
-                                                onChange={file => updateValue('avatar', file)}
                                                 defaultValue={values.avatar_url}
+                                                onChange={file => updateValue('avatar', file)}
                                                 errors={form.errors.avatar}
                                             />
                                         </div>

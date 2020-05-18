@@ -38,7 +38,8 @@ class ArticlesController extends Controller
      *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response
      *
-     * @throws \Illuminate\Validation\ValidationException
+     * @throws \Spatie\MediaLibrary\MediaCollections\Exceptions\FileDoesNotExist
+     * @throws \Spatie\MediaLibrary\MediaCollections\Exceptions\FileIsTooBig
      */
     public function store()
     {
@@ -46,6 +47,7 @@ class ArticlesController extends Controller
 
         $article = auth()->user()->createArticle(request(['title', 'body']));
         $article->tags()->attach(request('tags'));
+        $this->addCoverMedia($article);
 
         return redirect()->route('backend.articles.index')->with('message', [
             'title' => 'Success!',
@@ -71,10 +73,11 @@ class ArticlesController extends Controller
     /**
      * Update the specified article in storage.
      *
-     * @param  \App\Models\Article  $article
+     * @param \App\Models\Article $article
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response
      *
-     * @throws \Illuminate\Validation\ValidationException
+     * @throws \Spatie\MediaLibrary\MediaCollections\Exceptions\FileDoesNotExist
+     * @throws \Spatie\MediaLibrary\MediaCollections\Exceptions\FileIsTooBig
      */
     public function update(Article $article)
     {
@@ -83,6 +86,7 @@ class ArticlesController extends Controller
         $article->update(request(['title', 'body']));
         $article->tags()->detach();
         $article->tags()->attach(request('tags'));
+        $this->addCoverMedia($article);
 
         return redirect()->route('backend.articles.index')->with('message', [
             'title' => 'Success!',
@@ -111,6 +115,22 @@ class ArticlesController extends Controller
     }
 
     /**
+     * Add cover file to the media library for the article.
+     *
+     * @param Article $article
+     * @return void
+     *
+     * @throws \Spatie\MediaLibrary\MediaCollections\Exceptions\FileDoesNotExist
+     * @throws \Spatie\MediaLibrary\MediaCollections\Exceptions\FileIsTooBig
+     */
+    protected function addCoverMedia(Article $article)
+    {
+        if (request()->hasFile('cover')) {
+            $article->addMedia(request()->file('cover'))->toMediaCollection('covers');
+        }
+    }
+
+    /**
      * Validate the properties of the article.
      *
      * @return array
@@ -120,7 +140,7 @@ class ArticlesController extends Controller
         return request()->validate([
             'title' => 'required',
             'body' => 'required',
-            'tags' => 'exists:tags,id',
+            'tags' => 'nullable|exists:tags,id',
         ]);
     }
 }

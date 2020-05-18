@@ -1,45 +1,44 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import noop from 'lodash/noop';
 import Avatar from '@/backend/Shared/Avatar';
 
-ImagePicker.propTypes = {
+AvatarPicker.propTypes = {
     id: PropTypes.string.isRequired,
     label: PropTypes.string.isRequired,
-    description: PropTypes.string,
     defaultValue: PropTypes.string,
     onChange: PropTypes.func,
     errors: PropTypes.arrayOf(PropTypes.string),
 };
 
-export default function ImagePicker({ id, label, description, defaultValue = null, onChange = noop, errors = [] }) {
-    const [file, setFile] = useState(defaultValue);
+export default function AvatarPicker({ id, label, defaultValue = null, onChange = noop, errors = [] }) {
+    const [value, setValue] = useState(defaultValue);
 
-    function getImageUrl(file) {
-        if (typeof file === 'string') {
-            return file;
+    function fileUrl() {
+        if (typeof value === 'string') {
+            return value;
         }
 
-        return file ? URL.createObjectURL(file) : null;
+        return value ? URL.createObjectURL(value) : null;
     }
 
     function handlePicked(event) {
-        const file = event.target.files[0];
-        setFile(file);
-        onChange(file);
+        setValue(event.target.files[0]);
+        onChange(event.target.files[0]);
     }
 
     useEffect(() => {
-        if (file) {
-            URL.revokeObjectURL(file.preview);
+        if (value) {
+            URL.revokeObjectURL(value.preview);
         }
-    }, [file]);
+    }, [value]);
 
     return (
         <div>
             <label className="block text-sm leading-5 font-medium text-gray-700">{label}</label>
+
             <div className="mt-2 flex items-center">
-                <Avatar url={getImageUrl(file)} />
+                <Avatar url={fileUrl()} />
 
                 <span className="ml-5 rounded-md shadow-sm">
                     <label htmlFor={'image-picker-' + id}>
@@ -57,11 +56,9 @@ export default function ImagePicker({ id, label, description, defaultValue = nul
                 </span>
             </div>
 
-            {description && (
-                <p className="mt-2 text-sm text-gray-500" id={id + '-description'}>
-                    {description}
-                </p>
-            )}
+            <p className="mt-2 text-sm text-gray-500" id={id + '-description'}>
+                File can be PNG, JPG, GIF up to 10MB
+            </p>
 
             {errors.length > 0 && (
                 <p className="mt-2 text-sm text-red-600" id={id + '-error'}>
