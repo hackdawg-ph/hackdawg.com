@@ -36,6 +36,7 @@ class ArticlesController extends Controller
     /**
      * Display the specified article.
      *
+     * @param  Article $article
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function show(Article $article)
