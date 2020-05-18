@@ -51,7 +51,7 @@ export default function Edit() {
                                 id="description"
                                 label="Description"
                                 value={values.description}
-                                onChange={handleChange}
+                                onChange={onChange}
                                 errors={errors.description}
                                 multiline
                                 rows={3}

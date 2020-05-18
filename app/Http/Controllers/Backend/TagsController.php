@@ -16,7 +16,7 @@ class TagsController extends Controller
     public function index()
     {
         return Inertia::render('Tags/List', [
-            'tags' => Tag::paginate(10),
+            'tags' => Tag::paginate(5),
         ]);
     }
 

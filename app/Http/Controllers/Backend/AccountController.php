@@ -27,23 +27,24 @@ class AccountController extends Controller
     /**
      * Handle a request to update the user's profile.
      *
-     * @param \Illuminate\Http\Request  $request;
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response
      *
      * @throws \Illuminate\Validation\ValidationException
+     * @throws \Spatie\MediaLibrary\MediaCollections\Exceptions\FileDoesNotExist
+     * @throws \Spatie\MediaLibrary\MediaCollections\Exceptions\FileIsTooBig
      */
-    public function updateProfile(Request $request)
+    public function updateProfile()
     {
-        $request->validate([
+        $this->validate(request(), [
             'website' => 'nullable|url',
             'avatar' => 'image|max:2048',
         ]);
 
-        Auth::user()->update($request->only(['job_title', 'company', 'website', 'about']));
+        Auth::user()->update(request(['job_title', 'company', 'website', 'about']));
 
-        if ($request->hasFile('avatar')) {
+        if (request()->hasFile('avatar')) {
             Auth::user()
-                ->addMedia($request->file('avatar'))
+                ->addMedia(request()->file('avatar'))
                 ->toMediaCollection('avatars');
         }
 
@@ -57,20 +58,19 @@ class AccountController extends Controller
     /**
      * Handle a request to update the user's personal information.
      *
-     * @param \Illuminate\Http\Request  $request;
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response
      *
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function updatePersonal(Request $request)
+    public function updatePersonal()
     {
-        $request->validate([
+        $this->validate(request(), [
             'first_name' => 'required|string',
             'last_name' => 'required|string',
             'email' => 'required|email|unique:users,email,'.Auth::user()->id,
         ]);
 
-        Auth::user()->update($request->only([
+        Auth::user()->update(request([
             'first_name',
             'last_name',
             'email',
@@ -91,20 +91,19 @@ class AccountController extends Controller
     /**
      * Handle a request to update the user's password.
      *
-     * @param \Illuminate\Http\Request  $request;
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response
      *
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function updatePassword(Request $request)
+    public function updatePassword()
     {
-        $request->validate([
+        $this->validate(request(), [
             'old_password' => ['required', new OldPassword(Auth::user()->password)],
             'new_password' => 'required|min:8',
         ]);
 
         Auth::user()->update([
-            'password' => Hash::make($request->new_password),
+            'password' => Hash::make(request('new_password')),
         ]);
 
         return back()->with('message', [

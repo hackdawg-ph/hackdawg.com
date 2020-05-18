@@ -37,27 +37,10 @@ class UsersController extends Controller
      * Store a newly created resource in storage.
      *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response
-     *
-     * @throws \Illuminate\Validation\ValidationException
      */
     public function store()
     {
-        $this->validate(request(), [
-            'first_name' => 'required|string',
-            'last_name' => 'required|string',
-            'email' => 'required|email|unique:users',
-        ]);
-
-        User::create(request([
-            'first_name',
-            'last_name',
-            'email',
-            'country',
-            'state',
-            'city',
-            'street_address',
-            'postal_code',
-        ]));
+        User::create($this->validateUser());
 
         // TODO: Send an email for the user to set their password.
 
@@ -87,27 +70,10 @@ class UsersController extends Controller
      *
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response
-     *
-     * @throws \Illuminate\Validation\ValidationException
      */
     public function update(User $user)
     {
-        $this->validate(request(), [
-            'first_name' => 'required|string',
-            'last_name' => 'required|string',
-            'email' => 'required|email|unique:users,email,'.$user->id,
-        ]);
-
-        $user->update(request([
-            'first_name',
-            'last_name',
-            'email',
-            'country',
-            'state',
-            'city',
-            'street_address',
-            'postal_code',
-        ]));
+        $user->update($this->validateUser($user));
 
         return redirect()->route('backend.users.index')->with('message', [
             'title' => 'Success!',
@@ -132,6 +98,28 @@ class UsersController extends Controller
             'title' => 'Success!',
             'body' => 'User deleted.',
             'variant' => 'success',
+        ]);
+    }
+
+    /**
+     * Validate the properties of the user.
+     *
+     * @param  User|null $user
+     * @return array
+     */
+    protected function validateUser($user = null)
+    {
+        return request()->validate([
+            'first_name' => 'required|string',
+            'last_name' => 'required|string',
+            'email' => is_null($user)
+                ? 'required|email|unique:users'
+                : 'required|email|unique:users,email,'.$user->id,
+            'country' => [],
+            'state' => [],
+            'city' => [],
+            'street_address' => [],
+            'postal_code' => [],
         ]);
     }
 }

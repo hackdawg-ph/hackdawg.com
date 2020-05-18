@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Notifications\PasswordReset;
 use Carbon\Carbon;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use Inertia\Inertia;
@@ -26,20 +25,17 @@ class ForgotPasswordController extends Controller
     /**
      * Send a reset link to the given user.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\RedirectResponse
+     * @throws \Illuminate\Validation\ValidationException
      */
-    public function sendResetLinkEmail(Request $request)
+    public function sendResetLinkEmail()
     {
-        $request->validate([
+        $this->validate(request(), [
             'email' => 'required|exists:users',
         ]);
 
-        $this->deleteResetTokens($request);
-
-        $token = $this->storeResetToken($request);
-
-        $this->sendResetLinkEmailNotification($token, $request->email);
+        $this->deleteResetTokens();
+        $this->sendResetLinkEmailNotification($this->storeResetToken(), request('email'));
 
         return back()->with('status', 'We have emailed your password reset link!');
     }
@@ -65,13 +61,12 @@ class ForgotPasswordController extends Controller
     /**
      * Store new token to storage.
      *
-     * @param  \Illuminate\Http\Request $request
      * @return string
      */
-    protected function storeResetToken(Request $request)
+    protected function storeResetToken()
     {
         DB::table('password_resets')->insert([
-            'email' => $request->email,
+            'email' => request('email'),
             'token' => Str::random(64),
             'created_at' => Carbon::now(),
         ]);
@@ -84,13 +79,12 @@ class ForgotPasswordController extends Controller
     /**
      * Remove existing tokens from storage.
      *
-     * @param  \Illuminate\Http\Request $request
      * @return bool
      */
-    protected function deleteResetTokens(Request $request)
+    protected function deleteResetTokens()
     {
         return DB::table('password_resets')
-            ->where('email', $request->email)
+            ->where('email', request('email'))
             ->delete();
     }
 }
