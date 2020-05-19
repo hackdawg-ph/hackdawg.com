@@ -23,7 +23,7 @@
 </head>
 
 <body class="min-h-screen">
-    <nav class="w-full {{ $variant === 'secondary' ? 'bg-white' : 'bg-green-darkest' }}">
+    <nav class="w-full shadow-sm {{ $variant === 'secondary' ? 'bg-white' : 'bg-green-darkest' }}">
         <div class="hidden md:flex items-center px-4 md:px-24 lg:px-40 h-24">
             <div class="w-12 h-12 mr-5 rounded-full shadow">
                 <img class="w-full h-full" src="{{ asset('png/logos/indigo-circle.png') }}" alt="Hackdawg">

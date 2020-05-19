@@ -19,7 +19,7 @@ class ArticlesController extends Controller
             ->orderByDesc('published_at');
 
         if ($tag = request('tag')) {
-            $articles = $articles->whereHas('tags', fn ($query) => $query->where('name', $tag));
+            $articles = $articles->whereHas('tags', fn($query) => $query->where('name', $tag));
         }
 
         if ($author = request('author')) {
@@ -36,11 +36,17 @@ class ArticlesController extends Controller
     /**
      * Display the specified article.
      *
-     * @param  Article $article
+     * @param Article $article
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function show(Article $article)
     {
-        return view('articles.show', compact('article'));
+        return view('articles.show', [
+            'recentArticles' => Article::latest()
+                ->whereNotIn('id', [$article->id])
+                ->take(5)
+                ->get(),
+            'article' => $article,
+        ]);
     }
 }

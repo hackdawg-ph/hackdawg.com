@@ -1,6 +1,10 @@
 <div class="flex w-full md:w-1/2 p-4 md:py-6">
     <div class="w-full shadow-sm hover:shadow-lg">
-        <img class="w-full h-48 md:h-56 lg:h-64 object-cover object-center" src="/png/article.png" alt="{{ $article->title }}">
+        <img
+            class="w-full h-48 md:h-56 lg:h-64 object-cover object-center"
+            src="{{ $article->cover_url ?? '/png/article.png' }}"
+            alt="{{ $article->title }}"
+        >
 
         <div class="p-3 md:p-5">
             <h1 class="font-medium leading-relaxed">
