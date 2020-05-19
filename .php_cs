@@ -3,9 +3,9 @@
 
 $finder = Symfony\Component\Finder\Finder::create()
     ->in(__DIR__)
-    ->exclude(['vendor', 'bootstrap', 'storage'])
     ->name('*.php')
-    ->notName('*.blade.php');
+    ->notName('*.blade.php')
+    ->notPath(['vendor', 'bootstrap', 'storage']);
 
 return PhpCsFixer\Config::create()
     ->setRules([

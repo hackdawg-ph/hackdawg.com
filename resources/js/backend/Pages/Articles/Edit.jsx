@@ -30,7 +30,7 @@ export default function Edit() {
 
         const data = new FormData();
 
-        data.append('_method', 'PATCH');
+        data.append('_method', 'PATCH'); // TODO: Remove this once Inertia.patch(...) works
         data.append('title', values.title || '');
         data.append('body', values.body || '');
         data.append('tags', values.tags || []);
@@ -44,7 +44,7 @@ export default function Edit() {
     }
 
     return (
-        <Layout backUrl={$route('backend.tags.index')}>
+        <Layout backUrl={$route('backend.articles.index')}>
             <form className="w-full md:w-3/4 lg:w-2/3 mx-auto" onSubmit={handleSubmit}>
                 <div>
                     <div className="pb-6">

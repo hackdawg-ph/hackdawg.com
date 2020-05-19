@@ -41,7 +41,7 @@ export default function Create() {
     }
 
     return (
-        <Layout backUrl={$route('backend.tags.index')}>
+        <Layout backUrl={$route('backend.articles.index')}>
             <form className="w-full md:w-3/4 lg:w-2/3 mx-auto" onSubmit={handleSubmit}>
                 <div>
                     <div className="pb-6">

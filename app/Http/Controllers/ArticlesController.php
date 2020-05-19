@@ -19,7 +19,7 @@ class ArticlesController extends Controller
             ->orderByDesc('published_at');
 
         if ($tag = request('tag')) {
-            $articles = $articles->whereHas('tags', fn($query) => $query->where('name', $tag));
+            $articles = $articles->whereHas('tags', fn ($query) => $query->where('name', $tag));
         }
 
         if ($author = request('author')) {

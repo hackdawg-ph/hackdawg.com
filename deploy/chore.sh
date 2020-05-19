@@ -4,6 +4,7 @@
 echo "Generating application key..."
 php artisan key:generate --force
 
+# TODO: Run migrations, it just not possible now since the database is a docker container.
 # Run the migrations
 # echo "Running the migrations..."
 # php artisan migrate --force

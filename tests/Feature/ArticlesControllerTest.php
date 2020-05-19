@@ -31,7 +31,7 @@ class ArticlesControllerTest extends TestCase
             ->assertOk()
             ->assertViewHas(
                 'articles',
-                Article::with(['tags', 'author', 'author.media'])
+                Article::with(['media', 'tags', 'author', 'author.media'])
                     ->orderByDesc('published_at')
                     ->simplePaginate(10)
             )
