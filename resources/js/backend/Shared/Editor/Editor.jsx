@@ -1,6 +1,7 @@
 import React, { useCallback, useMemo, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Editor, Transforms, createEditor } from 'slate';
+import { withHistory } from 'slate-history';
 import { Slate, Editable, withReact, useSlate } from 'slate-react';
 import cx from 'classnames';
 import isHotkey from 'is-hotkey';
@@ -32,7 +33,7 @@ export default function HackdawgEditor({ className, id, label = null, defaultVal
     const [value, setValue] = useState(JSON.parse(defaultValue || DEFAULT_VALUE));
     const renderElement = useCallback(props => <Element {...props} />, []);
     const renderLeaf = useCallback(props => <Leaf {...props} />, []);
-    const editor = useMemo(() => withReact(createEditor()), []);
+    const editor = useMemo(() => withHistory(withReact(createEditor())), []);
 
     return (
         <div>

@@ -41,6 +41,7 @@
         "react-dom": "^16.13.1",
         "react-dropzone": "^11.0.1",
         "slate": "^0.58.0",
+        "slate-history": "^0.58.1",
         "slate-react": "^0.58.0"
     }
 }
