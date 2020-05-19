@@ -85,7 +85,9 @@ class ArticlesController extends Controller
 
         $article->update(request(['title', 'body']));
         $article->tags()->detach();
-        $article->tags()->attach(request('tags'));
+        $article->tags()->attach(
+            is_string($tags = request('tags')) ? explode(',', $tags) : $tags
+        );
         $this->addCoverMedia($article);
 
         return redirect()->route('backend.articles.index')->with('message', [
