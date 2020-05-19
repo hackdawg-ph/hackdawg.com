@@ -1,11 +1,10 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 
-export default function useToggle() {
-    const ref = useRef(null);
+export default function useToggle(ref = null) {
     const [open, setOpen] = useState(false);
 
     function handle(event) {
-        if (ref.current && !ref.current.contains(event.target)) {
+        if (ref !== null && ref.current && !ref.current.contains(event.target)) {
             setOpen(false);
         }
     }
@@ -17,5 +16,5 @@ export default function useToggle() {
         };
     });
 
-    return { ref, open, setOpen };
+    return { open, setOpen };
 }

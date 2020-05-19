@@ -1,5 +1,6 @@
 import React, { useRef, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import cx from 'classnames';
 import noop from 'lodash/noop';
 import useToggle from '@/backend/hooks/useToggle';
 
@@ -21,8 +22,10 @@ export default function MultipleInput({ id, label, dataset = [], defaultValue = 
     const inputRef = useRef(null);
     const [term, setTerm] = useState('');
     const [keys, setKeys] = useState(defaultValue);
+    const [activeKey, setActiveKey] = useState(-1);
     const [suggestions, setSuggestions] = useState([]);
-    const suggestionToggle = useToggle();
+    const suggestionRef = useRef(null);
+    const suggestionToggle = useToggle(suggestionRef);
 
     function focusInput() {
         if (inputRef.current) {
@@ -30,13 +33,18 @@ export default function MultipleInput({ id, label, dataset = [], defaultValue = 
         }
     }
 
-    function handleRemoved(key) {
-        setKeys(keys.filter(k => k !== key));
+    function filterSuggestions(newTerm) {
+        setSuggestions(
+            dataset.filter(data => keys.indexOf(data.key) === -1).filter(data => data.name.includes(newTerm)),
+        );
+    }
 
+    function removeItem(key) {
+        setKeys(keys.filter(k => k !== key));
         focusInput();
     }
 
-    function handleAdded(data) {
+    function addItem(data) {
         const newKeys = keys.filter(key => key !== data.key).concat(data.key);
 
         setKeys(newKeys);
@@ -46,18 +54,43 @@ export default function MultipleInput({ id, label, dataset = [], defaultValue = 
         focusInput();
     }
 
+    function handleKeyDown(e) {
+        suggestionToggle.setOpen(true);
+
+        // Listen for enter key
+        if (e.keyCode === 13) {
+            e.preventDefault();
+            addItem(suggestions.find((_, key) => key === activeKey));
+        }
+
+        // Listen for up arrow key
+        if (e.keyCode === 38) {
+            setActiveKey(activeKey < 0 ? activeKey : activeKey - 1);
+        }
+
+        // Listen for down arrow key
+        if (e.keyCode === 40) {
+            setActiveKey(activeKey + 1 === suggestions.length ? activeKey : activeKey + 1);
+        }
+    }
+
     useEffect(() => {
         onChange(keys);
     }, [keys]);
 
     useEffect(() => {
-        if (term) {
-            const filteredSuggestions = dataset
-                .filter(data => keys.indexOf(data.key) === -1)
-                .filter(data => data.name.includes(term));
+        setActiveKey(-1);
 
-            setSuggestions(filteredSuggestions);
-            suggestionToggle.setOpen(true);
+        if (!term) {
+            return;
+        }
+
+        if (term !== '') {
+            filterSuggestions(term);
+        }
+
+        if (term === '') {
+            setSuggestions(dataset);
         }
     }, [term]);
 
@@ -81,7 +114,7 @@ export default function MultipleInput({ id, label, dataset = [], defaultValue = 
                                         <button
                                             type="button"
                                             className="flex-shrink-0 ml-1.5 inline-flex text-indigo-500 focus:outline-none focus:text-indigo-700"
-                                            onClick={() => handleRemoved(key)}
+                                            onClick={() => removeItem(key)}
                                         >
                                             <svg
                                                 className="h-2 w-2"
@@ -101,33 +134,31 @@ export default function MultipleInput({ id, label, dataset = [], defaultValue = 
                 <input
                     ref={inputRef}
                     id={id}
-                    className="appearance-none sm:text-sm sm:leading-5"
+                    className="appearance-none outline-none sm:text-sm sm:leading-5"
                     type="text"
                     value={term}
                     onChange={e => setTerm(e.target.value)}
+                    onKeyDown={handleKeyDown}
                 />
 
                 {suggestionToggle.open && (
                     <ul
+                        ref={suggestionRef}
                         className="absolute inset-x-0 top-full w-full max-h-64 overflow-scroll -mt-1 bg-white border border-gray-300 rounded shadow-sm"
                         role="listbox"
                     >
-                        {suggestions.map(data => (
+                        {suggestions.map((data, key) => (
                             <li
                                 key={data.key}
-                                className="px-3 py-1 border-b text-gray-900 hover:text-gray-500 cursor-pointer"
-                                onClick={() => handleAdded(data)}
+                                className={cx('px-3 py-1 border-b cursor-pointer', {
+                                    'text-indigo-600': key === activeKey,
+                                    'text-gray-900 hover:text-gray-500 ': key !== activeKey,
+                                })}
+                                onClick={() => addItem(data)}
                             >
                                 {data.name}
                             </li>
                         ))}
-
-                        {suggestions.length === 0 && (
-                            <li className="px-3 py-1 border-b cursor-pointer">
-                                <span className="text-gray-500">No tag matching </span>
-                                <span className="text-gray-900 font-bold">{`"${term}"`}</span>
-                            </li>
-                        )}
                     </ul>
                 )}
             </div>
