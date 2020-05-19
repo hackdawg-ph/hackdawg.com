@@ -54,7 +54,16 @@ export default function Dropzone({ id, label, defaultValue = null, onChange = no
 
                 <div className="h-48 md:h-56 lg:h-64 mt-2 flex items-center justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
                     {fileUrl() ? (
-                        <img className="w-full h-full object-cover object-center" src={fileUrl()} alt="" />
+                        <div className="flex items-center justify-center w-full h-full">
+                            <button
+                                className="absolute text-red-500 hover:text-red-600 underline"
+                                type="button"
+                                onClick={() => setValue(null)}
+                            >
+                                Remove
+                            </button>
+                            <img className="w-full h-full object-cover object-center" src={fileUrl()} alt="" />
+                        </div>
                     ) : (
                         <div className="text-center">
                             <svg
