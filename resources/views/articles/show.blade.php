@@ -56,34 +56,13 @@
                 alt="{{ $article->title }}"
             />
 
-            <div class="mt-6 lg:mt-8">
-                The Tokyo 2020 Olympics is on track for a new record – having an almost equal number of female and male
-                athletes for the first time, the International Committee (IOC) announced on Tuesday. The percentage of
-                female athletes competing at the Olympics in Japan in July is expected to rise to nearly 49% – from 34%
-                in 1996, according to a statement from the IOC. The IOC said it is committed to reaching full gender
-                parity for the 2024 Paris Olympics. “It has been more of a marathon than a sprint, but female Olympians
-                are at last catching their male counterparts in the numbers game,” the IOC said in a statement. The
-                announcement is part of the international sports organization’s greater push for women’s rights. This
-                month the IOC announced that it will have full gender representation across all 206 teams and change its
-                rules to allow one male and one female athlete to jointly carry their flag during the Opening Ceremony.
-                It has also taken a leadership role in the U.N. Women’s Sports For Generation Equality Initiative, which
-                aims to advance gender equality in and through sports. Women’s advocacy groups applauded the IOC move.
-                “When it comes to equity and inclusion in sports, the world has come a long way, but we still have a
-                long way to go,” the Women’s Sports Foundation, a nonprofit focused on female involvement in sports,
-                told the Thomson Reuters Foundation. “The IOC’s announcement is warranted and encouraging; it signals
-                great progress toward the ultimate goal of full equality in the Olympic Games, which continues to be a
-                long journey.” But news of gender equality milestones were marred by growing concerns over whether the
-                Tokyo Olympics will be cancelled as world health officials advise against large gatherings in order to
-                contain the coronavirus. Japan has more than 1,000 cases of the virus, resulting in 16 deaths as of
-                Tuesday. Globally there are more than 100,000 confirmed cases and 3,600 deaths. Olympic organizers
-                dismissed speculation that the Tokyo Summer Games could be canceled at a briefing last week. However,
-                the torch lighting ceremony in ancient Olympia, Greece, will be held without spectators after organizers
-                on Monday introduced tighter measures to protect against the virus.
+            <div class="slate mt-6 lg:mt-8">
+                {!! Slate::serialize(json_decode($article->body)) !!}
             </div>
         </div>
 
         <div class="hidden lg:block w-1/3 ml-8">
-            <div class="w-full px-6 py-4 shadow">
+            <div class="w-full min-h-72 px-6 py-4 shadow">
                 <p class="text-sm font-medium">
                     RECENT ARTICLES
                 </p>

@@ -137,7 +137,7 @@ namespace App\Models{
  * @property int $user_id
  * @property string $title
  * @property string $slug
- * @property string $body
+ * @property array $body
  * @property \Illuminate\Support\Carbon|null $published_at
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at

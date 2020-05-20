@@ -37,6 +37,12 @@ module.exports = {
                 '-1': '-1',
             },
 
+            minHeight: {
+                '72': '18rem',
+                '84': '21rem',
+                '96': '24rem',
+            },
+
             spacing: {
                 '3px': '3px',
                 '72': '18rem',

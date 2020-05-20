@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Article;
+use App\Queries\RecentArticlesQuery;
 use App\Queries\TopAuthorsQuery;
 use App\Queries\TopTagsQuery;
 
@@ -42,10 +43,7 @@ class ArticlesController extends Controller
     public function show(Article $article)
     {
         return view('articles.show', [
-            'recentArticles' => Article::latest()
-                ->whereNotIn('id', [$article->id])
-                ->take(5)
-                ->get(),
+            'recentArticles' => RecentArticlesQuery::run([$article->id]),
             'article' => $article,
         ]);
     }

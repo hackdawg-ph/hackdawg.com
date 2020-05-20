@@ -228,6 +228,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
         'Carbon' => Carbon\Carbon::class,
+        'Slate' => App\Slate\Facades\Slate::class,
     ],
 
 ];

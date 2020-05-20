@@ -16,6 +16,6 @@ class Slate extends Facade
      */
     protected static function getFacadeAccessor()
     {
-        return \App\Slate\Slate::class;
+        return 'slate';
     }
 }

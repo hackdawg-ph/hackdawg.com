@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Slate\Slate;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\URL;
@@ -20,6 +21,8 @@ class AppServiceProvider extends ServiceProvider
         if (env('APP_ENV') === 'production') {
             URL::forceScheme('https');
         }
+
+        $this->app->bind('slate', fn () => new Slate());
     }
 
     /**
