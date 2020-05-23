@@ -11,7 +11,7 @@
         </div>
     </div>
 
-    <div class="-mx-4 md:mx-0 sm:px-8 md:px-24 xl:px-32">
+    <div class="-mx-4 md:mx-0 px-4 sm:px-8 md:px-24 xl:px-32">
         @if (count($tags))
             <ul class="hidden md:flex py-8">
                 @foreach($tags as $tag)
