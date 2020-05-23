@@ -15,7 +15,7 @@
 }
 
 .slate code {
-    @apply p-1 bg-gray-lightest font-mono;
+    @apply p-1 bg-gray-100 font-mono;
 }
 
 .slate h1 {
@@ -27,7 +27,7 @@
 }
 
 .slate blockquote {
-    @apply px-3 py-2 border-l-2 bg-gray-lightest italic;
+    @apply px-3 py-2 border-l-2 bg-gray-100 italic;
 }
 
 .slate ul {

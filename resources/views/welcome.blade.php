@@ -5,7 +5,7 @@
                 Our design is human—centric. <br />
                 We develop functional processes that improve products and services.
             </h1>
-            <p class="w-1/2 mb-48 text-gray">
+            <p class="w-1/2 mb-48 text-gray-400">
                 - Stay updated with the newest design and development stories, case studies, and insights shared by Hackdawg Team.
             </p>
             <p class="text-gray mb-12">Our approach —</p>
@@ -18,9 +18,9 @@
                         <div>
                             <div class="w-8 h-8 mr-6 rounded-full bg-green"></div>
                         </div>
-                        <div class="w-3/4 border border-dashed border-gray"></div>
+                        <div class="w-3/4 border border-dashed border-gray-400"></div>
                     </div>
-                    <p class="text-gray font-light">
+                    <p class="text-gray-400 font-light">
                         We shape brands through exploration and investigation, applying in-depth research to challenge assumptions at every turn.
                     </p>
                 </div>
@@ -29,9 +29,9 @@
                         <div>
                             <div class="w-8 h-8 mr-6 rounded-full bg-green-lighter"></div>
                         </div>
-                        <div class="w-3/4 border border-dashed border-gray"></div>
+                        <div class="w-3/4 border border-dashed border-gray-400"></div>
                     </div>
-                    <p class="text-gray font-light">
+                    <p class="text-gray-400 font-light">
                         We shape brands through exploration and investigation, applying in-depth research to challenge assumptions at every turn.
                     </p>
                 </div>
@@ -40,9 +40,9 @@
                         <div>
                             <div class="w-8 h-8 mr-6 rounded-full bg-yellow"></div>
                         </div>
-                        <div class="w-3/4 border border-dashed border-gray"></div>
+                        <div class="w-3/4 border border-dashed border-gray-400"></div>
                     </div>
-                    <p class="text-gray font-light">
+                    <p class="text-gray-400 font-light">
                         We shape brands through exploration and investigation, applying in-depth research to challenge assumptions at every turn.
                     </p>
                 </div>

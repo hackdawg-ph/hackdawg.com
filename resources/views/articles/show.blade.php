@@ -1,10 +1,10 @@
 <x-layout variant="secondary">
-    <div class="flex px-4 md:px-24 lg:px-40 py-6">
-        <div class="w-32 hidden lg:block">
-            <ul class="fixed z-50 flex flex-col items-center justify-center w-16 mt-40 py-6 shadow-lg rounded-full">
+    <div class="flex px-4 sm:px-8 md:px-24 xl:px-32 py-6">
+        <div class="w-32 hidden md:block">
+            <ul class="fixed z-50 bg-white flex flex-col items-center justify-center w-16 mt-40 py-6 shadow-lg rounded-full">
                 <li>
                     <a href="#">
-                        <svg class="w-5 h-5 text-gray"
+                        <svg class="w-5 h-5 text-gray-500"
                              xmlns="http://www.w3.org/2000/svg"
                              fill="none"
                              stroke="currentColor"
@@ -17,7 +17,7 @@
                 </li>
                 <li class="mt-6">
                     <a href="#">
-                        <svg class="w-5 h-5 text-gray"
+                        <svg class="w-5 h-5 text-gray-500"
                              xmlns="http://www.w3.org/2000/svg"
                              fill="none"
                              stroke="currentColor"
@@ -51,7 +51,7 @@
             </div>
 
             <img
-                class="w-full h-64 lg:h-96 mt-6 lg:mt-8 object-cover object-center"
+                class="w-full h-64 sm:h-72 xl:h-96 mt-6 lg:mt-8 object-cover object-center"
                 src="{{ $article->cover_url ?? '/png/article.png' }}"
                 alt="{{ $article->title }}"
             />
@@ -61,7 +61,7 @@
             </div>
         </div>
 
-        <div class="hidden lg:block w-1/3 ml-8">
+        <div class="hidden lg:block md:w-2/5 xl:w-1/3 ml-8">
             <div class="w-full min-h-72 px-6 py-4 shadow">
                 <p class="text-sm font-medium">
                     RECENT ARTICLES
