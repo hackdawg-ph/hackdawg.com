@@ -36,7 +36,8 @@
         "mockery/mockery": "^1.3.1",
         "nunomaduro/collision": "^4.1",
         "nunomaduro/laravel-mojito": "^0.2.3",
-        "phpunit/phpunit": "^8.5"
+        "nunomaduro/phpinsights": "^1.14",
+        "phpunit/phpunit": "^9.0"
     },
     "config": {
         "optimize-autoloader": true,
@@ -72,12 +73,13 @@
             "php-cs-fixer fix ."
         ],
         "test:insights": [
-            "phpinsights analyse --config-path=config/insights.php --min-quality=90 --min-complexity=90 --min-architecture=90 --min-style=90 ."
+            "@php artisan insights ."
         ],
         "test:unit": [
             "@php artisan test"
         ],
         "test": [
+            "composer test:insights",
             "composer test:unit"
         ],
         "post-autoload-dump": [

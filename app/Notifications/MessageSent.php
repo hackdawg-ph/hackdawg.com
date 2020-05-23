@@ -31,10 +31,9 @@ class MessageSent extends Notification implements ShouldQueue
     /**
      * Get the notification's delivery channels.
      *
-     * @param  mixed  $notifiable
      * @return array
      */
-    public function via($notifiable)
+    public function via()
     {
         return ['mail'];
     }
@@ -47,20 +46,19 @@ class MessageSent extends Notification implements ShouldQueue
      */
     public function toMail($notifiable)
     {
-        return (new MailMessage)
-                    ->greeting('Hello ' . $notifiable->first_name . '!')
-                    ->from($this->data['email'])
-                    ->line($this->data['message'])
-                    ->salutation('Regards, ' . $this->data['name']);
+        return (new MailMessage())
+            ->greeting('Hello ' . $notifiable->first_name . '!')
+            ->from($this->data['email'])
+            ->line($this->data['message'])
+            ->salutation('Regards, ' . $this->data['name']);
     }
 
     /**
      * Get the array representation of the notification.
      *
-     * @param  mixed  $notifiable
      * @return array
      */
-    public function toArray($notifiable)
+    public function toArray()
     {
         return [
             //

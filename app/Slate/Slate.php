@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Slate;
 
 // TODO: Create a test

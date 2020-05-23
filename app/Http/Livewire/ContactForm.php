@@ -29,7 +29,7 @@ class ContactForm extends Component
             ])
         );
 
-        session()->flash('message', "Message successfully sent!");
+        session()->flash('message', 'Message successfully sent!');
     }
 
     public function render()

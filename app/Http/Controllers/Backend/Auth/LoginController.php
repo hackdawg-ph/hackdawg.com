@@ -45,19 +45,6 @@ class LoginController extends Controller
     }
 
     /**
-     * Attempt to log the user into the application.
-     *
-     * @return bool
-     */
-    protected function attemptLogin()
-    {
-        return Auth::attempt(
-            request()->only(['email', 'password']),
-            request()->filled('remember')
-        );
-    }
-
-    /**
      * Log the user out of the application.
      *
      * @return \Illuminate\Http\RedirectResponse
@@ -70,5 +57,18 @@ class LoginController extends Controller
         request()->session()->regenerateToken();
 
         return redirect()->route('backend.login');
+    }
+
+    /**
+     * Attempt to log the user into the application.
+     *
+     * @return bool
+     */
+    protected function attemptLogin()
+    {
+        return Auth::attempt(
+            request()->only(['email', 'password']),
+            request()->filled('remember')
+        );
     }
 }
