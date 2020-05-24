@@ -28,12 +28,11 @@ jobs:
 
           # Copy environment file
           cp ./deploy/secrets/.env.testing .env
+          cp ./deploy/secrets/.env.testing .env.testing
 
           # Here we go...
           make deploy@testing
-#          make chore@testing
+          sleep 30
 
       - name: Test
-        run: |
-          composer test
-          yarn test
+        run: docker exec -it web composer test

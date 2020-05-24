@@ -23,9 +23,6 @@ deploy@testing:
 		-f ./deploy/docker-compose.testing.yml \
 		up -d --build --force-recreate
 
-chore@testing:
-	@docker container exec -it -e APP_ENV=testing web hackdawg-chore
-
 # Production
 
 copy-hosts@production:
