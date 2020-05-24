@@ -27,11 +27,11 @@ jobs:
           sudo apt-get install -y make
 
           # Copy environment file
-          cp .env.example .env
+          cp ./deploy/secrets/.env.testing .env
 
           # Here we go...
           make deploy@testing
-          make chore@
+          make chore@testing
 
       - name: Test
         run: |
