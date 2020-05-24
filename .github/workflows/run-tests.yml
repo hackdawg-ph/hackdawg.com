@@ -31,6 +31,7 @@ jobs:
 
           # Here we go...
           make deploy@testing
+          make chore@
 
       - name: Test
         run: |
