@@ -23,7 +23,7 @@
                 Let's talk!
             </h2>
             <div class="mb-5 p-5 border-l-2 border-white">
-                <span class="text-white opacity-60">Want to chat? Shoot us an email at</span>
+                <span class="text-white opacity-50">Want to chat? Shoot us an email at</span>
                 <a class="text-white" href="mailto:hello@hackdawg.com">hello@hackdawg.com</a>
             </div>
             <div class="w-3/4">

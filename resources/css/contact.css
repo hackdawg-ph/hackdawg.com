@@ -11,5 +11,5 @@
 }
 
 #contact .form-group .input::placeholder {
-    @apply text-white opacity-60;
+    @apply text-white opacity-50;
 }

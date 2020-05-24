@@ -1,4 +1,4 @@
-<div class="flex w-full md:w-1/2 xl:w-1/3 p-4 md:py-6">
+<div class="flex w-full md:w-1/2 xl:w-1/3 md:px-4 py-4 md:py-6">
     <div class="w-full shadow-sm hover:shadow-lg">
         <img
             class="w-full h-64 sm:h-72 md:h-48 xl:h-40 object-cover object-center"

@@ -11,7 +11,7 @@
         </div>
     </div>
 
-    <div class="-mx-4 md:mx-0 px-4 sm:px-8 md:px-24 xl:px-32">
+    <div class="px-4 sm:px-8 md:px-24 xl:px-32">
         @if (count($tags))
             <ul class="hidden md:flex py-8">
                 @foreach($tags as $tag)
@@ -28,7 +28,7 @@
         @endif
 
         <div class="flex flex-wrap sm:my-4">
-            <div class="flex flex-wrap w-full md:w-3/4 xl:w-4/5 md:-m-4">
+            <div class="flex flex-wrap w-full md:w-3/4 xl:w-4/5 md:-mx-4 md:-my-6">
                 @forelse($articles as $article)
                     @include('articles.article')
                 @empty

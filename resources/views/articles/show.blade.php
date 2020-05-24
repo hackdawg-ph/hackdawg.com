@@ -44,7 +44,7 @@
                     <p class="text-sm font-medium">
                         {{ $article->author->name }}
                     </p>
-                    <p class="text-sm opacity-40 font-medium">
+                    <p class="text-sm opacity-50 font-medium">
                         {{ $article->published_at->toFormattedDateString() }}
                     </p>
                 </div>
@@ -71,14 +71,14 @@
                     <ul class="mt-2">
                         @foreach ($recentArticles as $article)
                             <li class="mb-2">
-                                <a class="text-sm opacity-90" href="{{ $article->path() }}">
+                                <a class="text-sm text-gray-700" href="{{ $article->path() }}">
                                     {{ Str::limit($article->title, 50) }}
                                 </a>
                             </li>
                         @endforeach
                     </ul>
                 @else
-                    <p class="text-sm opacity-90">Just an empty space...</p>
+                    <p class="text-sm text-gray-700">Just an empty space...</p>
                 @endif
             </div>
         </div>
