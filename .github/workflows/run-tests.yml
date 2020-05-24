@@ -20,32 +20,17 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v1
 
-      - name: Setup PHP
-        uses: shivammathur/setup-php@v1
-        with:
-          php-version: '7.4'
-          extensions: curl, mbstring, openssl, pdo, sqlite3, xml
-          coverage: none
-
       - name: Build
         run: |
-          composer install -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
-          yarn install
-          yarn prod
+          # Install linux utilities
+          apt-get update -y
+          apt-get install -y make
+
+          # Here we go...
+          make deploy@local
+          make chore@local
 
       - name: Test
         run: |
           composer test
           yarn test
-        env:
-          DB_PORT: ${{ job.services.db.ports[3306] }}
-          DB_DATABASE: hackdawg_testing
-          DB_USERNAME: root
-
-    services:
-      db:
-        image: mysql:8.0
-        env:
-          MYSQL_ALLOW_EMPTY_PASSWORD: yes
-          MYSQL_DATABASE: hackdawg_testing
-        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
