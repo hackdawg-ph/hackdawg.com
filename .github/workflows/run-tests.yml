@@ -28,11 +28,18 @@ jobs:
 
           # Copy environment file
           cp ./deploy/secrets/.env.testing .env
-          cp ./deploy/secrets/.env.testing .env.testing
+
+          # Install dependencies
+          composer install -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
+
+          # Build frontend
+          yarn install
+          yarn prod
 
           # Here we go...
-          make deploy@testing
-          sleep 30
+          make deploy@testing && sleep 30
 
       - name: Test
-        run: docker exec web composer test
+        run: |
+          composer test
+          yarn test
