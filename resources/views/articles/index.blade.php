@@ -64,20 +64,16 @@
             @if (count($articles))
                 <div class="hidden md:block md:w-1/4 xl:w-1/5 ml-8">
                     <div class="w-full min-h-72 px-6 py-4 shadow">
-                        <p class="font-medium">
-                            Authors
+                        <p class="text-sm font-medium">
+                            ARCHIVES
                         </p>
 
                         <ul class="mt-4">
-                            @foreach ($authors as $author)
+                            @foreach ($archives as $stats)
                                 <li class="flex items-center mb-4">
-                                    <a href="{{ route('articles.index', ['tag' => request('tag'), 'author' => $author->id]) }}">
-                                        <x-avatar url="{{ $author->avatar_url }}"></x-avatar>
+                                    <a class="text-sm" href="{{ route('articles.index', ['month' => $stats->month, 'year' => $stats->year]) }}">
+                                        {{ $stats->month . ' ' . $stats->year }}
                                     </a>
-
-                                    <p class="ml-4">
-                                        {{ $author->name }}
-                                    </p>
                                 </li>
                             @endforeach
                         </ul>

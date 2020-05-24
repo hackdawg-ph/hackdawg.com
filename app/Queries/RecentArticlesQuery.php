@@ -15,6 +15,7 @@ class RecentArticlesQuery
     public static function run($blacklistedArticles)
     {
         return Article::latest()
+            ->whereNotNull('published_at')
             ->whereNotIn('id', $blacklistedArticles)
             ->take(5)
             ->get();
