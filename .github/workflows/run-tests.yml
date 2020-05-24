@@ -41,9 +41,7 @@ jobs:
         run: yarn prod
 
       - name: Execute tests
-        run: |
-          composer test
-          yarn test
+        run: ./vendor/bin/phpunit
         env:
           DB_PORT: ${{ job.services.mysql.ports[3306] }}
 
