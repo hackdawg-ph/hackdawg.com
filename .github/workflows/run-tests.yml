@@ -35,4 +35,4 @@ jobs:
           sleep 30
 
       - name: Test
-        run: docker exec -it web composer test
+        run: docker exec web composer test
