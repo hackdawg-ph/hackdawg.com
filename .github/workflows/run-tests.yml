@@ -30,8 +30,7 @@ jobs:
           cp .env.example .env
 
           # Here we go...
-          make deploy@local
-          make chore@local
+          make deploy@testing
 
       - name: Test
         run: |
