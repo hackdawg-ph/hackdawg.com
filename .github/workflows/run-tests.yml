@@ -35,3 +35,15 @@ jobs:
         run: |
           composer test
           yarn test
+        env:
+          DB_PORT: ${{ job.services.db.ports[3306] }}
+          DB_DATABASE: hackdawg_testing
+          DB_USERNAME: root
+
+    services:
+      db:
+        image: mysql:8.0
+        env:
+          MYSQL_ALLOW_EMPTY_PASSWORD: yes
+          MYSQL_DATABASE: hackdawg_testing
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
