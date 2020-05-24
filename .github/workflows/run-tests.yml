@@ -27,8 +27,10 @@ jobs:
           extensions: curl, mbstring, openssl, pdo, mysql, xml
           coverage: none
 
-      - name: Copy environment file
-        run: cp ./deploy/secrets/.env.testing .env.testing
+      - name: Copy environment files
+        run: |
+          cp ./deploy/secrets/.env.testing .env
+          cp ./deploy/secrets/.env.testing .env.testing
 
       - name: Install dependencies
         run: composer install -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
