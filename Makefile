@@ -1,5 +1,7 @@
 .PHONY: build
 
+# Local
+
 copy-hosts@local:
 	@sudo chmod +x ./deploy/copy_hosts.local.sh
 	@sudo ./deploy/copy_hosts.local.sh
@@ -12,6 +14,8 @@ deploy@local:
 
 chore@local:
 	@docker container exec -it -e APP_ENV=local web hackdawg-chore
+
+# Production
 
 copy-hosts@production:
 	@sudo chmod +x ./deploy/copy_hosts.production.sh

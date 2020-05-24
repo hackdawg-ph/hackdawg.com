@@ -27,7 +27,7 @@ class ArticlesControllerTest extends TestCase
         $articles->each(fn ($article) => $article->tags()->attach($tags->random(rand(5, 10))));
     }
 
-    /** @todo This test must be enabled after configuring MySQL in testing environment. */
+    /** @test */
     public function it_shows_a_listing_of_articles()
     {
         $this->get(route('articles.index'))

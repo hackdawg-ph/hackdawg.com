@@ -2,9 +2,11 @@ name: Run tests
 
 on:
   push:
-    branches:
-      - '*'
-      - '!master'
+    branches-ignore:
+      - master
+  pull_request:
+    branches-ignore:
+      - master
 
 jobs:
   Build-Test:
@@ -12,7 +14,17 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [10.x]
+        node-version: [12.x]
+
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ALLOW_EMPTY_PASSWORD: yes
+          MYSQL_DATABASE: hackdawg
+        ports:
+          - 3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
 
     steps:
       - name: Checkout repository
@@ -22,16 +34,23 @@ jobs:
         uses: shivammathur/setup-php@v1
         with:
           php-version: '7.4'
-          extensions: curl, mbstring, openssl, pdo, sqlite3, xml
+          extensions: curl, mbstring, openssl, pdo, mysql, xml
           coverage: none
 
-      - name: Build
+      - name: Copy environment file
+        run: cp ./deploy/secrets/.env.testing .env.testing
+
+      - name: Install dependencies
+        run: composer install -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
+
+      - name: Build frontend
         run: |
-          composer install -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
           yarn install
           yarn prod
 
-      - name: Test
+      - name: Execute tests
         run: |
           composer test
           yarn test
+        env:
+          DB_PORT: ${{ job.services.mysql.ports[3306] }}
