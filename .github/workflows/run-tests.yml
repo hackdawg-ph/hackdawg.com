@@ -23,8 +23,8 @@ jobs:
       - name: Build
         run: |
           # Install linux utilities
-          apt-get update -y
-          apt-get install -y make
+          sudo apt-get update -y
+          sudo apt-get install -y make
 
           # Here we go...
           make deploy@local
