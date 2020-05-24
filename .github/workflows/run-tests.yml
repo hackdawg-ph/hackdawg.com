@@ -44,6 +44,8 @@ jobs:
         run: |
           composer test
           yarn test
+        env:
+          DB_PORT: ${{ job.services.mysql.ports[3306] }}
 
     services:
       mysql:
