@@ -58,4 +58,4 @@ jobs:
           host: ${{ secrets.SERVER_IP }}
           username: root
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          script: SECRET_PASSPHRASE=${{ secrets.SECRET_PASSPHRASE }} ./deploy/deploy.sh
+          script: SECRET_PASSPHRASE=${{ secrets.SECRET_PASSPHRASE }} /root/hackdawg.com/deploy/deploy.sh
