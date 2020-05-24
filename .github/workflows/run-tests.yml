@@ -37,7 +37,7 @@ jobs:
           yarn prod
 
           # Here we go...
-          make deploy@testing && sleep 1m
+          make deploy@testing && sleep 2m
 
       - name: Test
         run: |
