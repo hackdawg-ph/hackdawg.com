@@ -21,7 +21,7 @@ deploy@testing:
 	@docker-compose \
 		-f ./deploy/docker-compose.yml \
 		-f ./deploy/docker-compose.testing.yml \
-		up -d --build --force-recreate
+		up --build --force-recreate
 
 # Production
 
