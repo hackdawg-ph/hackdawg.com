@@ -20,26 +20,37 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v1
 
-      - name: Build
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v1
+        with:
+          php-version: '7.4'
+          extensions: curl, mbstring, openssl, pdo, mysql, xml
+          coverage: none
+
+      - name: Copy environment files
         run: |
-          # Install linux utilities
-          sudo apt-get update -y
-          sudo apt-get install -y make
-
-          # Copy environment file
           cp ./deploy/secrets/.env.testing .env
+          cp ./deploy/secrets/.env.testing .env.testing
 
-          # Install dependencies
+      - name: Install dependencies
+        run: |
           composer install -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
-
-          # Build frontend
           yarn install
-          yarn prod
 
-          # Here we go...
-          make deploy@testing
+      - name: Build frontend
+        run: yarn prod
 
-      - name: Test
+      - name: Execute tests
         run: |
           composer test
           yarn test
+
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ALLOW_EMPTY_PASSWORD: yes
+          MYSQL_DATABASE: hackdawg
+        ports:
+          - 3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
