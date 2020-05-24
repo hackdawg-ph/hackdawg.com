@@ -16,6 +16,16 @@ jobs:
       matrix:
         node-version: [12.x]
 
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ALLOW_EMPTY_PASSWORD: yes
+          MYSQL_DATABASE: hackdawg
+        ports:
+          - 3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v1
@@ -39,16 +49,8 @@ jobs:
           yarn prod
 
       - name: Execute tests
-        run: composer test
+        run: |
+          composer test
+          yarn test
         env:
           DB_PORT: ${{ job.services.mysql.ports[3306] }}
-
-    services:
-      mysql:
-        image: mysql:8.0
-        env:
-          MYSQL_ALLOW_EMPTY_PASSWORD: yes
-          MYSQL_DATABASE: hackdawg
-        ports:
-          - 3306
-        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
