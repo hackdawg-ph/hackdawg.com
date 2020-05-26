@@ -5,9 +5,6 @@ services:
       args:
         APP_ENV: testing
     restart: always
-    volumes:
-      - ..:/var/www/html
-      - ./php.ini:/usr/local/etc/php/conf.d/local.ini
     env_file:
       - ../.env
 
@@ -16,8 +13,6 @@ services:
     ports:
       - '80:80'
       - '443:443'
-    volumes:
-      - ..:/var/www/html
     environment:
       DOMAIN: hackdawg.test
       EMAIL: hello@hackdawg.com
@@ -27,8 +22,8 @@ services:
     ports:
       - '33069:3306'
     volumes:
-      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
-      - ./db/data:/var/lib/mysql
+      - db/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - db/data:/var/lib/mysql
     env_file:
       - ../.env
     environment:
@@ -37,3 +32,5 @@ services:
       MYSQL_PASSWORD: ${DB_PASSWORD}
       MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
 
+volumes:
+  db
