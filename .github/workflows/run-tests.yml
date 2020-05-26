@@ -18,7 +18,7 @@ jobs:
         uses: actions/checkout@v1
 
       - name: Copy environment file
-        run: rm .env.testing && cp .env.example .env
+        run: rm .env.testing && cp deploy/db/.env.testing .env
 
       - name: Install dependencies
         run: composer install -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
@@ -29,7 +29,7 @@ jobs:
           make test-db-connection
 
       - name: Execute tests
-        run: docker container exec web composer test
+        run: composer test
 
 
 
