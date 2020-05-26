@@ -26,8 +26,9 @@ jobs:
       - name: Bootup services
         run: |
           make deploy@testing
-          docker container ps -a
           make test-db-connection
+          make create-test-database
+          make run-init-sql
 
       - name: Execute tests
         run: composer test
