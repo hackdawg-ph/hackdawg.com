@@ -1,0 +1,39 @@
+version: '3.7'
+services:
+  web:
+    build:
+      args:
+        APP_ENV: testing
+    restart: always
+    volumes:
+      - ..:/var/www/html
+      - ./php.ini:/usr/local/etc/php/conf.d/local.ini
+    env_file:
+      - ../.env
+
+  nginx:
+    restart: always
+    ports:
+      - '80:80'
+      - '443:443'
+    volumes:
+      - ..:/var/www/html
+    environment:
+      DOMAIN: hackdawg.test
+      EMAIL: hello@hackdawg.com
+
+  db:
+    restart: unless-stopped
+    ports:
+      - '33069:3306'
+    volumes:
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./db/data:/var/lib/mysql
+    env_file:
+      - ../.env
+    environment:
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_USER: ${DB_USERNAME}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+

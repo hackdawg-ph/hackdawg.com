@@ -15,6 +15,14 @@ deploy@local:
 chore@local:
 	@docker container exec -it -e APP_ENV=local web hackdawg-chore
 
+# Testing
+
+deploy@testing:
+	@docker-compose \
+    	-f ./deploy/docker-compose.yml \
+    	-f ./deploy/docker-compose.testing.yml \
+    	up -d --build --force-recreate
+
 # Production
 
 copy-hosts@production:
