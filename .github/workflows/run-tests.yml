@@ -27,11 +27,9 @@ jobs:
         run: |
           make deploy@testing
           make test-db-connection
-          make create-test-database
-          make run-init-sql
 
       - name: Execute tests
-        run: composer test
+        run: docker container exec web composer test
 
 
 

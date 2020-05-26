@@ -4,12 +4,6 @@ test-db-connection:
 	./deploy/wait-until.sh \
 		"docker-compose -f deploy/docker-compose.yml exec -T -e MYSQL_PWD=password db mysql -D hackdawg -e 'select 1'"
 
-create-test-database:
-	@docker container exec db mysql -uroot -ppassword -e 'CREATE DATABASE IF NOT EXISTS hackdawg_testing'
-
-run-init-sql:
-	@docker container exec db mysql -uroot -ppassword hackdawg_testing < deploy/db/init.sql
-
 # Local
 
 copy-hosts@local:
