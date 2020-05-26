@@ -18,7 +18,9 @@ jobs:
         uses: actions/checkout@v1
 
       - name: Copy environment file
-        run: cp ./deploy/secrets/.env.testing .env
+        run: |
+          cp ./deploy/secrets/.env.testing .env.testing
+          cp .env.example .env
 
       - name: Install dependencies
         run: composer install -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
