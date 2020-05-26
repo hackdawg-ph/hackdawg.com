@@ -31,7 +31,7 @@ jobs:
           make test-db-connection
 
       - name: Execute tests
-        run: docker container exec web composer test
+        run: composer test
 
 
 
