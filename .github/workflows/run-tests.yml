@@ -26,6 +26,7 @@ jobs:
       - name: Bootup services
         run: |
           make deploy@testing
+          docker container ps -a
           make test-db-connection
 
       - name: Execute tests
