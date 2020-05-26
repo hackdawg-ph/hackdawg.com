@@ -32,4 +32,4 @@ services:
       MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
 
 volumes:
-  db_data
+  db_data:
