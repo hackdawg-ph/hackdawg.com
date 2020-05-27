@@ -1,19 +1,18 @@
 #!/usr/bin/env bash
 
-# Generate application key
 echo "Generating application key..."
 php artisan key:generate --force
 
-# Run the migrations
-echo "Running the migrations..."
-php artisan migrate --force
-
-# Link storage directory
 echo "Linking storage directory..."
 rm -rf public/storage && php artisan storage:link
 
-# Optimize Laravel
+if [[ $APP_ENV != "testing" ]]; then
+    echo "Running the migrations..."
+    php artisan migrate --force
+fi
+
 if [[ $APP_ENV == "production" ]]; then
+    # Optimize Laravel
     php artisan config:cache
     php artisan route:cache
     php artisan view:cache
