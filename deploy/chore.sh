@@ -1,20 +1,18 @@
 #!/usr/bin/env bash
 
-# Generate application key
 echo "Generating application key..."
 php artisan key:generate --force
 
-# TODO: Run migrations, it just not possible now since the database is a docker container.
-# Run the migrations
-# echo "Running the migrations..."
-# php artisan migrate --force
+echo "Linking storage directory..."
+rm -rf public/storage && php artisan storage:link
 
-# Link storage directory
-echo "Linking storage direcory..."
-rm public/storage && php artisan storage:link
+if [[ $APP_ENV != "testing" ]]; then
+    echo "Running the migrations..."
+    php artisan migrate --force
+fi
 
-# Optimize Laravel
 if [[ $APP_ENV == "production" ]]; then
+    # Optimize Laravel
     php artisan config:cache
     php artisan route:cache
     php artisan view:cache

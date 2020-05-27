@@ -4,9 +4,6 @@ on:
   push:
     branches-ignore:
       - master
-  pull_request:
-    branches-ignore:
-      - master
 
 jobs:
   Build-Test:
@@ -16,41 +13,26 @@ jobs:
       matrix:
         node-version: [12.x]
 
-    services:
-      mysql:
-        image: mysql:8.0
-        env:
-          MYSQL_ALLOW_EMPTY_PASSWORD: yes
-          MYSQL_DATABASE: hackdawg
-        ports:
-          - 3306
-        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v1
 
-      - name: Setup PHP
-        uses: shivammathur/setup-php@v1
-        with:
-          php-version: '7.4'
-          extensions: curl, mbstring, openssl, pdo, mysql, xml
-          coverage: none
-
       - name: Copy environment file
-        run: cp ./deploy/secrets/.env.testing .env.testing
+        run: rm .env.testing && cp deploy/secrets/.env.testing .env
 
       - name: Install dependencies
         run: composer install -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
 
       - name: Build frontend
         run: |
-          yarn install
+          yarn install --pure-lockfile --silent --no-progress --non-interactive --ignore-scripts
           yarn prod
 
-      - name: Execute tests
+      - name: Bootup services
         run: |
-          composer test
-          yarn test
-        env:
-          DB_PORT: ${{ job.services.mysql.ports[3306] }}
+          make deploy@testing
+          make test-db-connection
+          make chore@testing
+
+      - name: Execute tests
+        run: make run-tests

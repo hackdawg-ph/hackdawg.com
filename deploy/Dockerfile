@@ -53,8 +53,5 @@ RUN chmod +x /usr/local/bin/hackdawg-chore
 RUN chmod +x /usr/local/bin/hackdawg-queuer
 RUN chmod +x /usr/local/bin/hackdawg-scheduler
 
-# Perform post-deploy tasks...
-RUN hackdawg-chore
-
 # Here we go...
 EXPOSE 9000

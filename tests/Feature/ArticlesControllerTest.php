@@ -16,7 +16,7 @@ class ArticlesControllerTest extends TestCase
 {
     use InteractsWithViews, RefreshDatabase, WithFaker;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         parent::setUp();
 

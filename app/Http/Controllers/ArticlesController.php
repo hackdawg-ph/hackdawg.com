@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Article;
+use App\Models\User;
 use App\Queries\ArticleArchivesQuery;
 use App\Queries\RecentArticlesQuery;
 use App\Queries\TopTagsQuery;

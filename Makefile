@@ -1,5 +1,11 @@
 .PHONY: build
 
+run-tests:
+	@docker container exec web composer test
+
+test-db-connection:
+	./deploy/wait-until.sh "docker-compose -f deploy/docker-compose.yml exec -T -e MYSQL_PWD=password db mysql -D hackdawg -e 'select 1'"
+
 # Local
 
 copy-hosts@local:
@@ -14,6 +20,17 @@ deploy@local:
 
 chore@local:
 	@docker container exec -it -e APP_ENV=local web hackdawg-chore
+
+# Testing
+
+deploy@testing:
+	@docker-compose \
+    	-f ./deploy/docker-compose.yml \
+    	-f ./deploy/docker-compose.testing.yml \
+    	up -d --build --force-recreate
+
+chore@testing:
+	@docker container exec -e APP_ENV=testing web hackdawg-chore
 
 # Production
 
