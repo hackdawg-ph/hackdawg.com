@@ -18,8 +18,6 @@ class ArticlesController extends Controller
      */
     public function index()
     {
-        dd(Article::all());
-
         $articles = Article::with(['tags', 'author', 'author.media'])
             ->whereNotNull('published_at')
             ->orderByDesc('published_at');

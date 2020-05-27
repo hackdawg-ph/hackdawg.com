@@ -30,6 +30,8 @@ class ArticlesControllerTest extends TestCase
     /** @test */
     public function it_shows_a_listing_of_articles()
     {
+        dd($this->get(route('articles.index'))->getContent());
+
         $this->get(route('articles.index'))
             ->assertOk()
             ->assertViewHas(
