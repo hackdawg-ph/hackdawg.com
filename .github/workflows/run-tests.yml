@@ -28,5 +28,7 @@ jobs:
           make deploy@testing
           make test-db-connection
           make chore@testing
-          make test-db-connection
+
+      - name: Execute tests
+        run: |
           make run-tests
