@@ -30,8 +30,6 @@ class ArticlesControllerTest extends TestCase
     /** @test */
     public function it_shows_a_listing_of_articles()
     {
-        try {
-
         $this->get(route('articles.index'))
             ->assertOk()
             ->assertViewHas(
@@ -45,9 +43,6 @@ class ArticlesControllerTest extends TestCase
             ->assertViewHas('archives', ArticleArchivesQuery::run())
             ->assertView('articles.index')
             ->contains('Welcome to Our Blog');
-        } catch (\Exception $e) {
-            dd($e);
-        }
     }
 
     /** @test */
