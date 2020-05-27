@@ -1,7 +1,7 @@
 .PHONY: build
 
 run-tests:
-	@docker container exec -it web composer test:unit
+	@docker container exec web composer test:unit
 
 test-db-connection:
 	./deploy/wait-until.sh "docker-compose -f deploy/docker-compose.yml exec -T -e MYSQL_PWD=password db mysql -D hackdawg -e 'select 1'"
@@ -30,7 +30,7 @@ deploy@testing:
     	up -d --build --force-recreate
 
 chore@testing:
-	@docker container exec -it -e APP_ENV=testing web hackdawg-chore
+	@docker container exec -e APP_ENV=testing web hackdawg-chore
 
 # Production
 
