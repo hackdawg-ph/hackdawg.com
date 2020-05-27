@@ -10,7 +10,7 @@ php artisan key:generate --force
 # php artisan migrate --force
 
 # Link storage directory
-echo "Linking storage direcory..."
+echo "Linking storage directory..."
 rm -rf public/storage && php artisan storage:link
 
 # Optimize Laravel
