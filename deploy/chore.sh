@@ -11,7 +11,7 @@ php artisan key:generate --force
 
 # Link storage directory
 echo "Linking storage direcory..."
-rm public/storage && php artisan storage:link
+rm -rf public/storage && php artisan storage:link
 
 # Optimize Laravel
 if [[ $APP_ENV == "production" ]]; then
