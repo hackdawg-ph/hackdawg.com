@@ -1,7 +1,7 @@
 .PHONY: build
 
 run-tests:
-	@docker container exec web composer test:unit
+	@docker container exec web composer test
 
 test-db-connection:
 	./deploy/wait-until.sh "docker-compose -f deploy/docker-compose.yml exec -T -e MYSQL_PWD=password db mysql -D hackdawg -e 'select 1'"
