@@ -3,7 +3,6 @@ name: Deploy
 on:
   push:
     branches:
-      - chore/deploy
       - master
 
 jobs:
@@ -66,7 +65,7 @@ jobs:
             cd /root/hackdawg.com || exit
 
             # Reset everything
-            git fetch --all && git checkout chore/deploy && git reset --hard && git pull
+            git fetch --all && git checkout master && git reset --hard && git pull
             rm -rf .env && sh deploy/decrypt_secret.sh
 
             # Copy bash aliases
