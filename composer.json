@@ -34,9 +34,11 @@
         "friendsofphp/php-cs-fixer": "^2.16",
         "fzaninotto/faker": "^1.9.1",
         "mockery/mockery": "^1.3.1",
-        "nunomaduro/collision": "^4.1",
+        "nunomaduro/collision": "^5.0",
         "nunomaduro/laravel-mojito": "^0.2.3",
         "nunomaduro/phpinsights": "^1.14",
+        "pestphp/pest": "^0.1.5",
+        "pestphp/pest-plugin-faker": "^0.1.1",
         "phpunit/phpunit": "^9.0"
     },
     "config": {

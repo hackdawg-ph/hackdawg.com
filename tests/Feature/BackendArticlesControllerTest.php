@@ -5,112 +5,94 @@ namespace Tests\Feature;
 use App\Models\Article;
 use App\Models\Tag;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
-use Tests\TestCase;
 
-class BackendArticlesControllerTest extends TestCase
-{
-    use RefreshDatabase, WithFaker;
+uses(RefreshDatabase::class);
 
-    /** @test **/
-    public function it_shows_a_listing_of_articles()
-    {
-        $this->signIn();
+beforeEach(fn () => $this->signIn());
 
-        $this->get(route('backend.articles.index'))
-            ->assertOk()
-            ->assertSee('Articles\/List');
-    }
+it('shows a listing of articles', function () {
+    $this->get(route('backend.articles.index'))
+        ->assertOk()
+        ->assertSee('Articles\/List');
+});
 
-    /** @test */
-    public function it_can_create_an_article()
-    {
-        $this->signIn();
+it('can create an article', function () {
+    $this->get(route('backend.articles.create'))
+        ->assertOk()
+        ->assertSee('Articles\/Create');
 
-        $this->get(route('backend.articles.create'))
-            ->assertOk()
-            ->assertSee('Articles\/Create');
+    Storage::fake('covers');
 
-        Storage::fake('covers');
+    $tags = factory(Tag::class, rand(1, 10))->create();
 
-        $tags = factory(Tag::class, rand(1, 10))->create();
+    $data = [
+        'title' => faker()->sentence,
+        'cover' => UploadedFile::fake()->image('cover.jpg'),
+        'body' => faker()->paragraph,
+        'tags' => ($attachedTags = $tags->random()->pluck('id')->toArray()),
+    ];
 
-        $data = [
-            'title' => $this->faker->sentence,
-            'cover' => UploadedFile::fake()->image('cover.jpg'),
-            'body' => $this->faker->paragraph,
-            'tags' => ($attachedTags = $tags->random()->pluck('id')->toArray()),
-        ];
+    $this->post(route('backend.articles.store'), $data)->assertRedirect();
 
-        $this->post(route('backend.articles.store'), $data)->assertRedirect();
+    unset($data['cover']);
+    unset($data['tags']);
 
-        unset($data['cover']);
-        unset($data['tags']);
+    $this->assertDatabaseHas('articles', $data);
 
-        $this->assertDatabaseHas('articles', $data);
+    $article = Article::latest()->firstOrFail();
 
-        $article = Article::latest()->firstOrFail();
+    $this->assertDatabaseHas('media', [
+        'model_type' => Article::class,
+        'model_id' => $article->id,
+        'collection_name' => 'covers',
+        'file_name' => 'cover.jpg',
+    ]);
 
-        $this->assertDatabaseHas('media', [
-            'model_type' => Article::class,
-            'model_id' => $article->id,
-            'collection_name' => 'covers',
-            'file_name' => 'cover.jpg',
-        ]);
+    $this->assertEquals($attachedTags, $article->tags->pluck('id')->toArray());
+});
 
-        $this->assertEquals($attachedTags, $article->tags->pluck('id')->toArray());
-    }
+it('can update an article', function () {
+    $this->get(route('backend.articles.edit', ($article = factory(Article::class)->create())))
+        ->assertOk()
+        ->assertSee('Articles\/Edit');
 
-    /** @test */
-    public function it_can_update_an_article()
-    {
-        $this->signIn();
+    Storage::fake('covers');
 
-        $this->get(route('backend.articles.edit', ($article = factory(Article::class)->create())))
-            ->assertOk()
-            ->assertSee('Articles\/Edit');
+    $tags = factory(Tag::class, rand(1, 10))->create();
 
-        Storage::fake('covers');
+    $data = [
+        'title' => $article->title,
+        'cover' => UploadedFile::fake()->image('cover.jpg'),
+        'body' => faker()->paragraph(rand(5, 10)),
+        'tags' => ($attachedTags = $tags->random()->pluck('id')->toArray()),
+    ];
 
-        $tags = factory(Tag::class, rand(1, 10))->create();
+    $this->patch(route('backend.articles.update', $article), $data)
+        ->assertRedirect();
 
-        $data = [
-            'title' => $article->title,
-            'cover' => UploadedFile::fake()->image('cover.jpg'),
-            'body' => $this->faker->paragraph(rand(5, 10)),
-            'tags' => ($attachedTags = $tags->random()->pluck('id')->toArray()),
-        ];
+    unset($data['cover']);
+    unset($data['tags']);
 
-        $this->patch(route('backend.articles.update', $article), $data)
-            ->assertRedirect();
+    $this->assertDatabaseHas('articles', $data);
 
-        unset($data['cover']);
-        unset($data['tags']);
+    $article = Article::latest()->firstOrFail();
 
-        $this->assertDatabaseHas('articles', $data);
+    $this->assertDatabaseHas('media', [
+        'model_type' => Article::class,
+        'model_id' => $article->id,
+        'collection_name' => 'covers',
+        'file_name' => 'cover.jpg',
+    ]);
 
-        $article = Article::latest()->firstOrFail();
+    $this->assertEquals($attachedTags, $article->tags->pluck('id')->toArray());
+});
 
-        $this->assertDatabaseHas('media', [
-            'model_type' => Article::class,
-            'model_id' => $article->id,
-            'collection_name' => 'covers',
-            'file_name' => 'cover.jpg',
-        ]);
+it('can delete an article', function () {
+    $this->delete(route('backend.articles.destroy', ($article = factory(Article::class)->create())))
+        ->assertRedirect();
 
-        $this->assertEquals($attachedTags, $article->tags->pluck('id')->toArray());
-    }
+    $this->assertDatabaseMissing('articles', ['id' => $article->id]);
+});
 
-    /** @test */
-    public function it_can_delete_an_article()
-    {
-        $this->signIn();
-
-        $this->delete(route('backend.articles.destroy', ($article = factory(Article::class)->create())))
-            ->assertRedirect();
-
-        $this->assertDatabaseMissing('articles', ['id' => $article->id]);
-    }
-}

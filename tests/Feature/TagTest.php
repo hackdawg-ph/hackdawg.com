@@ -1,24 +1,15 @@
 <?php
 
-namespace Tests\Feature;
-
 use App\Models\Article;
 use App\Models\Tag;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
-use Tests\TestCase;
 
-class TagTest extends TestCase
-{
-    use RefreshDatabase, WithFaker;
+uses(RefreshDatabase::class);
 
-    /** @test */
-    public function it_can_belong_to_many_articles()
-    {
-        $tag = factory(Tag::class)->create();
-        $articles = factory(Article::class, 5)->create();
-        $tag->articles()->attach($articles);
+it('can belong to many articles', function () {
+    /** @var Tag $tag */
+    $tag = factory(Tag::class)->create();
+    $tag->articles()->attach(factory(Article::class, 5)->create());
 
-        $this->assertInstanceOf(Article::class, $tag->articles->first());
-    }
-}
+    assertInstanceOf(Article::class, $tag->articles->first());
+});

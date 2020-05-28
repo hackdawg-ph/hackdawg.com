@@ -1,39 +1,29 @@
 <?php
 
-namespace Tests\Feature;
-
 use App\Models\Article;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Str;
-use Tests\TestCase;
 
-class UserTest extends TestCase
-{
-    use RefreshDatabase, WithFaker;
+uses(RefreshDatabase::class);
 
-    /** @test */
-    public function it_can_have_many_articles()
-    {
-        $user = factory(User::class)->create();
-        factory(Article::class, 10)->create(['user_id' => $user->id]);
+it('can have many articles', function () {
+    $user = factory(User::class)->create();
+    factory(Article::class, 10)->create(['user_id' => $user->id]);
 
-        $this->assertInstanceOf(Collection::class, $user->articles);
-        $this->assertInstanceOf(Article::class, $user->articles->first());
-    }
+    assertInstanceOf(Collection::class, $user->articles);
+    assertInstanceOf(Article::class, $user->articles->first());
+});
 
-    /** @test */
-    public function it_can_create_an_article()
-    {
-        $user = factory(User::class)->create();
-        $article = $user->createArticle([
-            'title' => ($title = $this->faker->sentence),
-            'slug' => Str::slug($title),
-            'body' => $this->faker->paragraph,
-        ]);
+it('can create an article', function () {
+    /** @var User $user */
+    $user = factory(User::class)->create();
+    $article = $user->createArticle([
+        'title' => ($title = faker()->sentence),
+        'slug' => Str::slug($title),
+        'body' => faker()->paragraph,
+    ]);
 
-        $this->assertInstanceOf(Article::class, $article);
-    }
-}
+    assertInstanceOf(Article::class, $article);
+});

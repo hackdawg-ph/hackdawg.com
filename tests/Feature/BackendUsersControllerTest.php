@@ -4,81 +4,63 @@ namespace Tests\Feature;
 
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
-use Tests\TestCase;
 
-class BackendUsersControllerTest extends TestCase
-{
-    use RefreshDatabase, WithFaker;
+uses(RefreshDatabase::class);
 
-    /** @test **/
-    public function it_shows_a_listing_of_users()
-    {
-        $this->signIn();
+beforeEach(function () {
+    $this->user = $this->signIn();
+});
 
-        $this->get(route('backend.users.index'))
-            ->assertOk()
-            ->assertSee('Users\/List');
-    }
+it('shows a listing of users', function () {
+    $this->get(route('backend.users.index'))
+        ->assertOk()
+        ->assertSee('Users\/List');
+});
 
-    /** @test */
-    public function it_can_create_a_user()
-    {
-        $this->signIn();
+it('can create a user', function () {
+    $this->get(route('backend.users.create'))
+        ->assertOk()
+        ->assertSee('Users\/Create');
 
-        $this->get(route('backend.users.create'))
-            ->assertOk()
-            ->assertSee('Users\/Create');
+    $data = [
+        'first_name' => faker()->firstName(),
+        'last_name' => faker()->lastName,
+        'email' => faker()->email,
+        'country' => faker()->country,
+        'state' => faker()->state,
+        'city' => faker()->city,
+        'street_address' => faker()->streetAddress,
+        'postal_code' => faker()->postcode,
+    ];
 
-        $data = [
-            'first_name' => $this->faker->firstName(),
-            'last_name' => $this->faker->lastName,
-            'email' => $this->faker->email,
-            'country' => $this->faker->country,
-            'state' => $this->faker->state,
-            'city' => $this->faker->city,
-            'street_address' => $this->faker->streetAddress,
-            'postal_code' => $this->faker->postcode,
-        ];
+    $this->post(route('backend.users.store'), $data)->assertRedirect();
 
-        $this->post(route('backend.users.store'), $data)
-            ->assertRedirect();
+    $this->assertDatabaseHas('users', $data);
+});
 
-        $this->assertDatabaseHas('users', $data);
-    }
+it('can update a user', function () {
+    $this->get(route('backend.users.edit', $this->user))
+        ->assertOk()
+        ->assertSee('Users\/Edit');
 
-    /** @test */
-    public function it_can_update_a_user()
-    {
-        $user = $this->signIn();
+    $data = [
+        'first_name' => $this->user->first_name,
+        'last_name' => faker()->lastName,
+        'email' => $this->user->email,
+    ];
 
-        $this->get(route('backend.users.edit', $user))
-            ->assertOk()
-            ->assertSee('Users\/Edit');
+    $this->patch(route('backend.users.update', $this->user), $data)
+        ->assertRedirect();
 
-        $data = [
-            'first_name' => $user->first_name,
-            'last_name' => $this->faker->lastName,
-            'email' => $user->email,
-        ];
+    $this->assertDatabaseHas('users', $data);
+});
 
-        $this->patch(route('backend.users.update', $user), $data)
-            ->assertRedirect();
+it('can delete a user', function () {
+    $this->delete(route('backend.users.destroy', ($user = User::first())))
+        ->assertRedirect();
 
-        $this->assertDatabaseHas('users', $data);
-    }
-
-    /** @test */
-    public function it_can_delete_a_user()
-    {
-        $this->signIn();
-
-        $this->delete(route('backend.users.destroy', ($user = User::first())))
-            ->assertRedirect();
-
-        $this->assertDatabaseMissing('users', [
-            'email' => $user->email,
-            'deleted_at' => null,
-        ]);
-    }
-}
+    $this->assertDatabaseMissing('users', [
+        'email' => $user->email,
+        'deleted_at' => null,
+    ]);
+});

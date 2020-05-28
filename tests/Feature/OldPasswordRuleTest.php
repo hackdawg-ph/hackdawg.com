@@ -1,40 +1,28 @@
 <?php
 
-namespace Tests\Feature;
-
 use App\Rules\OldPassword;
 use Illuminate\Support\Facades\Hash;
-use Tests\TestCase;
 
-class OldPasswordRuleTest extends TestCase
-{
-    /** @test */
-    public function it_passes_when_no_old_password_is_given()
-    {
-        $result = validator([], [
-            'old_password' => [new OldPassword('wrongpassword')],
-        ])->passes();
+it('passes when no old password is given', function () {
+    $result = validator([], [
+        'old_password' => [new OldPassword('wrongPassword')],
+    ])->passes();
 
-        $this->assertTrue($result);
-    }
+    assertTrue($result);
+});
 
-    /** @test */
-    public function it_passes_when_old_password_given_is_correct()
-    {
-        $result = validator(['old_password' => 'password'], [
-            'old_password' => [new OldPassword(Hash::make('password'))],
-        ])->passes();
+it('passes when old password given is correct', function () {
+    $result = validator(['old_password' => 'password'], [
+        'old_password' => [new OldPassword(Hash::make('password'))],
+    ])->passes();
 
-        $this->assertTrue($result);
-    }
+    assertTrue($result);
+});
 
-    /** @test */
-    public function it_fails_when_old_password_given_is_wrong()
-    {
-        $result = validator(['old_password' => 'password'], [
-            'old_password' => [new OldPassword(Hash::make('wrongpassword'))],
-        ])->passes();
+it('fails when old password given is wrong', function () {
+    $result = validator(['old_password' => 'password'], [
+        'old_password' => [new OldPassword(Hash::make('wrongPassword'))],
+    ])->passes();
 
-        $this->assertFalse($result);
-    }
-}
+    assertFalse($result);
+});
