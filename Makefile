@@ -2,7 +2,9 @@
 
 include .env
 
+# --------------------------------------------------------------------------
 # Utils
+# --------------------------------------------------------------------------
 
 run-tests:
 	@docker container exec web composer test
@@ -10,7 +12,9 @@ run-tests:
 test-db-connection:
 	@deploy/wait-until.sh "docker exec -t -e MYSQL_PWD=${DB_PASSWORD} db mysql -D ${DB_DATABASE} -e 'select 1'"
 
+# --------------------------------------------------------------------------
 # Local
+# --------------------------------------------------------------------------
 
 copy-hosts@local:
 	@sudo chmod +x ./deploy/copy_hosts.local.sh
@@ -25,7 +29,9 @@ deploy@local:
 chore@local:
 	@docker container exec -it -e APP_ENV=local web hackdawg-chore
 
+# --------------------------------------------------------------------------
 # Testing
+# --------------------------------------------------------------------------
 
 deploy@testing:
 	@docker-compose \
@@ -36,7 +42,9 @@ deploy@testing:
 chore@testing:
 	@docker container exec -e APP_ENV=testing web hackdawg-chore
 
+# --------------------------------------------------------------------------
 # Production
+# --------------------------------------------------------------------------
 
 copy-hosts@production:
 	@sudo chmod +x ./deploy/copy_hosts.production.sh
