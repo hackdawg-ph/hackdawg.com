@@ -19,9 +19,9 @@ export default function Create() {
 
     const { values, onChange, updateValue } = useForm({
         title: '',
+        cover_url: null,
         body: '',
         tags: [],
-        cover: null,
     });
 
     function handleSubmit(e) {
@@ -37,7 +37,7 @@ export default function Create() {
             data.append('cover', values.cover || '');
         }
 
-        return Inertia.post($route('backend.articles.store'), values);
+        return Inertia.post($route('backend.articles.store'), data);
     }
 
     return (

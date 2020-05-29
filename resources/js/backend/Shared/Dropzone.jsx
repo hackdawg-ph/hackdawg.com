@@ -2,6 +2,8 @@ import React, { useState, useEffect, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { useDropzone } from 'react-dropzone';
 import noop from 'lodash/noop';
+import RefreshOutlineIcon from '@/backend/Shared/Icons/RefreshOutline';
+import XOutlineIcon from '@/backend/Shared/Icons/XOutline';
 
 Dropzone.propTypes = {
     id: PropTypes.string.isRequired,
@@ -55,13 +57,23 @@ export default function Dropzone({ id, label, defaultValue = null, onChange = no
                 <div className="h-48 md:h-56 lg:h-64 mt-2 flex items-center justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
                     {fileUrl() ? (
                         <div className="flex items-center justify-center w-full h-full">
-                            <button
-                                className="absolute text-red-500 hover:text-red-600 underline"
-                                type="button"
-                                onClick={() => setValue(null)}
-                            >
-                                Remove
-                            </button>
+                            <div className="absolute flex">
+                                <button
+                                    className="inline-block rounded-full p-2 hover:bg-gray-600 hover:bg-opacity-50 text-white"
+                                    type="button"
+                                    onClick={open}
+                                >
+                                    <RefreshOutlineIcon className="w-6 h-6" />
+                                </button>
+                                <button
+                                    className="inline-block rounded-full ml-3 p-2 hover:bg-gray-600 hover:bg-opacity-50 text-white"
+                                    type="button"
+                                    onClick={() => setValue(null)}
+                                >
+                                    <XOutlineIcon className="w-6 h-6" />
+                                </button>
+                            </div>
+
                             <img className="w-full h-full object-cover object-center" src={fileUrl()} alt="" />
                         </div>
                     ) : (
