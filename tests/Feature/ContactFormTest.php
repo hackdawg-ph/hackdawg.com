@@ -23,30 +23,26 @@ it('sends the message', function () {
     Notification::assertSentTo($user, MessageSent::class);
 });
 
-it('requires the name', function () {
-    Livewire::test(ContactForm::class)
-        ->set('name', '')
-        ->call('submit')
-        ->assertHasErrors(['name' => 'required']);
-});
+it('requires the name')
+    ->livewire(ContactForm::class)
+    ->set('name', '')
+    ->call('submit')
+    ->assertHasErrors(['name' => 'required']);
 
-it('requires the email', function () {
-    Livewire::test(ContactForm::class)
-        ->set('email', '')
-        ->call('submit')
-        ->assertHasErrors(['email' => 'required']);
-});
+it('requires the email')
+    ->livewire(ContactForm::class)
+    ->set('email', '')
+    ->call('submit')
+    ->assertHasErrors(['email' => 'required']);
 
-it('checks the email is valid', function () {
-    Livewire::test(ContactForm::class)
-        ->set('email', faker()->word)
-        ->call('submit')
-        ->assertHasErrors(['email' => 'email']);
-});
+it('checks the email is valid')
+    ->livewire(ContactForm::class)
+    ->set('email', faker()->word)
+    ->call('submit')
+    ->assertHasErrors(['email' => 'email']);
 
-it('requires the message', function () {
-    Livewire::test(ContactForm::class)
-        ->set('message', '')
-        ->call('submit')
-        ->assertHasErrors(['message' => 'required']);
-});
+it('requires the message')
+    ->livewire(ContactForm::class)
+    ->set('message', '')
+    ->call('submit')
+    ->assertHasErrors(['message' => 'required']);

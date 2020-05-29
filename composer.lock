@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "90e54d6c4377fcb5060600b72e1c8173",
+    "content-hash": "94b69cedcda6b7e8da576240a5567c31",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -7026,6 +7026,74 @@
                 }
             ],
             "time": "2020-05-25T13:30:24+00:00"
+        },
+        {
+            "name": "pestphp/pest-plugin-livewire",
+            "version": "v0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/pestphp/pest-plugin-livewire.git",
+                "reference": "243a005072e507d3e8381a039ad5ad80cce3a30d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/pestphp/pest-plugin-livewire/zipball/243a005072e507d3e8381a039ad5ad80cce3a30d",
+                "reference": "243a005072e507d3e8381a039ad5ad80cce3a30d",
+                "shasum": ""
+            },
+            "require": {
+                "livewire/livewire": "^1.1",
+                "pestphp/pest": "^0.1.5",
+                "php": "^7.3"
+            },
+            "require-dev": {
+                "ergebnis/phpstan-rules": "^0.14.4",
+                "friendsofphp/php-cs-fixer": "^2.16.3",
+                "orchestra/testbench": "^5.2",
+                "phpstan/phpstan": "^0.12.25",
+                "phpstan/phpstan-strict-rules": "^0.12.2",
+                "rector/rector": "^0.7.25",
+                "symfony/var-dumper": "^5.0.8",
+                "thecodingmachine/phpstan-strict-rules": "^0.12.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Pest\\Livewire\\": "src/"
+                },
+                "files": [
+                    "src/Plugin.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "The Pest Livewire Plugin",
+            "keywords": [
+                "framework",
+                "pest",
+                "php",
+                "plugin",
+                "test",
+                "testing",
+                "unit"
+            ],
+            "funding": [
+                {
+                    "url": "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=66BYDWAT92N6L",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/nunomaduro",
+                    "type": "github"
+                },
+                {
+                    "url": "https://www.patreon.com/nunomaduro",
+                    "type": "patreon"
+                }
+            ],
+            "time": "2020-05-28T16:28:26+00:00"
         },
         {
             "name": "phar-io/manifest",

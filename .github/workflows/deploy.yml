@@ -87,6 +87,6 @@ jobs:
 
             # Here we go...
             make copy-hosts
-            make deploy
+            make illuminate
             make ping-db
             make chore
