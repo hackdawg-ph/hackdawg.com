@@ -3,7 +3,7 @@
 include .env
 
 chore:
-	@docker container exec -e APP_ENV=${APP_ENV} web zphen-chore
+	@docker container exec -e APP_ENV=${APP_ENV} web hackdawg-chore
 
 test:
 	@docker container exec web composer test
