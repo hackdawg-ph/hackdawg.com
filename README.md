@@ -13,16 +13,24 @@ composer install
 yarn install
 
 # Copy hosts to /etc/hosts
-make copy-hosts@local
+make copy-hosts
 
 # Boot the docker containers:
-make deploy@local
-make chore@local
+make illuminate
+make chore
 
 # Build frontend:
 yarn watch
 
 # Finally you can visit: http://hackdawg.test
+```
+
+### Checking if database is ready
+
+We can utilize the `ping-db` script using `make` to check if database has boot up:
+
+```bash
+make ping-db
 ```
 
 ### Connecting to the database from the host machine
@@ -40,4 +48,10 @@ Most database GUIs out there supports importing a database from a url:
 
 ```bash
 mysql://hackdawg:password@127.0.0.1:33069/hackdawg
+```
+
+## Testing
+
+```bash
+make test
 ```

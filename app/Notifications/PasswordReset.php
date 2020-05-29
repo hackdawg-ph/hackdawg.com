@@ -46,7 +46,7 @@ class PasswordReset extends Notification implements ShouldQueue
     public function toMail()
     {
         return (new MailMessage())
-            ->line('You recently requested to reset your password for your '.config('app.name').' account')
+            ->line('You recently requested to reset your password for your ' . config('app.name') . ' account')
             ->action('Reset Password', $this->url)
             ->line('If you did not request a password reset, please ignore this email.');
     }

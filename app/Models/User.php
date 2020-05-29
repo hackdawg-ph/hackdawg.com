@@ -13,7 +13,10 @@ use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable implements HasMedia
 {
-    use Notifiable, SoftDeletes, InteractsWithMedia, HasRoles;
+    use Notifiable;
+    use SoftDeletes;
+    use InteractsWithMedia;
+    use HasRoles;
 
     /**
      * The accessors to append to the model's array form.

@@ -38,7 +38,8 @@
         "nunomaduro/phpinsights": "^1.14",
         "pestphp/pest": "^0.1.5",
         "pestphp/pest-plugin-faker": "^0.1.1",
-        "phpunit/phpunit": "^9.0"
+        "phpunit/phpunit": "^9.0",
+        "squizlabs/php_codesniffer": "^3.5"
     },
     "config": {
         "optimize-autoloader": true,
@@ -70,8 +71,8 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "scripts": {
-        "format": [
-            "php-cs-fixer fix ."
+        "test:lint": [
+            "phpcs --extensions=php --standard=psr12 -n app"
         ],
         "test:insights": [
             "@php artisan insights ."
@@ -80,6 +81,7 @@
             "@php artisan test"
         ],
         "test": [
+            "composer test:lint",
             "composer test:insights",
             "composer test:unit"
         ],

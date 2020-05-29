@@ -12,7 +12,8 @@ use Spatie\Sluggable\SlugOptions;
 
 class Article extends Model implements HasMedia
 {
-    use HasSlug, InteractsWithMedia;
+    use HasSlug;
+    use InteractsWithMedia;
 
     /**
      * The relations to eager load on every query.

@@ -30,9 +30,9 @@ jobs:
 
       - name: Bootup services
         run: |
-          make deploy@testing
-          make test-db-connection
-          make chore@testing
+          make illuminate
+          make ping-db
+          make chore
 
       - name: Execute tests
-        run: make run-tests
+        run: make test

@@ -114,7 +114,7 @@ class UsersController extends Controller
             'last_name' => 'required|string',
             'email' => is_null($user)
                 ? 'required|email|unique:users'
-                : 'required|email|unique:users,email,'.$user->id,
+                : 'required|email|unique:users,email,' . $user->id,
             'country' => [],
             'state' => [],
             'city' => [],

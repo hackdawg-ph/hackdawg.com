@@ -67,7 +67,7 @@ class AccountController extends Controller
         $this->validate(request(), [
             'first_name' => 'required|string',
             'last_name' => 'required|string',
-            'email' => 'required|email|unique:users,email,'.Auth::user()->id,
+            'email' => 'required|email|unique:users,email,' . Auth::user()->id,
         ]);
 
         Auth::user()->update(request([
