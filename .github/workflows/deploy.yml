@@ -88,5 +88,5 @@ jobs:
             # Here we go...
             make copy-hosts
             make illuminate
-            make ping-db
+            make ping-db > /dev/null 2>&1
             make chore
