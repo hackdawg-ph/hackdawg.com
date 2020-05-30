@@ -33,19 +33,25 @@ export default function MultipleInput({ id, label, dataset = [], defaultValue = 
         }
     }
 
+    function findItemByKey(key) {
+        return dataset.find(item => item.key === key);
+    }
+
     function filterSuggestions(newTerm) {
         setSuggestions(
-            dataset.filter(data => keys.indexOf(data.key) === -1).filter(data => data.name.includes(newTerm)),
+            dataset
+                .filter(item => keys.indexOf(item.key) === -1)
+                .filter(item => item.name.includes(newTerm.toLowerCase())),
         );
     }
 
-    function removeItem(key) {
+    function detachItem(key) {
         setKeys(keys.filter(k => k !== key));
         focusInput();
     }
 
-    function addItem(data) {
-        const newKeys = keys.filter(key => key !== data.key).concat(data.key);
+    function attachItem(item) {
+        const newKeys = keys.filter(key => key !== item.key).concat(item.key);
 
         setKeys(newKeys);
         suggestionToggle.setOpen(false);
@@ -55,22 +61,25 @@ export default function MultipleInput({ id, label, dataset = [], defaultValue = 
     }
 
     function handleKeyDown(e) {
-        suggestionToggle.setOpen(true);
+        const newItem = suggestions.find((_, key) => key === activeKey);
 
-        // Listen for enter key
-        if (e.keyCode === 13) {
-            e.preventDefault();
-            addItem(suggestions.find((_, key) => key === activeKey));
-        }
-
-        // Listen for up arrow key
-        if (e.keyCode === 38) {
-            setActiveKey(activeKey < 0 ? activeKey : activeKey - 1);
-        }
-
-        // Listen for down arrow key
-        if (e.keyCode === 40) {
-            setActiveKey(activeKey + 1 === suggestions.length ? activeKey : activeKey + 1);
+        switch (e.keyCode) {
+            case 8:
+                if (term === '') detachItem(keys.pop());
+                break;
+            case 13:
+                e.preventDefault();
+                if (newItem) attachItem(newItem);
+                break;
+            case 38:
+                setActiveKey(activeKey < 0 ? activeKey : activeKey - 1);
+                break;
+            case 40:
+                setActiveKey(activeKey + 1 === suggestions.length ? activeKey : activeKey + 1);
+                break;
+            default:
+                suggestionToggle.setOpen(true);
+                break;
         }
     }
 
@@ -86,7 +95,7 @@ export default function MultipleInput({ id, label, dataset = [], defaultValue = 
         }
 
         if (term !== '') {
-            filterSuggestions(term);
+            return filterSuggestions(term);
         }
 
         if (term === '') {
@@ -105,29 +114,22 @@ export default function MultipleInput({ id, label, dataset = [], defaultValue = 
             <div className="relative form-input inline-block w-full mt-1 px-3 py-2 border-gray-300 cursor-text">
                 {keys.length > 0 && (
                     <ul className="inline" role="listbox">
-                        {keys
-                            .filter(key => dataset.find(data => data.key === key))
-                            .map(key => (
-                                <li key={key} className="mr-2 float-left">
-                                    <span className="inline-flex items-center px-2.5 py-0.5 rounded-md text-sm font-medium leading-5 bg-indigo-100 text-indigo-800">
-                                        {dataset.find(data => data.key === key).name}
-                                        <button
-                                            type="button"
-                                            className="flex-shrink-0 ml-1.5 inline-flex text-indigo-500 focus:outline-none focus:text-indigo-700"
-                                            onClick={() => removeItem(key)}
-                                        >
-                                            <svg
-                                                className="h-2 w-2"
-                                                stroke="currentColor"
-                                                fill="none"
-                                                viewBox="0 0 8 8"
-                                            >
-                                                <path strokeLinecap="round" strokeWidth="1.5" d="M1 1l6 6m0-6L1 7" />
-                                            </svg>
-                                        </button>
-                                    </span>
-                                </li>
-                            ))}
+                        {keys.filter(findItemByKey).map(key => (
+                            <li key={key} className="mr-2 float-left">
+                                <span className="inline-flex items-center px-2.5 py-0.5 rounded-md text-sm font-medium leading-5 bg-indigo-100 text-indigo-800">
+                                    {findItemByKey(key).name}
+                                    <button
+                                        type="button"
+                                        className="flex-shrink-0 ml-1.5 inline-flex text-indigo-500 focus:outline-none focus:text-indigo-700"
+                                        onClick={() => detachItem(key)}
+                                    >
+                                        <svg className="h-2 w-2" stroke="currentColor" fill="none" viewBox="0 0 8 8">
+                                            <path strokeLinecap="round" strokeWidth="1.5" d="M1 1l6 6m0-6L1 7" />
+                                        </svg>
+                                    </button>
+                                </span>
+                            </li>
+                        ))}
                     </ul>
                 )}
 
@@ -147,16 +149,16 @@ export default function MultipleInput({ id, label, dataset = [], defaultValue = 
                         className="absolute inset-x-0 top-full w-full max-h-64 overflow-scroll -mt-1 bg-white border border-gray-300 rounded shadow-sm"
                         role="listbox"
                     >
-                        {suggestions.map((data, key) => (
+                        {suggestions.map((item, key) => (
                             <li
-                                key={data.key}
+                                key={item.key}
                                 className={cx('px-3 py-1 border-b cursor-pointer', {
                                     'text-indigo-600': key === activeKey,
-                                    'text-gray-900 hover:text-gray-500 ': key !== activeKey,
+                                    'text-gray-900 hover:text-gray-500': key !== activeKey,
                                 })}
-                                onClick={() => addItem(data)}
+                                onClick={() => attachItem(item)}
                             >
-                                {data.name}
+                                {item.name}
                             </li>
                         ))}
                     </ul>

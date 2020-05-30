@@ -93,6 +93,7 @@ export default function Create() {
                                 }))}
                                 defaultValue={values.tags}
                                 onChange={value => updateValue('tags', value)}
+                                errors={errors.tags}
                             />
                         </div>
                     </div>
