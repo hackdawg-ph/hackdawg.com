@@ -20,6 +20,13 @@
 
     <!-- Main Style -->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+
+    <style>
+        html,
+        body {
+            font-family: 'SF Pro Text', serif;
+        }
+    </style>
 </head>
 
 <body class="antialiased text-gray-900">
@@ -112,10 +119,7 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7"/>
                         </svg>
                     </button>
-
                     <x-logo color="indigo"></x-logo>
-
-                    <div class="w-12"></div>
                 </div>
             </div>
             <div class="hidden md:block shadow-sm {{ $variant === 'secondary' ? 'bg-white' : 'bg-green-darkest' }}">
@@ -136,7 +140,7 @@
                         About Us
                     </a>
                     <div class="flex-grow translate-x-full"></div>
-                    <livewire:contact-form />
+                    <livewire:contact-form/>
                 </div>
             </div>
             <main class="flex-1 relative z-0 overflow-y-auto pb-6 focus:outline-none" tabindex="0">
@@ -145,45 +149,47 @@
         </div>
     </div>
 
-    <footer class="w-full bg-gray-lightest">
-        <div class="px-4 sm:px-8 md:px-24 xl:px-32">
-            <div class="flex flex-wrap justify-between -mx-8 lg:mx-0 py-10 md:pb-20">
-                <div class="w-full md:w-1/3 px-8 md:px-0">
-                    <x-logo color="black"></x-logo>
-                    <p class="mt-1 md:mt-5 text-lg">
-                        We can't change the world but we can make it more damn interesting
-                    </p>
+    <footer>
+        <div class="w-full bg-gray-100">
+            <div class="px-4 sm:px-8 md:px-24 xl:px-32">
+                <div class="flex flex-wrap justify-between -mx-8 lg:mx-0 py-10 md:pb-20">
+                    <div class="w-full md:w-1/3 px-8 md:px-0">
+                        <x-logo color="black"></x-logo>
+                        <p class="mt-3 md:mt-5 text-lg font-semibold italic">
+                            We can't change the world but we can make it more damn interesting
+                        </p>
+                    </div>
+                    <div class="w-full md:w-1/4 mt-4 md:mt-0 px-8">
+                        <h4 class="md:h-12 text-lg font-bold">Contact Us</h4>
+                        <ul class="mt-3 md:mt-5">
+                            <li>
+                                <a href="mailto://hello@hackdawg.com">hello@hackdawg.com</a>
+                            </li>
+                            <li>
+                                <a href="#">+63947 107 85 92</a>
+                            </li>
+                            <li>
+                                <a href="#">+63917 610 3841</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="w-full md:w-1/4 mt-4 md:mt-0 px-8">
+                        <h4 class="md:h-12 text-lg font-bold">Social Links</h4>
+                        <ul class="mt-3 md:mt-5">
+                            <li>
+                                <a href="#">Github</a>
+                            </li>
+                            <li>
+                                <a href="#">Facebook</a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="w-full md:w-1/4 mt-4 md:mt-0 px-8">
-                    <h4 class="md:h-12 text-lg font-bold">Contact Us</h4>
-                    <ul class="mt-1 md:mt-5">
-                        <li>
-                            <a href="mailto://hello@hackdawg.com">hello@hackdawg.com</a>
-                        </li>
-                        <li>
-                            <a href="#">+63947 107 85 92</a>
-                        </li>
-                        <li>
-                            <a href="#">+63917 610 3841</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="w-full md:w-1/4 mt-4 md:mt-0 px-8">
-                    <h4 class="md:h-12 text-lg font-bold">Social Links</h4>
-                    <ul class="mt-1 md:mt-5">
-                        <li>
-                            <a href="#">Github</a>
-                        </li>
-                        <li>
-                            <a href="#">Facebook</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
 
-            <div class="py-3 md:py-5 border-t-1/2px border-gray">
-                <p>&copy Hackdawg {{ Carbon::now()->format('Y') }}. All rights reserved.</p>
-                <p>Philippines-based innovators.</p>
+                <div class="py-5 md:py-8 border-t-1/2px border-gray-300">
+                    <p>&copy Hackdawg {{ Carbon::now()->format('Y') }}. All rights reserved.</p>
+                    <p>Philippines-based innovators.</p>
+                </div>
             </div>
         </div>
     </footer>
