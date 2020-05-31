@@ -1,3 +1,5 @@
+@inject('layout', 'App\View\Components\Layout')
+
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}" xmlns:livewire="http://www.w3.org/1999/html">
 
@@ -123,24 +125,27 @@
                 </div>
             </div>
             <div class="hidden md:block shadow-sm {{ $variant === 'secondary' ? 'bg-white' : 'bg-green-darkest' }}">
-                <div class="flex items-center px-4 md:px-24 xl:px-32 h-24">
-                    <span class="mr-5">
-                        <x-logo color="indigo" rounded></x-logo>
-                    </span>
-                    <a class="mx-5 text-sm {{ Request::path() === '/' ? 'text-blue' : ($variant === 'secondary' ? 'text-gray-600' : 'text-gray-400') }}" href="{{ route('welcome') }}">
-                        Home
-                    </a>
-                    <a class="mx-5 text-sm {{ Request::path() === 'portfolio' ? 'text-blue' : ($variant === 'secondary' ? 'text-gray-600' : 'text-gray-400') }}" href="#">
-                        Portfolio
-                    </a>
-                    <a class="mx-5 text-sm {{ Request::path() === 'articles' ? 'text-blue' : ($variant === 'secondary' ? 'text-gray-600' : 'text-gray-400') }}" href="{{ route('articles.index') }}">
-                        Articles
-                    </a>
-                    <a class="mx-5 text-sm {{ Request::path() === 'about' ? 'text-blue' : ($variant === 'secondary' ? 'text-gray-600' : 'text-gray-400') }}" href="{{ route('about') }}">
-                        About Us
-                    </a>
-                    <div class="flex-grow translate-x-full"></div>
-                    <livewire:contact-form/>
+                <div class="px-4 md:px-24 xl:px-40">
+                    <div class="flex items-center h-24 xl:h-32 {{ $variant === 'primary' ? 'border-b-1/2px border-gray-700' : '' }}">
+                        <span class="mr-5 xl:mr-8">
+                            <x-logo color="indigo" rounded></x-logo>
+                        </span>
+                        <a class="mx-5 xl:mx-8 xl:text-lg {{ Request::path() === '/' ? 'text-blue' : ($variant === 'secondary' ? 'text-gray-600' : 'text-gray-400') }}" href="{{ route('welcome') }}">
+                            Home
+                        </a>
+                        <a class="mx-5 xl:mx-8 xl:text-lg {{ Request::path() === 'portfolio' ? 'text-blue' : ($variant === 'secondary' ? 'text-gray-600' : 'text-gray-400') }}" href="#">
+                            Portfolio
+                        </a>
+                        <a class="mx-5 xl:mx-8 xl:text-lg {{ Request::path() === 'articles' ? 'text-blue' : ($variant === 'secondary' ? 'text-gray-600' : 'text-gray-400') }}"
+                           href="{{ route('articles.index') }}">
+                            Articles
+                        </a>
+                        <a class="mx-5 xl:mx-8 xl:text-lg {{ Request::path() === 'about' ? 'text-blue' : ($variant === 'secondary' ? 'text-gray-600' : 'text-gray-400') }}" href="{{ route('about') }}">
+                            About Us
+                        </a>
+                        <div class="flex-grow translate-x-full"></div>
+                        <livewire:contact-form></livewire:contact-form>
+                    </div>
                 </div>
             </div>
             <main class="flex-1 relative z-0 overflow-y-auto pb-6 focus:outline-none" tabindex="0">
@@ -151,7 +156,7 @@
 
     <footer>
         <div class="w-full bg-gray-100">
-            <div class="px-4 sm:px-8 md:px-24 xl:px-32">
+            <div class="px-4 sm:px-8 md:px-24 xl:px-40">
                 <div class="flex flex-wrap justify-between -mx-8 lg:mx-0 py-10 md:pb-20">
                     <div class="w-full md:w-1/3 px-8 md:px-0">
                         <x-logo color="black"></x-logo>

@@ -1,5 +1,5 @@
 <x-layout variant="secondary">
-    <div class="flex px-4 sm:px-8 md:px-24 xl:px-32 py-6">
+    <div class="flex px-4 py-8 sm:px-8 md:px-24 xl:px-40">
         <div class="w-32 hidden md:block">
             <ul class="fixed z-50 bg-white flex flex-col items-center justify-center w-16 mt-40 py-6 shadow-lg rounded-full">
                 <li>
@@ -51,7 +51,7 @@
             </div>
 
             <img
-                class="w-full h-64 sm:h-72 xl:h-96 mt-6 lg:mt-8 object-cover object-center"
+                class="w-full h-64 sm:h-84 xl:h-120 mt-6 lg:mt-8 object-cover object-center"
                 src="{{ $article->cover_url ?? '/png/article.png' }}"
                 alt="{{ $article->title }}"
             />

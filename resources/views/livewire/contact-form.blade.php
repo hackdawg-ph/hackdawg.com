@@ -1,5 +1,5 @@
 <div x-data="{ open: false }" id="contact">
-    <button @click="open = true" class="btn btn-blue">
+    <button @click="open = true" class="inline-flex items-center h-10 xl:h-12 px-6 xl:px-8 rounded-full text-sm font-medium bg-blue text-white">
         Contact Us
     </button>
 

@@ -39,14 +39,21 @@ module.exports = {
             },
 
             spacing: {
+                '1/2px': '0.5px',
                 '3px': '3px',
                 '72': '18rem',
                 '84': '21rem',
                 '96': '24rem',
+                '108': '27rem',
+                '120': '30rem',
             },
 
             borderWidth: {
                 '1/2px': '0.5px',
+            },
+
+            screens: {
+                xl: { min: '1440px' },
             },
         },
     },

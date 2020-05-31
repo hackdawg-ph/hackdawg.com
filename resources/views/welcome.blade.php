@@ -1,6 +1,6 @@
 <x-layout>
     <div class="bg-green-darkest">
-        <div class="px-4 sm:px-8 md:p-24 xl:p-32 pt-8 pb-24 sm:pt-16 sm:pb-32">
+        <div class="px-4 sm:px-8 md:px-24 xl:px-40 pt-8 pb-24 sm:pt-16 sm:pb-32">
             <h1 class="text-white text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-semibold leading-tight">
                 Our design is human—centric. <br/>
                 We develop functional processes that improve products and services.

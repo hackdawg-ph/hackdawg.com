@@ -1,21 +1,23 @@
 <x-layout variant="secondary">
     <div class="bg-green-darkest">
-        <div class="px-4 sm:px-8 md:p-24 xl:p-32 py-8 sm:py-16">
-            <h1 class="text-white text-2xl lg:text-5xl font-semibold leading-loose">
-                Welcome to Our Blog
-            </h1>
-            <p class="w-3/4 lg:w-1/2 text-sm md:text-base text-gray-400">
-                Stay updated with the newest design and development stories, case studies, and insights shared by
-                Hackdawg Team.
-            </p>
+        <div class="p-4 sm:px-8 sm:py-16 md:p-24 xl:p-40">
+            <div class="w-full lg:w-2/3 xl:w-1/2">
+                <h1 class="text-white text-2xl lg:text-5xl xl:text-6xl font-semibold leading-loose">
+                    Welcome to Our Blog
+                </h1>
+                <p class="text-sm md:text-base text-gray-400">
+                    Stay updated with the newest design and development stories, case studies, and insights shared by
+                    Hackdawg Team.
+                </p>
+            </div>
         </div>
     </div>
 
-    <div class="px-4 sm:px-8 md:px-24 xl:px-32">
+    <div class="px-4 sm:px-8 md:px-24 xl:px-40">
         @if (count($tags))
             <ul class="hidden md:flex py-8">
                 @foreach($tags as $tag)
-                    <li class="mr-12">
+                    <li class="mr-12 xl:mr-20">
                         <a
                             class="font-medium {{ request('tag') === $tag->name ? '' : 'text-gray-600' }}"
                             href="{{ route('articles.index', ['tag' => $tag->name]) }}"
