@@ -1,15 +1,13 @@
 <x-layout variant="secondary">
     <div class="bg-green-darkest">
-        <div class="p-4 sm:px-8 sm:py-16 md:p-24 xl:p-40">
-            <div class="w-full lg:w-2/3 xl:w-1/2">
-                <h1 class="text-white text-2xl lg:text-5xl xl:text-6xl font-semibold leading-loose">
-                    Welcome to Our Blog
-                </h1>
-                <p class="text-sm md:text-base text-gray-400">
-                    Stay updated with the newest design and development stories, case studies, and insights shared by
-                    Hackdawg Team.
-                </p>
-            </div>
+        <div class="p-4 sm:px-8 sm:py-16 md:px-24 md:py-32 xl:px-40 xl:py-48">
+            <h1 class="text-white text-2xl lg:text-5xl xl:text-6xl font-semibold leading-loose">
+                Welcome to Our Blog
+            </h1>
+            <p class="lg:w-2/3 xl:w-1/3 text-sm md:text-base text-gray-400">
+                Stay updated with the newest design and development stories,
+                case studies, and insights shared by the Hackdawg Team.
+            </p>
         </div>
     </div>
 

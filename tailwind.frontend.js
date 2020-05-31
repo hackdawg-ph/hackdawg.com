@@ -53,7 +53,7 @@ module.exports = {
             },
 
             screens: {
-                xl: { min: '1440px' },
+                xl: { min: '1920px' },
             },
         },
     },

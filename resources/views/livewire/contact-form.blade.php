@@ -6,7 +6,7 @@
     <div
         x-show="open"
         @click.away="open = false"
-        class="fixed right-0 top-0 z-10 flex flex-col w-4/5 xl:w-3/5 h-full overflow-auto px-24 bg-indigo"
+        class="fixed right-0 top-0 z-10 flex flex-col w-2/3 xl:w-1/2 h-full overflow-auto px-24 bg-indigo"
         x-transition:enter="transition ease-out duration-700"
         x-transition:enter-start="transform translate-x-full"
         x-transition:enter-end="transform translate-x-0"
