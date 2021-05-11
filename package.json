@@ -37,7 +37,7 @@
         "alpinejs": "^2.1.0",
         "classnames": "^2.2.6",
         "is-hotkey": "^0.1.6",
-        "lodash": "^4.17.15",
+        "lodash": "^4.17.21",
         "prop-types": "^15.7.2",
         "react": "^16.13.1",
         "react-dom": "^16.13.1",
